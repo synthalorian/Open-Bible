@@ -626,6 +626,7 @@ final List<BibleIllustration> bibleIllustrations = [
   BibleIllustration(id: 'dore_prophet_preaching_city_plate', title: 'Prophet Preaching in the City (Plate)', description: 'A prophet proclaims God\'s message in the streets.', bibleReference: 'Isaiah 58', color: const Color(0xFF78909C), icon: Icons.record_voice_over, assetPath: 'assets/illustrations/dore_prophet_preaching_city_plate.jpg'),
   BibleIllustration(id: 'dore_saul_death_battle_plate', title: 'Death of Saul in Battle (Plate)', description: 'Saul falls in battle against the Philistines.', bibleReference: '1 Samuel 31', color: const Color(0xFF5D4037), icon: Icons.shield, assetPath: 'assets/illustrations/dore_saul_death_battle_plate.jpg'),
   BibleIllustration(id: 'dore_dead_christ_plate', title: 'The Dead Christ (Plate)', description: 'Christ mourned after the crucifixion.', bibleReference: 'Matthew 27:57-61', color: const Color(0xFF424242), icon: Icons.nights_stay, assetPath: 'assets/illustrations/dore_dead_christ_plate.jpg'),
+  BibleIllustration(id: 'dore_judas_kiss_plate_captioned', title: 'The Judas Kiss (Captioned Plate)', description: 'A captioned engraving of Judas identifying Jesus in Gethsemane.', bibleReference: 'Matthew 26:47-50', color: const Color(0xFF4A148C), icon: Icons.nightlight, assetPath: 'assets/illustrations/dore_judas_kiss_plate_captioned.jpg'),
 ];
 
 /// Bible illustrations page
