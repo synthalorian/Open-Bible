@@ -149,6 +149,27 @@ class VerseStorageService {
         final List<dynamic> list = json.decode(bookmarksJson);
         final loaded = list.map((j) => SavedVerse.fromJson(j)).toList();
         if (loaded.isNotEmpty) _bookmarks = loaded;
+      } else {
+        // Legacy fallback
+        final legacy = _prefs!.getStringList('bookmarks') ?? const <String>[];
+        if (legacy.isNotEmpty) {
+          _bookmarks = legacy.map((id) {
+            final parts = id.split('_');
+            final book = parts.isNotEmpty ? parts.first : 'GEN';
+            final chapter = parts.length > 1 ? int.tryParse(parts[1]) ?? 1 : 1;
+            final verse = parts.length > 2 ? int.tryParse(parts[2]) ?? 1 : 1;
+            return SavedVerse(
+              id: id,
+              bookId: book,
+              bookName: book,
+              chapter: chapter,
+              verse: verse,
+              text: '',
+              savedAt: DateTime.now(),
+              bibleId: 'kjv',
+            );
+          }).toList();
+        }
       }
 
       final highlightsJson = _prefs!.getString(_highlightsKey);
@@ -156,6 +177,25 @@ class VerseStorageService {
         final Map<String, dynamic> map = json.decode(highlightsJson);
         final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
         if (loaded.isNotEmpty) _highlights = loaded;
+      } else {
+        final legacyKeys = _prefs!.getKeys().where((k) => k.startsWith('highlight_'));
+        for (final key in legacyKeys) {
+          final id = key.replaceFirst('highlight_', '');
+          final color = _prefs!.getString(key);
+          if (color != null) {
+            _highlights[id] = SavedVerse(
+              id: id,
+              bookId: id.split('_').first,
+              bookName: id.split('_').first,
+              chapter: id.split('_').length > 1 ? int.tryParse(id.split('_')[1]) ?? 1 : 1,
+              verse: id.split('_').length > 2 ? int.tryParse(id.split('_')[2]) ?? 1 : 1,
+              text: '',
+              highlightColor: color,
+              savedAt: DateTime.now(),
+              bibleId: 'kjv',
+            );
+          }
+        }
       }
 
       final notesJson = _prefs!.getString(_notesKey);
@@ -163,6 +203,25 @@ class VerseStorageService {
         final Map<String, dynamic> map = json.decode(notesJson);
         final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
         if (loaded.isNotEmpty) _notes = loaded;
+      } else {
+        final legacyKeys = _prefs!.getKeys().where((k) => k.startsWith('note_'));
+        for (final key in legacyKeys) {
+          final id = key.replaceFirst('note_', '');
+          final note = _prefs!.getString(key);
+          if (note != null) {
+            _notes[id] = SavedVerse(
+              id: id,
+              bookId: id.split('_').first,
+              bookName: id.split('_').first,
+              chapter: id.split('_').length > 1 ? int.tryParse(id.split('_')[1]) ?? 1 : 1,
+              verse: id.split('_').length > 2 ? int.tryParse(id.split('_')[2]) ?? 1 : 1,
+              text: '',
+              note: note,
+              savedAt: DateTime.now(),
+              bibleId: 'kjv',
+            );
+          }
+        }
       }
 
       final hasAnyData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
@@ -212,6 +271,7 @@ class VerseStorageService {
     try {
       if (_prefs != null) {
         await _prefs!.setString(_bookmarksKey, jsonStr);
+        await _prefs!.setStringList('bookmarks', _bookmarks.map((v) => v.id).toList());
       }
     } catch (e) {
       debugPrint('VerseStorageService: bookmark prefs write failed: $e');
@@ -225,6 +285,12 @@ class VerseStorageService {
     try {
       if (_prefs != null) {
         await _prefs!.setString(_highlightsKey, jsonStr);
+        for (final entry in _highlights.entries) {
+          final color = entry.value.highlightColor;
+          if (color != null) {
+            await _prefs!.setString('highlight_${entry.key}', color);
+          }
+        }
       }
     } catch (e) {
       debugPrint('VerseStorageService: highlight prefs write failed: $e');
@@ -238,6 +304,12 @@ class VerseStorageService {
     try {
       if (_prefs != null) {
         await _prefs!.setString(_notesKey, jsonStr);
+        for (final entry in _notes.entries) {
+          final note = entry.value.note;
+          if (note != null) {
+            await _prefs!.setString('note_${entry.key}', note);
+          }
+        }
       }
     } catch (e) {
       debugPrint('VerseStorageService: note prefs write failed: $e');
