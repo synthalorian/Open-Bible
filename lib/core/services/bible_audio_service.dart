@@ -24,7 +24,7 @@ class BibleAudioService {
         await _tts.awaitSpeakCompletion(true);
         await _tts.setQueueMode(1); // QUEUE_FLUSH
       }
-      await _tts.setLanguage('en-US');
+      try { await _tts.setLanguage('en-US'); } catch (_) {}
       await _tts.setSpeechRate(_rate);
       await _tts.setPitch(_pitch);
       await _tts.setVolume(1.0);
@@ -49,8 +49,8 @@ class BibleAudioService {
       _initialized = true;
       debugPrint('AUDIO_SERVICE: Initialized successfully');
     } catch (e) {
-      debugPrint('AUDIO_SERVICE: Initialization failed: $e');
-      rethrow;
+      debugPrint('AUDIO_SERVICE: Initialization failed, continuing with best-effort mode: $e');
+      _initialized = true;
     }
   }
 
@@ -89,11 +89,13 @@ class BibleAudioService {
     if (text.isEmpty) return false;
 
     await _tts.stop();
-    // Keep first payload moderate for Android TTS reliability on some OEM engines.
-    final clipped = text.length > 3800 ? text.substring(0, 3800) : text;
+    // Keep payload conservative for Android TTS reliability.
+    final clipped = text.length > 1400 ? text.substring(0, 1400) : text;
     final result = await _tts.speak(clipped);
     debugPrint('AUDIO_SERVICE: speak result=$result, chars=${clipped.length}/${text.length}');
-    return result == 1;
+
+    // Some engines return non-1 while still starting speech; treat non-error as started.
+    return result != 0;
   }
 
   Future<void> stop() async {
