@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/providers/app_providers.dart';
-import '../../../bible/data/models/bible_book.dart';
-import '../../data/search_provider.dart';
+import '../../../../core/services/current_bible.dart';
 import '../../../bible/presentation/pages/chapter_reader_page.dart';
 
 /// Full-text search page
@@ -37,7 +36,6 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   Widget build(BuildContext context) {
     final searchState = ref.watch(bibleSearchProvider);
     final recentSearches = ref.watch(recentSearchesProvider);
-    final translations = availableTranslations; // This is a const list, not a provider
     
     return Scaffold(
       appBar: AppBar(
@@ -317,18 +315,30 @@ class _SearchResultCard extends ConsumerWidget {
   }
   
   void _navigateToVerse(BuildContext context, WidgetRef ref) {
-    // Set the selected translation
+    // Set selected translation in both provider and global current Bible.
     ref.read(selectedTranslationProvider.notifier).state = result.translationId;
-    
+    CurrentBible.set(result.translationId);
+
+    // ChapterReader expects slug-style book IDs (e.g., "genesis", "1 john").
+    final normalizedBookId = _normalizeBookId(result.bookId, result.bookName);
+
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ChapterReaderPage(
-          bookId: result.bookId,
+          bookId: normalizedBookId,
           chapter: result.chapter,
         ),
       ),
     );
+  }
+
+  String _normalizeBookId(String rawId, String fallbackName) {
+    final id = rawId.trim().toLowerCase();
+    // If provider result already has a slug-like id, keep it.
+    if (id.contains(' ') || id.length > 4) return id;
+    // For short/abbr ids (e.g., GEN, JHN), derive from book name.
+    return fallbackName.trim().toLowerCase();
   }
 }
 
