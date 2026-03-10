@@ -121,7 +121,12 @@ class VerseStorageService {
     try {
       final dir = await getApplicationDocumentsDirectory();
       _backupFile = File('${dir.path}/verse_storage_backup_v3.json');
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('VerseStorageService: could not resolve backup path: $e');
+    }
+
+    // Always try file restore first (most reliable across plugin quirks).
+    await _loadFromBackupFile();
 
     try {
       _prefs = await SharedPreferences.getInstance();
@@ -129,53 +134,40 @@ class VerseStorageService {
       _initialized = true;
     } catch (e) {
       debugPrint('VerseStorageService: Init failed, using file/memory fallback: $e');
-      await _loadFromBackupFile();
       _initialized = true;
     }
   }
   
   static Future<void> _loadAllData() async {
-    if (_prefs == null) {
-      await _loadFromBackupFile();
-      return;
-    }
+    if (_prefs == null) return;
 
     try {
-      // Load bookmarks
+      // Keep file-restored state as baseline; only replace when prefs has payload.
       final bookmarksJson = _prefs!.getString(_bookmarksKey);
-      if (bookmarksJson != null) {
+      if (bookmarksJson != null && bookmarksJson.trim().isNotEmpty) {
         final List<dynamic> list = json.decode(bookmarksJson);
-        _bookmarks = list.map((j) => SavedVerse.fromJson(j)).toList();
+        final loaded = list.map((j) => SavedVerse.fromJson(j)).toList();
+        if (loaded.isNotEmpty) _bookmarks = loaded;
       }
 
-      // Load highlights
       final highlightsJson = _prefs!.getString(_highlightsKey);
-      if (highlightsJson != null) {
+      if (highlightsJson != null && highlightsJson.trim().isNotEmpty) {
         final Map<String, dynamic> map = json.decode(highlightsJson);
-        _highlights = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
+        final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
+        if (loaded.isNotEmpty) _highlights = loaded;
       }
 
-      // Load notes
       final notesJson = _prefs!.getString(_notesKey);
-      if (notesJson != null) {
+      if (notesJson != null && notesJson.trim().isNotEmpty) {
         final Map<String, dynamic> map = json.decode(notesJson);
-        _notes = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
+        final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
+        if (loaded.isNotEmpty) _notes = loaded;
       }
 
-      // If prefs came back empty, restore from backup instead of overwriting it.
-      final prefsEmpty = _bookmarks.isEmpty && _highlights.isEmpty && _notes.isEmpty;
-      if (prefsEmpty) {
-        await _loadFromBackupFile();
-      }
-
-      // If we have any data in memory, refresh backup copy.
       final hasAnyData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
-      if (hasAnyData) {
-        await _saveToBackupFile();
-      }
+      if (hasAnyData) await _saveToBackupFile();
     } catch (e) {
-      debugPrint('VerseStorageService: prefs load failed, trying backup file: $e');
-      await _loadFromBackupFile();
+      debugPrint('VerseStorageService: prefs load failed, keeping file/memory data: $e');
     }
   }
   
