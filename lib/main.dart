@@ -707,15 +707,23 @@ class SearchResultTile extends StatelessWidget {
   }
 
   void _openVerse(BuildContext context) {
+    final normalizedBookId = _normalizeBookId(result.bookId, result.bookName);
+
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => reader.ChapterReaderPage(
-          bookId: result.bookId,
+          bookId: normalizedBookId,
           chapter: result.chapter,
         ),
       ),
     );
+  }
+
+  String _normalizeBookId(String rawId, String fallbackName) {
+    final id = rawId.trim().toLowerCase();
+    if (id.contains(' ') || id.length > 4) return id;
+    return fallbackName.trim().toLowerCase();
   }
 }
 
