@@ -1,0 +1,276 @@
+{
+  "title": "Bible Facts & Trivia",
+  "version": "1.0",
+  "categories": [
+    {
+      "category": "Bible Statistics",
+      "facts": [
+        {
+          "id": "stats_1",
+          "question": "How many books are in the Bible?",
+          "answer": "66 books - 39 in the Old Testament and 27 in the New Testament.",
+          "difficulty": "easy"
+        },
+        {
+          "id": "stats_2",
+          "question": "How many chapters are in the Bible?",
+          "answer": "1,189 chapters total - 929 in the Old Testament and 260 in the New Testament.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "stats_3",
+          "question": "How many verses are in the Bible?",
+          "answer": "31,102 verses total - 23,145 in the Old Testament and 7,957 in the New Testament.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "stats_4",
+          "question": "How many words are in the Bible?",
+          "answer": "Approximately 783,000 words - 602,000 in the Old Testament and 181,000 in the New Testament.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "stats_5",
+          "question": "What is the longest book in the Bible?",
+          "answer": "Psalms - with 150 chapters and 2,461 verses.",
+          "difficulty": "easy"
+        },
+        {
+          "id": "stats_6",
+          "question": "What is the shortest book in the Bible?",
+          "answer": "3 John - with only 1 chapter and 14 verses (or 2 John with 13 verses depending on translation).",
+          "difficulty": "easy"
+        },
+        {
+          "id": "stats_7",
+          "question": "What is the longest chapter in the Bible?",
+          "answer": "Psalm 119 - with 176 verses. It's also an acrostic poem with 22 stanzas, one for each letter of the Hebrew alphabet.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "stats_8",
+          "question": "What is the shortest chapter in the Bible?",
+          "answer": "Psalm 117 - with only 2 verses. It's also the middle chapter of the Bible.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "stats_9",
+          "question": "What is the longest verse in the Bible?",
+          "answer": "Esther 8:9 - with 90 words in English (or 43 words in Hebrew). It describes the king's decree being sent throughout the Persian empire.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "stats_10",
+          "question": "What is the shortest verse in the Bible?",
+          "answer": "John 11:35 - 'Jesus wept.' (2 words in English, 16 Greek letters).",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "category": "Authors & Writing",
+      "facts": [
+        {
+          "id": "authors_1",
+          "question": "How many people wrote the Bible?",
+          "answer": "About 40 different authors over approximately 1,500 years (from around 1400 BC to 100 AD).",
+          "difficulty": "medium"
+        },
+        {
+          "id": "authors_2",
+          "question": "Who wrote the most books in the Bible?",
+          "answer": "The Apostle Paul wrote 13 books (or 14 if Hebrews is included).",
+          "difficulty": "easy"
+        },
+        {
+          "id": "authors_3",
+          "question": "Who wrote the most chapters in the Bible?",
+          "answer": "Moses wrote the most chapters - 50 in Genesis, 40 in Exodus, 27 in Leviticus, 36 in Numbers, and 34 in Deuteronomy = 187 chapters total.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "authors_4",
+          "question": "What language was the Old Testament written in?",
+          "answer": "Primarily Hebrew, with small portions in Aramaic (Ezra 4:8-6:18, 7:12-26; Daniel 2:4-7:28; and Jeremiah 10:11).",
+          "difficulty": "medium"
+        },
+        {
+          "id": "authors_5",
+          "question": "What language was the New Testament written in?",
+          "answer": "Koine Greek - the common language of the Mediterranean world at that time.",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "category": "Old Testament",
+      "facts": [
+        {
+          "id": "ot_1",
+          "question": "What are the first five books of the Bible called?",
+          "answer": "The Torah (Hebrew) or Pentateuch (Greek) - Genesis, Exodus, Leviticus, Numbers, and Deuteronomy. Also known as the Books of Moses.",
+          "difficulty": "easy"
+        },
+        {
+          "id": "ot_2",
+          "question": "How long did it take Moses to write the Pentateuch?",
+          "answer": "About 40 years, from approximately 1445-1405 BC, during Israel's wilderness wandering.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "ot_3",
+          "question": "Who is mentioned most in the Old Testament?",
+          "answer": "David is mentioned 1,118 times by name, more than any other person in the Old Testament.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "ot_4",
+          "question": "What is the oldest book in the Bible?",
+          "answer": "Job is considered the oldest book, likely written around 2000-1800 BC, before Moses.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "ot_5",
+          "question": "How many prophecies about Jesus are in the Old Testament?",
+          "answer": "Over 300 prophecies about the Messiah, written hundreds of years before Jesus' birth.",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "category": "New Testament",
+      "facts": [
+        {
+          "id": "nt_1",
+          "question": "How many years did Jesus minister on earth?",
+          "answer": "Approximately 3.5 years, from His baptism to His crucifixion and resurrection.",
+          "difficulty": "easy"
+        },
+        {
+          "id": "nt_2",
+          "question": "How many miracles did Jesus perform?",
+          "answer": "The Gospels record about 37 specific miracles, though John 21:25 says Jesus did many more not written down.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "nt_3",
+          "question": "How many parables did Jesus tell?",
+          "answer": "About 40 parables are recorded in the Gospels.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "nt_4",
+          "question": "How many apostles did Jesus have?",
+          "answer": "12 original apostles, with Matthias replacing Judas Iscariot. Paul later became known as the 'Apostle to the Gentiles.'",
+          "difficulty": "easy"
+        },
+        {
+          "id": "nt_5",
+          "question": "What is the last book of the Bible?",
+          "answer": "Revelation - written by the Apostle John around 95 AD while exiled on the island of Patmos.",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "category": "Fun Facts",
+      "facts": [
+        {
+          "id": "fun_1",
+          "question": "What is the middle verse of the Bible?",
+          "answer": "Psalm 118:8 - 'It is better to trust in the LORD than to put confidence in man.' (Note: In some versions, this varies slightly)",
+          "difficulty": "medium"
+        },
+        {
+          "id": "fun_2",
+          "question": "How many times does 'fear not' appear in the Bible?",
+          "answer": "365 times - one for every day of the year!",
+          "difficulty": "medium"
+        },
+        {
+          "id": "fun_3",
+          "question": "What is the most common name in the Bible?",
+          "answer": "Zacharias/Zechariah appears 41 times. However, if you count variations, names like John, Simon, and Judas appear frequently.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "fun_4",
+          "question": "How many animals are mentioned in the Bible?",
+          "answer": "Over 120 different species of animals are mentioned throughout Scripture.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "fun_5",
+          "question": "What is the most quoted Old Testament book in the New Testament?",
+          "answer": "Psalms is quoted over 80 times in the New Testament, more than any other Old Testament book.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "fun_6",
+          "question": "How old was Methuselah when he died?",
+          "answer": "969 years old - the oldest person mentioned in the Bible (Genesis 5:27).",
+          "difficulty": "easy"
+        },
+        {
+          "id": "fun_7",
+          "question": "What is the most frequently mentioned number in the Bible?",
+          "answer": "The number 7 appears over 700 times, symbolizing completeness or perfection.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "fun_8",
+          "question": "How many people were raised from the dead in the Bible?",
+          "answer": "At least 10 people were raised from the dead in Scripture, including Jesus, Lazarus, and various others raised by prophets and apostles.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "category": "Translation History",
+      "facts": [
+        {
+          "id": "trans_1",
+          "question": "What was the first complete printed Bible?",
+          "answer": "The Gutenberg Bible, printed by Johannes Gutenberg around 1455 in Mainz, Germany.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "trans_2",
+          "question": "What was the first English Bible?",
+          "answer": "Wycliffe's Bible, translated by John Wycliffe and completed in 1382.",
+          "difficulty": "hard"
+        },
+        {
+          "id": "trans_3",
+          "question": "When was the King James Version published?",
+          "answer": "1611 - commissioned by King James I of England and still one of the most popular translations.",
+          "difficulty": "easy"
+        },
+        {
+          "id": "trans_4",
+          "question": "How many languages has the Bible been translated into?",
+          "answer": "The complete Bible has been translated into over 700 languages, with portions available in over 3,500 languages.",
+          "difficulty": "medium"
+        },
+        {
+          "id": "trans_5",
+          "question": "What is the best-selling book of all time?",
+          "answer": "The Bible - with over 5 billion copies sold and distributed worldwide.",
+          "difficulty": "easy"
+        }
+      ]
+    }
+  ],
+  "daily_facts": [
+    "The Bible was written over a period of 1,500 years by 40 different authors.",
+    "The longest word in the Bible is 'Mahershalalhashbaz' (Isaiah 8:1).",
+    "The Bible never uses the word 'Trinity' - the concept is developed from various passages.",
+    "There are 1,189 chapters in the Bible.",
+    "Esther is the only book in the Bible that doesn't mention God by name.",
+    "The word 'Christian' appears only 3 times in the Bible.",
+    "Jesus is mentioned over 1,200 times in the New Testament.",
+    "The Bible contains 31,102 verses.",
+    "Psalm 117 is the shortest chapter and also the middle chapter.",
+    "The book of Genesis covers more time than all the other books combined."
+  ]
+}
