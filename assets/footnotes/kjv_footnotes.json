@@ -1,0 +1,206 @@
+{
+  "GEN 1:1": [
+    {"id": "1", "text": "KJV 'In the beginning' translates Hebrew 'bereshit', the opening word of the Bible. The KJV follows the Hebrew word order closely.", "type": "translation"},
+    {"id": "2", "text": "'God' here is Hebrew 'Elohim', a plural noun used with singular verbs, suggesting the Trinity. KJV capitalizes 'God' as a proper noun.", "type": "theological"},
+    {"id": "3", "text": "'created' is Hebrew 'bara', used only for divine creation. KJV preserves the distinction between 'create' (bara) and 'make' (asah).", "type": "linguistic"}
+  ],
+  "GEN 1:2": [
+    {"id": "1", "text": "'without form, and void' translates Hebrew 'tohu wabohu' - chaos and emptiness. KJV uses alliteration to capture the Hebrew poetry.", "type": "translation"},
+    {"id": "2", "text": "'the deep' is Hebrew 'tehom', related to the Babylonian 'Tiamat'. KJV uses 'deep' rather than 'abyss' to avoid mythological connotations.", "type": "historical"},
+    {"id": "3", "text": "'moved' translates Hebrew 'rachaph', to hover or brood like a bird over eggs. KJV captures this maternal imagery.", "type": "linguistic"}
+  ],
+  "GEN 1:26": [
+    {"id": "1", "text": "'Let us make' - The plural pronoun has been interpreted as the Trinity, angels, or plural of majesty. KJV preserves the plural without interpretation.", "type": "theological"},
+    {"id": "2", "text": "'image' is Hebrew 'tselem', meaning representation or likeness. KJV distinguishes 'image' from 'likeness' in verse 27.", "type": "linguistic"},
+    {"id": "3", "text": "'man' is Hebrew 'adam', related to 'adamah' (ground). KJV uses 'man' as generic humanity, not just the individual Adam.", "type": "linguistic"}
+  ],
+  "GEN 2:7": [
+    {"id": "1", "text": "'formed' is Hebrew 'yatsar', used for a potter shaping clay. KJV emphasizes God's hands-on creation.", "type": "linguistic"},
+    {"id": "2", "text": "'breath of life' is Hebrew 'nishmat chayyim'. KJV distinguishes this from 'spirit' (ruach) used elsewhere.", "type": "translation"},
+    {"id": "3", "text": "'living soul' - Hebrew 'nephesh chayyah'. KJV uses 'soul' here, though 'nephesh' also means creature or being.", "type": "translation"}
+  ],
+  "GEN 3:15": [
+    {"id": "1", "text": "'bruise' - Hebrew 'shuf', to crush or strike at. KJV uses 'bruise' for both the serpent and the seed, though the Hebrew suggests different intensities.", "type": "linguistic"},
+    {"id": "2", "text": "'seed' is Hebrew 'zera', singular collective. KJV preserves the singular, pointing to Christ as the ultimate seed.", "type": "messianic"},
+    {"id": "3", "text": "This verse is called the 'Protoevangelium' - the first gospel promise. KJV translators recognized its messianic significance.", "type": "messianic"}
+  ],
+  "GEN 12:1": [
+    {"id": "1", "text": "'Get thee out' - Hebrew 'lech lecha', literally 'go for yourself' or 'go to yourself'. KJV captures the command and purpose.", "type": "linguistic"},
+    {"id": "2", "text": "Abram was 75 years old when he left Haran (v. 4). KJV narrative shows God's call comes regardless of age.", "type": "historical"}
+  ],
+  "GEN 15:6": [
+    {"id": "1", "text": "'believed' - Hebrew 'he'emin', from root 'aman' (firm, faithful). KJV 'believed' captures the sense of trust and reliance.", "type": "linguistic"},
+    {"id": "2", "text": "'counted it to him for righteousness' - Hebrew 'chashab', to reckon or impute. KJV uses 'counted' for legal/accounting terminology.", "type": "theological"},
+    {"id": "3", "text": "Quoted by Paul in Romans 4:3, Galatians 3:6, and James 2:23 as foundational for justification by faith.", "type": "crossReference"}
+  ],
+  "EXO 3:14": [
+    {"id": "1", "text": "'I AM THAT I AM' - Hebrew 'Ehyeh asher ehyeh'. KJV preserves the first person, connecting to the divine name YHWH (He is).", "type": "linguistic"},
+    {"id": "2", "text": "'I AM' becomes a title for Christ in John's Gospel (John 8:58). KJV uses small caps LORD for YHWH elsewhere.", "type": "messianic"},
+    {"id": "3", "text": "The name indicates God's self-existence and eternal nature. KJV captures this with the timeless 'I AM'.", "type": "theological"}
+  ],
+  "EXO 20:3": [
+    {"id": "1", "text": "First Commandment: 'Thou shalt have no other gods before me.' KJV 'before me' means 'in my presence' or 'besides me'.", "type": "theological"},
+    {"id": "2", "text": "'before me' is Hebrew 'al panay', literally 'upon my face'. KJV captures the sense of exclusive worship.", "type": "linguistic"}
+  ],
+  "EXO 20:7": [
+    {"id": "1", "text": "Third Commandment: KJV 'take the name of the LORD thy God in vain' - using God's name for false oaths or empty purposes.", "type": "theological"},
+    {"id": "2", "text": "'vain' is Hebrew 'shav', meaning emptiness, falsehood, or worthlessness. KJV captures the prohibition against empty use.", "type": "linguistic"}
+  ],
+  "PSA 23:1": [
+    {"id": "1", "text": "'LORD' in KJV small caps represents the divine name YHWH (Yahweh/Jehovah), distinguishing it from 'Lord' (Adonai).", "type": "translation"},
+    {"id": "2", "text": "'I shall not want' - Hebrew 'lo echsar', I will not lack. KJV 'want' means 'lack' in Elizabethan English.", "type": "linguistic"},
+    {"id": "3", "text": "David wrote this psalm based on his experience as a shepherd boy (1 Samuel 16:11).", "type": "historical"}
+  ],
+  "PSA 23:4": [
+    {"id": "1", "text": "'valley of the shadow of death' - Hebrew 'gey tsalmavet', valley of deep darkness. KJV 'shadow of death' captures both meanings.", "type": "linguistic"},
+    {"id": "2", "text": "'thy rod and thy staff' - The rod for protection, the staff for guidance. KJV preserves the shepherd's tools.", "type": "cultural"},
+    {"id": "3", "text": "'comfort' is Hebrew 'nacham', to console or have compassion. KJV emphasizes divine comfort in danger.", "type": "linguistic"}
+  ],
+  "PSA 51:10": [
+    {"id": "1", "text": "'Create' is Hebrew 'bara', used only for divine creation. KJV preserves this strong term for spiritual renewal.", "type": "linguistic"},
+    {"id": "2", "text": "'right spirit' - Hebrew 'ruach nachon', a steadfast or established spirit. KJV 'right' means 'correct' or 'proper'.", "type": "linguistic"},
+    {"id": "3", "text": "David wrote this psalm after his sin with Bathsheba (2 Samuel 12). KJV preserves the personal confession.", "type": "historical"}
+  ],
+  "PSA 119:11": [
+    {"id": "1", "text": "'hid' is Hebrew 'tsaphan', to treasure or store up. KJV captures the sense of valuing and protecting God's Word.", "type": "linguistic"},
+    {"id": "2", "text": "'heart' in Hebrew includes mind, will, and emotions. KJV 'heart' encompasses the whole inner being.", "type": "cultural"},
+    {"id": "3", "text": "This acrostic psalm has 22 sections for each letter of the Hebrew alphabet. KJV preserves the structure.", "type": "literary"}
+  ],
+  "ISA 7:14": [
+    {"id": "1", "text": "'virgin' translates Hebrew 'almah', a young woman of marriageable age. KJV uses 'virgin' based on context and LXX translation.", "type": "translation"},
+    {"id": "2", "text": "'Immanuel' means 'God with us'. KJV preserves the Hebrew name as a title of the Messiah.", "type": "messianic"},
+    {"id": "3", "text": "Quoted in Matthew 1:23 as fulfilled in Jesus' birth. KJV Matthew explicitly connects this to Christ.", "type": "messianic"}
+  ],
+  "ISA 9:6": [
+    {"id": "1", "text": "'Wonderful, Counsellor' - Could be read as two titles or one: 'Wonderful Counsellor'. KJV follows Hebrew punctuation.", "type": "translation"},
+    {"id": "2", "text": "'mighty God' is Hebrew 'El Gibbor', Mighty God. KJV capitalizes 'God', identifying the child as divine.", "type": "messianic"},
+    {"id": "3", "text": "'Everlasting Father' - Hebrew 'Avi Ad', Father of Eternity or Eternal Father. KJV emphasizes the messianic title.", "type": "messianic"}
+  ],
+  "ISA 53:5": [
+    {"id": "1", "text": "'wounded' is Hebrew 'chalal', pierced or profaned. KJV captures the violence done to the Servant.", "type": "linguistic"},
+    {"id": "2", "text": "'stripes' is Hebrew 'chabburah', bruises or welts. KJV emphasizes the physical suffering.", "type": "linguistic"},
+    {"id": "3", "text": "This chapter is the great Messianic prophecy of the suffering Servant. KJV preserves its application to Christ.", "type": "messianic"}
+  ],
+  "MAT 1:23": [
+    {"id": "1", "text": "KJV follows Isaiah 7:14 closely: 'they shall call his name Emmanuel'. The fulfillment formula is characteristic of Matthew.", "type": "translation"},
+    {"id": "2", "text": "'Emmanuel' is Greek 'Emmanuel', from Hebrew 'Immanu El'. KJV preserves the Hebrew form of the name.", "type": "linguistic"}
+  ],
+  "MAT 5:3": [
+    {"id": "1", "text": "'Blessed' is Greek 'makarios', happy or fortunate. KJV 'blessed' captures the divine favor.", "type": "linguistic"},
+    {"id": "2", "text": "'poor in spirit' is Greek 'ptochos to pneumati', spiritually destitute. KJV emphasizes spiritual poverty.", "type": "translation"}
+  ],
+  "MAT 5:44": [
+    {"id": "1", "text": "'Love your enemies' - Greek 'agapao', self-sacrificing love. KJV distinguishes this from 'phileo' (friendship love).", "type": "linguistic"},
+    {"id": "2", "text": "KJV 'pray for them which despitefully use you' captures the Greek 'epeRXomai', to persecute or harass.", "type": "translation"}
+  ],
+  "MAT 6:9": [
+    {"id": "1", "text": "'Our Father' - Greek 'Pater hemon'. KJV preserves the familial intimacy of Jesus' teaching on prayer.", "type": "translation"},
+    {"id": "2", "text": "'Hallowed be thy name' - Greek 'hagiastheto to onoma sou'. KJV uses 'hallowed' (made holy) rather than 'sanctified'.", "type": "linguistic"}
+  ],
+  "MAT 6:33": [
+    {"id": "1", "text": "'Seek ye first' - Greek 'zeteite proton', seek first. KJV emphasizes priority: God's kingdom before material needs.", "type": "translation"},
+    {"id": "2", "text": "'righteousness' is Greek 'dikaiosyne', right standing with God. KJV distinguishes this from works-righteousness.", "type": "theological"}
+  ],
+  "MAT 11:28": [
+    {"id": "1", "text": "'Come unto me' - Greek 'deute pros me', come here to me. KJV captures the invitation to approach Jesus.", "type": "translation"},
+    {"id": "2", "text": "'heavy laden' is Greek 'pephortismenoi', loaded down. KJV emphasizes the burden of religious legalism.", "type": "translation"},
+    {"id": "3", "text": "'rest' is Greek 'anapausis', cessation from labor and refreshment. KJV captures both meanings.", "type": "linguistic"}
+  ],
+  "MAT 28:19": [
+    {"id": "1", "text": "'in the name' is singular in Greek, indicating one God. KJV preserves the Trinitarian formula.", "type": "theological"},
+    {"id": "2", "text": "'Father, Son, Holy Ghost' - The Great Commission in Trinitarian form. KJV preserves this foundational formula.", "type": "theological"}
+  ],
+  "JHN 1:1": [
+    {"id": "1", "text": "'In the beginning' - Greek 'en arche', echoing Genesis 1:1. KJV emphasizes Christ's eternal existence.", "type": "translation"},
+    {"id": "2", "text": "'Word' is Greek 'Logos', divine reason or expression. KJV preserves this philosophical and theological term.", "type": "linguistic"},
+    {"id": "3", "text": "'the Word was God' - Greek 'theos en ho logos'. KJV preserves the word order: 'God' is the predicate, emphasizing deity.", "type": "theological"}
+  ],
+  "JHN 1:14": [
+    {"id": "1", "text": "'made flesh' - Greek 'sarx egeneto', became flesh. KJV emphasizes the incarnation.", "type": "theological"},
+    {"id": "2", "text": "'dwelt' is Greek 'eskenosen', tabernacled or pitched tent. KJV captures the imagery of God's presence.", "type": "linguistic"},
+    {"id": "3", "text": "'full of grace and truth' - Greek 'charis kai aletheia', covenant love and faithfulness. KVL preserves the Hebrew concept.", "type": "translation"}
+  ],
+  "JHN 3:3": [
+    {"id": "1", "text": "'born again' - Greek 'gennethe anothen', born from above. KJV captures both meanings: again and from above.", "type": "translation"},
+    {"id": "2", "text": "'cannot see' is Greek 'ou dunatai idein', is not able to see. KJV emphasizes inability without new birth.", "type": "linguistic"}
+  ],
+  "JHN 3:16": [
+    {"id": "1", "text": "'so loved' - Greek 'houtos egapesen', loved in this manner. KJV emphasizes the extent of God's love.", "type": "translation"},
+    {"id": "2", "text": "'only begotten' is Greek 'monogenes', one and only, unique. KJV emphasizes Christ's unique sonship.", "type": "linguistic"},
+    {"id": "3", "text": "'whosoever' is Greek 'pas ho pisteuon', everyone believing. KJV emphasizes the universal offer.", "type": "translation"}
+  ],
+  "JHN 14:6": [
+    {"id": "1", "text": "'I am the way' - Greek 'ego eimi he hodos'. KJV preserves the definite article: Jesus is THE way, not a way.", "type": "theological"},
+    {"id": "2", "text": "'no man cometh unto the Father, but by me' - Exclusive claim. KJV preserves the necessity of Christ for salvation.", "type": "theological"}
+  ],
+  "ROM 3:23": [
+    {"id": "1", "text": "'all have sinned' - Greek 'pantes hemarton', all sinned. KJV emphasizes universal sinfulness.", "type": "theological"},
+    {"id": "2", "text": "'come short' is Greek 'hysterountai', fall short or lack. KJV uses an accounting term: falling short of the standard.", "type": "linguistic"}
+  ],
+  "ROM 5:8": [
+    {"id": "1", "text": "'commendeth' is Greek 'sunistesin', demonstrates or proves. KJV emphasizes God demonstrating His love.", "type": "linguistic"},
+    {"id": "2", "text": "'while we were yet sinners' - Greek 'eti hamartolon onton hemon'. KJV emphasizes the timing: Christ died for us while we were still sinners.", "type": "theological"}
+  ],
+  "ROM 6:23": [
+    {"id": "1", "text": "'wages' is Greek 'opsonia', soldier's pay. KJV uses a military metaphor: sin pays death as wages.", "type": "linguistic"},
+    {"id": "2", "text": "'gift' is Greek 'charisma', free gift of grace. KJV contrasts earned wages with free grace.", "type": "theological"}
+  ],
+  "ROM 8:28": [
+    {"id": "1", "text": "'work together' is Greek 'synergei', synergy. KJV emphasizes God causing all things to cooperate for good.", "type": "linguistic"},
+    {"id": "2", "text": "'love God' and 'called according to his purpose' - The promise is for believers, not all people universally.", "type": "theological"}
+  ],
+  "ROM 10:9": [
+    {"id": "1", "text": "'confess with thy mouth' - Greek 'homologeseis to stomati sou'. KJV emphasizes public confession.", "type": "translation"},
+    {"id": "2", "text": "'raised from the dead' - The resurrection is essential to saving faith. KJV preserves this requirement.", "type": "theological"}
+  ],
+  "ROM 10:13": [
+    {"id": "1", "text": "'whosoever' is Greek 'pas gar', for everyone. KJV emphasizes the universal invitation.", "type": "translation"},
+    {"id": "2", "text": "'call upon' is Greek 'epikalesetai', invoke or appeal to. KJV captures the sense of calling for help.", "type": "linguistic"},
+    {"id": "3", "text": "Quotes Joel 2:32. KJV preserves the Old Testament connection.", "type": "crossReference"}
+  ],
+  "1CO 13:4-8": [
+    {"id": "1", "text": "'Charity' is Greek 'agape', self-sacrificing love. KJV uses 'charity' in its older sense of Christian love.", "type": "linguistic"},
+    {"id": "2", "text": "15 characteristics of love in this passage. KJV preserves the detailed description of true love.", "type": "literary"}
+  ],
+  "EPH 2:8": [
+    {"id": "1", "text": "'by grace' - Greek 'te gar chariti', by the grace. KJV emphasizes grace as the means of salvation.", "type": "theological"},
+    {"id": "2", "text": "'through faith' - Greek 'dia pisteos'. KJV distinguishes the source (grace) from the channel (faith).", "type": "theological"},
+    {"id": "3", "text": "'gift' is Greek 'doron', a present. KJV emphasizes that salvation is completely God's gift, not human achievement.", "type": "theological"}
+  ],
+  "PHP 4:13": [
+    {"id": "1", "text": "'I can do all things' - Greek 'panta ischyo', I am strong for all things. KJV emphasizes empowerment.", "type": "translation"},
+    {"id": "2", "text": "'Christ which strengtheneth me' - Greek 'ton endynamounta me'. KJV emphasizes Christ as the source of strength.", "type": "translation"},
+    {"id": "3", "text": "Context (vv. 11-12) shows Paul means contentment in all circumstances, not ability to do anything he wants.", "type": "interpretation"}
+  ],
+  "HEB 4:12": [
+    {"id": "1", "text": "'quick' is Elizabethan English for 'living' or 'alive'. KJV emphasizes the living nature of God's Word.", "type": "linguistic"},
+    {"id": "2", "text": "'twoedged sword' is Greek 'machaira distomos', double-mouthed sword. KJV emphasizes the penetrating power.", "type": "linguistic"},
+    {"id": "3", "text": "'discerner' is Greek 'kritikos', critic or judge. KJV emphasizes Scripture's ability to judge thoughts.", "type": "linguistic"}
+  ],
+  "HEB 11:1": [
+    {"id": "1", "text": "'substance' is Greek 'hypostasis', assurance or confidence. KJV uses 'substance' in its older sense of 'that which stands under'.", "type": "linguistic"},
+    {"id": "2", "text": "'evidence' is Greek 'elenchos', conviction or proof. KJV emphasizes faith as the proof of unseen realities.", "type": "linguistic"}
+  ],
+  "JAS 1:22": [
+    {"id": "1", "text": "'be ye doers' - Greek 'poietai', doers or makers. KJV emphasizes action over mere hearing.", "type": "linguistic"},
+    {"id": "2", "text": "'deceiving your own selves' - Greek 'paralogizomenoi heautous', reasoning beside yourselves. KJV emphasizes self-deception.", "type": "linguistic"}
+  ],
+  "1PE 3:15": [
+    {"id": "1", "text": "'sanctify the Lord God in your hearts' - Greek 'kyrion de ton christon hagiasate'. KJV emphasizes setting Christ apart as Lord.", "type": "translation"},
+    {"id": "2", "text": "'answer' is Greek 'apologian', defense or reasoned response. KJV gives us the word 'apologetics'.", "type": "linguistic"},
+    {"id": "3", "text": "'meekness and fear' - Greek 'prauteti kai phoboi', gentleness and reverence. KJV emphasizes humble respect.", "type": "translation"}
+  ],
+  "1JN 1:9": [
+    {"id": "1", "text": "'confess' is Greek 'homologomen', agree with or acknowledge. KJV emphasizes agreeing with God about sin.", "type": "linguistic"},
+    {"id": "2", "text": "'faithful and just' - God forgives because He is faithful to His promise and just because of Christ's payment.", "type": "theological"},
+    {"id": "3", "text": "'cleanse' is Greek 'katharise', purify. KJV emphasizes complete cleansing from all unrighteousness.", "type": "linguistic"}
+  ],
+  "REV 1:8": [
+    {"id": "1", "text": "'Alpha and Omega' - First and last letters of Greek alphabet. KJV uses these as titles of eternality.", "type": "linguistic"},
+    {"id": "2", "text": "'which is, and which was, and which is to come' - Greek 'ho on kai ho en kai ho erchomenos'. KJV preserves the divine name.", "type": "translation"}
+  ],
+  "REV 3:20": [
+    {"id": "1", "text": "'I stand at the door, and knock' - Greek 'he steko epi ten thyran kai krouo'. KJV presents Christ seeking entrance.", "type": "translation"},
+    {"id": "2", "text": "'sup with him' - Greek 'deipneso met' autou', dine with him. KJV captures the intimacy of fellowship with Christ.", "type": "cultural"}
+  ]
+}
