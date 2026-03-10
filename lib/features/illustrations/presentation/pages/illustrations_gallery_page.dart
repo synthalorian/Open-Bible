@@ -201,6 +201,16 @@ class IllustrationsGalleryPage extends StatelessWidget {
       book: 'Ruth',
       chapter: 2,
     ),
+    BibleIllustration(title: 'Joseph Makes Himself Known (Plate)', description: 'Genesis 45 - Joseph reveals himself in Egypt', imagePath: 'assets/illustrations/dore_joseph_known_brethren_plate.jpg', book: 'Genesis', chapter: 45),
+    BibleIllustration(title: 'The Ascension (Plate)', description: 'Acts 1 - Christ ascends before the disciples', imagePath: 'assets/illustrations/dore_ascension_plate.jpg', book: 'Acts', chapter: 1),
+    BibleIllustration(title: 'Tower of Babel (Plate)', description: 'Genesis 11 - Babel and the confusion of languages', imagePath: 'assets/illustrations/dore_tower_babel_plate.jpg', book: 'Genesis', chapter: 11),
+    BibleIllustration(title: 'Baptism of Jesus (Plate)', description: 'Matthew 3 - John baptizes Jesus', imagePath: 'assets/illustrations/dore_baptism_jesus_plate.jpg', book: 'Matthew', chapter: 3),
+    BibleIllustration(title: 'Angelic Chariot (Plate)', description: '2 Kings 6 - Heavenly host and chariot vision', imagePath: 'assets/illustrations/dore_angelic_chariot_plate.jpg', book: '2 Kings', chapter: 6),
+    BibleIllustration(title: 'Nailing to the Cross (Plate)', description: 'Matthew 27 - Crucifixion scene', imagePath: 'assets/illustrations/dore_crucifixion_nailing_plate.jpg', book: 'Matthew', chapter: 27),
+    BibleIllustration(title: 'Nailing to the Cross (Alt Plate)', description: 'Matthew 27 - Alternate crucifixion engraving', imagePath: 'assets/illustrations/dore_crucifixion_nailing_plate_alt.jpg', book: 'Matthew', chapter: 27),
+    BibleIllustration(title: 'Prophet Preaching in the City (Plate)', description: 'Isaiah 58 - Prophetic proclamation', imagePath: 'assets/illustrations/dore_prophet_preaching_city_plate.jpg', book: 'Isaiah', chapter: 58),
+    BibleIllustration(title: 'Death of Saul in Battle (Plate)', description: '1 Samuel 31 - Saul falls in battle', imagePath: 'assets/illustrations/dore_saul_death_battle_plate.jpg', book: '1 Samuel', chapter: 31),
+    BibleIllustration(title: 'The Dead Christ (Plate)', description: 'Matthew 27 - Christ mourned after crucifixion', imagePath: 'assets/illustrations/dore_dead_christ_plate.jpg', book: 'Matthew', chapter: 27),
   ];
 
   @override
