@@ -116,7 +116,8 @@ class VerseStorageService {
   
   /// Initialize storage
   static Future<void> initialize() async {
-    if (_initialized) return;
+    // If we already initialized and have at least one durable backend, skip.
+    if (_initialized && (_backupFile != null || _prefs != null)) return;
 
     try {
       final dir = await getApplicationDocumentsDirectory();
@@ -125,7 +126,7 @@ class VerseStorageService {
       debugPrint('VerseStorageService: could not resolve backup path: $e');
     }
 
-    // Restore from file first.
+    // Restore from file first when available.
     await _loadFromBackupFile();
 
     try {
@@ -134,6 +135,8 @@ class VerseStorageService {
       _initialized = true;
     } catch (e) {
       debugPrint('VerseStorageService: Init failed, using file/memory fallback: $e');
+      // Keep initialized true so in-memory still works this run,
+      // but future calls can re-attempt backend init if still unavailable.
       _initialized = true;
     }
   }
