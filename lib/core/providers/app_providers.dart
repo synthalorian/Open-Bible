@@ -363,10 +363,44 @@ final readingPositionProvider = StateNotifierProvider<ReadingPositionNotifier, R
 
 /// Settings notifier
 class SettingsNotifier extends StateNotifier<AppSettings> {
-  SettingsNotifier() : super(const AppSettings());
+  SettingsNotifier() : super(const AppSettings()) {
+    _load();
+  }
+
+  Future<void> _load() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final modeIndex = prefs.getInt('settings_readingMode') ?? ReadingMode.day.index;
+      state = state.copyWith(
+        fontSize: prefs.getInt('settings_fontSize') ?? state.fontSize,
+        readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
+        notificationsEnabled: prefs.getBool('settings_notificationsEnabled') ?? state.notificationsEnabled,
+        dailyVerseNotifications: prefs.getBool('settings_dailyVerseNotifications') ?? state.dailyVerseNotifications,
+        dailyVerseTime: DailyVerseTime(
+          hour: prefs.getInt('settings_dailyVerseHour') ?? state.dailyVerseTime.hour,
+          minute: prefs.getInt('settings_dailyVerseMinute') ?? state.dailyVerseTime.minute,
+        ),
+        audioEnabled: prefs.getBool('settings_audioEnabled') ?? state.audioEnabled,
+      );
+    } catch (_) {}
+  }
+
+  Future<void> _save() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt('settings_fontSize', state.fontSize);
+      await prefs.setInt('settings_readingMode', state.readingMode.index);
+      await prefs.setBool('settings_notificationsEnabled', state.notificationsEnabled);
+      await prefs.setBool('settings_dailyVerseNotifications', state.dailyVerseNotifications);
+      await prefs.setInt('settings_dailyVerseHour', state.dailyVerseTime.hour);
+      await prefs.setInt('settings_dailyVerseMinute', state.dailyVerseTime.minute);
+      await prefs.setBool('settings_audioEnabled', state.audioEnabled);
+    } catch (_) {}
+  }
 
   void setFontSize(int size) {
     state = state.copyWith(fontSize: size);
+    _save();
   }
 
   void setReadingMode(ReadingMode mode) {
@@ -374,18 +408,27 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       readingMode: mode,
       isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled,
     );
+    _save();
   }
 
   Future<void> toggleNotifications() async {
     state = state.copyWith(notificationsEnabled: !state.notificationsEnabled);
+    await _save();
   }
 
   Future<void> setDailyVerseNotifications(bool enabled) async {
     state = state.copyWith(dailyVerseNotifications: enabled);
+    await _save();
   }
 
   Future<void> setDailyVerseTime(DailyVerseTime time) async {
     state = state.copyWith(dailyVerseTime: time);
+    await _save();
+  }
+
+  Future<void> setAudioEnabled(bool enabled) async {
+    state = state.copyWith(audioEnabled: enabled);
+    await _save();
   }
 }
 
