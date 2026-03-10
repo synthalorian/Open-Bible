@@ -23,7 +23,6 @@ class BibleAudioService {
       if (Platform.isAndroid) {
         await _tts.awaitSpeakCompletion(true);
         await _tts.setQueueMode(1); // QUEUE_FLUSH
-        await _tts.setSharedInstance(true);
       }
       await _tts.setLanguage('en-US');
       await _tts.setSpeechRate(_rate);

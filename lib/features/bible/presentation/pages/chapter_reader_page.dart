@@ -1027,28 +1027,36 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       return;
     }
 
-    debugPrint('AUDIO: verses parsed count=${verses.length}');
-    final started = await service.speakChapter(
-      bookName: _bookName,
-      chapter: _currentChapter,
-      verses: verses,
-    );
-    debugPrint('AUDIO: speakChapter started=$started');
-
-    if (started) {
-      setState(() => _isPlayingAudio = true);
-    }
-
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            started
-                ? 'Playing chapter audio... tap again to stop (use media volume)'
-                : 'Could not start audio. Install/enable a system TTS voice and media volume, then retry.',
-          ),
-        ),
+    try {
+      debugPrint('AUDIO: verses parsed count=${verses.length}');
+      final started = await service.speakChapter(
+        bookName: _bookName,
+        chapter: _currentChapter,
+        verses: verses,
       );
+      debugPrint('AUDIO: speakChapter started=$started');
+
+      if (started) {
+        setState(() => _isPlayingAudio = true);
+      }
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              started
+                  ? 'Playing chapter audio... tap again to stop (use media volume)'
+                  : 'Could not start audio. Install/enable a system TTS voice and media volume, then retry.',
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Audio failed to start: $e')),
+        );
+      }
     }
   }
 
