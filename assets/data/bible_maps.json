@@ -1,0 +1,185 @@
+{
+  "maps": [
+    {
+      "id": "patriarchs_journey",
+      "title": "Patriarchs' Journeys",
+      "description": "The travels of Abraham, Isaac, and Jacob through Canaan and Egypt",
+      "period": "2000-1800 BC",
+      "imagePath": "assets/maps/patriarchs_journey.svg",
+      "locations": [
+        {"name": "Ur of the Chaldees", "lat": 30.9625, "lng": 46.1028, "description": "Abraham's birthplace", "verse": "Genesis 11:31"},
+        {"name": "Haran", "lat": 36.86, "lng": 39.03, "description": "Where Terah died; Abraham was called from here", "verse": "Genesis 12:1-4"},
+        {"name": "Shechem", "lat": 32.2133, "lng": 35.2817, "description": "First stopping place in Canaan", "verse": "Genesis 12:6"},
+        {"name": "Bethel", "lat": 31.93, "lng": 35.22, "description": "Where Abraham built an altar", "verse": "Genesis 12:8"},
+        {"name": "Hebron", "lat": 31.5244, "lng": 35.1008, "description": "Where Abraham lived and Sarah died", "verse": "Genesis 23:2"},
+        {"name": "Beer-sheba", "lat": 31.25, "lng": 34.8333, "description": "Southern boundary of Abraham's territory", "verse": "Genesis 21:31"},
+        {"name": "Egypt", "lat": 29.5, "lng": 31.2, "description": "Where Abraham and later Jacob went during famine", "verse": "Genesis 12:10"}
+      ],
+      "routes": [
+        {"from": "Ur of the Chaldees", "to": "Haran", "description": "Terah's family journey"},
+        {"from": "Haran", "to": "Shechem", "description": "Abraham enters Canaan"},
+        {"from": "Shechem", "to": "Bethel", "description": "Moving south through Canaan"},
+        {"from": "Bethel", "to": "Hebron", "description": "Establishing home in the hill country"}
+      ]
+    },
+    {
+      "id": "exodus_route",
+      "title": "The Exodus Route",
+      "description": "Israel's journey from Egypt to the Promised Land",
+      "period": "1446 BC",
+      "imagePath": "assets/maps/exodus_route.svg",
+      "locations": [
+        {"name": "Goshen", "lat": 30.6, "lng": 31.8, "description": "Where Israelites lived in Egypt", "verse": "Exodus 8:22"},
+        {"name": "Rameses", "lat": 30.79, "lng": 31.83, "description": "Starting point of the Exodus", "verse": "Exodus 12:37"},
+        {"name": "Succoth", "lat": 30.55, "lng": 32.15, "description": "First camp after leaving Egypt", "verse": "Exodus 12:37"},
+        {"name": "Etham", "lat": 29.9, "lng": 32.4, "description": "On the edge of the wilderness", "verse": "Exodus 13:20"},
+        {"name": "Red Sea", "lat": 29.0, "lng": 33.0, "description": "Where Moses parted the waters", "verse": "Exodus 14:21"},
+        {"name": "Marah", "lat": 28.8, "lng": 33.3, "description": "Bitter waters made sweet", "verse": "Exodus 15:23"},
+        {"name": "Elim", "lat": 28.75, "lng": 33.5, "description": "Oasis with 12 wells", "verse": "Exodus 15:27"},
+        {"name": "Sinai", "lat": 28.5392, "lng": 33.9744, "description": "Where Moses received the Law", "verse": "Exodus 19:1-2"},
+        {"name": "Kadesh-barnea", "lat": 30.65, "lng": 34.48, "description": "Where Israelites failed to enter Canaan", "verse": "Numbers 13:26"},
+        {"name": "Jericho", "lat": 31.87, "lng": 35.44, "description": "First city conquered in Canaan", "verse": "Joshua 6:1-27"}
+      ],
+      "routes": [
+        {"from": "Rameses", "to": "Succoth", "description": "The Exodus begins"},
+        {"from": "Succoth", "to": "Etham", "description": "Into the wilderness"},
+        {"from": "Etham", "to": "Red Sea", "description": "The miraculous crossing"},
+        {"from": "Red Sea", "to": "Marah", "description": "Three days without water"},
+        {"from": "Marah", "to": "Elim", "description": "Rest at the oasis"},
+        {"from": "Elim", "to": "Sinai", "description": "Journey to the mountain of God"}
+      ]
+    },
+    {
+      "id": "twelve_tribes",
+      "title": "The Twelve Tribes of Israel",
+      "description": "Division of the Promised Land among the tribes",
+      "period": "1400-1200 BC",
+      "imagePath": "assets/maps/twelve_tribes.svg",
+      "locations": [
+        {"name": "Dan", "lat": 33.25, "lng": 35.65, "description": "Northernmost tribe", "verse": "Joshua 19:40-48"},
+        {"name": "Asher", "lat": 33.0, "lng": 35.2, "description": "Coastal plains north", "verse": "Joshua 19:24-31"},
+        {"name": "Naphtali", "lat": 32.9, "lng": 35.4, "description": "West of Sea of Galilee", "verse": "Joshua 19:32-39"},
+        {"name": "Zebulun", "lat": 32.7, "lng": 35.3, "description": "Southwest of Galilee", "verse": "Joshua 19:10-16"},
+        {"name": "Issachar", "lat": 32.65, "lng": 35.4, "description": "Valley of Jezreel", "verse": "Joshua 19:17-23"},
+        {"name": "Manasseh (West)", "lat": 32.2, "lng": 35.3, "description": "Central highlands", "verse": "Joshua 17:1-13"},
+        {"name": "Ephraim", "lat": 32.1, "lng": 35.25, "description": "Hill country center", "verse": "Joshua 16:5-10"},
+        {"name": "Benjamin", "lat": 31.85, "lng": 35.25, "description": "Jerusalem area", "verse": "Joshua 18:11-28"},
+        {"name": "Judah", "lat": 31.5, "lng": 35.1, "description": "Southern kingdom center", "verse": "Joshua 15:1-63"},
+        {"name": "Simeon", "lat": 31.4, "lng": 34.85, "description": "Within Judah's territory", "verse": "Joshua 19:1-9"},
+        {"name": "Reuben", "lat": 31.5, "lng": 35.6, "description": "East of Dead Sea", "verse": "Joshua 13:15-23"},
+        {"name": "Gad", "lat": 32.2, "lng": 35.7, "description": "East of Jordan", "verse": "Joshua 13:24-28"}
+      ],
+      "routes": []
+    },
+    {
+      "id": "united_kingdom",
+      "title": "United Kingdom of Israel",
+      "description": "The reigns of Saul, David, and Solomon",
+      "period": "1050-930 BC",
+      "imagePath": "assets/maps/united_kingdom.svg",
+      "locations": [
+        {"name": "Gilgal", "lat": 31.87, "lng": 35.45, "description": "Saul was crowned king", "verse": "1 Samuel 11:15"},
+        {"name": "Gibeah", "lat": 31.83, "lng": 35.23, "description": "Saul's capital", "verse": "1 Samuel 10:26"},
+        {"name": "Hebron", "lat": 31.5244, "lng": 35.1008, "description": "David ruled from here 7 years", "verse": "2 Samuel 2:11"},
+        {"name": "Jerusalem", "lat": 31.7683, "lng": 35.2137, "description": "David's capital, city of David", "verse": "2 Samuel 5:6-9"},
+        {"name": "Zion", "lat": 31.773, "lng": 35.23, "description": "The stronghold captured by David", "verse": "2 Samuel 5:7"},
+        {"name": "Bethlehem", "lat": 31.7054, "lng": 35.2024, "description": "David's birthplace", "verse": "1 Samuel 16:1"},
+        {"name": "Gath", "lat": 31.7, "lng": 34.85, "description": "Philistine city near David's territory", "verse": "1 Samuel 5:8"},
+        {"name": "Megiddo", "lat": 32.585, "lng": 35.185, "description": "Fortress city in Solomon's kingdom", "verse": "1 Kings 9:15"},
+        {"name": "Hazor", "lat": 33.0167, "lng": 35.5667, "description": "Northern fortress city", "verse": "1 Kings 9:15"},
+        {"name": "Gezer", "lat": 31.87, "lng": 34.92, "description": "Southwestern fortress city", "verse": "1 Kings 9:15-17"}
+      ],
+      "routes": []
+    },
+    {
+      "id": "divided_kingdom",
+      "title": "The Divided Kingdom",
+      "description": "Israel and Judah after Solomon's death",
+      "period": "930-722 BC",
+      "imagePath": "assets/maps/divided_kingdom.svg",
+      "locations": [
+        {"name": "Samaria", "lat": 32.276, "lng": 35.197, "description": "Capital of Northern Kingdom (Israel)", "verse": "1 Kings 16:24"},
+        {"name": "Jerusalem", "lat": 31.7683, "lng": 35.2137, "description": "Capital of Southern Kingdom (Judah)", "verse": "2 Chronicles 12:13"},
+        {"name": "Dan", "lat": 33.248, "lng": 35.652, "description": "Northern shrine of golden calf", "verse": "1 Kings 12:29"},
+        {"name": "Bethel", "lat": 31.93, "lng": 35.22, "description": "Southern shrine of golden calf", "verse": "1 Kings 12:29"},
+        {"name": "Shechem", "lat": 32.2133, "lng": 35.2817, "description": "First capital of Northern Kingdom", "verse": "1 Kings 12:25"},
+        {"name": "Tirzah", "lat": 32.3, "lng": 35.35, "description": "Early capital of Israel", "verse": "1 Kings 14:17"},
+        {"name": "Jezreel", "lat": 32.55, "lng": 35.33, "description": "Ahab and Jezebel's winter palace", "verse": "1 Kings 18:45"},
+        {"name": "Carmel", "lat": 32.733, "lng": 35.0, "description": "Elijah's confrontation with prophets of Baal", "verse": "1 Kings 18:19"}
+      ],
+      "routes": []
+    },
+    {
+      "id": "jesus_ministry",
+      "title": "Jesus' Ministry in Galilee",
+      "description": "The ministry years of Jesus Christ",
+      "period": "27-30 AD",
+      "imagePath": "assets/maps/jesus_ministry.svg",
+      "locations": [
+        {"name": "Nazareth", "lat": 32.7021, "lng": 35.2978, "description": "Jesus' hometown", "verse": "Luke 1:26-27"},
+        {"name": "Bethlehem", "lat": 31.7054, "lng": 35.2024, "description": "Jesus' birthplace", "verse": "Luke 2:4-7"},
+        {"name": "Capernaum", "lat": 32.881, "lng": 35.574, "description": "Jesus' base of ministry", "verse": "Matthew 4:13"},
+        {"name": "Sea of Galilee", "lat": 32.8, "lng": 35.6, "description": "Center of Jesus' Galilean ministry", "verse": "Matthew 4:18"},
+        {"name": "Cana", "lat": 32.75, "lng": 35.35, "description": "First miracle - water to wine", "verse": "John 2:1-11"},
+        {"name": "Nain", "lat": 32.63, "lng": 35.35, "description": "Raised widow's son", "verse": "Luke 7:11-17"},
+        {"name": "Bethsaida", "lat": 32.91, "lng": 35.63, "description": "Home of Peter, Andrew, Philip", "verse": "John 1:44"},
+        {"name": "Chorazin", "lat": 32.91, "lng": 35.57, "description": "City rebuked by Jesus", "verse": "Matthew 11:21"},
+        {"name": "Magdala", "lat": 32.83, "lng": 35.5, "description": "Home of Mary Magdalene", "verse": "Matthew 15:39"},
+        {"name": "Mount of Beatitudes", "lat": 32.88, "lng": 35.55, "description": "Sermon on the Mount", "verse": "Matthew 5:1"},
+        {"name": "Tabgha", "lat": 32.87, "lng": 35.55, "description": "Feeding of the 5,000", "verse": "Mark 6:30-44"},
+        {"name": "Gethsemane", "lat": 31.78, "lng": 35.24, "description": "Jesus' agony and arrest", "verse": "Matthew 26:36"},
+        {"name": "Calvary/Golgotha", "lat": 31.78, "lng": 35.23, "description": "Jesus' crucifixion", "verse": "Matthew 27:33"},
+        {"name": "Jerusalem", "lat": 31.7683, "lng": 35.2137, "description": "Temple, triumphal entry, last week", "verse": "Luke 19:41-44"}
+      ],
+      "routes": []
+    },
+    {
+      "id": "pauls_journeys",
+      "title": "Paul's Missionary Journeys",
+      "description": "The Apostle Paul's three missionary journeys and trip to Rome",
+      "period": "47-62 AD",
+      "imagePath": "assets/maps/pauls_journeys.svg",
+      "locations": [
+        {"name": "Antioch (Syria)", "lat": 36.2, "lng": 36.16, "description": "Home base of Paul's ministry", "verse": "Acts 13:1-3"},
+        {"name": "Seleucia", "lat": 36.12, "lng": 35.92, "description": "Port of Antioch", "verse": "Acts 13:4"},
+        {"name": "Salamis", "lat": 35.18, "lng": 33.9, "description": "First stop in Cyprus", "verse": "Acts 13:5"},
+        {"name": "Paphos", "lat": 34.76, "lng": 32.4, "description": "Converted Sergius Paulus", "verse": "Acts 13:6-12"},
+        {"name": "Perga", "lat": 36.96, "lng": 30.85, "description": "John Mark departed from here", "verse": "Acts 13:13"},
+        {"name": "Pisidian Antioch", "lat": 38.25, "lng": 31.2, "description": "First major sermon", "verse": "Acts 13:14-52"},
+        {"name": "Iconium", "lat": 37.87, "lng": 32.48, "description": "Second city of first journey", "verse": "Acts 14:1-7"},
+        {"name": "Lystra", "lat": 37.59, "lng": 32.35, "description": "Paul stoned but survived", "verse": "Acts 14:8-20"},
+        {"name": "Derbe", "lat": 37.36, "lng": 33.41, "description": "Last city of first journey", "verse": "Acts 14:21"},
+        {"name": "Philippi", "lat": 41.01, "lng": 24.28, "description": "First European church", "verse": "Acts 16:11-40"},
+        {"name": "Thessalonica", "lat": 40.64, "lng": 22.94, "description": "Thriving church planted", "verse": "Acts 17:1-9"},
+        {"name": "Berea", "lat": 40.52, "lng": 21.65, "description": "Noble Bereans searched Scriptures", "verse": "Acts 17:10-15"},
+        {"name": "Athens", "lat": 37.98, "lng": 23.72, "description": "Mars Hill sermon", "verse": "Acts 17:16-34"},
+        {"name": "Corinth", "lat": 37.91, "lng": 22.88, "description": "18 months of ministry; wrote Thessalonians", "verse": "Acts 18:1-18"},
+        {"name": "Ephesus", "lat": 37.95, "lng": 27.37, "description": "3 years of ministry; wrote Corinthians", "verse": "Acts 19:1-41"},
+        {"name": "Troas", "lat": 39.75, "lng": 26.15, "description": "Eutychus raised from dead", "verse": "Acts 20:7-12"},
+        {"name": "Miletus", "lat": 37.53, "lng": 27.28, "description": "Farewell speech to Ephesian elders", "verse": "Acts 20:15-38"},
+        {"name": "Caesarea", "lat": 32.5, "lng": 34.89, "description": "Paul imprisoned before Rome", "verse": "Acts 23:23-35"},
+        {"name": "Jerusalem", "lat": 31.7683, "lng": 35.2137, "description": "Paul's final visit, arrest", "verse": "Acts 21:15-36"},
+        {"name": "Rome", "lat": 41.9, "lng": 12.5, "description": "Final destination, wrote prison epistles", "verse": "Acts 28:14-31"}
+      ],
+      "routes": [
+        {"from": "Antioch (Syria)", "to": "Seleucia", "description": "First Journey Begins"},
+        {"from": "Seleucia", "to": "Salamis", "description": "Sailing to Cyprus"},
+        {"from": "Salamis", "to": "Paphos", "description": "Across Cyprus"},
+        {"from": "Paphos", "to": "Perga", "description": "Sailing to Asia Minor"},
+        {"from": "Perga", "to": "Pisidian Antioch", "description": "Into the interior"},
+        {"from": "Pisidian Antioch", "to": "Iconium", "description": "Next city"},
+        {"from": "Iconium", "to": "Lystra", "description": "Fleeing persecution"},
+        {"from": "Lystra", "to": "Derbe", "description": "Further east"},
+        {"from": "Antioch (Syria)", "to": "Philippi", "description": "Second Journey - to Europe"},
+        {"from": "Philippi", "to": "Thessalonica", "description": "West through Macedonia"},
+        {"from": "Thessalonica", "to": "Berea", "description": "Fleeing jealous Jews"},
+        {"from": "Berea", "to": "Athens", "description": "To the Greek philosophers"},
+        {"from": "Athens", "to": "Corinth", "description": "Major ministry city"},
+        {"from": "Antioch (Syria)", "to": "Ephesus", "description": "Third Journey"},
+        {"from": "Ephesus", "to": "Troas", "description": "Return journey"},
+        {"from": "Troas", "to": "Miletus", "description": "Avoiding Ephesus"},
+        {"from": "Caesarea", "to": "Rome", "description": "Journey to Rome"}
+      ]
+    }
+  ]
+}

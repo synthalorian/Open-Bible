@@ -1,0 +1,246 @@
+{
+  "title": "Daily Devotionals",
+  "version": "1.0",
+  "devotionals": [
+    {
+      "id": 1,
+      "title": "New Mercies Every Morning",
+      "verse": "Lamentations 3:22-23",
+      "text": "It is of the LORD'S mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
+      "devotional": "Every day brings fresh challenges, but it also brings fresh mercy. God's compassion never runs out. Whatever you faced yesterday, today is a new day with new grace. Start each morning by thanking God for His faithfulness, and trust Him for what's ahead.",
+      "prayer": "Heavenly Father, thank You for new mercies every morning. Help me to trust in Your faithfulness today. In Jesus' name, Amen."
+    },
+    {
+      "id": 2,
+      "title": "Peace in the Storm",
+      "verse": "John 16:33",
+      "text": "These things I have spoken unto you, that in me ye might have peace. In the world ye shall have tribulation: but be of good cheer; I have overcome the world.",
+      "devotional": "Jesus never promised us a trouble-free life. Instead, He promised us Himself—our peace in the midst of trouble. When storms come, we don't have to fear because the One who calms the wind and waves lives in us. Be of good cheer—He has already overcome!",
+      "prayer": "Lord Jesus, thank You that You have overcome the world. Help me to rest in Your peace today, no matter what I face. Amen."
+    },
+    {
+      "id": 3,
+      "title": "Trust, Not Worry",
+      "verse": "Philippians 4:6-7",
+      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
+      "devotional": "Worry changes nothing, but prayer changes everything. Instead of carrying your burdens alone, bring them to God in prayer. Exchange your anxiety for His peace—a peace that doesn't make sense to the world but guards your heart and mind.",
+      "prayer": "Father, I bring my worries to You today. Replace my anxiety with Your peace that surpasses understanding. Thank You for hearing me. In Jesus' name, Amen."
+    },
+    {
+      "id": 4,
+      "title": "Strength for Today",
+      "verse": "Isaiah 40:31",
+      "text": "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.",
+      "devotional": "Waiting on the Lord isn't passive—it's active trust. When we place our hope in Him, He exchanges our weakness for His strength. Like eagles that soar above the storm, we can rise above our circumstances through His power.",
+      "prayer": "Lord, I wait on You today. Renew my strength and help me to soar above my challenges. I trust in You. Amen."
+    },
+    {
+      "id": 5,
+      "title": "Walking in Love",
+      "verse": "1 Corinthians 13:4-5",
+      "text": "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up, Doth not behave itself unseemly, seeketh not her own, is not easily provoked, thinketh no evil;",
+      "devotional": "Love isn't just a feeling—it's an action. Patience, kindness, humility—these are choices we make. Today, choose to love others the way God loves you: selflessly, patiently, and unconditionally.",
+      "prayer": "Father, help me to love others as You love me. Teach me patience and kindness today. In Jesus' name, Amen."
+    },
+    {
+      "id": 6,
+      "title": "God's Word is Light",
+      "verse": "Psalm 119:105",
+      "text": "Thy word is a lamp unto my feet, and a light unto my path.",
+      "devotional": "In a dark world, God's Word illuminates our way. It shows us where to step and which direction to go. Make time for Scripture daily—it will guide your decisions, comfort your heart, and keep you on the right path.",
+      "prayer": "Lord, thank You for Your Word. Guide my steps today and light my path. Help me to treasure Your truth. Amen."
+    },
+    {
+      "id": 7,
+      "title": "Fearfully Made",
+      "verse": "Psalm 139:14",
+      "text": "I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well.",
+      "devotional": "You are not an accident. God designed you with purpose and intention. Every detail of who you are was woven together by the Creator of the universe. You are His masterpiece—marvelous in His eyes.",
+      "prayer": "Creator God, thank You for making me with purpose. Help me to see myself through Your eyes. In Jesus' name, Amen."
+    },
+    {
+      "id": 8,
+      "title": "Forgiveness Frees",
+      "verse": "Ephesians 4:32",
+      "text": "And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ's sake hath forgiven you.",
+      "devotional": "Unforgiveness is a prison that keeps you bound to the past. But forgiveness—though difficult—sets you free. You forgive not because they deserve it, but because you've been forgiven. Let it go and walk in freedom.",
+      "prayer": "Lord, help me to forgive as You have forgiven me. Heal my heart and set me free from bitterness. In Jesus' name, Amen."
+    },
+    {
+      "id": 9,
+      "title": "Cast Your Cares",
+      "verse": "1 Peter 5:7",
+      "text": "Casting all your care upon him; for he careth for you.",
+      "devotional": "You weren't meant to carry the weight of the world on your shoulders. God invites you to cast—throw—your cares on Him. He cares about every detail of your life. Let Him carry what you cannot.",
+      "prayer": "Father, I cast my cares on You today. Thank You for caring about every detail of my life. I trust You. Amen."
+    },
+    {
+      "id": 10,
+      "title": "The Good Shepherd",
+      "verse": "John 10:11",
+      "text": "I am the good shepherd: the good shepherd giveth his life for the sheep.",
+      "devotional": "Jesus isn't a distant God—He's a Shepherd who knows His sheep by name. He leads, protects, and provides. And He proved His love by laying down His life for you. Follow His voice today.",
+      "prayer": "Jesus, my Good Shepherd, lead me today. Help me to hear Your voice and follow You. Thank You for laying down Your life for me. Amen."
+    },
+    {
+      "id": 11,
+      "title": "Rejoice Always",
+      "verse": "Philippians 4:4",
+      "text": "Rejoice in the Lord alway: and again I say, Rejoice.",
+      "devotional": "Joy isn't based on circumstances—it's based on Who you know. Even when life is hard, you can rejoice because God is still on the throne. Choose joy today, not because everything is perfect, but because He is.",
+      "prayer": "Lord, I choose joy today. Help me to rejoice in You no matter what circumstances I face. You are my strength and my song. Amen."
+    },
+    {
+      "id": 12,
+      "title": "Faith Over Fear",
+      "verse": "2 Timothy 1:7",
+      "text": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.",
+      "devotional": "Fear is not from God. He gives you power to overcome, love that casts out fear, and a sound mind to think clearly. When fear attacks, stand on God's truth—you have His spirit within you.",
+      "prayer": "Lord, I reject fear in Your name. Fill me with Your power, love, and sound mind. I trust in You. Amen."
+    },
+    {
+      "id": 13,
+      "title": "Seek First",
+      "verse": "Matthew 6:33",
+      "text": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.",
+      "devotional": "When we put God first, everything else falls into place. Our priorities shift from worry to trust. Seek His kingdom today—His rule, His ways—and trust Him to provide everything you need.",
+      "prayer": "Father, I seek Your kingdom first today. Help me to trust You for all my needs. Your ways are higher than mine. In Jesus' name, Amen."
+    },
+    {
+      "id": 14,
+      "title": "Never Alone",
+      "verse": "Matthew 28:20",
+      "text": "Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen.",
+      "devotional": "Jesus' last words to His disciples included a promise: 'I am with you always.' That promise extends to you today. Whatever you face, wherever you go—He is there. You are never alone.",
+      "prayer": "Jesus, thank You for Your presence. Remind me today that I am never alone. You are with me always. Amen."
+    },
+    {
+      "id": 15,
+      "title": "Prayer Changes Things",
+      "verse": "James 5:16",
+      "text": "Confess your faults one to another, and pray one for another, that ye may be healed. The effectual fervent prayer of a righteous man availeth much.",
+      "devotional": "Prayer isn't a last resort—it's a powerful weapon. When God's people pray, things happen. Don't underestimate the impact of your prayers. They avail much—accomplish much—in the spiritual realm.",
+      "prayer": "Lord, stir my heart to pray. I believe that prayer changes things. Use my prayers for Your glory. In Jesus' name, Amen."
+    },
+    {
+      "id": 16,
+      "title": "God's Unfailing Love",
+      "verse": "Romans 8:38-39",
+      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
+      "devotional": "Nothing can separate you from God's love. Not your mistakes, not your past, not your present struggles. His love is unconditional, unbreakable, and eternal. Rest in that truth today.",
+      "prayer": "Father, thank You for Your unfailing love. Nothing can separate me from You. I rest in Your embrace. In Jesus' name, Amen."
+    },
+    {
+      "id": 17,
+      "title": "Be Still",
+      "verse": "Psalm 46:10",
+      "text": "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
+      "devotional": "In our busy world, stillness is rare. But God commands us to be still and know He is God. Take time today to stop, breathe, and remember Who is in control. He will be exalted—trust Him.",
+      "prayer": "Lord, I quiet my heart before You. You are God, and You are in control. I trust You with my life. Amen."
+    },
+    {
+      "id": 18,
+      "title": "Light of the World",
+      "verse": "Matthew 5:14-16",
+      "text": "Ye are the light of the world. A city that is set on an hill cannot be hid. Neither do men light a candle, and put it under a bushel, but on a candlestick; and it giveth light unto all that are in the house. Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.",
+      "devotional": "You are called to be light in a dark world. Your words, actions, and attitudes can point others to Jesus. Don't hide your faith—let it shine brightly so that others may see and glorify God.",
+      "prayer": "Lord, help me to shine Your light today. May my life bring glory to You in everything I do. In Jesus' name, Amen."
+    },
+    {
+      "id": 19,
+      "title": "Grace Sufficient",
+      "verse": "2 Corinthians 12:9",
+      "text": "And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.",
+      "devotional": "God's grace is enough. When you feel weak, that's actually when His strength shines brightest. Don't despise your weaknesses—they're opportunities for God's power to be displayed in your life.",
+      "prayer": "Lord, thank You for Your sufficient grace. Use my weakness to display Your strength. I trust in You. Amen."
+    },
+    {
+      "id": 20,
+      "title": "Anchored in Hope",
+      "verse": "Hebrews 6:19",
+      "text": "Which hope we have as an anchor of the soul, both sure and stedfast, and which entereth into that within the veil;",
+      "devotional": "Hope in Christ is an anchor for your soul. When life's storms come, you won't drift away because you're secured to Him. This hope is sure and steadfast—it will not fail.",
+      "prayer": "Lord, thank You for the hope I have in You. Anchor my soul and keep me steadfast in every storm. In Jesus' name, Amen."
+    },
+    {
+      "id": 21,
+      "title": "Come to Me",
+      "verse": "Matthew 11:28",
+      "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
+      "devotional": "Jesus invites the weary to come to Him. Not to strive harder, but to find rest. Whatever burden you're carrying, bring it to Jesus. He offers rest for your soul.",
+      "prayer": "Jesus, I come to You with my burdens. Give me rest for my soul today. Thank You for Your gentle invitation. Amen."
+    },
+    {
+      "id": 22,
+      "title": "Walk by Faith",
+      "verse": "2 Corinthians 5:7",
+      "text": "(For we walk by faith, not by sight:)",
+      "devotional": "Faith doesn't require seeing—it requires trusting. When you can't see the way forward, trust the One who leads. Walk by faith today, confident that God sees what you cannot.",
+      "prayer": "Lord, help me to walk by faith and not by sight. I trust You even when I can't see the way. In Jesus' name, Amen."
+    },
+    {
+      "id": 23,
+      "title": "The Lord is My Shepherd",
+      "verse": "Psalm 23:1",
+      "text": "The LORD is my shepherd; I shall not want.",
+      "devotional": "When the Lord is your Shepherd, you lack nothing that truly matters. He provides, protects, and guides. Contentment comes not from having everything, but from knowing the One who provides everything.",
+      "prayer": "Lord, You are my Shepherd. Help me to trust You for all my needs. I shall not want because You provide. Amen."
+    },
+    {
+      "id": 24,
+      "title": "Love Never Fails",
+      "verse": "1 Corinthians 13:8",
+      "text": "Charity never faileth: but whether there be prophecies, they shall fail; whether there be tongues, they shall cease; whether there be knowledge, it shall vanish away.",
+      "devotional": "Many things in this world will pass away, but love never fails. God's love for you is eternal and unchanging. Let His love flow through you to others—it's the one thing that will last forever.",
+      "prayer": "Father, thank You that Your love never fails. Let Your love flow through me to others today. In Jesus' name, Amen."
+    },
+    {
+      "id": 25,
+      "title": "Redeemed",
+      "verse": "1 Peter 1:18-19",
+      "text": "Forasmuch as ye know that ye were not redeemed with corruptible things, as silver and gold, from your vain conversation received by tradition from your fathers; But with the precious blood of Christ, as of a lamb without blemish and without spot:",
+      "devotional": "You were bought with a price—the precious blood of Jesus. Your worth isn't determined by what you do, but by what He did. You are redeemed, forgiven, and deeply loved.",
+      "prayer": "Jesus, thank You for redeeming me with Your precious blood. I am forever grateful. Help me to live as one who is truly free. Amen."
+    },
+    {
+      "id": 26,
+      "title": "Armor of God",
+      "verse": "Ephesians 6:11",
+      "text": "Put on the whole armour of God, that ye may be able to stand against the wiles of the devil.",
+      "devotional": "Every day is a spiritual battle. But God has provided armor for you: truth, righteousness, the gospel, faith, salvation, and His Word. Put on the full armor of God and stand firm.",
+      "prayer": "Lord, help me to put on Your armor today. Equip me to stand against every attack of the enemy. In Jesus' name, Amen."
+    },
+    {
+      "id": 27,
+      "title": "Abide in Me",
+      "verse": "John 15:5",
+      "text": "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.",
+      "devotional": "Apart from Jesus, you can do nothing of eternal value. But when you abide in Him—staying connected through prayer, Word, and obedience—you bear much fruit. Stay close to the Vine today.",
+      "prayer": "Jesus, help me to abide in You today. Apart from You, I can do nothing. Keep me close to You. Amen."
+    },
+    {
+      "id": 28,
+      "title": "He Will Complete It",
+      "verse": "Philippians 1:6",
+      "text": "Being confident of this very thing, that he which hath begun a good work in you will perform it until the day of Jesus Christ:",
+      "devotional": "God isn't finished with you yet. The work He started in you, He will complete. Don't be discouraged by your progress—trust the process. He who began a good work is faithful to finish it.",
+      "prayer": "Lord, thank You for the work You're doing in me. I trust You to complete what You've started. In Jesus' name, Amen."
+    },
+    {
+      "id": 29,
+      "title": "The Greatest Command",
+      "verse": "Matthew 22:37-38",
+      "text": "Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. This is the first and great commandment.",
+      "devotional": "The most important thing you can do is love God with everything you are—heart, soul, and mind. When your love for Him is right, everything else flows from that. Make loving Him your priority today.",
+      "prayer": "Lord, I love You with all my heart, soul, and mind. Help me to love You more each day. You are my greatest treasure. Amen."
+    },
+    {
+      "id": 30,
+      "title": "Created for Good Works",
+      "verse": "Ephesians 2:10",
+      "text": "For we are his workmanship, created in Christ Jesus unto good works, which God hath before ordained that we should walk in them.",
+      "devotional": "You are God's workmanship—His masterpiece. He created you with purpose, prepared good works for you to do, and ordained the path you should walk. Live today with purpose.",
+      "prayer": "Lord, thank You for creating me with purpose. Show me the good works You've prepared for me today. In Jesus' name, Amen."
+    }
+  ]
+}
