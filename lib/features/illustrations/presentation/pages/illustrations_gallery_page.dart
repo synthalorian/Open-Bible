@@ -211,6 +211,7 @@ class IllustrationsGalleryPage extends StatelessWidget {
     BibleIllustration(title: 'Prophet Preaching in the City (Plate)', description: 'Isaiah 58 - Prophetic proclamation', imagePath: 'assets/illustrations/dore_prophet_preaching_city_plate.jpg', book: 'Isaiah', chapter: 58),
     BibleIllustration(title: 'Death of Saul in Battle (Plate)', description: '1 Samuel 31 - Saul falls in battle', imagePath: 'assets/illustrations/dore_saul_death_battle_plate.jpg', book: '1 Samuel', chapter: 31),
     BibleIllustration(title: 'The Dead Christ (Plate)', description: 'Matthew 27 - Christ mourned after crucifixion', imagePath: 'assets/illustrations/dore_dead_christ_plate.jpg', book: 'Matthew', chapter: 27),
+    BibleIllustration(title: 'The Judas Kiss (Captioned Plate)', description: 'Matthew 26 - Judas identifies Jesus in Gethsemane', imagePath: 'assets/illustrations/dore_judas_kiss_plate_captioned.jpg', book: 'Matthew', chapter: 26),
   ];
 
   @override
