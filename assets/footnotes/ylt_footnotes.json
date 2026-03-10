@@ -1,0 +1,100 @@
+{
+  "GEN 1:1": [
+    {"id": "1", "text": "YLT (Young's Literal Translation, 1862) aims for extreme literalness, preserving Hebrew and Greek word order and grammar.", "type": "translation"},
+    {"id": "2", "text": "'In the beginning of God's preparing' - YLT uses 'preparing' (Hebrew 'bara') instead of 'creating' to preserve the Hebrew sense of shaping.", "type": "translation"},
+    {"id": "3", "text": "YLT preserves Hebrew verb tenses, often using present tense where other translations use past.", "type": "translation"}
+  ],
+  "GEN 1:2": [
+    {"id": "1", "text": "'the earth hath existed waste and void' - YLT uses 'hath existed' to preserve Hebrew verb forms.", "type": "translation"},
+    {"id": "2", "text": "'the Spirit of God fluttering' - Hebrew 'merachephet', YLT uses 'fluttering' to capture the bird-like imagery.", "type": "linguistic"}
+  ],
+  "GEN 1:26": [
+    {"id": "1", "text": "'Make we man in our image' - YLT preserves Hebrew imperative 'na'aseh' (let us make) with 'Make we'.", "type": "translation"},
+    {"id": "2", "text": "'as our likeness' - Hebrew 'kidmutenu', YLT uses 'as' to preserve the preposition.", "type": "linguistic"}
+  ],
+  "GEN 2:7": [
+    {"id": "1", "text": "' Jehovah God formeth the man' - YLT uses 'Jehovah' for YHWH and 'formeth' (present tense) for Hebrew 'vayyitzer'.", "type": "translation"},
+    {"id": "2", "text": "'breath of lives' - Hebrew 'nishmat chayyim', YLT preserves plural 'lives' (not 'life').", "type": "linguistic"},
+    {"id": "3", "text": "'the man becometh a living creature' - Hebrew 'l'nephesh chayah', YLT uses 'creature' not 'soul'.", "type": "translation"}
+  ],
+  "GEN 3:15": [
+    {"id": "1", "text": "'he doth bruise thee - the head' - YLT preserves Hebrew word order: verb-object-subject.", "type": "translation"},
+    {"id": "2", "text": "'thou dost bruise him - the heel' - YLT shows the parallel structure of the Hebrew poetry.", "type": "literary"}
+  ],
+  "EXO 3:14": [
+    {"id": "1", "text": "'I AM THAT WHICH I AM' - Hebrew 'Ehyeh asher ehyeh', YLT uses 'which' to preserve the relative pronoun.", "type": "translation"},
+    {"id": "2", "text": "'I AM hath sent me unto you' - YLT preserves 'I AM' (Ehyeh) as the divine name.", "type": "theological"}
+  ],
+  "PSA 23:1": [
+    {"id": "1", "text": "'Jehovah is my shepherd' - YLT consistently uses 'Jehovah' for the divine name YHWH.", "type": "translation"},
+    {"id": "2", "text": "'I do not lack' - Hebrew 'lo echsar', YLT uses present tense 'do not lack' rather than future 'shall not want'.", "type": "translation"}
+  ],
+  "PSA 23:4": [
+    {"id": "1", "text": "'the valley of the shadow of death' - Hebrew 'gey tsalmavet', YLT preserves literal 'shadow of death'.", "type": "translation"},
+    {"id": "2", "text": "'Thy rod and thy staff - they comfort me' - YLT adds dash for Hebrew emphasis.", "type": "literary"}
+  ],
+  "ISA 7:14": [
+    {"id": "1", "text": "'the virgin is conceiving' - Hebrew 'harah ha'almah', YLT uses present participle 'is conceiving'.", "type": "translation"},
+    {"id": "2", "text": "'Immanuel' - YLT preserves Hebrew name without translation.", "type": "translation"}
+  ],
+  "ISA 9:6": [
+    {"id": "1", "text": "'Wonder, Counsellor, Mighty God' - Hebrew 'pele yoetz el gibbor', YLT preserves Hebrew word order.", "type": "translation"},
+    {"id": "2", "text": "'Father of Eternity' - Hebrew 'avi ad', YLT translates literally rather than 'Everlasting Father'.", "type": "translation"}
+  ],
+  "MAT 1:23": [
+    {"id": "1", "text": "'Lo, the virgin shall be with child' - Greek 'idou he parthenos', YLT uses 'Lo' for 'idou' (behold).", "type": "translation"},
+    {"id": "2", "text": "'they shall call his name Emmanuel' - YLT preserves Hebrew name, explaining 'is, being interpreted, With us [is] God'.", "type": "translation"}
+  ],
+  "MAT 5:3": [
+    {"id": "1", "text": "'Happy the poor in spirit' - Greek 'makarioi hoi ptochoi', YLT uses 'Happy' not 'Blessed' for 'makarioi'.", "type": "translation"},
+    {"id": "2", "text": "'because theirs is the reign of the heavens' - YLT uses 'reign' (basileia) not 'kingdom'.", "type": "translation"}
+  ],
+  "MAT 6:33": [
+    {"id": "1", "text": "'seek ye first the reign of God' - YLT uses 'reign' (basileia) consistently throughout.", "type": "translation"},
+    {"id": "2", "text": "'and all these things shall be added to you' - YLT preserves future tense 'shall be added'.", "type": "translation"}
+  ],
+  "JHN 1:1": [
+    {"id": "1", "text": "'In the beginning was the Word' - Greek 'en arche en ho logos', YLT preserves Greek word order.", "type": "translation"},
+    {"id": "2", "text": "'and the Word was with God' - Greek 'kai ho logos en pros ton theon', YLT preserves 'with' (pros).", "type": "translation"},
+    {"id": "3", "text": "'and the Word was God' - Greek 'kai theos en ho logos', YLT preserves word order emphasizing 'God'.", "type": "theological"}
+  ],
+  "JHN 3:16": [
+    {"id": "1", "text": "'for God did so love the world' - Greek 'houtos gar egapesen', YLT uses 'did so love' for emphatic 'houtos'.", "type": "translation"},
+    {"id": "2", "text": "'that His Son - the only begotten - He gave' - YLT uses dashes to preserve Greek apposition.", "type": "literary"}
+  ],
+  "JHN 14:6": [
+    {"id": "1", "text": "'I am the way, and the truth, and the life' - Greek 'ego eimi he hodos kai he aletheia kai he zoe', YLT preserves articles.", "type": "translation"},
+    {"id": "2", "text": "'no one doth come unto the Father, but through me' - YLT uses 'doth come' for Greek present tense.", "type": "translation"}
+  ],
+  "ROM 3:23": [
+    {"id": "1", "text": "'all did sin' - Greek 'pantes hemarton', YLT uses past tense 'did sin' for aorist.", "type": "translation"},
+    {"id": "2", "text": "'and are come short of the glory of God' - Greek 'hysterountai', YLT uses 'are come short' for present tense.", "type": "translation"}
+  ],
+  "ROM 5:8": [
+    {"id": "1", "text": "'God doth commend His own love to us' - Greek 'sunistesin', YLT uses 'doth commend' for present tense.", "type": "translation"},
+    {"id": "2", "text": "'in that, being yet sinners, Christ for us died' - YLT preserves Greek word order with participles.", "type": "translation"}
+  ],
+  "ROM 6:23": [
+    {"id": "1", "text": "'the wages of the sin [is] death' - YLT adds brackets for implied 'is' in Greek.", "type": "translation"},
+    {"id": "2", "text": "'and the gift of God [is] life age-during' - YLT uses 'age-during' (aionios) not 'eternal'.", "type": "translation"}
+  ],
+  "ROM 8:28": [
+    {"id": "1", "text": "'we have known that to those loving God all things do work together for good' - YLT uses 'do work' for present tense.", "type": "translation"},
+    {"id": "2", "text": "'to those who are called according to purpose' - Greek 'kletous ousin', YLT uses 'are called' for present participle.", "type": "translation"}
+  ],
+  "EPH 2:8": [
+    {"id": "1", "text": "'by the grace ye have been saved, through faith' - Greek 'te gar chariti este sesosmenoi', YLT uses perfect tense 'have been saved'.", "type": "translation"},
+    {"id": "2", "text": "'and this not of you - of God the gift' - YLT uses dashes for Greek emphasis.", "type": "literary"}
+  ],
+  "PHP 4:13": [
+    {"id": "1", "text": "'for all things I have strength, in Christ's strengthening me' - Greek 'panta ischyo en to endynamounti me', YLT preserves structure.", "type": "translation"}
+  ],
+  "HEB 4:12": [
+    {"id": "1", "text": "'the reckoning of God is living, and working' - Greek 'ho logos tou theou zon kai energes', YLT uses 'reckoning' for 'logos'.", "type": "translation"},
+    {"id": "2", "text": "'sharper than any two-mouthed sword' - Greek 'machaira distomos', YLT uses literal 'two-mouthed'.", "type": "translation"}
+  ],
+  "1JN 1:9": [
+    {"id": "1", "text": "'if we may confess our sins' - Greek 'ean homologomen', YLT uses 'may confess' for subjunctive mood.", "type": "translation"},
+    {"id": "2", "text": "'faithful He is and righteous' - Greek 'pistos estin kai dikaios', YLT inverts for emphasis.", "type": "translation"}
+  ]
+}
