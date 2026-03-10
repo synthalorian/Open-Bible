@@ -614,6 +614,18 @@ final List<BibleIllustration> bibleIllustrations = [
     icon: Icons.agriculture,
     assetPath: 'assets/illustrations/dore_gleaners_plate.jpg',
   ),
+
+  // Additional classic plates (batch 3)
+  BibleIllustration(id: 'dore_joseph_known_brethren_plate', title: 'Joseph Makes Himself Known (Plate)', description: 'Joseph reveals himself to his brothers in Egypt.', bibleReference: 'Genesis 45', color: const Color(0xFF455A64), icon: Icons.people, assetPath: 'assets/illustrations/dore_joseph_known_brethren_plate.jpg'),
+  BibleIllustration(id: 'dore_ascension_plate', title: 'The Ascension (Plate)', description: 'The risen Christ ascends before His disciples.', bibleReference: 'Acts 1:9-11', color: const Color(0xFF607D8B), icon: Icons.cloud, assetPath: 'assets/illustrations/dore_ascension_plate.jpg'),
+  BibleIllustration(id: 'dore_tower_babel_plate', title: 'Tower of Babel (Plate)', description: 'Human pride at Babel and the scattering of nations.', bibleReference: 'Genesis 11', color: const Color(0xFF5D4037), icon: Icons.account_balance, assetPath: 'assets/illustrations/dore_tower_babel_plate.jpg'),
+  BibleIllustration(id: 'dore_baptism_jesus_plate', title: 'Baptism of Jesus (Plate)', description: 'John baptizes Jesus in the Jordan.', bibleReference: 'Matthew 3:13-17', color: const Color(0xFF0277BD), icon: Icons.water, assetPath: 'assets/illustrations/dore_baptism_jesus_plate.jpg'),
+  BibleIllustration(id: 'dore_angelic_chariot_plate', title: 'Angelic Chariot (Plate)', description: 'A heavenly chariot vision of divine power.', bibleReference: '2 Kings 6', color: const Color(0xFF4A148C), icon: Icons.thunderstorm, assetPath: 'assets/illustrations/dore_angelic_chariot_plate.jpg'),
+  BibleIllustration(id: 'dore_crucifixion_nailing_plate', title: 'Nailing to the Cross (Plate)', description: 'Christ is nailed to the cross at Golgotha.', bibleReference: 'Matthew 27', color: const Color(0xFFB71C1C), icon: Icons.church, assetPath: 'assets/illustrations/dore_crucifixion_nailing_plate.jpg'),
+  BibleIllustration(id: 'dore_crucifixion_nailing_plate_alt', title: 'Nailing to the Cross (Alt Plate)', description: 'Alternate engraving of the crucifixion preparation.', bibleReference: 'Matthew 27', color: const Color(0xFFB71C1C), icon: Icons.church, assetPath: 'assets/illustrations/dore_crucifixion_nailing_plate_alt.jpg'),
+  BibleIllustration(id: 'dore_prophet_preaching_city_plate', title: 'Prophet Preaching in the City (Plate)', description: 'A prophet proclaims God\'s message in the streets.', bibleReference: 'Isaiah 58', color: const Color(0xFF78909C), icon: Icons.record_voice_over, assetPath: 'assets/illustrations/dore_prophet_preaching_city_plate.jpg'),
+  BibleIllustration(id: 'dore_saul_death_battle_plate', title: 'Death of Saul in Battle (Plate)', description: 'Saul falls in battle against the Philistines.', bibleReference: '1 Samuel 31', color: const Color(0xFF5D4037), icon: Icons.shield, assetPath: 'assets/illustrations/dore_saul_death_battle_plate.jpg'),
+  BibleIllustration(id: 'dore_dead_christ_plate', title: 'The Dead Christ (Plate)', description: 'Christ mourned after the crucifixion.', bibleReference: 'Matthew 27:57-61', color: const Color(0xFF424242), icon: Icons.nights_stay, assetPath: 'assets/illustrations/dore_dead_christ_plate.jpg'),
 ];
 
 /// Bible illustrations page
