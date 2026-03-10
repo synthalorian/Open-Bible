@@ -19,37 +19,38 @@ class BibleAudioService {
   Future<void> initialize() async {
     if (_initialized) return;
 
+    // Always wire handlers first so we can observe state even in partial init.
+    _tts.setStartHandler(() {
+      _isPlaying = true;
+      debugPrint('AUDIO_SERVICE: TTS started');
+    });
+    _tts.setCompletionHandler(() {
+      _isPlaying = false;
+      debugPrint('AUDIO_SERVICE: TTS completed');
+    });
+    _tts.setCancelHandler(() {
+      _isPlaying = false;
+      debugPrint('AUDIO_SERVICE: TTS cancelled');
+    });
+    _tts.setErrorHandler((msg) {
+      _isPlaying = false;
+      debugPrint('AUDIO_SERVICE: TTS error: $msg');
+    });
+
     try {
       if (Platform.isAndroid) {
-        await _tts.awaitSpeakCompletion(true);
-        await _tts.setQueueMode(1); // QUEUE_FLUSH
+        try { await _tts.awaitSpeakCompletion(true); } catch (_) {}
+        try { await _tts.setQueueMode(1); } catch (_) {}
       }
       try { await _tts.setLanguage('en-US'); } catch (_) {}
-      await _tts.setSpeechRate(_rate);
-      await _tts.setPitch(_pitch);
-      await _tts.setVolume(1.0);
-
-      _tts.setStartHandler(() {
-        _isPlaying = true;
-        debugPrint('AUDIO_SERVICE: TTS started');
-      });
-      _tts.setCompletionHandler(() {
-        _isPlaying = false;
-        debugPrint('AUDIO_SERVICE: TTS completed');
-      });
-      _tts.setCancelHandler(() {
-        _isPlaying = false;
-        debugPrint('AUDIO_SERVICE: TTS cancelled');
-      });
-      _tts.setErrorHandler((msg) {
-        _isPlaying = false;
-        debugPrint('AUDIO_SERVICE: TTS error: $msg');
-      });
+      try { await _tts.setSpeechRate(_rate); } catch (_) {}
+      try { await _tts.setPitch(_pitch); } catch (_) {}
+      try { await _tts.setVolume(1.0); } catch (_) {}
 
       _initialized = true;
-      debugPrint('AUDIO_SERVICE: Initialized successfully');
+      debugPrint('AUDIO_SERVICE: Initialized (best-effort)');
     } catch (e) {
-      debugPrint('AUDIO_SERVICE: Initialization failed, continuing with best-effort mode: $e');
+      debugPrint('AUDIO_SERVICE: Initialization failed, best-effort fallback active: $e');
       _initialized = true;
     }
   }
@@ -91,11 +92,19 @@ class BibleAudioService {
     await _tts.stop();
     // Keep payload conservative for Android TTS reliability.
     final clipped = text.length > 1400 ? text.substring(0, 1400) : text;
-    final result = await _tts.speak(clipped);
+    dynamic result;
+    try {
+      result = await _tts.speak(clipped);
+    } catch (e) {
+      debugPrint('AUDIO_SERVICE: primary speak failed: $e');
+      // Fallback with very short payload for picky engines.
+      result = await _tts.speak('Reading $bookName chapter $chapter.');
+    }
+
     debugPrint('AUDIO_SERVICE: speak result=$result, chars=${clipped.length}/${text.length}');
 
-    // Some engines return non-1 while still starting speech; treat non-error as started.
-    return result != 0;
+    // Some engines return null/non-1 while still starting speech.
+    return result == null || result != 0;
   }
 
   Future<void> stop() async {

@@ -273,6 +273,12 @@ class VerseStorageService {
         'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
       };
       await f.writeAsString(json.encode(map), flush: true);
+
+      // Read-after-write verification to catch silent IO failures.
+      final verifyRaw = await f.readAsString();
+      if (verifyRaw.trim().isEmpty) {
+        throw Exception('backup verify failed: empty file after write');
+      }
     } catch (e) {
       debugPrint('VerseStorageService: backup save failed: $e');
     }
@@ -460,9 +466,22 @@ class VerseStorageService {
   
   /// Debug: Get storage snapshot
   static Map<String, dynamic> debugStorageSnapshot() {
+    final backupPath = _backupFile?.path;
+    bool backupExists = false;
+    int backupBytes = 0;
+    if (_backupFile != null) {
+      try {
+        backupExists = _backupFile!.existsSync();
+        if (backupExists) backupBytes = _backupFile!.lengthSync();
+      } catch (_) {}
+    }
+
     return {
       'initialized': _initialized,
       'hasPrefs': _prefs != null,
+      'backupPath': backupPath,
+      'backupExists': backupExists,
+      'backupBytes': backupBytes,
       'bookmarksCount': _bookmarks.length,
       'highlightsCount': _highlights.length,
       'notesCount': _notes.length,
