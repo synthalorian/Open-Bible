@@ -1,0 +1,59 @@
+# Flutter/Dart specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+
+# Android specific
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/key.properties
+
+# iOS specific
+ios/Flutter/.last_build_id
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
+# Backup files
+lib-backup-*/
+lib_full/
+main_full.dart
+main_minimal.dart
+
+# Test files
+test_storage.dart
+
+# Coverage
+coverage/
+
+# Symbols
+app.*.symbols
+
+# Local build artifacts
+*.apk
+*.aab
+
+# Local env
+.env

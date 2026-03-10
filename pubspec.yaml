@@ -1,0 +1,167 @@
+name: open_bible
+description: "Open Bible - A beautiful, feature-rich Bible study app for iOS and Android."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Icons
+  cupertino_icons: ^1.0.6
+  iconsax: ^0.0.8
+
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # Networking
+  dio: ^5.4.1
+  retrofit: ^4.1.0
+  json_annotation: ^4.8.1
+
+  # Local Storage / Offline
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.2
+  shared_preferences: ^2.2.2
+
+  # Database
+  sqflite: ^2.3.2
+
+  # Audio Bible
+  just_audio: ^0.9.36
+  audio_session: ^0.1.18
+  flutter_tts: 3.8.5
+
+  # Notifications
+  flutter_local_notifications: ^18.0.0
+
+  # Background Tasks
+  workmanager: ^0.7.0
+
+  # Sharing
+  share_plus: ^7.2.1
+  screenshot: ^2.1.0
+
+  # UI Components
+  flutter_animate: ^4.3.0
+  shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.9
+  lottie: ^3.1.0
+
+  # Navigation
+  go_router: ^13.1.0
+
+  # Environment
+  flutter_dotenv: ^5.1.0
+
+  # Utilities
+  intl: ^0.19.0
+  url_launcher: ^6.2.4
+  package_info_plus: ^5.0.1
+  device_info_plus: ^9.1.1
+  connectivity_plus: ^5.0.2
+  logger: ^2.0.2+1
+  uuid: ^4.3.1
+  collection: ^1.18.0
+
+  # Rich Text Editor (for notes)
+  flutter_quill: ^9.2.3
+
+  # Charts (for streaks/stats)
+  fl_chart: ^0.66.0
+
+  # Maps
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+  google_maps_flutter: ^2.5.0
+
+  # Widgets
+  home_widget: ^0.4.1
+
+  # In-App Purchases (future: premium translations)
+  in_app_purchase: ^3.1.13
+  
+  # Timezone for notifications
+  timezone: ^0.9.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.8
+  retrofit_generator: ^8.1.0
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.9
+  hive_generator: ^2.0.1
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.9
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+
+flutter_native_splash:
+  color: "#1a1a2e"
+  image: "assets/images/splash_logo.png"
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/bible_data/
+    - assets/footnotes/
+    - assets/images/
+    - assets/images/bible_illustrations/
+    - assets/illustrations/
+    - assets/audio/
+    - assets/fonts/
+    - assets/maps/
+    - assets/data/
+
+  fonts:
+    # Serif fonts for Bible text reading
+    - family: CrimsonText
+      fonts:
+        - asset: assets/fonts/crimson-text/CrimsonText-Regular.ttf
+        - asset: assets/fonts/crimson-text/CrimsonText-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/crimson-text/CrimsonText-Italic.ttf
+          style: italic
+        - asset: assets/fonts/crimson-text/CrimsonText-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Lora
+      fonts:
+        - asset: assets/fonts/lora/Lora-Regular.ttf
+        - asset: assets/fonts/lora/Lora-Italic.ttf
+          style: italic
+    - family: NotoSerif
+      fonts:
+        - asset: assets/fonts/noto-serif/NotoSerif-Regular.ttf
+        - asset: assets/fonts/noto-serif/NotoSerif-Italic.ttf
+          style: italic
+    - family: SourceSerif4
+      fonts:
+        - asset: assets/fonts/source-serif/SourceSerif4-Regular.ttf
+        - asset: assets/fonts/source-serif/SourceSerif4-Italic.ttf
+          style: italic
+    # Sans-serif font for UI elements
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/roboto/Roboto-Italic.ttf
+          style: italic

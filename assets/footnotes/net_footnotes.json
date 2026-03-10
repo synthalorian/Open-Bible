@@ -1,0 +1,42 @@
+{
+  "GEN 1:1": [
+    {"id": "1", "text": "NET 'In the beginning' is a direct translation of Hebrew 'bereshit', emphasizing the divine origin of creation. NET includes a translation note explaining the significance of this word.", "type": "translation"},
+    {"id": "2", "text": "'God' in NET is Hebrew 'Elohim', a plural noun used with singular verbs, suggesting the Trinity. NET provides additional context on the use of plural forms in Hebrew.", "type": "theological"}
+  ],
+  "GEN 1:2": [
+    {"id": "1", "text": "'without form, and void' translates Hebrew 'tohu wabohu' - chaos and emptiness. NET preserves the poetic imagery and includes a note on the Hebrew poetic structure.", "type": "linguistic"},
+    {"id": "2", "text": "'the deep' is Hebrew 'tehom', related to the Babylonian 'Tiamat'. NET explains the cultural context and avoids mythological connotations by using 'deep'.", "type": "historical"}
+  ],
+  "GEN 1:3": [
+    {"id": "1", "text": "'Let there be light' - Hebrew 'yehi or', literally 'be light'. NET follows the Hebrew word order and includes a note on the significance of light in creation.", "type": "translation"},
+    {"id": "2", "text": "This verse marks the beginning of God's creative work in the darkness. NET emphasizes the divine command and its implications for the rest of creation.", "type": "theological"}
+  ],
+  "GEN 1:26": [
+    {"id": "1", "text": "'Let us make' - The plural pronoun has been interpreted as the Trinity, angels, or plural of majesty. NET preserves the plural without interpretation and provides scholarly commentary on this issue.", "type": "theological"},
+    {"id": "2", "text": "'image' is Hebrew 'tselem', meaning representation or likeness. NET distinguishes 'image' from 'likeness' in verse 27 and explains the theological implications.", "type": "linguistic"}
+  ],
+  "GEN 2:7": [
+    {"id": "1", "text": "'formed' is Hebrew 'yatsar', used for a potter shaping clay. NET emphasizes God's hands-on creation and includes a note on the metaphor of the potter.", "type": "linguistic"},
+    {"id": "2", "text": "'breath of life' is Hebrew 'nishmat chayyim'. NET distinguishes this from 'spirit' (ruach) used elsewhere and explains the concept of life in Hebrew thought.", "type": "translation"}
+  ],
+  "GEN 3:15": [
+    {"id": "1", "text": "'bruise' - Hebrew 'shuf', to crush or strike at. NET uses 'bruise' for both the serpent and the seed, though the Hebrew suggests different intensities. NET provides a detailed explanation of this nuance.", "type": "linguistic"},
+    {"id": "2", "text": "'seed' is Hebrew 'zera', singular collective. NET preserves the singular, pointing to Christ as the ultimate seed, and includes messianic commentary.", "type": "messianic"}
+  ],
+  "GEN 12:1": [
+    {"id": "1", "text": "'Get thee out' - Hebrew 'lech lecha', literally 'go for yourself' or 'go to yourself'. NET captures the command and purpose, including historical context on Abraham's journey.", "type": "linguistic"},
+    {"id": "2", "text": "Abram was 75 years old when he left Haran (v. 4). NET narrative shows God's call comes regardless of age and includes a note on the significance of this age.", "type": "historical"}
+  ],
+  "GEN 15:6": [
+    {"id": "1", "text": "'believed' - Hebrew 'he'emin', from root 'aman' (firm, faithful). NET 'believed' captures the sense of trust and reliance, with additional notes on the concept of faith in Hebrew.", "type": "linguistic"},
+    {"id": "2", "text": "'counted it to him for righteousness' - Hebrew 'chashab', to reckon or impute. NET uses 'counted' for legal/accounting terminology and explains its theological significance.", "type": "theological"}
+  ],
+  "EXO 3:14": [
+    {"id": "1", "text": "'I AM THAT I AM' - Hebrew 'Ehyeh asher ehyeh'. NET preserves the first person, connecting to the divine name YHWH (He is), and includes commentary on the significance of this name.", "type": "linguistic"},
+    {"id": "2", "text": "'I AM' becomes a title for Christ in John's Gospel (John 8:58). NET uses small caps LORD for YHWH elsewhere and explains its messianic implications.", "type": "messianic"}
+  ],
+  "EXO 20:3": [
+    {"id": "1", "text": "First Commandment: 'Thou shalt have no other gods before me.' NET 'before me' means 'in my presence' or 'besides me' and includes a note on the exclusivity of worship.", "type": "theological"},
+    {"id": "2", "text": "'before me' is Hebrew 'al panay', literally 'upon my face'. NET captures the sense of exclusive worship and explains the Hebrew idiom.", "type": "linguistic"}
+  ]
+}
