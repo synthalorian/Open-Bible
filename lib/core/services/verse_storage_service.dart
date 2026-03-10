@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 
 /// Saved verse model
 class SavedVerse {
@@ -110,74 +112,118 @@ class VerseStorageService {
   static Map<String, SavedVerse> _highlights = {};
   static Map<String, SavedVerse> _notes = {};
   static bool _initialized = false;
+  static File? _backupFile;
   
   /// Initialize storage
   static Future<void> initialize() async {
     if (_initialized) return;
-    
+
+    try {
+      final dir = await getApplicationDocumentsDirectory();
+      _backupFile = File('${dir.path}/verse_storage_backup_v3.json');
+    } catch (_) {}
+
     try {
       _prefs = await SharedPreferences.getInstance();
       await _loadAllData();
       _initialized = true;
     } catch (e) {
-      debugPrint('VerseStorageService: Init failed, using memory fallback: $e');
+      debugPrint('VerseStorageService: Init failed, using file/memory fallback: $e');
+      await _loadFromBackupFile();
       _initialized = true;
     }
   }
   
   static Future<void> _loadAllData() async {
-    if (_prefs == null) return;
-    
-    // Load bookmarks
-    final bookmarksJson = _prefs!.getString(_bookmarksKey);
-    if (bookmarksJson != null) {
-      try {
+    if (_prefs == null) {
+      await _loadFromBackupFile();
+      return;
+    }
+
+    try {
+      // Load bookmarks
+      final bookmarksJson = _prefs!.getString(_bookmarksKey);
+      if (bookmarksJson != null) {
         final List<dynamic> list = json.decode(bookmarksJson);
         _bookmarks = list.map((j) => SavedVerse.fromJson(j)).toList();
-      } catch (e) {
-        debugPrint('Error parsing bookmarks: $e');
       }
-    }
-    
-    // Load highlights
-    final highlightsJson = _prefs!.getString(_highlightsKey);
-    if (highlightsJson != null) {
-      try {
+
+      // Load highlights
+      final highlightsJson = _prefs!.getString(_highlightsKey);
+      if (highlightsJson != null) {
         final Map<String, dynamic> map = json.decode(highlightsJson);
         _highlights = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
-      } catch (e) {
-        debugPrint('Error parsing highlights: $e');
       }
-    }
-    
-    // Load notes
-    final notesJson = _prefs!.getString(_notesKey);
-    if (notesJson != null) {
-      try {
+
+      // Load notes
+      final notesJson = _prefs!.getString(_notesKey);
+      if (notesJson != null) {
         final Map<String, dynamic> map = json.decode(notesJson);
         _notes = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
-      } catch (e) {
-        debugPrint('Error parsing notes: $e');
       }
+
+      await _saveToBackupFile();
+    } catch (e) {
+      debugPrint('VerseStorageService: prefs load failed, trying backup file: $e');
+      await _loadFromBackupFile();
     }
   }
   
+  static Future<void> _loadFromBackupFile() async {
+    try {
+      final f = _backupFile;
+      if (f == null || !await f.exists()) return;
+      final raw = await f.readAsString();
+      final map = json.decode(raw) as Map<String, dynamic>;
+      final bookmarks = (map['bookmarks'] as List<dynamic>? ?? []);
+      final highlights = (map['highlights'] as Map<String, dynamic>? ?? {});
+      final notes = (map['notes'] as Map<String, dynamic>? ?? {});
+
+      _bookmarks = bookmarks.map((j) => SavedVerse.fromJson(j as Map<String, dynamic>)).toList();
+      _highlights = highlights.map((k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
+      _notes = notes.map((k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
+    } catch (e) {
+      debugPrint('VerseStorageService: backup load failed: $e');
+    }
+  }
+
+  static Future<void> _saveToBackupFile() async {
+    try {
+      final f = _backupFile;
+      if (f == null) return;
+      final map = {
+        'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
+        'highlights': _highlights.map((k, v) => MapEntry(k, v.toJson())),
+        'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
+      };
+      await f.writeAsString(json.encode(map), flush: true);
+    } catch (e) {
+      debugPrint('VerseStorageService: backup save failed: $e');
+    }
+  }
+
   static Future<void> _saveBookmarks() async {
-    if (_prefs == null) return;
     final jsonStr = json.encode(_bookmarks.map((v) => v.toJson()).toList());
-    await _prefs!.setString(_bookmarksKey, jsonStr);
+    if (_prefs != null) {
+      await _prefs!.setString(_bookmarksKey, jsonStr);
+    }
+    await _saveToBackupFile();
   }
   
   static Future<void> _saveHighlights() async {
-    if (_prefs == null) return;
     final jsonStr = json.encode(_highlights.map((k, v) => MapEntry(k, v.toJson())));
-    await _prefs!.setString(_highlightsKey, jsonStr);
+    if (_prefs != null) {
+      await _prefs!.setString(_highlightsKey, jsonStr);
+    }
+    await _saveToBackupFile();
   }
   
   static Future<void> _saveNotes() async {
-    if (_prefs == null) return;
     final jsonStr = json.encode(_notes.map((k, v) => MapEntry(k, v.toJson())));
-    await _prefs!.setString(_notesKey, jsonStr);
+    if (_prefs != null) {
+      await _prefs!.setString(_notesKey, jsonStr);
+    }
+    await _saveToBackupFile();
   }
   
   // Bookmarks
