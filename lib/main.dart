@@ -10,6 +10,7 @@ import 'core/themes/app_theme.dart';
 import 'core/constants/app_constants.dart';
 import 'features/concordance/presentation/pages/concordance_page.dart';
 import 'features/bible/presentation/widgets/translation_selector_widget.dart';
+import 'features/bible/presentation/pages/chapter_reader_page.dart' as reader;
 import 'features/bible/presentation/widgets/verse_display_widget.dart';
 import 'features/audio/presentation/audio_bible_widget.dart';
 import 'features/bookmarks/presentation/pages/bookmarks_page.dart';
@@ -706,8 +707,14 @@ class SearchResultTile extends StatelessWidget {
   }
 
   void _openVerse(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Jump to ${result.reference} from Bible tab for now.')),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => reader.ChapterReaderPage(
+          bookId: result.bookId,
+          chapter: result.chapter,
+        ),
+      ),
     );
   }
 }
