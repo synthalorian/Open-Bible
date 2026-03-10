@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'database_service.dart';
 
 /// Saved verse model
 class SavedVerse {
@@ -126,13 +125,8 @@ class VerseStorageService {
       debugPrint('VerseStorageService: could not resolve backup path: $e');
     }
 
-    // Layer 1: SQLite restore (most robust)
-    await _loadFromDatabase();
-
-    // Layer 2: File restore (fallback if SQLite empty)
-    if (_bookmarks.isEmpty && _highlights.isEmpty && _notes.isEmpty) {
-      await _loadFromBackupFile();
-    }
+    // Restore from file first.
+    await _loadFromBackupFile();
 
     try {
       _prefs = await SharedPreferences.getInstance();
@@ -144,20 +138,6 @@ class VerseStorageService {
     }
   }
 
-  static Future<void> _loadFromDatabase() async {
-    try {
-      final b = await DatabaseService.getAllByType('bookmark');
-      final h = await DatabaseService.getAllByType('highlight');
-      final n = await DatabaseService.getAllByType('note');
-      
-      if (b.isNotEmpty) _bookmarks = b;
-      if (h.isNotEmpty) _highlights = {for (var v in h) v.id: v};
-      if (n.isNotEmpty) _notes = {for (var v in n) v.id: v};
-      debugPrint('VerseStorageService: loaded from database: ${b.length}b, ${h.length}h, ${n.length}n');
-    } catch (e) {
-      debugPrint('VerseStorageService: database load failed: $e');
-    }
-  }
   
   static Future<void> _loadAllData() async {
     if (_prefs == null) return;
@@ -229,11 +209,6 @@ class VerseStorageService {
     final jsonStr = json.encode(_bookmarks.map((v) => v.toJson()).toList());
     await _saveToBackupFile();
     
-    // DB save
-    for (var v in _bookmarks) {
-      await DatabaseService.saveVerse(v, 'bookmark');
-    }
-
     try {
       if (_prefs != null) {
         await _prefs!.setString(_bookmarksKey, jsonStr);
@@ -247,11 +222,6 @@ class VerseStorageService {
     final jsonStr = json.encode(_highlights.map((k, v) => MapEntry(k, v.toJson())));
     await _saveToBackupFile();
 
-    // DB save
-    for (var v in _highlights.values) {
-      await DatabaseService.saveVerse(v, 'highlight');
-    }
-
     try {
       if (_prefs != null) {
         await _prefs!.setString(_highlightsKey, jsonStr);
@@ -264,11 +234,6 @@ class VerseStorageService {
   static Future<void> _saveNotes() async {
     final jsonStr = json.encode(_notes.map((k, v) => MapEntry(k, v.toJson())));
     await _saveToBackupFile();
-
-    // DB save
-    for (var v in _notes.values) {
-      await DatabaseService.saveVerse(v, 'note');
-    }
 
     try {
       if (_prefs != null) {
@@ -289,14 +254,12 @@ class VerseStorageService {
   static Future<void> removeBookmark(String verseId) async {
     if (!_initialized) await initialize();
     _bookmarks.removeWhere((v) => v.id == verseId);
-    await DatabaseService.removeVerse(verseId);
     await _saveBookmarks();
   }
   
   static Future<void> clearBookmarks() async {
     if (!_initialized) await initialize();
     _bookmarks.clear();
-    await DatabaseService.clearAll(); // Note: this clears all types, might want to refine
     await _saveBookmarks();
   }
   
@@ -320,7 +283,6 @@ class VerseStorageService {
   static Future<void> removeHighlight(String verseId) async {
     if (!_initialized) await initialize();
     _highlights.remove(verseId);
-    await DatabaseService.removeVerse(verseId);
     await _saveHighlights();
   }
   
