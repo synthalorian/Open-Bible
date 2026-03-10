@@ -162,7 +162,17 @@ class VerseStorageService {
         _notes = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
       }
 
-      await _saveToBackupFile();
+      // If prefs came back empty, restore from backup instead of overwriting it.
+      final prefsEmpty = _bookmarks.isEmpty && _highlights.isEmpty && _notes.isEmpty;
+      if (prefsEmpty) {
+        await _loadFromBackupFile();
+      }
+
+      // If we have any data in memory, refresh backup copy.
+      final hasAnyData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
+      if (hasAnyData) {
+        await _saveToBackupFile();
+      }
     } catch (e) {
       debugPrint('VerseStorageService: prefs load failed, trying backup file: $e');
       await _loadFromBackupFile();
@@ -204,26 +214,38 @@ class VerseStorageService {
 
   static Future<void> _saveBookmarks() async {
     final jsonStr = json.encode(_bookmarks.map((v) => v.toJson()).toList());
-    if (_prefs != null) {
-      await _prefs!.setString(_bookmarksKey, jsonStr);
-    }
     await _saveToBackupFile();
+    try {
+      if (_prefs != null) {
+        await _prefs!.setString(_bookmarksKey, jsonStr);
+      }
+    } catch (e) {
+      debugPrint('VerseStorageService: bookmark prefs write failed: $e');
+    }
   }
   
   static Future<void> _saveHighlights() async {
     final jsonStr = json.encode(_highlights.map((k, v) => MapEntry(k, v.toJson())));
-    if (_prefs != null) {
-      await _prefs!.setString(_highlightsKey, jsonStr);
-    }
     await _saveToBackupFile();
+    try {
+      if (_prefs != null) {
+        await _prefs!.setString(_highlightsKey, jsonStr);
+      }
+    } catch (e) {
+      debugPrint('VerseStorageService: highlight prefs write failed: $e');
+    }
   }
   
   static Future<void> _saveNotes() async {
     final jsonStr = json.encode(_notes.map((k, v) => MapEntry(k, v.toJson())));
-    if (_prefs != null) {
-      await _prefs!.setString(_notesKey, jsonStr);
-    }
     await _saveToBackupFile();
+    try {
+      if (_prefs != null) {
+        await _prefs!.setString(_notesKey, jsonStr);
+      }
+    } catch (e) {
+      debugPrint('VerseStorageService: note prefs write failed: $e');
+    }
   }
   
   // Bookmarks
