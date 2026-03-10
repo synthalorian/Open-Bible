@@ -1,0 +1,68 @@
+{
+  "GEN 1:1": [
+    {"id": "1", "text": "DRC (Douay-Rheims) is a Catholic translation from the Latin Vulgate, first published in 1582 (NT) and 1609-1610 (OT).", "type": "translation"},
+    {"id": "2", "text": "'In the beginning God created' - DRC follows the Latin Vulgate 'In principio creavit Deus', which closely follows the Hebrew.", "type": "translation"},
+    {"id": "3", "text": "'God' here is Hebrew 'Elohim', a plural noun used with singular verbs, suggesting the Trinity. DRC capitalizes 'God' as a proper noun.", "type": "theological"}
+  ],
+  "GEN 1:2": [
+    {"id": "1", "text": "'void and empty' - Latin 'vacua et inanis'. DRC preserves the Latin word order and emphasis.", "type": "translation"},
+    {"id": "2", "text": "'the spirit of God' - Latin 'spiritus Dei'. DRC uses 'spirit' with lowercase, following Latin conventions.", "type": "translation"}
+  ],
+  "GEN 1:26": [
+    {"id": "1", "text": "'Let us make man to our image and likeness' - Latin 'Faciamus hominem ad imaginem et similitudinem nostram'. DRC preserves the plural 'our'.", "type": "translation"},
+    {"id": "2", "text": "The plural 'us' and 'our' has been interpreted by Catholic tradition as referring to the Trinity.", "type": "theological"}
+  ],
+  "GEN 2:7": [
+    {"id": "1", "text": "'formed man' - Latin 'formavit igitur Dominus Deus'. DRC emphasizes God's direct formation of humanity.", "type": "translation"},
+    {"id": "2", "text": "'living soul' - Latin 'animam viventem'. DRC uses 'soul' (anima), following the Latin Vulgate.", "type": "translation"}
+  ],
+  "GEN 3:15": [
+    {"id": "1", "text": "'she shall crush thy head' - DRC (and Latin Vulgate) reads 'she' (ipsa), referring to the woman/Mary, while Hebrew reads 'he'.", "type": "translation"},
+    {"id": "2", "text": "This verse is called the 'Protoevangelium' - the first gospel promise. Catholic tradition sees Mary as the new Eve who crushes the serpent's head.", "type": "messianic"}
+  ],
+  "EXO 3:14": [
+    {"id": "1", "text": "'I AM WHO AM' - Latin 'EGO SUM QUI SUM'. DRC preserves the solemn declaration of God's self-existence.", "type": "translation"},
+    {"id": "2", "text": "This name indicates God's eternal, self-existent nature. Catholic theology sees this as foundational for understanding God's being.", "type": "theological"}
+  ],
+  "PSA 23:1": [
+    {"id": "1", "text": "DRC 'The Lord ruleth me' - Latin 'Dominus regit me'. DRC emphasizes God's kingship and shepherding.", "type": "translation"},
+    {"id": "2", "text": "'I shall want nothing' - Latin 'nihil mihi deerit'. DRC preserves the sense of complete provision.", "type": "translation"}
+  ],
+  "PSA 23:4": [
+    {"id": "1", "text": "'the shadow of death' - Latin 'umbra mortis'. DRC preserves the Latin imagery of death's shadow.", "type": "translation"},
+    {"id": "2", "text": "'thy rod and thy staff' - Latin 'virga tua et baculus tuus'. DRC distinguishes between the rod (virga) and staff (baculus).", "type": "cultural"}
+  ],
+  "ISA 7:14": [
+    {"id": "1", "text": "'Behold a virgin shall conceive' - Latin 'Ecce virgo concipiet'. DRC preserves the Latin 'virgo' (virgin).", "type": "translation"},
+    {"id": "2", "text": "'Emmanuel' - Latin 'Emmanuel'. DRC preserves the Hebrew name as a title of the Messiah.", "type": "messianic"},
+    {"id": "3", "text": "Catholic tradition sees this as prophesying the Virgin Birth of Christ.", "type": "messianic"}
+  ],
+  "ISA 9:6": [
+    {"id": "1", "text": "'For a CHILD IS BORN to us, and a son is given to us' - DRC capitalizes 'CHILD IS BORN' to emphasize the messianic significance.", "type": "messianic"},
+    {"id": "2", "text": "'God the Mighty' - Latin 'Deus Fortis'. DRC preserves the divine title applied to the child.", "type": "messianic"}
+  ],
+  "MAT 1:23": [
+    {"id": "1", "text": "'Behold a virgin shall be with child' - DRC preserves the Vulgate reading of Isaiah 7:14.", "type": "translation"},
+    {"id": "2", "text": "'Emmanuel' - DRC preserves the Hebrew name, explaining it means 'God with us'.", "type": "messianic"}
+  ],
+  "MAT 16:18": [
+    {"id": "1", "text": "'Thou art Peter; and upon this rock I will build my church' - Latin 'Tu es Petrus, et super hanc petram aedificabo Ecclesiam meam'.", "type": "translation"},
+    {"id": "2", "text": "Catholic tradition sees this as establishing Peter as the foundation of the Church and the first Pope.", "type": "theological"}
+  ],
+  "JHN 1:1": [
+    {"id": "1", "text": "'In the beginning was the Word' - Latin 'In principio erat Verbum'. DRC preserves the Latin 'Verbum' (Word).", "type": "translation"},
+    {"id": "2", "text": "'the Word was God' - Latin 'et Deus erat Verbum'. DRC preserves the word order emphasizing the Word's deity.", "type": "theological"}
+  ],
+  "JHN 3:16": [
+    {"id": "1", "text": "'For God so loved the world, as to give his only begotten Son' - DRC adds 'as to' from the Latin 'ut'.", "type": "translation"},
+    {"id": "2", "text": "'only begotten' - Latin 'unigenitum'. DRC preserves the unique sonship of Christ.", "type": "theological"}
+  ],
+  "JHN 6:51": [
+    {"id": "1", "text": "'I am the living bread which came down from heaven' - DRC preserves the Johannine 'I am' saying.", "type": "translation"},
+    {"id": "2", "text": "Catholic tradition sees this as foundational for the doctrine of the Eucharist.", "type": "theological"}
+  ],
+  "LUK 1:28": [
+    {"id": "1", "text": "'Hail, full of grace' - Latin 'Ave, gratia plena'. DRC preserves the Vulgate reading, basis for the Hail Mary prayer.", "type": "translation"},
+    {"id": "2", "text": "'full of grace' (gratia plena) - Catholic theology sees this as indicating Mary's Immaculate Conception.", "type": "theological"}
+  ]
+}
