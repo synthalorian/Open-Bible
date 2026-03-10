@@ -47,7 +47,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = ref.watch(fontSizeProvider);
+    final fontSize = ref.watch(settingsProvider).fontSize.toDouble();
     final highlightColor = ref.watch(highlightsProvider)[widget.verseId];
     final preciseHighlight = VerseStorageService.getHighlight(widget.verseId);
     final isBookmarked = ref.watch(bookmarksProvider).contains(widget.verseId);
