@@ -962,13 +962,10 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   Future<void> _playAudio() async {
     debugPrint('AUDIO: _playAudio tapped');
     final settings = ref.read(settingsProvider);
-    if (!settings.audioEnabled) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Audio is disabled in Settings. Enable Audio first.')),
-        );
-      }
-      return;
+    if (!settings.audioEnabled && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Audio is disabled in Settings, attempting playback anyway...')),
+      );
     }
 
     final service = BibleAudioService.instance;
