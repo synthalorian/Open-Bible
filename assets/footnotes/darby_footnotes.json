@@ -1,0 +1,100 @@
+{
+  "GEN 1:1": [
+    {"id": "1", "text": "Darby (1890) is a literal translation by John Nelson Darby, founder of the Plymouth Brethren. It emphasizes dispensational theology.", "type": "translation"},
+    {"id": "2", "text": "'In the beginning God created' - Darby follows Hebrew closely, emphasizing God's creative power.", "type": "translation"},
+    {"id": "3", "text": "Darby distinguishes between different Hebrew words for 'create' (bara) and 'make' (asah).", "type": "linguistic"}
+  ],
+  "GEN 1:2": [
+ {"id": "1", "text": "'the earth was waste and empty' - Darby uses 'waste and empty' for Hebrew 'tohu wabohu'.", "type": "translation"},
+    {"id": "2", "text": "'the Spirit of God was brooding' - Darby uses 'brooding' to capture the maternal imagery of the Hebrew 'merachephet'.", "type": "linguistic"}
+  ],
+  "GEN 1:26": [
+    {"id": "1", "text": "'Let us make man in our image, after our likeness' - Darby preserves both 'image' (tselem) and 'likeness' (demut).", "type": "translation"},
+    {"id": "2", "text": "Darby sees the 'us' as referring to the Trinity, reflecting his dispensational theology.", "type": "theological"}
+  ],
+  "GEN 2:7": [
+    {"id": "1", "text": "'Jehovah Elohim formed Man' - Darby uses 'Jehovah' for YHWH and distinguishes 'Elohim' (God) from 'Jehovah' (LORD).", "type": "translation"},
+    {"id": "2", "text": "'breathed into his nostrils the breath of life' - Darby emphasizes the divine origin of human life.", "type": "translation"}
+  ],
+  "GEN 3:15": [
+    {"id": "1", "text": "'he shall crush thy head' - Darby uses 'crush' for the head wound, distinguishing it from the heel wound.", "type": "linguistic"},
+    {"id": "2", "text": "Darby sees this as the first promise of Christ's victory over Satan (the protoevangelium).", "type": "messianic"}
+  ],
+  "EXO 3:14": [
+    {"id": "1", "text": "'I AM THAT I AM' - Darby preserves the solemn declaration of God's self-existence.", "type": "translation"},
+    {"id": "2", "text": "'I AM hath sent me unto you' - Darby uses 'I AM' as the divine name, connecting to Christ's 'I am' sayings in John.", "type": "messianic"}
+  ],
+  "PSA 23:1": [
+    {"id": "1", "text": "'Jehovah is my shepherd' - Darby consistently uses 'Jehovah' for the divine name YHWH.", "type": "translation"},
+    {"id": "2", "text": "'I shall not want' - Darby follows KJV here, emphasizing God's provision.", "type": "translation"}
+  ],
+  "PSA 23:4": [
+    {"id": "1", "text": "'the valley of the shadow of death' - Darby preserves the Hebrew 'tsalmavet' (shadow of death).", "type": "translation"},
+    {"id": "2", "text": "'thy staff and thy rod comfort me' - Darby emphasizes the shepherd's tools of guidance and protection.", "type": "cultural"}
+  ],
+  "ISA 7:14": [
+    {"id": "1", "text": "'Behold, the virgin shall conceive' - Darby preserves the virgin birth prophecy.", "type": "translation"},
+    {"id": "2", "text": "'Immanuel' - Darby preserves the Hebrew name, meaning 'God with us'.", "type": "messianic"}
+  ],
+  "ISA 9:6": [
+    {"id": "1", "text": "'Wonderful, Counsellor, Mighty God' - Darby preserves the divine titles of the Messiah.", "type": "messianic"},
+    {"id": "2", "text": "'Father of Eternity' - Darby translates 'Avi Ad' literally.", "type": "translation"}
+  ],
+  "ISA 53:5": [
+    {"id": "1", "text": "'he is wounded for our transgressions' - Darby emphasizes substitutionary atonement.", "type": "theological"},
+    {"id": "2", "text": "'by his stripes we are healed' - Darby sees physical and spiritual healing in Christ's suffering.", "type": "theological"}
+  ],
+  "MAT 1:23": [
+    {"id": "1", "text": "'Behold, the virgin shall be with child' - Darby preserves the virgin birth fulfillment.", "type": "translation"},
+    {"id": "2", "text": "'Immanuel, which is, being interpreted, 'God with us'' - Darby explains the Hebrew name.", "type": "messianic"}
+  ],
+  "MAT 5:3": [
+    {"id": "1", "text": "'Blessed are the poor in spirit' - Darby follows KJV, emphasizing spiritual poverty.", "type": "translation"}
+  ],
+  "MAT 6:33": [
+    {"id": "1", "text": "'seek ye first the kingdom of God' - Darby uses 'kingdom' (basileia) throughout.", "type": "translation"}
+  ],
+  "JHN 1:1": [
+    {"id": "1", "text": "'In the beginning was the Word' - Darby preserves the Greek 'Logos' (Word).", "type": "translation"},
+    {"id": "2", "text": "'and the Word was God' - Darby preserves the Word's deity, essential for his Christology.", "type": "theological"}
+  ],
+  "JHN 3:16": [
+    {"id": "1", "text": "'God so loved the world that he gave his only-begotten Son' - Darby uses 'only-begotten' (monogenes).", "type": "translation"},
+    {"id": "2", "text": "'that whosoever believes on him may not perish' - Darby emphasizes faith as the condition for salvation.", "type": "theological"}
+  ],
+  "JHN 14:6": [
+    {"id": "1", "text": "'I am the way, and the truth, and the life' - Darby preserves the definite articles: THE way, THE truth, THE life.", "type": "translation"},
+    {"id": "2", "text": "'no one comes to the Father unless by me' - Darby emphasizes the exclusivity of Christ.", "type": "theological"}
+  ],
+  "ROM 3:23": [
+    {"id": "1", "text": "'for all have sinned' - Darby emphasizes universal sinfulness.", "type": "theological"},
+    {"id": "2", "text": "'come short of the glory of God' - Darby uses 'come short' (hysterountai) for lacking God's glory.", "type": "translation"}
+  ],
+  "ROM 5:8": [
+    {"id": "1", "text": "'God commends his love to us' - Darby uses 'commends' (sunistesin) for demonstrates.", "type": "translation"},
+    {"id": "2", "text": "'Christ died for us' - Darby emphasizes substitution: Christ died in our place.", "type": "theological"}
+  ],
+  "ROM 6:23": [
+    {"id": "1", "text": "'the wages of sin [is] death' - Darby adds brackets for implied verb.", "type": "translation"},
+    {"id": "2", "text": "'the gift of God [is] eternal life' - Darby contrasts earned wages with free gift.", "type": "theological"}
+  ],
+  "ROM 8:28": [
+    {"id": "1", "text": "'all things work together for good' - Darby emphasizes God's providential working.", "type": "theological"},
+    {"id": "2", "text": "'to those who love God' - Darby notes this promise is for believers, not all people.", "type": "theological"}
+  ],
+  "EPH 2:8": [
+    {"id": "1", "text": "'for by grace ye are saved through faith' - Darby emphasizes salvation by grace alone.", "type": "theological"},
+    {"id": "2", "text": "'and this not of yourselves; [it is] the gift of God' - Darby adds brackets for implied verb.", "type": "translation"}
+  ],
+  "PHP 4:13": [
+    {"id": "1", "text": "'I have strength for all things in him that empowers me' - Darby emphasizes Christ as the source of strength.", "type": "translation"}
+  ],
+  "HEB 4:12": [
+    {"id": "1", "text": "'the word of God [is] living and operative' - Darby uses 'operative' (energes) for active/powerful.", "type": "translation"},
+    {"id": "2", "text": "'sharper than any two-edged sword' - Darby emphasizes the penetrating power of Scripture.", "type": "translation"}
+  ],
+  "1JN 1:9": [
+    {"id": "1", "text": "'if we confess our sins' - Darby emphasizes confession as the condition for forgiveness.", "type": "theological"},
+    {"id": "2", "text": "'he is faithful and righteous to forgive us [our] sins' - Darby adds brackets for implied pronoun.", "type": "translation"}
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "GEN 1:1": [
+    {"id": "1", "text": "ASV (1901) was a revision of the King James Version by American scholars. It uses more literal translation principles.", "type": "translation"},
+    {"id": "2", "text": "'In the beginning God created' - ASV preserves Hebrew word order more closely than KJV in many places.", "type": "translation"},
+    {"id": "3", "text": "'God' here is Hebrew 'Elohim', a plural noun used with singular verbs, suggesting the Trinity. ASV capitalizes 'God' as a proper noun.", "type": "theological"}
+  ],
+  "GEN 1:2": [
+    {"id": "1", "text": "ASV 'waste and void' is a more literal rendering of Hebrew 'tohu wabohu' than KJV 'without form, and void'.", "type": "translation"},
+    {"id": "2", "text": "'Spirit of God' - ASV uses 'Spirit' consistently where KJV sometimes uses 'spirit' or 'Spirit'.", "type": "translation"},
+    {"id": "3", "text": "'the deep' is Hebrew 'tehom', related to the Babylonian 'Tiamat'. ASV uses 'deep' rather than 'abyss' to avoid mythological connotations.", "type": "historical"}
+  ],
+  "GEN 1:3": [
+    {"id": "1", "text": "'Let there be light' - Hebrew 'yehi or', literally 'be light'. ASV follows the Hebrew word order.", "type": "translation"},
+    {"id": "2", "text": "Light created before the sun (day 4), showing God is the source of all light.", "type": "theological"}
+  ],
+  "GEN 1:26": [
+    {"id": "1", "text": "'Let us make' - The plural pronoun may indicate the Trinity, angels, or plural of majesty. ASV preserves the plural without interpretation.", "type": "theological"},
+    {"id": "2", "text": "'image' is Hebrew 'tselem', meaning representation or likeness. ASV distinguishes 'image' from 'likeness' in verse 27.", "type": "linguistic"},
+    {"id": "3", "text": "'man' is Hebrew 'adam', related to 'adamah' (ground). ASV uses 'man' as generic humanity, not just the individual Adam.", "type": "linguistic"}
+  ],
+  "GEN 2:7": [
+    {"id": "1", "text": "'formed' is Hebrew 'yatsar', used for a potter shaping clay. ASV emphasizes God's hands-on creation.", "type": "linguistic"},
+    {"id": "2", "text": "'breath of life' is Hebrew 'nishmat chayyim'. ASV distinguishes this from 'spirit' (ruach) used elsewhere.", "type": "translation"},
+    {"id": "3", "text": "'living soul' - Hebrew 'nephesh chayyah'. ASV uses 'soul' here, though 'nephesh' also means creature or being.", "type": "translation"}
+  ],
+  "GEN 3:15": [
+    {"id": "1", "text": "'bruise' - Hebrew 'shuf', to crush or strike at. ASV uses 'bruise' for both the serpent and the seed, though the Hebrew suggests different intensities.", "type": "linguistic"},
+    {"id": "2", "text": "'seed' is Hebrew 'zera', singular collective. ASV preserves the singular, pointing to Christ as the ultimate seed.", "type": "messianic"},
+    {"id": "3", "text": "This verse is called the 'Protoevangelium' - the first gospel promise. ASV translators recognized its messianic significance.", "type": "messianic"}
+  ],
+  "GEN 12:1": [
+    {"id": "1", "text": "'Get thee out' - Hebrew 'lech lecha', literally 'go for yourself' or 'go to yourself'. ASV captures the command and purpose.", "type": "linguistic"},
+    {"id": "2", "text": "Abram was 75 years old when he left Haran (v. 4). ASV narrative shows God's call comes regardless of age.", "type": "historical"}
+  ],
+  "GEN 15:6": [
+    {"id": "1", "text": "'believed' - Hebrew 'he'emin', from root 'aman' (firm, faithful). ASV 'believed' captures the sense of trust and reliance.", "type": "linguistic"},
+    {"id": "2", "text": "'counted it to him for righteousness' - Hebrew 'chashab', to reckon or impute. ASV uses 'counted' for legal/accounting terminology.", "type": "theological"},
+    {"id": "3", "text": "Quoted by Paul in Romans 4:3, Galatians 3:6, and James 2:23 as foundational for justification by faith.", "type": "crossReference"}
+  ],
+  "EXO 3:14": [
+    {"id": "1", "text": "'I AM THAT I AM' - Hebrew 'Ehyeh asher ehyeh', the self-existent, eternal God. ASV preserves the first person, connecting to the divine name YHWH (He is).", "type": "linguistic"},
+    {"id": "2", "text": "'I AM' becomes a title for Christ in John's Gospel (John 8:58). ASV uses small caps LORD for YHWH elsewhere.", "type": "messianic"},
+    {"id": "3", "text": "The name indicates God's self-existence and eternal nature. ASV captures this with the timeless 'I AM'.", "type": "theological"}
+  ],
+  "EXO 20:3": [
+    {"id": "1", "text": "First Commandment: 'Thou shalt have no other gods before me.' ASV 'before me' means 'in my presence' or 'besides me'.", "type": "theological"},
+    {"id": "2", "text": "'before me' is Hebrew 'al panay', literally 'upon my face'. ASV captures the sense of exclusive worship.", "type": "linguistic"}
+  ],
+  "EXO 20:7": [
+    {"id": "1", "text": "Third Commandment: Prohibits taking God's name in vain or for false purposes.", "type": "theological"},
+    {"id": "2", "text": "'vain' is Hebrew 'shav', emptiness, falsehood, or worthlessness. ASV captures the prohibition against empty use.", "type": "linguistic"}
+  ],
+  "PSA 23:1": [
+    {"id": "1", "text": "'LORD' in ASV small caps represents the divine name YHWH (Yahweh/Jehovah), distinguishing it from 'Lord' (Adonai).", "type": "translation"},
+    {"id": "2", "text": "'I shall not want' - Hebrew 'lo echsar', I will not lack. ASV 'want' means 'lack' in Elizabethan English.", "type": "linguistic"},
+    {"id": "3", "text": "David wrote this psalm based on his experience as a shepherd boy (1 Samuel 16:11).", "type": "historical"}
+  ],
+  "PSA 23:4": [
+    {"id": "1", "text": "'valley of the shadow of death' - Hebrew 'gey tsalmavet', valley of deep darkness. ASV 'shadow of death' captures both meanings.", "type": "linguistic"},
+    {"id": "2", "text": "'thy rod and thy staff' - The rod for protection, the staff for guidance. ASV preserves the shepherd's tools.", "type": "cultural"},
+    {"id": "3", "text": "'comfort' is Hebrew 'nacham', to console or have compassion. ASV emphasizes divine comfort in danger.", "type": "linguistic"}
+  ],
+  "PSA 51:10": [
+    {"id": "1", "text": "'Create' is Hebrew 'bara', used only for divine creation. ASV preserves this strong term for spiritual renewal.", "type": "linguistic"},
+    {"id": "2", "text": "'right spirit' - Hebrew 'ruach nachon', a steadfast or established spirit. ASV 'right' means 'correct' or 'proper'.", "type": "linguistic"},
+    {"id": "3", "text": "David wrote this psalm after his sin with Bathsheba (2 Samuel 12). ASV preserves the personal confession.", "type": "historical"}
+  ],
+  "PSA 119:11": [
+    {"id": "1", "text": "'hid' is Hebrew 'tsaphan', to treasure or store up. ASV captures the sense of valuing and protecting God's Word.", "type": "linguistic"},
+    {"id": "2", "text": "'heart' in Hebrew includes mind, will, and emotions. ASV 'heart' encompasses the whole inner being.", "type": "cultural"},
+    {"id": "3", "text": "This acrostic psalm has 22 sections for each letter of the Hebrew alphabet. ASV preserves the structure.", "type": "literary"}
+  ],
+  "ISA 7:14": [
+    {"id": "1", "text": "'virgin' translates Hebrew 'almah', a young woman of marriageable age. ASV uses 'virgin' based on context and LXX translation.", "type": "translation"},
+    {"id": "2", "text": "'Immanuel' means 'God with us'. ASV preserves the Hebrew name as a title of the Messiah.", "type": "messianic"},
+    {"id": "3", "text": "Quoted in Matthew 1:23 as fulfilled in Jesus' birth. ASV Matthew explicitly connects this to Christ.", "type": "messianic"}
+  ],
+  "ISA 9:6": [
+    {"id": "1", "text": "'Wonderful, Counsellor' - Could be read as two titles or one: 'Wonderful Counsellor'. ASV follows Hebrew punctuation.", "type": "translation"},
+    {"id": "2", "text": "'mighty God' is Hebrew 'El Gibbor', Mighty God. ASV capitalizes 'God', identifying the child as divine.", "type": "messianic"},
+    {"id": "3", "text": "'Everlasting Father' - Hebrew 'Avi Ad', Father of Eternity or Eternal Father. ASV emphasizes the messianic title.", "type": "messianic"}
+  ],
+  "ISA 53:5": [
+    {"id": "1", "text": "'wounded' is Hebrew 'chalal', pierced or profaned. ASV captures the violence done to the Servant.", "type": "linguistic"},
+    {"id": "2", "text": "'stripes' is Hebrew 'chabburah', bruises or welts. ASV emphasizes the physical suffering.", "type": "linguistic"},
+    {"id": "3", "text": "This chapter is the great Messianic prophecy of the suffering Servant. ASV preserves its application to Christ.", "type": "messianic"}
+  ],
+  "MAT 1:23": [
+    {"id": "1", "text": "ASV follows Isaiah 7:14 closely: 'they shall call his name Emmanuel'. The fulfillment formula is characteristic of Matthew.", "type": "translation"},
+    {"id": "2", "text": "'Emmanuel' is Greek 'Emmanuel', from Hebrew 'Immanu El'. ASV preserves the Hebrew form of the name.", "type": "linguistic"}
+  ],
+  "MAT 5:3": [
+    {"id": "1", "text": "'Blessed' is Greek 'makarios', happy or fortunate. ASV 'blessed' captures the divine favor.", "type": "linguistic"},
+    {"id": "2", "text": "'poor in spirit' is Greek 'ptochos to pneumati', spiritually destitute. ASV emphasizes spiritual poverty.", "type": "translation"}
+  ],
+  "MAT 5:44": [
+    {"id": "1", "text": "'Love your enemies' - Greek 'agapao', self-sacrificing love. ASV distinguishes this from 'phileo' (friendship love).", "type": "linguistic"},
+    {"id": "2", "text": "ASV 'pray for them which despitefully use you' captures the Greek 'epeRXomai', to persecute or harass.", "type": "translation"}
+  ],
+  "MAT 6:9": [
+    {"id": "1", "text": "'Our Father' - Greek 'Pater hemon'. ASV preserves the familial intimacy of Jesus' teaching on prayer.", "type": "translation"},
+    {"id": "2", "text": "'Hallowed be thy name' - Greek 'hagiastheto to onoma sou'. ASV uses 'hallowed' (made holy) rather than 'sanctified'.", "type": "linguistic"}
+  ],
+  "MAT 6:33": [
+    {"id": "1", "text": "'Seek ye first' - Greek 'zeteite proton', seek first. ASV emphasizes priority: God's kingdom before material needs.", "type": "translation"},
+    {"id": "2", "text": "'righteousness' is Greek 'dikaiosyne', right standing with God. ASV distinguishes this from works-righteousness.", "type": "theological"}
+  ],
+  "MAT 11:28": [
+    {"id": "1", "text": "'Come unto me' - Greek 'deute pros me', come here to me. ASV captures the invitation to approach Jesus.", "type": "translation"},
+    {"id": "2", "text": "'heavy laden' is Greek 'pephortismenoi', loaded down. ASV emphasizes the burden of religious legalism.", "type": "translation"},
+    {"id": "3", "text": "'rest' is Greek 'anapausis', cessation from labor and refreshment. ASV captures both meanings.", "type": "linguistic"}
+  ],
+  "MAT 28:19": [
+    {"id": "1", "text": "'in the name' is singular in Greek, indicating one God. ASV preserves the Trinitarian formula.", "type": "theological"},
+    {"id": "2", "text": "'Father, Son, Holy Ghost' - The Great Commission in Trinitarian form. ASV preserves this foundational formula.", "type": "theological"}
+  ],
+  "JHN 1:1": [
+    {"id": "1", "text": "'In the beginning' - Greek 'en arche', echoing Genesis 1:1. ASV emphasizes Christ's eternal existence.", "type": "translation"},
+    {"id": "2", "text": "'Word' is Greek 'Logos', divine reason or expression. ASV preserves this philosophical and theological term.", "type": "linguistic"},
+    {"id": "3", "text": "'the Word was God' - Greek 'theos en ho logos'. ASV preserves the word order: 'God' is the predicate, emphasizing deity.", "type": "theological"}
+  ],
+  "JHN 1:14": [
+    {"id": "1", "text": "'made flesh' - Greek 'sarx egeneto', became flesh. ASV emphasizes the incarnation.", "type": "theological"},
+    {"id": "2", "text": "'dwelt' is Greek 'eskenosen', tabernacled or pitched tent. ASV captures the imagery of God's presence.", "type": "linguistic"},
+    {"id": "3", "text": "'full of grace and truth' - Greek 'charis kai aletheia', covenant love and faithfulness. ASV preserves the Hebrew concept.", "type": "translation"}
+  ],
+  "JHN 3:3": [
+    {"id": "1", "text": "'born again' - Greek 'gennethe anothen', born from above. ASV captures both meanings: again and from above.", "type": "translation"},
+    {"id": "2", "text": "'cannot see' is Greek 'ou dunatai idein', is not able to see. ASV emphasizes inability without new birth.", "type": "linguistic"}
+  ],
+  "JHN 3:16": [
+    {"id": "1", "text": "'so loved' - Greek 'houtos egapesen', loved in this manner. ASV emphasizes the extent of God's love.", "type": "translation"},
+    {"id": "2", "text": "'only begotten' is Greek 'monogenes', one and only, unique. ASV emphasizes Christ's unique sonship.", "type": "linguistic"},
+    {"id": "3", "text": "'whosoever' is Greek 'pas ho pisteuon', everyone believing. ASV emphasizes the universal offer.", "type": "translation"}
+  ],
+  "JHN 14:6": [
+    {"id": "1", "text": "'I am the way' - Greek 'ego eimi he hodos'. ASV preserves the definite article: Jesus is THE way, not a way.", "type": "theological"},
+    {"id": "2", "text": "'no man cometh unto the Father, but by me' - Exclusive claim. ASV preserves the necessity of Christ for salvation.", "type": "theological"}
+  ],
+  "ROM 3:23": [
+    {"id": "1", "text": "'all have sinned' - Greek 'pantes hemarton', all sinned. ASV emphasizes universal sinfulness.", "type": "theological"},
+    {"id": "2", "text": "'come short' is Greek 'hysterountai', fall short or lack. ASV uses an accounting term: falling short of the standard.", "type": "linguistic"}
+  ],
+  "ROM 5:8": [
+    {"id": "1", "text": "'commendeth' is Greek 'sunistesin', demonstrates or proves. ASV emphasizes God demonstrating His love.", "type": "linguistic"},
+    {"id": "2", "text": "'while we were yet sinners' - Greek 'eti hamartolon onton hemon'. ASV emphasizes the timing: Christ died for us while we were still sinners.", "type": "theological"}
+  ],
+  "ROM 6:23": [
+    {"id": "1", "text": "'wages' is Greek 'opsonia', soldier's pay. ASV uses a military metaphor: sin pays death as wages.", "type": "linguistic"},
+    {"id": "2", "text": "'gift' is Greek 'charisma', free gift of grace. ASV contrasts earned wages with free grace.", "type": "theological"}
+  ],
+  "ROM 8:28": [
+    {"id": "1", "text": "'work together' is Greek 'synergei', synergy. ASV emphasizes God causing all things to cooperate for good.", "type": "linguistic"},
+    {"id": "2", "text": "'love God' and 'called according to his purpose' - The promise is for believers, not all people universally.", "type": "theological"}
+  ],
+  "ROM 10:9": [
+    {"id": "1", "text": "'confess with thy mouth' - Greek 'homologeseis to stomati sou'. ASV emphasizes public confession.", "type": "translation"},
+    {"id": "2", "text": "'raised from the dead' - The resurrection is essential to saving faith. ASV preserves this requirement.", "type": "theological"}
+  ],
+  "ROM 10:13": [
+    {"id": "1", "text": "'whosoever' is Greek 'pas gar', for everyone. ASV emphasizes the universal invitation.", "type": "translation"},
+    {"id": "2", "text": "'call upon' is Greek 'epikalesetai', invoke or appeal to. ASV captures the sense of calling for help.", "type": "linguistic"},
+    {"id": "3", "text": "Quotes Joel 2:32. ASV preserves the Old Testament connection.", "type": "crossReference"}
+  ],
+  "1CO 13:4-8": [
+    {"id": "1", "text": "'Charity' is Greek 'agape' - self-sacrificing, unconditional love. Distinguished from 'phileo' (friendship).", "type": "translation"},
+    {"id": "2", "text": "Paul lists 15 characteristics of love. Love is active, patient, kind, humble, and enduring.", "type": "interpretation"}
+  ],
+  "EPH 2:8": [
+    {"id": "1", "text": "'by grace have ye been saved' - Greek perfect tense: 'you have been and continue to be saved.'", "type": "linguistic"},
+    {"id": "2", "text": "'through faith' - Faith is the channel, not the cause. Grace is the cause of salvation.", "type": "theological"}
+  ],
+  "PHP 4:13": [
+    {"id": "1", "text": "'I can do all things in him that strengtheneth me' - Context shows Paul means contentment, not unlimited power.", "type": "interpretation"},
+    {"id": "2", "text": "'strengtheneth' is Greek 'endynamounti' - infuses with power. Christ gives strength for every circumstance.", "type": "linguistic"}
+  ],
+  "HEB 4:12": [
+    {"id": "1", "text": "'living, and active' - Greek 'zon kai energes'. God's Word is alive and powerful.", "type": "translation"},
+    {"id": "2", "text": "'sharper than any two-edged sword' - The Word penetrates deeply, discerning thoughts and intentions.", "type": "interpretation"}
+  ],
+  "1JN 1:9": [
+    {"id": "1", "text": "'confess' is Greek 'homologomen' - agree with, acknowledge. We agree with God about our sin.", "type": "linguistic"},
+    {"id": "2", "text": "'faithful and righteous' - God forgives because He is faithful to His promise and just because Christ paid for sin.", "type": "theological"}
+  ]
+}
