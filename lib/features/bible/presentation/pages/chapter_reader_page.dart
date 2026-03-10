@@ -982,8 +982,28 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
 
     final cacheKey = _getCacheKey(CurrentBible.id, _currentChapter);
     final fallbackKey = _getCacheKey(_currentBibleId, _currentChapter);
-    final content = _chapterCache[cacheKey] ?? _chapterCache[fallbackKey];
-    if (content == null || content.isEmpty) {
+    String? content = _chapterCache[cacheKey] ?? _chapterCache[fallbackKey];
+
+    // If cache is empty, fetch directly before failing audio.
+    if (content == null || content.trim().isEmpty) {
+      try {
+        content = await DirectBibleLoader.getChapter(
+          CurrentBible.id,
+          widget.bookId,
+          _currentChapter,
+        );
+        content ??= await DirectBibleLoader.getChapter('kjv', widget.bookId, _currentChapter);
+        if (content != null && content.isNotEmpty && mounted) {
+          setState(() {
+            _chapterCache[cacheKey] = content!;
+          });
+        }
+      } catch (_) {
+        // Continue to user-facing error below.
+      }
+    }
+
+    if (content == null || content.trim().isEmpty) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Chapter not loaded yet')),
