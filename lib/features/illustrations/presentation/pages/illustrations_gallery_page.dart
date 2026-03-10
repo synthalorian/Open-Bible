@@ -145,6 +145,62 @@ class IllustrationsGalleryPage extends StatelessWidget {
       book: '1 Samuel',
       chapter: 31,
     ),
+    BibleIllustration(
+      title: 'Divine Light in the Clouds (Plate)',
+      description: 'Exodus 33 - A prophet beholds divine glory',
+      imagePath: 'assets/illustrations/dore_divine_light_clouds_plate.jpg',
+      book: 'Exodus',
+      chapter: 33,
+    ),
+    BibleIllustration(
+      title: 'Moses with the Tablets (Plate)',
+      description: 'Exodus 32 - Moses with the Law amid thunder',
+      imagePath: 'assets/illustrations/dore_moses_tablets_thunder_plate.jpg',
+      book: 'Exodus',
+      chapter: 32,
+    ),
+    BibleIllustration(
+      title: 'Crossing the Jordan (Plate)',
+      description: 'Joshua 3 - Israel at the Jordan',
+      imagePath: 'assets/illustrations/dore_crossing_jordan_plate.jpg',
+      book: 'Joshua',
+      chapter: 3,
+    ),
+    BibleIllustration(
+      title: 'Nativity at the Manger (Plate)',
+      description: 'Luke 2 - The birth of Christ',
+      imagePath: 'assets/illustrations/dore_nativity_manger_plate.png',
+      book: 'Luke',
+      chapter: 2,
+    ),
+    BibleIllustration(
+      title: 'The Triumphal Entry (Plate)',
+      description: 'Matthew 21 - Jesus enters Jerusalem',
+      imagePath: 'assets/illustrations/dore_triumphal_entry_plate.jpg',
+      book: 'Matthew',
+      chapter: 21,
+    ),
+    BibleIllustration(
+      title: 'The Deluge (Children on the Rock) (Plate)',
+      description: 'Genesis 7 - Flood waters rise',
+      imagePath: 'assets/illustrations/dore_deluge_children_rock_plate.jpg',
+      book: 'Genesis',
+      chapter: 7,
+    ),
+    BibleIllustration(
+      title: 'The Empty Tomb and Angel (Plate)',
+      description: 'Matthew 28 - The resurrection announced',
+      imagePath: 'assets/illustrations/dore_empty_tomb_angel_plate.png',
+      book: 'Matthew',
+      chapter: 28,
+    ),
+    BibleIllustration(
+      title: 'The Gleaners (Plate)',
+      description: 'Ruth 2 - Gathering grain in the fields',
+      imagePath: 'assets/illustrations/dore_gleaners_plate.jpg',
+      book: 'Ruth',
+      chapter: 2,
+    ),
   ];
 
   @override
