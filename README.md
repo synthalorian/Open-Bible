@@ -1,5 +1,9 @@
 # Holy Bible App 📖
 
+[![Flutter](https://img.shields.io/badge/Flutter-3.22+-02569B?logo=flutter)](https://flutter.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50)](#)
+
 An extensive Bible study app for Android and iOS, built with Flutter.
 
 ## Features
