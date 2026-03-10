@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -113,10 +114,15 @@ class BibleAudioService {
       if (_stopRequested) break;
       try {
         await _tts.speak(chunk);
+        // Some Android TTS engines return before utterance is actually done.
+        // Pace chunk submission to prevent queue overruns (notably Genesis 1).
+        final ms = math.max(1500, chunk.length * 55);
+        await Future.delayed(Duration(milliseconds: ms));
       } catch (e) {
         debugPrint('AUDIO_SERVICE: chunk speak failed: $e');
       }
     }
+    _isPlaying = false;
   }
 
   Future<void> stop() async {
