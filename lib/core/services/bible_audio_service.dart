@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -13,6 +14,7 @@ class BibleAudioService {
   final FlutterTts _tts = FlutterTts();
   bool _initialized = false;
   bool _isPlaying = false;
+  bool _stopRequested = false;
   double _rate = 0.45;
   double _pitch = 1.0;
 
@@ -75,39 +77,50 @@ class BibleAudioService {
     required List<Map<String, dynamic>> verses,
   }) async {
     await initialize();
+    _stopRequested = false;
+    await _tts.stop();
 
-    final buffer = StringBuffer();
-    buffer.write('$bookName chapter $chapter. ');
+    final chunks = <String>[];
+    chunks.add('Reading $bookName chapter $chapter.');
+
+    // Build small chunks so long chapters (e.g., Genesis 1) stay reliable.
+    final current = StringBuffer();
     for (final v in verses) {
       final n = v['verse']?.toString() ?? '';
       final t = (v['text'] ?? '').toString().trim();
-      if (t.isNotEmpty) {
-        buffer.write('Verse $n. $t ');
+      if (t.isEmpty) continue;
+      final sentence = 'Verse $n. $t ';
+
+      if (current.length + sentence.length > 380) {
+        if (current.isNotEmpty) {
+          chunks.add(current.toString().trim());
+          current.clear();
+        }
+      }
+      current.write(sentence);
+    }
+    if (current.isNotEmpty) chunks.add(current.toString().trim());
+
+    if (chunks.length <= 1) return false;
+
+    // Fire-and-forget playback chain so UI returns immediately.
+    unawaited(_speakChunks(chunks));
+    return true;
+  }
+
+  Future<void> _speakChunks(List<String> chunks) async {
+    for (final chunk in chunks) {
+      if (_stopRequested) break;
+      try {
+        await _tts.speak(chunk);
+      } catch (e) {
+        debugPrint('AUDIO_SERVICE: chunk speak failed: $e');
       }
     }
-
-    final text = buffer.toString().trim();
-    if (text.isEmpty) return false;
-
-    await _tts.stop();
-    // Keep payload conservative for Android TTS reliability.
-    final clipped = text.length > 1400 ? text.substring(0, 1400) : text;
-    dynamic result;
-    try {
-      result = await _tts.speak(clipped);
-    } catch (e) {
-      debugPrint('AUDIO_SERVICE: primary speak failed: $e');
-      // Fallback with very short payload for picky engines.
-      result = await _tts.speak('Reading $bookName chapter $chapter.');
-    }
-
-    debugPrint('AUDIO_SERVICE: speak result=$result, chars=${clipped.length}/${text.length}');
-
-    // Some engines return null/non-1 while still starting speech.
-    return result == null || result != 0;
   }
 
   Future<void> stop() async {
+    _stopRequested = true;
     await _tts.stop();
     _isPlaying = false;
   }
