@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Bible Illustrations Gallery - Gustave Doré and other classic biblical artwork
 class IllustrationsGalleryPage extends StatelessWidget {
@@ -75,6 +74,76 @@ class IllustrationsGalleryPage extends StatelessWidget {
       imagePath: 'assets/images/bible_illustrations/angelic_chariot.jpg',
       book: '2 Kings',
       chapter: 6,
+    ),
+    BibleIllustration(
+      title: 'Ezekiel Prophesying (Plate)',
+      description: 'Ezekiel 37 - The prophet proclaims restoration',
+      imagePath: 'assets/illustrations/dore_ezekiel_prophesying_plate.jpg',
+      book: 'Ezekiel',
+      chapter: 37,
+    ),
+    BibleIllustration(
+      title: 'The World Destroyed by Water (Plate)',
+      description: 'Genesis 7-8 - The Deluge sweeps the earth',
+      imagePath: 'assets/illustrations/dore_world_destroyed_water_plate.jpg',
+      book: 'Genesis',
+      chapter: 7,
+    ),
+    BibleIllustration(
+      title: 'Jesus Healing the Sick (Plate)',
+      description: 'Matthew 8-9 - Christ heals the afflicted',
+      imagePath: 'assets/illustrations/dore_jesus_healing_sick_plate.jpg',
+      book: 'Matthew',
+      chapter: 8,
+    ),
+    BibleIllustration(
+      title: 'Death on the Pale Horse (Plate)',
+      description: 'Revelation 6 - Apocalyptic judgment vision',
+      imagePath: 'assets/illustrations/dore_death_on_pale_horse_plate.png',
+      book: 'Revelation',
+      chapter: 6,
+    ),
+    BibleIllustration(
+      title: 'Raising Jairus\' Daughter (Plate)',
+      description: 'Mark 5 - Jesus raises Jairus\' daughter',
+      imagePath: 'assets/illustrations/dore_jairus_daughter_plate.jpg',
+      book: 'Mark',
+      chapter: 5,
+    ),
+    BibleIllustration(
+      title: 'Walls of Jericho Falling Down (Plate)',
+      description: 'Joshua 6 - The city walls collapse',
+      imagePath: 'assets/illustrations/dore_walls_jericho_falling_plate.jpg',
+      book: 'Joshua',
+      chapter: 6,
+    ),
+    BibleIllustration(
+      title: 'The Betrayal and Arrest of Christ (Plate)',
+      description: 'Matthew 26 - Judas betrays Jesus',
+      imagePath: 'assets/illustrations/dore_judas_kiss_arrest_plate.jpg',
+      book: 'Matthew',
+      chapter: 26,
+    ),
+    BibleIllustration(
+      title: 'Render Unto Caesar (Plate)',
+      description: 'Matthew 22 - Jesus answers the tribute question',
+      imagePath: 'assets/illustrations/dore_render_unto_caesar_plate.jpg',
+      book: 'Matthew',
+      chapter: 22,
+    ),
+    BibleIllustration(
+      title: 'Sermon on the Mount (Plate)',
+      description: 'Matthew 5-7 - Jesus teaches the Beatitudes',
+      imagePath: 'assets/illustrations/dore_sermon_on_mount_plate.jpg',
+      book: 'Matthew',
+      chapter: 5,
+    ),
+    BibleIllustration(
+      title: 'The Death of Saul (Plate)',
+      description: '1 Samuel 31 - Saul falls in battle',
+      imagePath: 'assets/illustrations/dore_death_of_saul_plate.png',
+      book: '1 Samuel',
+      chapter: 31,
     ),
   ];
 
