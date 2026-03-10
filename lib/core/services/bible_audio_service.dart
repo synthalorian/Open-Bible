@@ -92,7 +92,7 @@ class BibleAudioService {
       if (t.isEmpty) continue;
       final sentence = 'Verse $n. $t ';
 
-      if (current.length + sentence.length > 380) {
+      if (current.length + sentence.length > 180) {
         if (current.isNotEmpty) {
           chunks.add(current.toString().trim());
           current.clear();
@@ -116,7 +116,7 @@ class BibleAudioService {
         await _tts.speak(chunk);
         // Some Android TTS engines return before utterance is actually done.
         // Pace chunk submission to prevent queue overruns (notably Genesis 1).
-        final ms = math.max(1500, chunk.length * 55);
+        final ms = math.max(2400, chunk.length * 70);
         await Future.delayed(Duration(milliseconds: ms));
       } catch (e) {
         debugPrint('AUDIO_SERVICE: chunk speak failed: $e');
