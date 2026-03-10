@@ -116,29 +116,40 @@ class VerseStorageService {
   
   /// Initialize storage
   static Future<void> initialize() async {
-    // If we already initialized and have at least one durable backend, skip.
-    if (_initialized && (_backupFile != null || _prefs != null)) return;
+    // If already initialized with a usable file backend, done.
+    if (_initialized && _backupFile != null) return;
 
+    // Resolve file backend first (authoritative source of truth).
     try {
       final dir = await getApplicationDocumentsDirectory();
       _backupFile = File('${dir.path}/verse_storage_backup_v3.json');
     } catch (e) {
-      debugPrint('VerseStorageService: could not resolve backup path: $e');
+      debugPrint('VerseStorageService: docs dir unavailable: $e');
+      try {
+        final dir = await getTemporaryDirectory();
+        _backupFile = File('${dir.path}/verse_storage_backup_v3.json');
+      } catch (e2) {
+        debugPrint('VerseStorageService: temp dir unavailable: $e2');
+      }
     }
 
-    // Restore from file first when available.
+    // Load from authoritative backup file first.
     await _loadFromBackupFile();
 
+    // SharedPreferences is now mirror-only (non-authoritative).
     try {
       _prefs = await SharedPreferences.getInstance();
-      await _loadAllData();
-      _initialized = true;
+      // Optional one-time import from legacy keys only if file-backed data is empty.
+      final hasFileData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
+      if (!hasFileData) {
+        await _loadAllData();
+        await _saveToBackupFile();
+      }
     } catch (e) {
-      debugPrint('VerseStorageService: Init failed, using file/memory fallback: $e');
-      // Keep initialized true so in-memory still works this run,
-      // but future calls can re-attempt backend init if still unavailable.
-      _initialized = true;
+      debugPrint('VerseStorageService: prefs unavailable (continuing with file backend): $e');
     }
+
+    _initialized = true;
   }
 
   
