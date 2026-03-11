@@ -113,43 +113,50 @@ class VerseStorageService {
   static Map<String, SavedVerse> _notes = {};
   static bool _initialized = false;
   static File? _backupFile;
+  static String _lastError = "None";
   
   /// Initialize storage
-  static Future<void> initialize() async {
-    // If already initialized with a usable file backend, done.
-    if (_initialized && _backupFile != null) return;
+  static Future<void> initialize({bool force = false}) async {
+    if (_initialized && _backupFile != null && !force) return;
 
-    // Resolve file backend first (authoritative source of truth).
     try {
-      // Try support directory first, then documents as fallback
-      final dir = await getApplicationSupportDirectory();
+      // Clear error on new attempt
+      _lastError = "None";
+      
+      Directory? dir;
+      try {
+        dir = await getApplicationSupportDirectory();
+      } catch (e) {
+        _lastError = "SupportDir: $e";
+        dir = await getApplicationDocumentsDirectory();
+      }
+      
       _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
       
+      // Migration logic
       if (!await _backupFile!.exists()) {
-        final docsDir = await getApplicationDocumentsDirectory();
-        final oldFile = File('${docsDir.path}/verse_storage_backup_v3.json');
-        if (await oldFile.exists()) {
-          await oldFile.copy(_backupFile!.path);
-          debugPrint('VerseStorageService: Migrated v3 to v4');
+        try {
+          final docsDir = await getApplicationDocumentsDirectory();
+          final oldFile = File('${docsDir.path}/verse_storage_backup_v3.json');
+          if (await oldFile.exists()) {
+            await oldFile.copy(_backupFile!.path);
+            debugPrint('VerseStorageService: Migrated v3 to v4');
+          }
+        } catch (e) {
+          debugPrint('VerseStorageService: Migration failed: $e');
         }
       }
     } catch (e) {
-      debugPrint('VerseStorageService: support dir unavailable: $e');
-      try {
-        final dir = await getApplicationDocumentsDirectory();
-        _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
-      } catch (e2) {
-        debugPrint('VerseStorageService: docs dir unavailable: $e2');
-      }
+      _lastError = "InitPath: $e";
+      debugPrint('VerseStorageService: path init failed: $e');
     }
 
-    // Load from authoritative backup file first.
+    // Load from authoritative backup file
     await _loadFromBackupFile();
 
-    // SharedPreferences is now mirror-only (non-authoritative).
+    // Init SharedPreferences
     try {
       _prefs = await SharedPreferences.getInstance();
-      // Optional one-time import from legacy keys only if file-backed data is empty.
       final hasFileData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
       if (!hasFileData) {
         await _loadAllData();
@@ -158,45 +165,23 @@ class VerseStorageService {
         }
       }
     } catch (e) {
-      debugPrint('VerseStorageService: prefs unavailable (continuing with file backend): $e');
+      _lastError = "Prefs: $e";
+      debugPrint('VerseStorageService: prefs init failed: $e');
     }
 
     _initialized = true;
     debugPrint('VerseStorageService: Initialized. Bookmarks: ${_bookmarks.length}');
   }
 
-  
   static Future<void> _loadAllData() async {
     if (_prefs == null) return;
 
     try {
-      // Keep file-restored state as baseline; only replace when prefs has payload.
       final bookmarksJson = _prefs!.getString(_bookmarksKey);
       if (bookmarksJson != null && bookmarksJson.trim().isNotEmpty) {
         final List<dynamic> list = json.decode(bookmarksJson);
         final loaded = list.map((j) => SavedVerse.fromJson(j)).toList();
         if (loaded.isNotEmpty) _bookmarks = loaded;
-      } else {
-        // Legacy fallback
-        final legacy = _prefs!.getStringList('bookmarks') ?? const <String>[];
-        if (legacy.isNotEmpty) {
-          _bookmarks = legacy.map((id) {
-            final parts = id.split('_');
-            final book = parts.isNotEmpty ? parts.first : 'GEN';
-            final chapter = parts.length > 1 ? int.tryParse(parts[1]) ?? 1 : 1;
-            final verse = parts.length > 2 ? int.tryParse(parts[2]) ?? 1 : 1;
-            return SavedVerse(
-              id: id,
-              bookId: book,
-              bookName: book,
-              chapter: chapter,
-              verse: verse,
-              text: '',
-              savedAt: DateTime.now(),
-              bibleId: 'kjv',
-            );
-          }).toList();
-        }
       }
 
       final highlightsJson = _prefs!.getString(_highlightsKey);
@@ -204,25 +189,6 @@ class VerseStorageService {
         final Map<String, dynamic> map = json.decode(highlightsJson);
         final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
         if (loaded.isNotEmpty) _highlights = loaded;
-      } else {
-        final legacyKeys = _prefs!.getKeys().where((k) => k.startsWith('highlight_'));
-        for (final key in legacyKeys) {
-          final id = key.replaceFirst('highlight_', '');
-          final color = _prefs!.getString(key);
-          if (color != null) {
-            _highlights[id] = SavedVerse(
-              id: id,
-              bookId: id.split('_').first,
-              bookName: id.split('_').first,
-              chapter: id.split('_').length > 1 ? int.tryParse(id.split('_')[1]) ?? 1 : 1,
-              verse: id.split('_').length > 2 ? int.tryParse(id.split('_')[2]) ?? 1 : 1,
-              text: '',
-              highlightColor: color,
-              savedAt: DateTime.now(),
-              bibleId: 'kjv',
-            );
-          }
-        }
       }
 
       final notesJson = _prefs!.getString(_notesKey);
@@ -230,41 +196,16 @@ class VerseStorageService {
         final Map<String, dynamic> map = json.decode(notesJson);
         final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
         if (loaded.isNotEmpty) _notes = loaded;
-      } else {
-        final legacyKeys = _prefs!.getKeys().where((k) => k.startsWith('note_'));
-        for (final key in legacyKeys) {
-          final id = key.replaceFirst('note_', '');
-          final note = _prefs!.getString(key);
-          if (note != null) {
-            _notes[id] = SavedVerse(
-              id: id,
-              bookId: id.split('_').first,
-              bookName: id.split('_').first,
-              chapter: id.split('_').length > 1 ? int.tryParse(id.split('_')[1]) ?? 1 : 1,
-              verse: id.split('_').length > 2 ? int.tryParse(id.split('_')[2]) ?? 1 : 1,
-              text: '',
-              note: note,
-              savedAt: DateTime.now(),
-              bibleId: 'kjv',
-            );
-          }
-        }
       }
-
-      final hasAnyData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
-      if (hasAnyData) await _saveToBackupFile();
     } catch (e) {
-      debugPrint('VerseStorageService: prefs load failed, keeping file/memory data: $e');
+      _lastError = "LoadData: $e";
     }
   }
   
   static Future<void> _loadFromBackupFile() async {
     try {
       final f = _backupFile;
-      if (f == null || !await f.exists()) {
-        debugPrint('VerseStorageService: Backup file does not exist yet');
-        return;
-      }
+      if (f == null || !await f.exists()) return;
       
       final raw = await f.readAsString();
       if (raw.trim().isEmpty) return;
@@ -284,10 +225,8 @@ class VerseStorageService {
           
       _notes = notesJson.map(
           (k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
-          
-      debugPrint('VerseStorageService: Loaded ${_bookmarks.length} bookmarks from file');
     } catch (e) {
-      debugPrint('VerseStorageService: backup load failed: $e');
+      _lastError = "LoadFile: $e";
     }
   }
 
@@ -303,43 +242,25 @@ class VerseStorageService {
       };
       
       final jsonString = json.encode(map);
-      
-  /// Atomic write: Write to .tmp then rename to .json
-  static Future<void> _saveToBackupFile() async {
-    try {
-      final f = _backupFile;
-      if (f == null) return;
-      
-      final map = {
-        'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
-        'highlights': _highlights.map((k, v) => MapEntry(k, v.toJson())),
-        'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
-      };
-      
-      final jsonString = json.encode(map);
-      
       final tmpFile = File('${f.path}.tmp');
       await tmpFile.writeAsString(jsonString, flush: true);
       
       if (await tmpFile.exists() && (await tmpFile.length()) > 0) {
         if (await f.exists()) await f.delete();
         await tmpFile.rename(f.path);
-        debugPrint('VerseStorageService: Backup saved and verified (${jsonString.length} bytes)');
       } else {
-        throw Exception('Backup verification failed: tmp file empty or missing');
+        throw Exception('File verify failed');
       }
     } catch (e) {
-      debugPrint('VerseStorageService: backup save failed: $e');
+      _lastError = "SaveFile: $e";
     }
   }
 
-  /// Force a manual save to disk
   static Future<void> forceSave() async {
-    if (!_initialized) await initialize();
+    await initialize();
     await _saveToBackupFile();
   }
 
-  /// Get raw JSON content for debugging
   static Future<String> getRawBackupJson() async {
     try {
       if (_backupFile == null || !await _backupFile!.exists()) return "File not found";
@@ -352,56 +273,30 @@ class VerseStorageService {
   static Future<void> _saveBookmarks() async {
     final jsonStr = json.encode(_bookmarks.map((v) => v.toJson()).toList());
     await _saveToBackupFile();
-    
     try {
       if (_prefs != null) {
         await _prefs!.setString(_bookmarksKey, jsonStr);
         await _prefs!.setStringList('bookmarks', _bookmarks.map((v) => v.id).toList());
       }
-    } catch (e) {
-      debugPrint('VerseStorageService: bookmark prefs write failed: $e');
-    }
+    } catch (e) { _lastError = "SavePrefs: $e"; }
   }
   
   static Future<void> _saveHighlights() async {
     final jsonStr = json.encode(_highlights.map((k, v) => MapEntry(k, v.toJson())));
     await _saveToBackupFile();
-
     try {
-      if (_prefs != null) {
-        await _prefs!.setString(_highlightsKey, jsonStr);
-        for (final entry in _highlights.entries) {
-          final color = entry.value.highlightColor;
-          if (color != null) {
-            await _prefs!.setString('highlight_${entry.key}', color);
-          }
-        }
-      }
-    } catch (e) {
-      debugPrint('VerseStorageService: highlight prefs write failed: $e');
-    }
+      if (_prefs != null) await _prefs!.setString(_highlightsKey, jsonStr);
+    } catch (e) { _lastError = "SavePrefsH: $e"; }
   }
   
   static Future<void> _saveNotes() async {
     final jsonStr = json.encode(_notes.map((k, v) => MapEntry(k, v.toJson())));
     await _saveToBackupFile();
-
     try {
-      if (_prefs != null) {
-        await _prefs!.setString(_notesKey, jsonStr);
-        for (final entry in _notes.entries) {
-          final note = entry.value.note;
-          if (note != null) {
-            await _prefs!.setString('note_${entry.key}', note);
-          }
-        }
-      }
-    } catch (e) {
-      debugPrint('VerseStorageService: note prefs write failed: $e');
-    }
+      if (_prefs != null) await _prefs!.setString(_notesKey, jsonStr);
+    } catch (e) { _lastError = "SavePrefsN: $e"; }
   }
   
-  // Bookmarks
   static Future<void> addBookmark(SavedVerse verse) async {
     if (!_initialized) await initialize();
     _bookmarks.add(verse);
@@ -430,7 +325,6 @@ class VerseStorageService {
     return _bookmarks.any((v) => v.id == verseId);
   }
   
-  // Highlights
   static Future<void> addHighlight(SavedVerse verse) async {
     if (!_initialized) await initialize();
     _highlights[verse.id] = verse;
@@ -453,14 +347,7 @@ class VerseStorageService {
     return _highlights[verseId];
   }
   
-  /// Set highlight with full verse data and range
-  static Future<void> setHighlight(
-    SavedVerse verse,
-    String color, {
-    int? start,
-    int? end,
-    String? selectedText,
-  }) async {
+  static Future<void> setHighlight(SavedVerse verse, String color, {int? start, int? end, String? selectedText}) async {
     if (!_initialized) await initialize();
     _highlights[verse.id] = verse.copyWith(
       highlightColor: color,
@@ -472,7 +359,6 @@ class VerseStorageService {
     await _saveHighlights();
   }
   
-  // Notes
   static Future<void> addNote(SavedVerse verse) async {
     if (!_initialized) await initialize();
     _notes[verse.id] = verse;
@@ -490,13 +376,11 @@ class VerseStorageService {
     return _notes[verseId]?.note;
   }
   
-  /// Get all notes
   static Map<String, SavedVerse> getNotes() {
     if (!_initialized) return {};
     return Map.unmodifiable(_notes);
   }
   
-  /// Save a note with full verse data
   static Future<void> saveNote(SavedVerse verse, String noteText) async {
     if (!_initialized) await initialize();
     _notes[verse.id] = verse.copyWith(
@@ -506,7 +390,6 @@ class VerseStorageService {
     await _saveNotes();
   }
   
-  /// Clear all data
   static Future<void> clearAll() async {
     if (!_initialized) await initialize();
     _bookmarks.clear();
@@ -517,19 +400,12 @@ class VerseStorageService {
     await _saveNotes();
   }
   
-  /// Check if initialized
   static bool get isInitialized => _initialized;
   
-  /// Debug: Get bookmarks cache
   static List<SavedVerse> get bookmarksCache => List.from(_bookmarks);
-  
-  /// Debug: Get highlights cache
   static Map<String, SavedVerse> get highlightsCache => Map.from(_highlights);
-  
-  /// Debug: Get notes cache
   static Map<String, SavedVerse> get notesCache => Map.from(_notes);
   
-  /// Debug: Get storage snapshot
   static Map<String, dynamic> debugStorageSnapshot() {
     final backupPath = _backupFile?.path;
     bool backupExists = false;
@@ -550,6 +426,7 @@ class VerseStorageService {
       'bookmarksCount': _bookmarks.length,
       'highlightsCount': _highlights.length,
       'notesCount': _notes.length,
+      'lastError': _lastError,
     };
   }
 }

@@ -42,6 +42,7 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           _buildInfo('Backup Path', _snapshot['backupPath'] ?? 'N/A'),
           _buildInfo('Backup Exists', _snapshot['backupExists'].toString()),
           _buildInfo('Backup Bytes', _snapshot['backupBytes'].toString()),
+          _buildInfo('Last Error', _snapshot['lastError'] ?? 'None', color: Colors.red),
           const Divider(),
           _buildInfo('Bookmarks Count', _snapshot['bookmarksCount'].toString()),
           _buildInfo('Highlights Count', _snapshot['highlightsCount'].toString()),
@@ -65,6 +66,15 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
 
           const SizedBox(height: 24),
           _buildSection('System Actions'),
+          ElevatedButton(
+            onPressed: () async {
+              await VerseStorageService.initialize(force: true);
+              _refresh();
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
+            },
+            child: const Text('RETRY PLUGINS (RE-INIT)'),
+          ),
+          const SizedBox(height: 8),
           ElevatedButton(
             onPressed: () async {
               await VerseStorageService.forceSave();
@@ -91,15 +101,6 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
             child: const Text('View Raw Backup File'),
           ),
           const SizedBox(height: 8),
-          ElevatedButton(
-            onPressed: () async {
-              await VerseStorageService.initialize();
-              _refresh();
-              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
-            },
-            child: const Text('Reload Storage from Disk'),
-          ),
-          const SizedBox(height: 8),
           OutlinedButton(
             onPressed: () async {
               await VerseStorageService.clearAll();
@@ -121,7 +122,7 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
     );
   }
 
-  Widget _buildInfo(String label, String value) {
+  Widget _buildInfo(String label, String value, {Color? color}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -129,7 +130,7 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
         children: [
           Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(width: 16),
-          Expanded(child: Text(value, textAlign: TextAlign.end, style: const TextStyle(fontSize: 11, fontFamily: 'monospace'))),
+          Expanded(child: Text(value, textAlign: TextAlign.end, style: TextStyle(fontSize: 11, fontFamily: 'monospace', color: color))),
         ],
       ),
     );
