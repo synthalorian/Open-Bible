@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../bible/data/models/bible_book.dart';
 import '../../bible/data/repositories/bible_repository.dart' show BibleRepository;
@@ -37,7 +38,7 @@ class RecentSearch {
   
   factory RecentSearch.fromJson(Map<String, dynamic> json) => RecentSearch(
     query: json['query'] ?? '',
-    timestamp: DateTime.parse(json['timestamp']),
+    timestamp: DateTime.tryParse(json['timestamp'] ?? '') ?? DateTime.now(),
     resultCount: json['resultCount'] ?? 0,
   );
 }
@@ -50,65 +51,61 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
   }
   
   Future<void> _loadRecentSearches() async {
-    final prefs = await SharedPreferences.getInstance();
-    final jsonList = prefs.getStringList('recent_searches') ?? [];
-    
-    final searches = jsonList
-        .map((json) {
-          try {
-            return RecentSearch.fromJson(jsonDecode(json));
-          } catch (e) {
-            return null;
-          }
-        })
-        .whereType<RecentSearch>()
-        .toList();
-    
-    // Sort by timestamp, newest first
-    searches.sort((a, b) => b.timestamp.compareTo(a.timestamp));
-    
-    state = searches;
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final jsonList = prefs.getStringList('recent_searches') ?? [];
+      
+      final searches = jsonList
+          .map((json) {
+            try {
+              return RecentSearch.fromJson(jsonDecode(json));
+            } catch (e) {
+              return null;
+            }
+          })
+          .whereType<RecentSearch>()
+          .toList();
+      
+      searches.sort((a, b) => b.timestamp.compareTo(a.timestamp));
+      state = searches;
+    } catch (_) {}
   }
   
   Future<void> addSearch(String query, {int resultCount = 0}) async {
     if (query.trim().isEmpty) return;
-    
-    // Remove duplicate if exists
     final newState = state.where((s) => s.query.toLowerCase() != query.toLowerCase()).toList();
-    
-    // Add new search at the beginning
     newState.insert(0, RecentSearch(
       query: query,
       timestamp: DateTime.now(),
       resultCount: resultCount,
     ));
-    
-    // Keep only max recent searches
     if (newState.length > _maxRecentSearches) {
       newState.removeRange(_maxRecentSearches, newState.length);
     }
-    
     state = newState;
-    
-    // Save to prefs
-    final prefs = await SharedPreferences.getInstance();
-    final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
-    await prefs.setStringList('recent_searches', jsonList);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
+      await prefs.setStringList('recent_searches', jsonList);
+    } catch (_) {}
   }
   
   Future<void> removeSearch(String query) async {
     final newState = state.where((s) => s.query != query).toList();
     state = newState;
-    
-    final prefs = await SharedPreferences.getInstance();
-    final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
-    await prefs.setStringList('recent_searches', jsonList);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
+      await prefs.setStringList('recent_searches', jsonList);
+    } catch (_) {}
   }
   
   Future<void> clearAll() async {
     state = [];
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('recent_searches');
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove('recent_searches');
+    } catch (_) {}
   }
 }
 
@@ -177,8 +174,6 @@ class BibleSearchState {
   final String? error;
   final SearchFilter filter;
   final int totalResults;
-  final int currentPage;
-  final bool hasMoreResults;
   
   const BibleSearchState({
     this.isLoading = false,
@@ -187,8 +182,6 @@ class BibleSearchState {
     this.error,
     this.filter = const SearchFilter(),
     this.totalResults = 0,
-    this.currentPage = 0,
-    this.hasMoreResults = false,
   });
   
   BibleSearchState copyWith({
@@ -198,8 +191,6 @@ class BibleSearchState {
     String? error,
     SearchFilter? filter,
     int? totalResults,
-    int? currentPage,
-    bool? hasMoreResults,
     bool clearError = false,
   }) {
     return BibleSearchState(
@@ -209,8 +200,6 @@ class BibleSearchState {
       error: clearError ? null : (error ?? this.error),
       filter: filter ?? this.filter,
       totalResults: totalResults ?? this.totalResults,
-      currentPage: currentPage ?? this.currentPage,
-      hasMoreResults: hasMoreResults ?? this.hasMoreResults,
     );
   }
 }
@@ -223,19 +212,15 @@ class BibleSearchNotifier extends StateNotifier<BibleSearchState> {
   
   void updateQuery(String query) {
     state = state.copyWith(query: query);
-    
-    // Debounce search
     _debounceTimer?.cancel();
-    if (query.isNotEmpty) {
-      _debounceTimer = Timer(const Duration(milliseconds: 500), () {
-        search();
-      });
+    if (query.trim().length >= 2) {
+      _debounceTimer = Timer(const Duration(milliseconds: 600), () => search());
     }
   }
   
   Future<void> search() async {
     final query = state.query.trim();
-    if (query.isEmpty) {
+    if (query.length < 2) {
       state = state.copyWith(results: [], totalResults: 0);
       return;
     }
@@ -243,193 +228,91 @@ class BibleSearchNotifier extends StateNotifier<BibleSearchState> {
     state = state.copyWith(isLoading: true, clearError: true);
     
     try {
-      final repository = ref.read(bibleRepositoryProvider);
-      final results = await _performSearch(repository, query);
-      
-      // Add to recent searches
+      final results = await _performOptimizedSearch(query);
       await ref.read(recentSearchesProvider.notifier).addSearch(query, resultCount: results.length);
-      
-      state = state.copyWith(
-        isLoading: false,
-        results: results,
-        totalResults: results.length,
-        hasMoreResults: false,
-      );
+      state = state.copyWith(isLoading: false, results: results, totalResults: results.length);
     } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        error: 'Search failed: $e',
-      );
+      state = state.copyWith(isLoading: false, error: 'Search failed: $e');
     }
   }
   
-  Future<List<SearchResult>> _performSearch(BibleRepository repository, String query) async {
+  Future<List<SearchResult>> _performOptimizedSearch(String query) async {
     final results = <SearchResult>[];
     final lowerQuery = query.toLowerCase();
     
-    // Get selected translations or all available
-    final allTranslations = availableTranslations;
     final selectedTranslations = state.filter.selectedTranslations.isEmpty
-        ? allTranslations.map((t) => t.id).toSet()
+        ? {ref.read(selectedTranslationProvider)}
         : state.filter.selectedTranslations;
     
-    // Get all books
-    final allBooks = await repository.getBooks();
-    
-    // Filter books by testament if specified
-    var booksToSearch = allBooks;
-    if (state.filter.oldTestamentOnly) {
-      booksToSearch = allBooks.where((b) => b.testament == Testament.old).toList();
-    } else if (state.filter.newTestamentOnly) {
-      booksToSearch = allBooks.where((b) => b.testament == Testament.newTestament).toList();
-    }
-    
-    // Filter by selected books
-    if (state.filter.selectedBooks.isNotEmpty) {
-      booksToSearch = booksToSearch.where((b) => state.filter.selectedBooks.contains(b.id)).toList();
-    }
-    
-    // Search through each translation
-    for (final translationId in selectedTranslations) {
+    for (var translationId in selectedTranslations) {
+      if (translationId.isEmpty) translationId = 'kjv';
       try {
-        final translationBooks = await repository.getBooks(translationId);
-        
-        for (final book in booksToSearch) {
-          final translationBook = translationBooks.firstWhere(
-            (b) => b.id == book.id,
-            orElse: () => book,
-          );
+        final path = 'assets/bible_data/${translationId.toLowerCase()}_bible.json';
+        final jsonString = await rootBundle.loadString(path);
+        final Map<String, dynamic> bibleJson = jsonDecode(jsonString);
+        final books = bibleJson['books'] as List<dynamic>;
+        final transName = bibleJson['name'] ?? translationId.toUpperCase();
+
+        for (final book in books) {
+          final bookId = book['id']?.toString() ?? '';
+          final bookName = book['name']?.toString() ?? '';
           
-          // Search through chapters
-          for (int chapter = 1; chapter <= translationBook.chapters; chapter++) {
-            try {
-              final chapterData = await repository.getChapter(translationId, book.id, chapter);
-              
-              if (chapterData != null) {
-                // Parse verses from chapter content
-                final verses = _parseVerses(chapterData.content);
-                
-                for (final verse in verses) {
-                  if (verse['text'].toString().toLowerCase().contains(lowerQuery)) {
-                    results.add(SearchResult(
-                      verseId: '${book.id} $chapter:${verse['verse']}',
-                      bookId: book.id,
-                      bookName: book.name,
-                      chapter: chapter,
-                      verse: verse['verse'] as int,
-                      text: verse['text'],
-                      translationId: translationId,
-                      translationName: _getTranslationName(translationId),
-                      highlightedText: _highlightText(verse['text'], query),
-                    ));
-                  }
-                }
+          final isOld = _isOldTestament(bookId);
+          if (state.filter.oldTestamentOnly && !isOld) continue;
+          if (state.filter.newTestamentOnly && isOld) continue;
+          if (state.filter.selectedBooks.isNotEmpty && !state.filter.selectedBooks.contains(bookId)) continue;
+
+          final chapters = book['chapters'] as List<dynamic>? ?? [];
+          for (final chapter in chapters) {
+            final chapterNum = chapter['chapter'] as int? ?? 0;
+            final verses = chapter['verses'] as List<dynamic>? ?? [];
+            
+            for (final verse in verses) {
+              final text = verse['text']?.toString() ?? '';
+              if (text.toLowerCase().contains(lowerQuery)) {
+                results.add(SearchResult(
+                  verseId: '$bookId $chapterNum:${verse['verse']}',
+                  bookId: bookId,
+                  bookName: bookName,
+                  chapter: chapterNum,
+                  verse: verse['verse'] as int? ?? 0,
+                  text: text,
+                  translationId: translationId,
+                  translationName: transName,
+                  highlightedText: _highlightText(text, query),
+                ));
               }
-            } catch (e) {
-              // Skip chapters that fail to load
-              continue;
+              if (results.length >= 200) break;
             }
+            if (results.length >= 200) break;
           }
+          if (results.length >= 200) break;
         }
-      } catch (e) {
-        // Skip translations that fail to load
-        continue;
-      }
+      } catch (_) {}
     }
-    
-    // Sort results by relevance (exact matches first)
-    results.sort((a, b) {
-      final aExact = a.text.toLowerCase().contains(' $lowerQuery ') || 
-                     a.text.toLowerCase().startsWith('$lowerQuery ');
-      final bExact = b.text.toLowerCase().contains(' $lowerQuery ') || 
-                     b.text.toLowerCase().startsWith('$lowerQuery ');
-      
-      if (aExact && !bExact) return -1;
-      if (!aExact && bExact) return 1;
-      return 0;
-    });
-    
     return results;
   }
-  
-  List<Map<String, dynamic>> _parseVerses(String content) {
-    final verses = <Map<String, dynamic>>[];
-    final lines = content.split('\n');
-    
-    for (final line in lines) {
-      final match = RegExp(r'^(\d+)\s+(.+)$').firstMatch(line.trim());
-      if (match != null) {
-        verses.add({
-          'verse': int.parse(match.group(1)!),
-          'text': match.group(2)!,
-        });
-      }
-    }
-    
-    return verses;
+
+  bool _isOldTestament(String bookId) {
+    const otIds = ['GEN', 'EXO', 'LEV', 'NUM', 'DEU', 'JOS', 'JDG', 'RUT', '1SA', '2SA', '1KI', '2KI', '1CH', '2CH', 'EZR', 'NEH', 'EST', 'JOB', 'PSA', 'PRO', 'ECC', 'SNG', 'ISA', 'JER', 'LAM', 'EZK', 'DAN', 'HOS', 'JOL', 'AMO', 'OBA', 'JON', 'MIC', 'NAM', 'HAB', 'ZEP', 'HAG', 'ZEC', 'MAL'];
+    return otIds.contains(bookId.toUpperCase());
   }
   
   List<TextSpan> _highlightText(String text, String query) {
     final spans = <TextSpan>[];
     final lowerText = text.toLowerCase();
     final lowerQuery = query.toLowerCase();
-    
     int start = 0;
     int index = lowerText.indexOf(lowerQuery);
-    
     while (index != -1) {
-      // Add text before match
-      if (index > start) {
-        spans.add(TextSpan(text: text.substring(start, index)));
-      }
-      
-      // Add highlighted match
-      spans.add(TextSpan(
-        text: text.substring(index, index + query.length),
-        style: const TextStyle(
-          backgroundColor: Colors.yellow,
-          fontWeight: FontWeight.bold,
-        ),
-      ));
-      
+      if (index > start) spans.add(TextSpan(text: text.substring(start, index)));
+      spans.add(TextSpan(text: text.substring(index, index + query.length), style: const TextStyle(backgroundColor: Colors.yellow, fontWeight: FontWeight.bold)));
       start = index + query.length;
       index = lowerText.indexOf(lowerQuery, start);
     }
-    
-    // Add remaining text
-    if (start < text.length) {
-      spans.add(TextSpan(text: text.substring(start)));
-    }
-    
+    if (start < text.length) spans.add(TextSpan(text: text.substring(start)));
     return spans;
-  }
-  
-  String _getTranslationName(String translationId) {
-    final translations = availableTranslations;
-    final translation = translations.firstWhere(
-      (t) => t.id == translationId,
-      orElse: () => const BibleTranslation(id: '', name: 'Unknown', abbreviation: '', language: ''),
-    );
-    return translation.name;
-  }
-  
-  void updateFilter(SearchFilter filter) {
-    state = state.copyWith(filter: filter);
-    search();
-  }
-  
-  void clearResults() {
-    state = const BibleSearchState();
-  }
-  
-  @override
-  void dispose() {
-    _debounceTimer?.cancel();
-    super.dispose();
   }
 }
 
-/// Bible repository provider
-final bibleRepositoryProvider = Provider<BibleRepository>((ref) {
-  return BibleRepository();
-});
+final bibleRepositoryProvider = Provider<BibleRepository>((ref) => BibleRepository());
