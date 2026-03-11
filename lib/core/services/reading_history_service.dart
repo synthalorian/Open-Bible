@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:hive/hive.dart';
+import 'verse_storage_service.dart';
 
 /// Reading history entry
 class HistoryEntry {
@@ -36,45 +36,19 @@ class HistoryEntry {
   );
 }
 
-/// Service for tracking reading history using Hive
+/// Service for tracking reading history using unified storage
 class ReadingHistoryService {
-  static const _historyKey = 'reading_history';
   static const _maxHistoryItems = 100;
-  static const _boxName = 'reading_history_box';
-  
-  static Box<String>? _box;
-  static List<HistoryEntry>? _cache;
-  
-  static Future<void> _ensureInitialized() async {
-    _box ??= await Hive.openBox<String>(_boxName);
-  }
   
   /// Get reading history
   static Future<List<HistoryEntry>> getHistory() async {
-    if (_cache != null) return _cache!;
-    
     try {
-      await _ensureInitialized();
-      final jsonStr = _box?.get(_historyKey);
-      
-      if (jsonStr == null || jsonStr.isEmpty) {
-        _cache = [];
-        return [];
-      }
-      
-      final decoded = json.decode(jsonStr);
-      if (decoded is! List) {
-        _cache = [];
-        return [];
-      }
-      
-      _cache = decoded
+      final history = VerseStorageService.getHistory();
+      return history
           .whereType<Map>()
           .map((j) => HistoryEntry.fromJson(Map<String, dynamic>.from(j)))
           .toList();
-      return _cache!;
     } catch (_) {
-      _cache = [];
       return [];
     }
   }
@@ -99,10 +73,7 @@ class ReadingHistoryService {
         history.removeRange(_maxHistoryItems, history.length);
       }
       
-      _cache = history;
-      
-      await _ensureInitialized();
-      await _box?.put(_historyKey, json.encode(history.map((h) => h.toJson()).toList()));
+      await VerseStorageService.saveHistory(history.map((h) => h.toJson()).toList());
     } catch (e) {
       print('ReadingHistoryService: Error adding entry: $e');
     }
@@ -110,9 +81,7 @@ class ReadingHistoryService {
   
   /// Clear history
   static Future<void> clearHistory() async {
-    _cache = [];
-    await _ensureInitialized();
-    await _box?.delete(_historyKey);
+    await VerseStorageService.saveHistory([]);
   }
   
   /// Get recent history (last 7 days)
