@@ -85,16 +85,44 @@ class BibleRepository {
   /// Get a specific chapter
   Future<ChapterData?> getChapter(String translationId, String bookId, int chapter) async {
     try {
-      final String content = await rootBundle.loadString(
-        'assets/bible_data/$translationId/$bookId/$chapter.json',
+      // Load the full bible file
+      final String jsonString = await rootBundle.loadString(
+        'assets/bible_data/${translationId}_bible.json',
       );
-      final json = jsonDecode(content);
+      final Map<String, dynamic> bibleJson = jsonDecode(jsonString);
+      final books = bibleJson['books'] as List<dynamic>;
+      
+      // Find the book (case-insensitive match)
+      final bookData = books.firstWhere(
+        (b) => (b['id'] as String).toLowerCase() == bookId.toLowerCase(),
+        orElse: () => throw Exception('Book not found: $bookId'),
+      );
+      
+      // Find the chapter
+      final chapters = bookData['chapters'] as List<dynamic>;
+      final chapterData = chapters.firstWhere(
+        (c) => c['chapter'] == chapter,
+        orElse: () => throw Exception('Chapter not found: $chapter'),
+      );
+      
+      // Format verses
+      final verses = chapterData['verses'] as List<dynamic>;
+      final buffer = StringBuffer();
+      for (final verse in verses) {
+        final num = verse['verse'];
+        final text = verse['text']?.toString() ?? '';
+        if (text.isNotEmpty) {
+          buffer.writeln('$num $text');
+        }
+      }
+      
       return ChapterData(
         bookId: bookId,
         chapter: chapter,
-        content: json['content'] ?? json['text'] ?? '',
+        content: buffer.toString(),
       );
     } catch (e) {
+      print('BibleRepository: Failed to load chapter: $e');
       return null;
     }
   }

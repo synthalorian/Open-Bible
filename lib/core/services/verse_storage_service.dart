@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart';
 
 /// Saved verse model
 class SavedVerse {
@@ -102,16 +102,17 @@ class SavedVerse {
   );
 }
 
-/// Simple storage service using SharedPreferences with memory fallback
+/// Unified storage service using local file as authority
 class VerseStorageService {
   static const _bookmarksKey = 'verse_storage_bookmarks_v3';
-  static const _highlightsKey = 'verse_storage_highlights_v3';
-  static const _notesKey = 'verse_storage_notes_v3';
   
   static SharedPreferences? _prefs;
   static List<SavedVerse> _bookmarks = [];
   static Map<String, SavedVerse> _highlights = {};
   static Map<String, SavedVerse> _notes = {};
+  static Map<String, dynamic> _settings = {};
+  static List<dynamic> _history = [];
+  
   static bool _initialized = false;
   static File? _backupFile;
   static String _lastError = "None";
@@ -127,51 +128,17 @@ class VerseStorageService {
       try {
         dir = await getApplicationSupportDirectory();
       } catch (e) {
-        debugPrint('VerseStorageService: support dir failed, trying docs: $e');
-        try {
-          dir = await getApplicationDocumentsDirectory();
-        } catch (e2) {
-          debugPrint('VerseStorageService: docs dir failed: $e2');
-        }
+        dir = await getApplicationDocumentsDirectory();
       }
       
-      // Fallback to internal data directory if standard plugins fail (Android only)
-      if (dir == null && Platform.isAndroid) {
-        try {
-          dir = Directory('/data/user/0/app.openbible/files');
-          if (!await dir.exists()) {
-            await dir.create(recursive: true);
-          }
-        } catch (e3) {
-          debugPrint('VerseStorageService: hardcoded path failed: $e3');
-        }
-      }
+      _backupFile = File('${dir.path}/verse_storage_backup_v5.json');
       
-      if (dir != null) {
-        _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
-        debugPrint('VerseStorageService: Using path: ${_backupFile!.path}');
-      } else {
-        _lastError = "NoDirectoryAvailable";
-      }
-      
-      // Migration logic
-      if (_backupFile != null && !await _backupFile!.exists()) {
-        try {
-          // Attempt to find v3 in common locations
-          final paths = [
-            '/data/data/app.openbible/app_flutter/verse_storage_backup_v3.json',
-            '/data/user/0/app.openbible/app_flutter/verse_storage_backup_v3.json',
-          ];
-          for (final p in paths) {
-            final oldFile = File(p);
-            if (await oldFile.exists()) {
-              await oldFile.copy(_backupFile!.path);
-              debugPrint('VerseStorageService: Migrated old file from $p');
-              break;
-            }
-          }
-        } catch (e) {
-          debugPrint('VerseStorageService: Migration failed: $e');
+      // Migration from v4 if exists
+      if (!await _backupFile!.exists()) {
+        final v4File = File('${dir.path}/verse_storage_backup_v4.json');
+        if (await v4File.exists()) {
+          await v4File.copy(_backupFile!.path);
+          debugPrint('VerseStorageService: Migrated v4 to v5');
         }
       }
     } catch (e) {
@@ -181,64 +148,16 @@ class VerseStorageService {
     // Load from authoritative backup file
     await _loadFromBackupFile();
 
-    // Init SharedPreferences (Non-critical fallback)
+    // Init SharedPreferences (Mirror/Legacy only)
     try {
       _prefs = await SharedPreferences.getInstance();
-      final hasFileData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
-      if (!hasFileData) {
-        await _loadAllData();
-        if (_bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty) {
-          await _saveToBackupFile();
-        }
-      }
     } catch (e) {
-      _lastError = "Prefs: $e";
-      debugPrint('VerseStorageService: SharedPreferences failed (not critical): $e');
+      debugPrint('VerseStorageService: SharedPreferences unavailable');
     }
 
     _initialized = true;
   }
 
-  /// Test custom native bridge (bypasses standard plugins)
-  static Future<String> testNativeBridge() async {
-    try {
-      const channel = MethodChannel('openbible/platform');
-      final result = await channel.invokeMethod('testNativeBridge');
-      return result?.toString() ?? "Null Response";
-    } catch (e) {
-      return "Bridge Error: $e";
-    }
-  }
-
-  static Future<void> _loadAllData() async {
-    if (_prefs == null) return;
-
-    try {
-      final bookmarksJson = _prefs!.getString(_bookmarksKey);
-      if (bookmarksJson != null && bookmarksJson.trim().isNotEmpty) {
-        final List<dynamic> list = json.decode(bookmarksJson);
-        final loaded = list.map((j) => SavedVerse.fromJson(j)).toList();
-        if (loaded.isNotEmpty) _bookmarks = loaded;
-      }
-
-      final highlightsJson = _prefs!.getString(_highlightsKey);
-      if (highlightsJson != null && highlightsJson.trim().isNotEmpty) {
-        final Map<String, dynamic> map = json.decode(highlightsJson);
-        final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
-        if (loaded.isNotEmpty) _highlights = loaded;
-      }
-
-      final notesJson = _prefs!.getString(_notesKey);
-      if (notesJson != null && notesJson.trim().isNotEmpty) {
-        final Map<String, dynamic> map = json.decode(notesJson);
-        final loaded = map.map((k, v) => MapEntry(k, SavedVerse.fromJson(v)));
-        if (loaded.isNotEmpty) _notes = loaded;
-      }
-    } catch (e) {
-      _lastError = "LoadData: $e";
-    }
-  }
-  
   static Future<void> _loadFromBackupFile() async {
     try {
       final f = _backupFile;
@@ -252,7 +171,7 @@ class VerseStorageService {
       final bookmarksJson = map['bookmarks'] as List<dynamic>? ?? [];
       final highlightsJson = map['highlights'] as Map<String, dynamic>? ?? {};
       final notesJson = map['notes'] as Map<String, dynamic>? ?? {};
-
+      
       _bookmarks = bookmarksJson
           .map((j) => SavedVerse.fromJson(j as Map<String, dynamic>))
           .toList();
@@ -262,6 +181,11 @@ class VerseStorageService {
           
       _notes = notesJson.map(
           (k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
+          
+      _settings = map['settings'] as Map<String, dynamic>? ?? {};
+      _history = map['history'] as List<dynamic>? ?? [];
+      
+      debugPrint('VerseStorageService: Loaded data from file (Settings: ${_settings.length})');
     } catch (e) {
       _lastError = "LoadFile: $e";
     }
@@ -276,6 +200,8 @@ class VerseStorageService {
         'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
         'highlights': _highlights.map((k, v) => MapEntry(k, v.toJson())),
         'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
+        'settings': _settings,
+        'history': _history,
       };
       
       final jsonString = json.encode(map);
@@ -293,6 +219,107 @@ class VerseStorageService {
     }
   }
 
+  // Settings
+  static Map<String, dynamic> getSettings() => Map.from(_settings);
+  
+  static Future<void> saveSettings(Map<String, dynamic> settings) async {
+    if (!_initialized) await initialize();
+    _settings = Map.from(settings);
+    await _saveToBackupFile();
+  }
+
+  // History
+  static List<dynamic> getHistory() => List.from(_history);
+  
+  static Future<void> saveHistory(List<dynamic> history) async {
+    if (!_initialized) await initialize();
+    _history = List.from(history);
+    await _saveToBackupFile();
+  }
+
+  // Bookmarks
+  static Future<void> addBookmark(SavedVerse verse) async {
+    if (!_initialized) await initialize();
+    _bookmarks.add(verse);
+    await _saveToBackupFile();
+  }
+  
+  static Future<void> removeBookmark(String verseId) async {
+    if (!_initialized) await initialize();
+    _bookmarks.removeWhere((v) => v.id == verseId);
+    await _saveToBackupFile();
+  }
+  
+  static List<SavedVerse> getBookmarks() {
+    if (!_initialized) return [];
+    return List.unmodifiable(_bookmarks);
+  }
+  
+  static bool isBookmarked(String verseId) {
+    if (!_initialized) return false;
+    return _bookmarks.any((v) => v.id == verseId);
+  }
+  
+  // Highlights
+  static Future<void> setHighlight(SavedVerse verse, String color, {int? start, int? end, String? selectedText}) async {
+    if (!_initialized) await initialize();
+    _highlights[verse.id] = verse.copyWith(
+      highlightColor: color,
+      highlightStart: start ?? 0,
+      highlightEnd: end ?? verse.text.length,
+      highlightText: selectedText,
+      savedAt: DateTime.now(),
+    );
+    await _saveToBackupFile();
+  }
+  
+  static Future<void> removeHighlight(String verseId) async {
+    if (!_initialized) await initialize();
+    _highlights.remove(verseId);
+    await _saveToBackupFile();
+  }
+  
+  static Map<String, SavedVerse> getHighlights() {
+    if (!_initialized) return {};
+    return Map.unmodifiable(_highlights);
+  }
+  
+  // Notes
+  static Future<void> saveNote(SavedVerse verse, String noteText) async {
+    if (!_initialized) await initialize();
+    _notes[verse.id] = verse.copyWith(
+      note: noteText,
+      savedAt: DateTime.now(),
+    );
+    await _saveToBackupFile();
+  }
+  
+  static Future<void> removeNote(String verseId) async {
+    if (!_initialized) await initialize();
+    _notes.remove(verseId);
+    await _saveToBackupFile();
+  }
+  
+  static Map<String, SavedVerse> getNotes() {
+    if (!_initialized) return {};
+    return Map.unmodifiable(_notes);
+  }
+
+  static String? getNote(String verseId) {
+    if (!_initialized) return null;
+    return _notes[verseId]?.note;
+  }
+
+  static Future<void> clearAll() async {
+    if (!_initialized) await initialize();
+    _bookmarks.clear();
+    _highlights.clear();
+    _notes.clear();
+    _history.clear();
+    // Keep settings? Usually user expects settings to stay even if data is wiped.
+    await _saveToBackupFile();
+  }
+
   static Future<void> forceSave() async {
     await initialize();
     await _saveToBackupFile();
@@ -307,142 +334,16 @@ class VerseStorageService {
     }
   }
 
-  static Future<void> _saveBookmarks() async {
-    final jsonStr = json.encode(_bookmarks.map((v) => v.toJson()).toList());
-    await _saveToBackupFile();
+  static Future<String> testNativeBridge() async {
     try {
-      if (_prefs != null) {
-        await _prefs!.setString(_bookmarksKey, jsonStr);
-        await _prefs!.setStringList('bookmarks', _bookmarks.map((v) => v.id).toList());
-      }
-    } catch (e) { _lastError = "SavePrefs: $e"; }
+      const channel = MethodChannel('openbible/platform');
+      final result = await channel.invokeMethod('testNativeBridge');
+      return result?.toString() ?? "Null Response";
+    } catch (e) {
+      return "Bridge Error: $e";
+    }
   }
-  
-  static Future<void> _saveHighlights() async {
-    final jsonStr = json.encode(_highlights.map((k, v) => MapEntry(k, v.toJson())));
-    await _saveToBackupFile();
-    try {
-      if (_prefs != null) await _prefs!.setString(_highlightsKey, jsonStr);
-    } catch (e) { _lastError = "SavePrefsH: $e"; }
-  }
-  
-  static Future<void> _saveNotes() async {
-    final jsonStr = json.encode(_notes.map((k, v) => MapEntry(k, v.toJson())));
-    await _saveToBackupFile();
-    try {
-      if (_prefs != null) await _prefs!.setString(_notesKey, jsonStr);
-    } catch (e) { _lastError = "SavePrefsN: $e"; }
-  }
-  
-  static Future<void> addBookmark(SavedVerse verse) async {
-    if (!_initialized) await initialize();
-    _bookmarks.add(verse);
-    await _saveBookmarks();
-  }
-  
-  static Future<void> removeBookmark(String verseId) async {
-    if (!_initialized) await initialize();
-    _bookmarks.removeWhere((v) => v.id == verseId);
-    await _saveBookmarks();
-  }
-  
-  static Future<void> clearBookmarks() async {
-    if (!_initialized) await initialize();
-    _bookmarks.clear();
-    await _saveBookmarks();
-  }
-  
-  static List<SavedVerse> getBookmarks() {
-    if (!_initialized) return [];
-    return List.unmodifiable(_bookmarks);
-  }
-  
-  static bool isBookmarked(String verseId) {
-    if (!_initialized) return false;
-    return _bookmarks.any((v) => v.id == verseId);
-  }
-  
-  static Future<void> addHighlight(SavedVerse verse) async {
-    if (!_initialized) await initialize();
-    _highlights[verse.id] = verse;
-    await _saveHighlights();
-  }
-  
-  static Future<void> removeHighlight(String verseId) async {
-    if (!_initialized) await initialize();
-    _highlights.remove(verseId);
-    await _saveHighlights();
-  }
-  
-  static Map<String, SavedVerse> getHighlights() {
-    if (!_initialized) return {};
-    return Map.unmodifiable(_highlights);
-  }
-  
-  static SavedVerse? getHighlight(String verseId) {
-    if (!_initialized) return null;
-    return _highlights[verseId];
-  }
-  
-  static Future<void> setHighlight(SavedVerse verse, String color, {int? start, int? end, String? selectedText}) async {
-    if (!_initialized) await initialize();
-    _highlights[verse.id] = verse.copyWith(
-      highlightColor: color,
-      highlightStart: start ?? 0,
-      highlightEnd: end ?? verse.text.length,
-      highlightText: selectedText,
-      savedAt: DateTime.now(),
-    );
-    await _saveHighlights();
-  }
-  
-  static Future<void> addNote(SavedVerse verse) async {
-    if (!_initialized) await initialize();
-    _notes[verse.id] = verse;
-    await _saveNotes();
-  }
-  
-  static Future<void> removeNote(String verseId) async {
-    if (!_initialized) await initialize();
-    _notes.remove(verseId);
-    await _saveNotes();
-  }
-  
-  static String? getNote(String verseId) {
-    if (!_initialized) return null;
-    return _notes[verseId]?.note;
-  }
-  
-  static Map<String, SavedVerse> getNotes() {
-    if (!_initialized) return {};
-    return Map.unmodifiable(_notes);
-  }
-  
-  static Future<void> saveNote(SavedVerse verse, String noteText) async {
-    if (!_initialized) await initialize();
-    _notes[verse.id] = verse.copyWith(
-      note: noteText,
-      savedAt: DateTime.now(),
-    );
-    await _saveNotes();
-  }
-  
-  static Future<void> clearAll() async {
-    if (!_initialized) await initialize();
-    _bookmarks.clear();
-    _highlights.clear();
-    _notes.clear();
-    await _saveBookmarks();
-    await _saveHighlights();
-    await _saveNotes();
-  }
-  
-  static bool get isInitialized => _initialized;
-  
-  static List<SavedVerse> get bookmarksCache => List.from(_bookmarks);
-  static Map<String, SavedVerse> get highlightsCache => Map.from(_highlights);
-  static Map<String, SavedVerse> get notesCache => Map.from(_notes);
-  
+
   static Map<String, dynamic> debugStorageSnapshot() {
     final backupPath = _backupFile?.path;
     bool backupExists = false;
@@ -463,12 +364,15 @@ class VerseStorageService {
       'bookmarksCount': _bookmarks.length,
       'highlightsCount': _highlights.length,
       'notesCount': _notes.length,
+      'settingsCount': _settings.length,
+      'historyCount': _history.length,
       'lastError': _lastError,
     };
   }
+  
+  static bool get isInitialized => _initialized;
 }
 
-/// Highlight color utilities
 class HighlightColors {
   static const String yellow = 'yellow';
   static const String green = 'green';
@@ -476,9 +380,7 @@ class HighlightColors {
   static const String pink = 'pink';
   static const String orange = 'orange';
   static const String purple = 'purple';
-  
   static const List<String> all = [yellow, green, blue, pink, orange, purple];
-  
   static int getColorValue(String colorName) {
     switch (colorName) {
       case yellow: return 0xFFFFEB3B;
