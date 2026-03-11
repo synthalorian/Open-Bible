@@ -23,6 +23,7 @@ import 'features/genealogy/presentation/pages/enhanced_genealogy_page.dart';
 import 'features/illustrations/presentation/pages/illustrations_gallery_page.dart';
 import 'features/settings/presentation/pages/settings_page.dart';
 import 'features/history/presentation/pages/history_page.dart';
+import 'debug_storage_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
