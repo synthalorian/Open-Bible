@@ -1,22 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
-/// Bible book model
 class BibleBook {
   final String id;
   final String name;
   final String abbreviation;
   final int chapters;
   final Testament testament;
-  
-  const BibleBook({
-    required this.id,
-    required this.name,
-    required this.abbreviation,
-    required this.chapters,
-    required this.testament,
-  });
-  
+  const BibleBook({required this.id, required this.name, required this.abbreviation, required this.chapters, required this.testament});
   factory BibleBook.fromJson(Map<String, dynamic> json) => BibleBook(
     id: json['id'] ?? '',
     name: json['name'] ?? '',
@@ -24,113 +15,67 @@ class BibleBook {
     chapters: json['chapters'] ?? 0,
     testament: _parseTestament(json['testament']),
   );
-  
   static Testament _parseTestament(String? value) {
-    switch (value?.toLowerCase()) {
-      case 'old':
-        return Testament.old;
-      case 'new':
-      case 'new_testament':
-        return Testament.newTestament;
-      default:
-        return Testament.old;
-    }
+    if (value?.toLowerCase() == 'new' || value?.toLowerCase() == 'new_testament') return Testament.newTestament;
+    return Testament.old;
   }
 }
 
 enum Testament { old, newTestament }
 
-/// Chapter data model
 class ChapterData {
   final String bookId;
   final int chapter;
   final String content;
-  
-  const ChapterData({
-    required this.bookId,
-    required this.chapter,
-    required this.content,
-  });
+  const ChapterData({required this.bookId, required this.chapter, required this.content});
 }
 
-/// Bible repository for loading Bible data
 class BibleRepository {
   static final BibleRepository _instance = BibleRepository._internal();
   factory BibleRepository() => _instance;
   BibleRepository._internal();
-  
-  // Cache for books
   final Map<String, List<BibleBook>> _booksCache = {};
-  
-  /// Get books for a translation
+
   Future<List<BibleBook>> getBooks([String translationId = 'kjv']) async {
-    if (_booksCache.containsKey(translationId)) {
-      return _booksCache[translationId]!;
-    }
-    
-    try {
-      final String jsonString = await rootBundle.loadString(
-        'assets/bible_data/$translationId/books.json',
-      );
-      final List<dynamic> jsonList = jsonDecode(jsonString);
-      final books = jsonList.map((json) => BibleBook.fromJson(json)).toList();
-      _booksCache[translationId] = books;
-      return books;
-    } catch (e) {
-      // Fallback to built-in book list
-      return _getDefaultBooks();
-    }
+    if (_booksCache.containsKey(translationId)) return _booksCache[translationId]!;
+    return _getDefaultBooks();
   }
-  
-  /// Get a specific chapter
+
   Future<ChapterData?> getChapter(String translationId, String bookId, int chapter) async {
     try {
-      // Load the full bible file
-      final String jsonString = await rootBundle.loadString(
-        'assets/bible_data/${translationId}_bible.json',
-      );
+      final String jsonString = await rootBundle.loadString('assets/bible_data/${translationId.toLowerCase()}_bible.json');
       final Map<String, dynamic> bibleJson = jsonDecode(jsonString);
       final books = bibleJson['books'] as List<dynamic>;
       
-      // Find the book (case-insensitive match)
+      final normId = bookId.toUpperCase();
       final bookData = books.firstWhere(
-        (b) => (b['id'] as String).toLowerCase() == bookId.toLowerCase(),
-        orElse: () => throw Exception('Book not found: $bookId'),
+        (b) {
+          final bId = (b['id'] as String).toUpperCase();
+          final bName = (b['name'] as String).toUpperCase().replaceAll(' ', '');
+          return bId == normId || bName == normId || bId.startsWith(normId) || normId.startsWith(bId);
+        },
+        orElse: () => throw Exception('Book $bookId not found'),
       );
       
-      // Find the chapter
       final chapters = bookData['chapters'] as List<dynamic>;
-      final chapterData = chapters.firstWhere(
-        (c) => c['chapter'] == chapter,
-        orElse: () => throw Exception('Chapter not found: $chapter'),
-      );
+      final chapterData = chapters.firstWhere((c) => c['chapter'] == chapter, orElse: () => throw Exception('Chapter $chapter not found'));
       
-      // Format verses
       final verses = chapterData['verses'] as List<dynamic>;
       final buffer = StringBuffer();
-      for (final verse in verses) {
-        final num = verse['verse'];
-        final text = verse['text']?.toString() ?? '';
-        if (text.isNotEmpty) {
-          buffer.writeln('$num $text');
-        }
+      for (final v in verses) {
+        final num = v['verse'];
+        final text = v['text']?.toString() ?? '';
+        if (text.isNotEmpty) buffer.writeln('$num $text');
       }
-      
-      return ChapterData(
-        bookId: bookId,
-        chapter: chapter,
-        content: buffer.toString(),
-      );
+      return ChapterData(bookId: bookId, chapter: chapter, content: buffer.toString());
     } catch (e) {
-      print('BibleRepository: Failed to load chapter: $e');
+      print('BibleRepository Error: $e');
       return null;
     }
   }
-  
-  /// Get default book list
+
   List<BibleBook> _getDefaultBooks() {
     return const [
-      // Old Testament
       BibleBook(id: 'GEN', name: 'Genesis', abbreviation: 'Gen', chapters: 50, testament: Testament.old),
       BibleBook(id: 'EXO', name: 'Exodus', abbreviation: 'Exo', chapters: 40, testament: Testament.old),
       BibleBook(id: 'LEV', name: 'Leviticus', abbreviation: 'Lev', chapters: 27, testament: Testament.old),
@@ -170,7 +115,6 @@ class BibleRepository {
       BibleBook(id: 'HAG', name: 'Haggai', abbreviation: 'Hag', chapters: 2, testament: Testament.old),
       BibleBook(id: 'ZEC', name: 'Zechariah', abbreviation: 'Zec', chapters: 14, testament: Testament.old),
       BibleBook(id: 'MAL', name: 'Malachi', abbreviation: 'Mal', chapters: 4, testament: Testament.old),
-      // New Testament
       BibleBook(id: 'MAT', name: 'Matthew', abbreviation: 'Mat', chapters: 28, testament: Testament.newTestament),
       BibleBook(id: 'MRK', name: 'Mark', abbreviation: 'Mar', chapters: 16, testament: Testament.newTestament),
       BibleBook(id: 'LUK', name: 'Luke', abbreviation: 'Luk', chapters: 24, testament: Testament.newTestament),
