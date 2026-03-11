@@ -5,19 +5,11 @@ import android.net.Uri
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugins.GeneratedPluginRegistrant
 
 class MainActivity: FlutterActivity() {
     private val channelName = "openbible/platform"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
-        // Manually ensure plugins are registered first
-        try {
-            GeneratedPluginRegistrant.registerWith(flutterEngine)
-        } catch (e: Exception) {
-            // Log or ignore
-        }
-        
         super.configureFlutterEngine(flutterEngine)
 
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
