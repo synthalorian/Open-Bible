@@ -131,14 +131,19 @@ class VerseStorageService {
         try {
           dir = await getApplicationDocumentsDirectory();
         } catch (e2) {
-          debugPrint('VerseStorageService: docs dir failed, trying hardcoded: $e2');
-          // Last resort: Hardcoded Android internal path if plugins fail
-          if (Platform.isAndroid) {
-            dir = Directory('/data/data/app.openbible/files');
-            if (!await dir.exists()) {
-              await dir.create(recursive: true);
-            }
+          debugPrint('VerseStorageService: docs dir failed: $e2');
+        }
+      }
+      
+      // Fallback to internal data directory if standard plugins fail (Android only)
+      if (dir == null && Platform.isAndroid) {
+        try {
+          dir = Directory('/data/user/0/app.openbible/files');
+          if (!await dir.exists()) {
+            await dir.create(recursive: true);
           }
+        } catch (e3) {
+          debugPrint('VerseStorageService: hardcoded path failed: $e3');
         }
       }
       

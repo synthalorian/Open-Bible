@@ -34,9 +34,13 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   
-  // Initialize services
-  await FootnoteService().initialize();
-  await VerseStorageService.initialize();
+  // Initialize services with global safety wrapper
+  try {
+    await FootnoteService().initialize();
+    await VerseStorageService.initialize();
+  } catch (e) {
+    debugPrint('Service Init Error: $e');
+  }
   
   runApp(
     const ProviderScope(
