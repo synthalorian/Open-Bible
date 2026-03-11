@@ -295,11 +295,6 @@ class VerseStorageService {
     return _highlights[verseId];
   }
   
-  static SavedVerse? getHighlight(String verseId) {
-    if (!_initialized) return null;
-    return _highlights[verseId];
-  }
-  
   // Notes
   static Future<void> saveNote(SavedVerse verse, String noteText) async {
     if (!_initialized) await initialize();
