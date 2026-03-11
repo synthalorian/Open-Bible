@@ -24,6 +24,7 @@ import 'features/illustrations/presentation/pages/illustrations_gallery_page.dar
 import 'features/settings/presentation/pages/settings_page.dart';
 import 'features/history/presentation/pages/history_page.dart';
 import 'features/search/presentation/pages/search_page.dart' as search_feature;
+import 'core/services/reading_history_service.dart';
 import 'debug_storage_page.dart';
 
 void main() async {
@@ -377,6 +378,16 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     setState(() {
       _currentChapterIndex = index;
     });
+    
+    // Save to history
+    final chapter = widget.book.chapters[index];
+    ReadingHistoryService.addEntry(HistoryEntry(
+      bookId: widget.book.id,
+      bookName: widget.book.name,
+      chapter: chapter.chapter,
+      bibleId: 'kjv',
+      readAt: DateTime.now(),
+    ));
   }
 
   @override
