@@ -37,6 +37,15 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
         padding: const EdgeInsets.all(16),
         children: [
           _buildSection('Persistence Diagnostics'),
+          ElevatedButton(
+            onPressed: () async {
+              final result = await VerseStorageService.testNativeBridge();
+              if (!mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
+            },
+            child: const Text('TEST CUSTOM NATIVE BRIDGE'),
+          ),
+          const SizedBox(height: 12),
           _buildInfo('Initialized', _snapshot['initialized'].toString()),
           _buildInfo('Has Prefs', _snapshot['hasPrefs'].toString()),
           _buildInfo('Backup Path', _snapshot['backupPath'] ?? 'N/A'),
