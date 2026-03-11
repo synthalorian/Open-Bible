@@ -43,6 +43,7 @@ class ReadingHistoryService {
   /// Get reading history
   static Future<List<HistoryEntry>> getHistory() async {
     try {
+      await VerseStorageService.initialize();
       final history = VerseStorageService.getHistory();
       return history
           .whereType<Map>()
@@ -56,6 +57,7 @@ class ReadingHistoryService {
   /// Add entry to history
   static Future<void> addEntry(HistoryEntry entry) async {
     try {
+      await VerseStorageService.initialize();
       final history = await getHistory();
       
       // Remove duplicate if exists
@@ -81,6 +83,7 @@ class ReadingHistoryService {
   
   /// Clear history
   static Future<void> clearHistory() async {
+    await VerseStorageService.initialize();
     await VerseStorageService.saveHistory([]);
   }
   

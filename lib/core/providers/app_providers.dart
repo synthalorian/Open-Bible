@@ -25,52 +25,27 @@ class BookmarksNotifier extends StateNotifier<List<String>> {
   BookmarksNotifier() : super([]);
 
   Future<void> init() async {
-    final prefs = await SharedPreferences.getInstance();
-    final legacy = prefs.getStringList('bookmarks') ?? [];
-
     await VerseStorageService.initialize();
     final storageIds = VerseStorageService.getBookmarks().map((b) => b.id).toList();
-
-    final merged = <String>{...legacy, ...storageIds}.toList();
-    state = merged;
+    state = storageIds;
   }
 
-  Future<void> addBookmark(String verse) async {
-    final newBookmarks = List.of(state);
-    if (!newBookmarks.contains(verse)) {
-      newBookmarks.add(verse);
-    }
-    state = newBookmarks;
-
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setStringList('bookmarks', newBookmarks);
-    } catch (_) {
-      // Keep in-memory state even if plugin persistence fails.
+  Future<void> addBookmark(String verseId) async {
+    if (!state.contains(verseId)) {
+      state = [...state, verseId];
     }
   }
 
-  Future<void> removeBookmark(String verse) async {
-    final newBookmarks = List.of(state);
-    newBookmarks.remove(verse);
-    state = newBookmarks;
-
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setStringList('bookmarks', newBookmarks);
-    } catch (_) {
-      // Keep in-memory state even if plugin persistence fails.
-    }
+  Future<void> removeBookmark(String verseId) async {
+    state = state.where((id) => id != verseId).toList();
   }
 
   Future<void> clearBookmarks() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('bookmarks', []);
     state = [];
   }
   
-  bool isBookmarked(String verse) {
-    return state.contains(verse);
+  bool isBookmarked(String verseId) {
+    return state.contains(verseId);
   }
 }
 
@@ -93,31 +68,20 @@ class BibleTranslation {
 }
 
 final availableTranslations = [
-  // Primary English Translations
   const BibleTranslation(id: 'kjv', name: 'King James Version', abbreviation: 'KJV', language: 'English'),
   const BibleTranslation(id: 'akjv', name: 'American King James Version', abbreviation: 'AKJV', language: 'English'),
   const BibleTranslation(id: 'asv', name: 'American Standard Version', abbreviation: 'ASV', language: 'English'),
   const BibleTranslation(id: 'web', name: 'World English Bible', abbreviation: 'WEB', language: 'English'),
   const BibleTranslation(id: 'leb', name: 'Lexham English Bible', abbreviation: 'LEB', language: 'English'),
-  
-  // Catholic Translations
   const BibleTranslation(id: 'drc', name: 'Douay-Rheims Challoner', abbreviation: 'DRC', language: 'English'),
-  
-  // Modern Translations
   const BibleTranslation(id: 'net', name: 'New English Translation', abbreviation: 'NET', language: 'English'),
   const BibleTranslation(id: 'bbe', name: 'Bible in Basic English', abbreviation: 'BBE', language: 'English'),
-  
-  // Literal Translations
   const BibleTranslation(id: 'litv', name: 'Literal Translation', abbreviation: 'LITV', language: 'English'),
   const BibleTranslation(id: 'ylt', name: 'Young\'s Literal Translation', abbreviation: 'YLT', language: 'English'),
   const BibleTranslation(id: 'darby', name: 'Darby Translation', abbreviation: 'DARBY', language: 'English'),
-  
-  // Historical Translations
   const BibleTranslation(id: 'tyndale', name: 'Tyndale Bible', abbreviation: 'TYN', language: 'English'),
   const BibleTranslation(id: 'wycliffe', name: 'Wycliffe Bible', abbreviation: 'WYC', language: 'English'),
   const BibleTranslation(id: 'gen', name: 'Geneva Bible', abbreviation: 'GEN', language: 'English'),
-  
-  // Other Translations
   const BibleTranslation(id: 'montgomery', name: 'Montgomery New Testament', abbreviation: 'MONT', language: 'English'),
   const BibleTranslation(id: 'murdock', name: 'Murdock Translation', abbreviation: 'MUR', language: 'English'),
   const BibleTranslation(id: 'rotherham', name: 'Rotherham Emphasized Bible', abbreviation: 'RTH', language: 'English'),
@@ -134,7 +98,6 @@ enum ReadingMode { day, night, sepia, amoled }
 class DailyVerseTime {
   final int hour;
   final int minute;
-
   const DailyVerseTime({required this.hour, required this.minute});
 }
 
@@ -189,10 +152,6 @@ class AppSettings {
       lineHeight: lineHeight ?? this.lineHeight,
     );
   }
-
-  void setFontSize(int size) {
-    // compatibility shim
-  }
 }
 
 /// Highlights provider
@@ -202,117 +161,75 @@ class HighlightsNotifier extends StateNotifier<Map<String, String>> {
   HighlightsNotifier() : super({});
 
   Future<void> init() async {
-    final prefs = await SharedPreferences.getInstance();
-    final keys = prefs.getKeys().where((k) => k.startsWith('highlight_'));
-    final highlights = <String, String>{};
-    for (final key in keys) {
-      final verseId = key.replaceFirst('highlight_', '');
-      final color = prefs.getString(key);
-      if (color != null) {
-        highlights[verseId] = color;
-      }
-    }
-
     await VerseStorageService.initialize();
     final storageHighlights = VerseStorageService.getHighlights();
+    final highlights = <String, String>{};
     for (final entry in storageHighlights.entries) {
-      final color = entry.value.highlightColor;
-      if (color != null && color.isNotEmpty) {
-        highlights[entry.key] = color;
+      if (entry.value.highlightColor != null) {
+        highlights[entry.key] = entry.value.highlightColor!;
       }
     }
-
     state = highlights;
   }
 
   Future<void> addHighlight(String verseId, String color) async {
     state = {...state, verseId: color};
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('highlight_$verseId', color);
-    } catch (_) {
-      // Keep in-memory state even if plugin persistence fails.
-    }
   }
 
   Future<void> removeHighlight(String verseId) async {
     final newState = Map<String, String>.from(state);
     newState.remove(verseId);
     state = newState;
-
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.remove('highlight_$verseId');
-    } catch (_) {
-      // Keep in-memory state even if plugin persistence fails.
-    }
-  }
-
-  String? getHighlight(String verseId) {
-    return state[verseId];
   }
 }
 
 /// Notes provider
 final notesProvider = StateNotifierProvider<NotesNotifier, Map<String, String>>((ref) => NotesNotifier());
 
-/// Footnote service provider
-final footnoteServiceProvider = Provider<FootnoteService>((ref) => FootnoteService());
+class NotesNotifier extends StateNotifier<Map<String, String>> {
+  NotesNotifier() : super({});
 
-/// Translation info class
-class TranslationInfo {
-  final String id;
-  final String name;
-  
-  const TranslationInfo({required this.id, required this.name});
-}
+  Future<void> init() async {
+    await VerseStorageService.initialize();
+    final storageNotes = VerseStorageService.getNotes();
+    final notes = <String, String>{};
+    for (final entry in storageNotes.entries) {
+      if (entry.value.note != null) {
+        notes[entry.key] = entry.value.note!;
+      }
+    }
+    state = notes;
+  }
 
-/// Bible data class
-class BibleData {
-  final TranslationInfo? selectedTranslation;
-  
-  BibleData({TranslationInfo? selectedTranslation}) 
-      : selectedTranslation = selectedTranslation ?? const TranslationInfo(id: 'kjv', name: 'King James Version');
-  
-  BibleData copyWith({TranslationInfo? selectedTranslation}) {
-    return BibleData(selectedTranslation: selectedTranslation ?? this.selectedTranslation);
+  Future<void> addNote(String verseId, String note) async {
+    state = {...state, verseId: note};
+  }
+
+  Future<void> removeNote(String verseId) async {
+    final newState = Map<String, String>.from(state);
+    newState.remove(verseId);
+    state = newState;
   }
 }
 
-/// Bible data provider - now with proper StateNotifier
-final bibleDataProvider = StateNotifierProvider<BibleDataNotifier, BibleData>(
-  (ref) => BibleDataNotifier(),
-);
+/// Bible data provider
+class BibleData {
+  final String translationId;
+  BibleData({this.translationId = 'kjv'});
+}
 
-/// Bible data notifier with translation management
+final bibleDataProvider = StateNotifierProvider<BibleDataNotifier, BibleData>((ref) => BibleDataNotifier());
+
 class BibleDataNotifier extends StateNotifier<BibleData> {
   BibleDataNotifier() : super(BibleData());
-
-  void selectTranslation(String translationId) {
-    final translation = availableTranslations.firstWhere(
-      (t) => t.id == translationId,
-      orElse: () => availableTranslations.first,
-    );
-    
-    state = state.copyWith(
-      selectedTranslation: TranslationInfo(
-        id: translation.id,
-        name: translation.name,
-      ),
-    );
-    
-    // Sync with global CurrentBible
-    CurrentBible.set(translationId);
+  void selectTranslation(String id) {
+    state = BibleData(translationId: id);
+    CurrentBible.set(id);
   }
 }
 
-/// Popular translations list
 class PopularTranslations {
-  static const List<String> list = ['kjv', 'asv', 'web', 'net'];
-  
-  static String getOfflineId(String translationId) {
-    return translationId; // Same ID for now
-  }
+  static String getOfflineId(String id) => id;
 }
 
 /// Reading position class
@@ -320,49 +237,27 @@ class ReadingPositionData {
   final String bookId;
   final int chapter;
   final int verse;
-  
-  ReadingPositionData({required this.bookId, required this.chapter, this.verse = 1});
-  
-  Map<String, dynamic> toJson() => {'bookId': bookId, 'chapter': chapter, 'verse': verse};
-  factory ReadingPositionData.fromJson(Map<String, dynamic> json) => ReadingPositionData(
-    bookId: json['bookId'] ?? 'GEN',
-    chapter: json['chapter'] ?? 1,
-    verse: json['verse'] ?? 1,
-  );
-  
+  ReadingPositionData({this.bookId = 'GEN', this.chapter = 1, this.verse = 1});
   ReadingPositionData copyWith({String? bookId, int? chapter, int? verse}) {
-    return ReadingPositionData(
-      bookId: bookId ?? this.bookId,
-      chapter: chapter ?? this.chapter,
-      verse: verse ?? this.verse,
-    );
-  }
-  
-  void updatePosition({String? bookId, int? chapter, int? verse}) {
-    // Method for compatibility - actual updates use copyWith
+    return ReadingPositionData(bookId: bookId ?? this.bookId, chapter: chapter ?? this.chapter, verse: verse ?? this.verse);
   }
 }
 
-/// Reading position notifier
+final readingPositionProvider = StateNotifierProvider<ReadingPositionNotifier, ReadingPositionData>((ref) => ReadingPositionNotifier());
+
 class ReadingPositionNotifier extends StateNotifier<ReadingPositionData> {
-  ReadingPositionNotifier() : super(ReadingPositionData(bookId: 'GEN', chapter: 1));
-
+  ReadingPositionNotifier() : super(ReadingPositionData());
   void updatePosition(ReadingPosition position) {
-    state = state.copyWith(
-      bookId: position.bookId,
-      chapter: position.chapter,
-      verse: position.verse,
-    );
+    state = state.copyWith(bookId: position.bookId, chapter: position.chapter, verse: position.verse);
   }
 }
 
-/// Reading position provider
-final readingPositionProvider = StateNotifierProvider<ReadingPositionNotifier, ReadingPositionData>(
-  (ref) => ReadingPositionNotifier(),
-);
+/// Settings provider - FIX: Remove async constructor load race condition
+final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>((ref) => SettingsNotifier());
 
-/// Settings notifier
 class SettingsNotifier extends StateNotifier<AppSettings> {
+  bool _isLoaded = false;
+
   SettingsNotifier() : super(const AppSettings()) {
     _load();
   }
@@ -371,6 +266,10 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     try {
       await VerseStorageService.initialize();
       final settings = VerseStorageService.getSettings();
+      if (settings.isEmpty) {
+        _isLoaded = true;
+        return;
+      }
       
       final modeIndex = settings['readingMode'] as int? ?? ReadingMode.day.index;
       state = state.copyWith(
@@ -378,17 +277,19 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
         readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
         notificationsEnabled: settings['notificationsEnabled'] as bool? ?? state.notificationsEnabled,
         dailyVerseNotifications: settings['dailyVerseNotifications'] as bool? ?? state.dailyVerseNotifications,
-        dailyVerseTime: DailyVerseTime(
-          hour: settings['dailyVerseHour'] as int? ?? state.dailyVerseTime.hour,
-          minute: settings['dailyVerseMinute'] as int? ?? state.dailyVerseTime.minute,
-        ),
+        dailyVerseHour: settings['dailyVerseHour'] as int? ?? state.dailyVerseTime.hour,
+        dailyVerseMinute: settings['dailyVerseMinute'] as int? ?? state.dailyVerseTime.minute,
         audioEnabled: settings['audioEnabled'] as bool? ?? state.audioEnabled,
         isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
       );
-    } catch (_) {}
+      _isLoaded = true;
+    } catch (_) {
+      _isLoaded = true;
+    }
   }
 
   Future<void> _save() async {
+    if (!_isLoaded) return; // Prevent overwriting with defaults during load
     try {
       final settings = {
         'fontSize': state.fontSize,
@@ -416,109 +317,18 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     _save();
   }
 
-  Future<void> toggleNotifications() async {
-    state = state.copyWith(notificationsEnabled: !state.notificationsEnabled);
-    await _save();
-  }
-
-  Future<void> setDailyVerseNotifications(bool enabled) async {
-    state = state.copyWith(dailyVerseNotifications: enabled);
-    await _save();
-  }
-
-  Future<void> setDailyVerseTime(DailyVerseTime time) async {
-    state = state.copyWith(dailyVerseTime: time);
-    await _save();
-  }
-
-  Future<void> setAudioEnabled(bool enabled) async {
+  void setAudioEnabled(bool enabled) {
     state = state.copyWith(audioEnabled: enabled);
-    await _save();
+    _save();
   }
 }
 
-/// Settings provider
-final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>(
-  (ref) => SettingsNotifier(),
-);
-
-/// Storage service provider - uses StorageService from storage_service.dart
 final storageServiceProvider = Provider<StorageService>((ref) => StorageService.instance);
+final bibleDownloadManagerProvider = ChangeNotifierProvider<BibleDownloadManager>((ref) => BibleDownloadManager()..init());
 
-/// Bible download manager provider
-final bibleDownloadManagerProvider = ChangeNotifierProvider<BibleDownloadManager>((ref) {
-  final manager = BibleDownloadManager();
-  manager.init();
-  return manager;
-});
-
-/// ReadingPosition alias for compatibility
 class ReadingPosition {
   final String bookId;
   final int chapter;
   final int verse;
-  
   ReadingPosition({required this.bookId, required this.chapter, this.verse = 1});
-  
-  Map<String, dynamic> toJson() => {'bookId': bookId, 'chapter': chapter, 'verse': verse};
-  factory ReadingPosition.fromJson(Map<String, dynamic> json) => ReadingPosition(
-    bookId: json['bookId'] ?? 'GEN',
-    chapter: json['chapter'] ?? 1,
-    verse: json['verse'] ?? 1,
-  );
-}
-
-class NotesNotifier extends StateNotifier<Map<String, String>> {
-  NotesNotifier() : super({});
-
-  Future<void> init() async {
-    final prefs = await SharedPreferences.getInstance();
-    final keys = prefs.getKeys().where((k) => k.startsWith('note_'));
-    final notes = <String, String>{};
-    for (final key in keys) {
-      final verseId = key.replaceFirst('note_', '');
-      final note = prefs.getString(key);
-      if (note != null) {
-        notes[verseId] = note;
-      }
-    }
-
-    await VerseStorageService.initialize();
-    final storageNotes = VerseStorageService.getNotes();
-    for (final entry in storageNotes.entries) {
-      final note = entry.value.note;
-      if (note != null && note.isNotEmpty) {
-        notes[entry.key] = note;
-      }
-    }
-
-    state = notes;
-  }
-
-  Future<void> addNote(String verseId, String note) async {
-    state = {...state, verseId: note};
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('note_$verseId', note);
-    } catch (_) {
-      // Keep in-memory state even if plugin persistence fails.
-    }
-  }
-
-  Future<void> removeNote(String verseId) async {
-    final newState = Map<String, String>.from(state);
-    newState.remove(verseId);
-    state = newState;
-
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.remove('note_$verseId');
-    } catch (_) {
-      // Keep in-memory state even if plugin persistence fails.
-    }
-  }
-
-  String? getNote(String verseId) {
-    return state[verseId];
-  }
 }
