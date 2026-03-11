@@ -369,32 +369,37 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
 
   Future<void> _load() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final modeIndex = prefs.getInt('settings_readingMode') ?? ReadingMode.day.index;
+      await VerseStorageService.initialize();
+      final settings = VerseStorageService.getSettings();
+      
+      final modeIndex = settings['readingMode'] as int? ?? ReadingMode.day.index;
       state = state.copyWith(
-        fontSize: prefs.getInt('settings_fontSize') ?? state.fontSize,
+        fontSize: settings['fontSize'] as int? ?? state.fontSize,
         readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
-        notificationsEnabled: prefs.getBool('settings_notificationsEnabled') ?? state.notificationsEnabled,
-        dailyVerseNotifications: prefs.getBool('settings_dailyVerseNotifications') ?? state.dailyVerseNotifications,
+        notificationsEnabled: settings['notificationsEnabled'] as bool? ?? state.notificationsEnabled,
+        dailyVerseNotifications: settings['dailyVerseNotifications'] as bool? ?? state.dailyVerseNotifications,
         dailyVerseTime: DailyVerseTime(
-          hour: prefs.getInt('settings_dailyVerseHour') ?? state.dailyVerseTime.hour,
-          minute: prefs.getInt('settings_dailyVerseMinute') ?? state.dailyVerseTime.minute,
+          hour: settings['dailyVerseHour'] as int? ?? state.dailyVerseTime.hour,
+          minute: settings['dailyVerseMinute'] as int? ?? state.dailyVerseTime.minute,
         ),
-        audioEnabled: prefs.getBool('settings_audioEnabled') ?? state.audioEnabled,
+        audioEnabled: settings['audioEnabled'] as bool? ?? state.audioEnabled,
+        isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
       );
     } catch (_) {}
   }
 
   Future<void> _save() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setInt('settings_fontSize', state.fontSize);
-      await prefs.setInt('settings_readingMode', state.readingMode.index);
-      await prefs.setBool('settings_notificationsEnabled', state.notificationsEnabled);
-      await prefs.setBool('settings_dailyVerseNotifications', state.dailyVerseNotifications);
-      await prefs.setInt('settings_dailyVerseHour', state.dailyVerseTime.hour);
-      await prefs.setInt('settings_dailyVerseMinute', state.dailyVerseTime.minute);
-      await prefs.setBool('settings_audioEnabled', state.audioEnabled);
+      final settings = {
+        'fontSize': state.fontSize,
+        'readingMode': state.readingMode.index,
+        'notificationsEnabled': state.notificationsEnabled,
+        'dailyVerseNotifications': state.dailyVerseNotifications,
+        'dailyVerseHour': state.dailyVerseTime.hour,
+        'dailyVerseMinute': state.dailyVerseTime.minute,
+        'audioEnabled': state.audioEnabled,
+      };
+      await VerseStorageService.saveSettings(settings);
     } catch (_) {}
   }
 
