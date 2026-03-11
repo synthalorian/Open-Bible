@@ -100,9 +100,16 @@ class BibleAudioService {
 
     _isPlaying = true;
     try {
+      // Use a shorter timeout for the stop/speak transition
       await _tts.stop();
-      await Future.delayed(const Duration(milliseconds: 100));
-      await _tts.speak(text);
+      
+      // Fire and forget the speak call to avoid hanging the UI if the engine is busy
+      _tts.speak(text).then((result) {
+        debugPrint('AUDIO_SERVICE: speak background result=$result');
+      }).catchError((e) {
+        debugPrint('AUDIO_SERVICE: speak background error=$e');
+      });
+      
       return true;
     } catch (e) {
       debugPrint('AUDIO_SERVICE: speak failed: $e');
