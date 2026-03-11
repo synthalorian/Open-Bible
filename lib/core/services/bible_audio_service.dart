@@ -81,45 +81,32 @@ class BibleAudioService {
     _stopRequested = false;
     await _tts.stop();
 
-    final chunks = <String>[];
-    chunks.add('Reading $bookName chapter $chapter.');
-
-    // Build small chunks so long chapters (e.g., Genesis 1) stay reliable.
-    final current = StringBuffer();
+    final queue = <String>['Reading $bookName chapter $chapter.'];
     for (final v in verses) {
       final n = v['verse']?.toString() ?? '';
       final t = (v['text'] ?? '').toString().trim();
       if (t.isEmpty) continue;
-      final sentence = 'Verse $n. $t ';
-
-      if (current.length + sentence.length > 180) {
-        if (current.isNotEmpty) {
-          chunks.add(current.toString().trim());
-          current.clear();
-        }
-      }
-      current.write(sentence);
+      queue.add('Verse $n. $t');
     }
-    if (current.isNotEmpty) chunks.add(current.toString().trim());
 
-    if (chunks.length <= 1) return false;
+    if (queue.length <= 1) return false;
 
-    // Fire-and-forget playback chain so UI returns immediately.
-    unawaited(_speakChunks(chunks));
+    // Verse-by-verse is slower but most reliable on flaky Android TTS engines.
+    unawaited(_speakVerseQueue(queue));
     return true;
   }
 
-  Future<void> _speakChunks(List<String> chunks) async {
-    for (final chunk in chunks) {
+  Future<void> _speakVerseQueue(List<String> queue) async {
+    _isPlaying = true;
+    for (final line in queue) {
       if (_stopRequested) break;
       try {
-        await _tts.speak(chunk);
-        // Some Android TTS engines return before utterance is actually done.
-        // Pace chunk submission to prevent queue overruns (notably Genesis 1).
-        final ms = math.max(2400, chunk.length * 70);
+        await _tts.speak(line);
+        // Aggressive pacing prevents silent drops on long chapters like Genesis 1.
+        final ms = math.max(1700, line.length * 85);
         await Future.delayed(Duration(milliseconds: ms));
       } catch (e) {
-        debugPrint('AUDIO_SERVICE: chunk speak failed: $e');
+        debugPrint('AUDIO_SERVICE: verse speak failed: $e');
       }
     }
     _isPlaying = false;
