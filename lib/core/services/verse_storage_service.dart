@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 /// Saved verse model
@@ -120,27 +121,49 @@ class VerseStorageService {
     if (_initialized && _backupFile != null && !force) return;
 
     try {
-      // Clear error on new attempt
       _lastError = "None";
       
       Directory? dir;
       try {
         dir = await getApplicationSupportDirectory();
       } catch (e) {
-        _lastError = "SupportDir: $e";
-        dir = await getApplicationDocumentsDirectory();
+        debugPrint('VerseStorageService: support dir failed, trying docs: $e');
+        try {
+          dir = await getApplicationDocumentsDirectory();
+        } catch (e2) {
+          debugPrint('VerseStorageService: docs dir failed, trying hardcoded: $e2');
+          // Last resort: Hardcoded Android internal path if plugins fail
+          if (Platform.isAndroid) {
+            dir = Directory('/data/data/app.openbible/files');
+            if (!await dir.exists()) {
+              await dir.create(recursive: true);
+            }
+          }
+        }
       }
       
-      _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
+      if (dir != null) {
+        _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
+        debugPrint('VerseStorageService: Using path: ${_backupFile!.path}');
+      } else {
+        _lastError = "NoDirectoryAvailable";
+      }
       
       // Migration logic
-      if (!await _backupFile!.exists()) {
+      if (_backupFile != null && !await _backupFile!.exists()) {
         try {
-          final docsDir = await getApplicationDocumentsDirectory();
-          final oldFile = File('${docsDir.path}/verse_storage_backup_v3.json');
-          if (await oldFile.exists()) {
-            await oldFile.copy(_backupFile!.path);
-            debugPrint('VerseStorageService: Migrated v3 to v4');
+          // Attempt to find v3 in common locations
+          final paths = [
+            '/data/data/app.openbible/app_flutter/verse_storage_backup_v3.json',
+            '/data/user/0/app.openbible/app_flutter/verse_storage_backup_v3.json',
+          ];
+          for (final p in paths) {
+            final oldFile = File(p);
+            if (await oldFile.exists()) {
+              await oldFile.copy(_backupFile!.path);
+              debugPrint('VerseStorageService: Migrated old file from $p');
+              break;
+            }
           }
         } catch (e) {
           debugPrint('VerseStorageService: Migration failed: $e');
@@ -148,13 +171,12 @@ class VerseStorageService {
       }
     } catch (e) {
       _lastError = "InitPath: $e";
-      debugPrint('VerseStorageService: path init failed: $e');
     }
 
     // Load from authoritative backup file
     await _loadFromBackupFile();
 
-    // Init SharedPreferences
+    // Init SharedPreferences (Non-critical fallback)
     try {
       _prefs = await SharedPreferences.getInstance();
       final hasFileData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
@@ -166,11 +188,21 @@ class VerseStorageService {
       }
     } catch (e) {
       _lastError = "Prefs: $e";
-      debugPrint('VerseStorageService: prefs init failed: $e');
+      debugPrint('VerseStorageService: SharedPreferences failed (not critical): $e');
     }
 
     _initialized = true;
-    debugPrint('VerseStorageService: Initialized. Bookmarks: ${_bookmarks.length}');
+  }
+
+  /// Test custom native bridge (bypasses standard plugins)
+  static Future<String> testNativeBridge() async {
+    try {
+      const channel = MethodChannel('openbible/platform');
+      final result = await channel.invokeMethod('testNativeBridge');
+      return result?.toString() ?? "Null Response";
+    } catch (e) {
+      return "Bridge Error: $e";
+    }
   }
 
   static Future<void> _loadAllData() async {
