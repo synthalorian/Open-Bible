@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'dart:io';
-import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -22,7 +20,7 @@ class BibleAudioService {
   Future<void> initialize() async {
     if (_initialized) return;
 
-    // Always wire handlers first so we can observe state even in partial init.
+    // Wire handlers for state tracking
     _tts.setStartHandler(() {
       _isPlaying = true;
       debugPrint('AUDIO_SERVICE: TTS started');
@@ -41,9 +39,9 @@ class BibleAudioService {
     });
 
     try {
+      // Minimal init - avoid problematic settings that differ across engines
       if (Platform.isAndroid) {
-        try { await _tts.awaitSpeakCompletion(true); } catch (_) {}
-        try { await _tts.setQueueMode(1); } catch (_) {}
+        // Don't use awaitSpeakCompletion or setQueueMode - they cause issues
       }
       try { await _tts.setLanguage('en-US'); } catch (_) {}
       try { await _tts.setSpeechRate(_rate); } catch (_) {}
@@ -51,9 +49,9 @@ class BibleAudioService {
       try { await _tts.setVolume(1.0); } catch (_) {}
 
       _initialized = true;
-      debugPrint('AUDIO_SERVICE: Initialized (best-effort)');
+      debugPrint('AUDIO_SERVICE: Initialized');
     } catch (e) {
-      debugPrint('AUDIO_SERVICE: Initialization failed, best-effort fallback active: $e');
+      debugPrint('AUDIO_SERVICE: Init failed: $e');
       _initialized = true;
     }
   }
@@ -81,47 +79,36 @@ class BibleAudioService {
     _stopRequested = false;
     await _tts.stop();
 
-    final queue = <String>['Reading $bookName chapter $chapter.'];
+    // Build simple text - keep under 1200 chars for reliability
+    final buffer = StringBuffer();
+    buffer.write('$bookName chapter $chapter. ');
+    
     for (final v in verses) {
+      if (_stopRequested) return false;
       final n = v['verse']?.toString() ?? '';
       final raw = (v['text'] ?? '').toString().trim();
       final t = _normalizeForTts(raw);
       if (t.isEmpty) continue;
-
-      // Keep utterances short and predictable for problematic engines.
-      final parts = t.split(RegExp(r'(?<=[\.;:!?])\s+'));
-      if (parts.isEmpty) {
-        queue.add('Verse $n. $t');
-      } else {
-        for (var i = 0; i < parts.length; i++) {
-          final p = parts[i].trim();
-          if (p.isEmpty) continue;
-          queue.add(i == 0 ? 'Verse $n. $p' : p);
-        }
-      }
+      
+      final addition = '$n. $t ';
+      if (buffer.length + addition.length > 1200) break; // Stop at limit
+      buffer.write(addition);
     }
 
-    if (queue.length <= 1) return false;
+    final text = buffer.toString().trim();
+    if (text.isEmpty) return false;
 
-    // Verse-by-verse is slower but most reliable on flaky Android TTS engines.
-    unawaited(_speakVerseQueue(queue));
-    return true;
-  }
-
-  Future<void> _speakVerseQueue(List<String> queue) async {
     _isPlaying = true;
-    for (final line in queue) {
-      if (_stopRequested) break;
-      try {
-        await _tts.speak(line);
-        // Aggressive pacing prevents silent drops on long chapters like Genesis 1.
-        final ms = math.max(1700, line.length * 85);
-        await Future.delayed(Duration(milliseconds: ms));
-      } catch (e) {
-        debugPrint('AUDIO_SERVICE: verse speak failed: $e');
-      }
+    try {
+      await _tts.stop();
+      await Future.delayed(const Duration(milliseconds: 100));
+      await _tts.speak(text);
+      return true;
+    } catch (e) {
+      debugPrint('AUDIO_SERVICE: speak failed: $e');
+      _isPlaying = false;
+      return false;
     }
-    _isPlaying = false;
   }
 
   String _normalizeForTts(String input) {
