@@ -1013,45 +1013,53 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     }
 
     final verses = <Map<String, dynamic>>[];
-    for (final line in content.split('\n')) {
+    final lines = content.split('\n');
+    for (final line in lines) {
       final trimmed = line.trim();
       if (trimmed.isEmpty || trimmed.startsWith('[')) continue;
+      
       final match = RegExp(r'^(\d+)\s+(.+)$').firstMatch(trimmed);
       if (match != null) {
         verses.add({
           'verse': int.parse(match.group(1)!),
           'text': match.group(2)!,
         });
+      } else {
+        // Simple fallback parsing for lines like "1. Text" or just "Text"
+        final firstSpace = trimmed.indexOf(' ');
+        if (firstSpace != -1) {
+          final firstPart = trimmed.substring(0, firstSpace).replaceAll('.', '').trim();
+          final vNum = int.tryParse(firstPart);
+          if (vNum != null) {
+            verses.add({
+              'verse': vNum,
+              'text': trimmed.substring(firstSpace + 1).trim(),
+            });
+          }
+        }
       }
     }
 
-    if (verses.isEmpty) {
-      // Fallback: read plain content if verse parsing fails.
-      final plain = content
-          .replaceAll(RegExp(r'^\[[^\]]+\]$', multiLine: true), '')
-          .trim();
-      if (plain.isNotEmpty) {
-        verses.add({'verse': 1, 'text': plain});
-      }
+    if (verses.isEmpty && content.trim().isNotEmpty) {
+      verses.add({'verse': 1, 'text': content.trim()});
     }
 
     if (verses.isEmpty) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No verse text available for audio')),
+          const SnackBar(content: Text('No verse text found to play.')),
         );
       }
       return;
     }
 
     try {
-      debugPrint('AUDIO: verses parsed count=${verses.length}');
+      debugPrint('AUDIO: playing ${verses.length} verses, content len: ${content.length}');
       final started = await service.speakChapter(
         bookName: _bookName,
         chapter: _currentChapter,
         verses: verses,
       );
-      debugPrint('AUDIO: speakChapter started=$started');
 
       if (started) {
         setState(() => _isPlayingAudio = true);
@@ -1062,8 +1070,8 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
           SnackBar(
             content: Text(
               started
-                  ? 'Playing chapter audio... tap again to stop (use media volume)'
-                  : 'Could not start audio. Install/enable a system TTS voice and media volume, then retry.',
+                  ? 'Playing audio (${verses.length} verses)...'
+                  : 'TTS engine rejected request. Try restarting app or checking media volume.',
             ),
           ),
         );
