@@ -77,6 +77,22 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           const SizedBox(height: 8),
           ElevatedButton(
             onPressed: () async {
+              final raw = await VerseStorageService.getRawBackupJson();
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Raw JSON'),
+                  content: SingleChildScrollView(child: Text(raw, style: const TextStyle(fontSize: 10, fontFamily: 'monospace'))),
+                  actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
+                ),
+              );
+            },
+            child: const Text('View Raw Backup File'),
+          ),
+          const SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: () async {
               await VerseStorageService.initialize();
               _refresh();
               if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));

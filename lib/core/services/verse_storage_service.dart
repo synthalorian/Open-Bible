@@ -121,15 +121,25 @@ class VerseStorageService {
 
     // Resolve file backend first (authoritative source of truth).
     try {
-      final dir = await getApplicationDocumentsDirectory();
-      _backupFile = File('${dir.path}/verse_storage_backup_v3.json');
+      // Try support directory first, then documents as fallback
+      final dir = await getApplicationSupportDirectory();
+      _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
+      
+      if (!await _backupFile!.exists()) {
+        final docsDir = await getApplicationDocumentsDirectory();
+        final oldFile = File('${docsDir.path}/verse_storage_backup_v3.json');
+        if (await oldFile.exists()) {
+          await oldFile.copy(_backupFile!.path);
+          debugPrint('VerseStorageService: Migrated v3 to v4');
+        }
+      }
     } catch (e) {
-      debugPrint('VerseStorageService: docs dir unavailable: $e');
+      debugPrint('VerseStorageService: support dir unavailable: $e');
       try {
-        final dir = await getTemporaryDirectory();
-        _backupFile = File('${dir.path}/verse_storage_backup_v3.json');
+        final dir = await getApplicationDocumentsDirectory();
+        _backupFile = File('${dir.path}/verse_storage_backup_v4.json');
       } catch (e2) {
-        debugPrint('VerseStorageService: temp dir unavailable: $e2');
+        debugPrint('VerseStorageService: docs dir unavailable: $e2');
       }
     }
 
@@ -143,13 +153,16 @@ class VerseStorageService {
       final hasFileData = _bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty;
       if (!hasFileData) {
         await _loadAllData();
-        await _saveToBackupFile();
+        if (_bookmarks.isNotEmpty || _highlights.isNotEmpty || _notes.isNotEmpty) {
+          await _saveToBackupFile();
+        }
       }
     } catch (e) {
       debugPrint('VerseStorageService: prefs unavailable (continuing with file backend): $e');
     }
 
     _initialized = true;
+    debugPrint('VerseStorageService: Initialized. Bookmarks: ${_bookmarks.length}');
   }
 
   
@@ -248,16 +261,31 @@ class VerseStorageService {
   static Future<void> _loadFromBackupFile() async {
     try {
       final f = _backupFile;
-      if (f == null || !await f.exists()) return;
+      if (f == null || !await f.exists()) {
+        debugPrint('VerseStorageService: Backup file does not exist yet');
+        return;
+      }
+      
       final raw = await f.readAsString();
-      final map = json.decode(raw) as Map<String, dynamic>;
-      final bookmarks = (map['bookmarks'] as List<dynamic>? ?? []);
-      final highlights = (map['highlights'] as Map<String, dynamic>? ?? {});
-      final notes = (map['notes'] as Map<String, dynamic>? ?? {});
+      if (raw.trim().isEmpty) return;
+      
+      final Map<String, dynamic> map = json.decode(raw);
+      
+      final bookmarksJson = map['bookmarks'] as List<dynamic>? ?? [];
+      final highlightsJson = map['highlights'] as Map<String, dynamic>? ?? {};
+      final notesJson = map['notes'] as Map<String, dynamic>? ?? {};
 
-      _bookmarks = bookmarks.map((j) => SavedVerse.fromJson(j as Map<String, dynamic>)).toList();
-      _highlights = highlights.map((k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
-      _notes = notes.map((k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
+      _bookmarks = bookmarksJson
+          .map((j) => SavedVerse.fromJson(j as Map<String, dynamic>))
+          .toList();
+          
+      _highlights = highlightsJson.map(
+          (k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
+          
+      _notes = notesJson.map(
+          (k, v) => MapEntry(k, SavedVerse.fromJson(v as Map<String, dynamic>)));
+          
+      debugPrint('VerseStorageService: Loaded ${_bookmarks.length} bookmarks from file');
     } catch (e) {
       debugPrint('VerseStorageService: backup load failed: $e');
     }
@@ -276,11 +304,25 @@ class VerseStorageService {
       
       final jsonString = json.encode(map);
       
-      // Atomic write: Write to .tmp then rename to .json
+  /// Atomic write: Write to .tmp then rename to .json
+  static Future<void> _saveToBackupFile() async {
+    try {
+      final f = _backupFile;
+      if (f == null) return;
+      
+      final map = {
+        'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
+        'highlights': _highlights.map((k, v) => MapEntry(k, v.toJson())),
+        'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
+      };
+      
+      final jsonString = json.encode(map);
+      
       final tmpFile = File('${f.path}.tmp');
       await tmpFile.writeAsString(jsonString, flush: true);
       
       if (await tmpFile.exists() && (await tmpFile.length()) > 0) {
+        if (await f.exists()) await f.delete();
         await tmpFile.rename(f.path);
         debugPrint('VerseStorageService: Backup saved and verified (${jsonString.length} bytes)');
       } else {
@@ -295,6 +337,16 @@ class VerseStorageService {
   static Future<void> forceSave() async {
     if (!_initialized) await initialize();
     await _saveToBackupFile();
+  }
+
+  /// Get raw JSON content for debugging
+  static Future<String> getRawBackupJson() async {
+    try {
+      if (_backupFile == null || !await _backupFile!.exists()) return "File not found";
+      return await _backupFile!.readAsString();
+    } catch (e) {
+      return "Error: $e";
+    }
   }
 
   static Future<void> _saveBookmarks() async {
