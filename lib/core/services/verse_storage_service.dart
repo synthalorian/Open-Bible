@@ -261,6 +261,12 @@ class VerseStorageService {
   }
   
   // Highlights
+  static Future<void> addHighlight(SavedVerse verse) async {
+    if (!_initialized) await initialize();
+    _highlights[verse.id] = verse;
+    await _saveToBackupFile();
+  }
+  
   static Future<void> setHighlight(SavedVerse verse, String color, {int? start, int? end, String? selectedText}) async {
     if (!_initialized) await initialize();
     _highlights[verse.id] = verse.copyWith(
