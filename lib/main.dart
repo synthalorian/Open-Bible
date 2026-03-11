@@ -803,6 +803,14 @@ class MorePage extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
+            leading: const Icon(Icons.bug_report),
+            title: const Text('Storage Debug'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const DebugStoragePage()),
+            ),
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),
             onTap: () => Navigator.push(

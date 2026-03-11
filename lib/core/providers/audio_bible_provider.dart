@@ -111,8 +111,8 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
       final normalized = _normalizeForTts(verse);
       if (normalized.isEmpty) continue;
       
-      // Keep under 2800 chars for TTS engine reliability
-      if (buffer.length + normalized.length + 2 > 2800) break;
+      // Keep under 1200 chars for TTS engine reliability
+      if (buffer.length + normalized.length + 2 > 1200) break;
       buffer.write(normalized);
       buffer.write(' ');
     }
@@ -121,6 +121,8 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     if (textToSpeak.isEmpty) return;
     
     state = state.copyWith(currentVerse: textToSpeak);
+    await _flutterTts.stop();
+    await Future.delayed(const Duration(milliseconds: 100));
     await _flutterTts.speak(textToSpeak);
   }
   
