@@ -18,7 +18,7 @@ export '../../features/comparison/data/comparison_provider.dart';
 export '../../features/reading_plans/data/reading_plan_provider.dart';
 export '../../features/maps_charts/data/maps_charts_provider.dart';
 
-/// Bookmarks provider for saving favorite verses
+/// Bookmarks provider
 final bookmarksProvider = StateNotifierProvider<BookmarksNotifier, List<String>>((ref) => BookmarksNotifier());
 
 class BookmarksNotifier extends StateNotifier<List<String>> {
@@ -26,27 +26,18 @@ class BookmarksNotifier extends StateNotifier<List<String>> {
 
   Future<void> init() async {
     await VerseStorageService.initialize();
-    final storageIds = VerseStorageService.getBookmarks().map((b) => b.id).toList();
-    state = storageIds;
+    state = VerseStorageService.getBookmarks().map((b) => b.id).toList();
   }
 
   Future<void> addBookmark(String verseId) async {
-    if (!state.contains(verseId)) {
-      state = [...state, verseId];
-    }
+    if (!state.contains(verseId)) state = [...state, verseId];
   }
 
   Future<void> removeBookmark(String verseId) async {
     state = state.where((id) => id != verseId).toList();
   }
 
-  Future<void> clearBookmarks() async {
-    state = [];
-  }
-  
-  bool isBookmarked(String verseId) {
-    return state.contains(verseId);
-  }
+  bool isBookmarked(String verseId) => state.contains(verseId);
 }
 
 /// Selected Bible translation provider
@@ -58,13 +49,7 @@ class BibleTranslation {
   final String name;
   final String abbreviation;
   final String language;
-  
-  const BibleTranslation({
-    required this.id,
-    required this.name,
-    required this.abbreviation,
-    required this.language,
-  });
+  const BibleTranslation({required this.id, required this.name, required this.abbreviation, required this.language});
 }
 
 final availableTranslations = [
@@ -82,17 +67,9 @@ final availableTranslations = [
   const BibleTranslation(id: 'tyndale', name: 'Tyndale Bible', abbreviation: 'TYN', language: 'English'),
   const BibleTranslation(id: 'wycliffe', name: 'Wycliffe Bible', abbreviation: 'WYC', language: 'English'),
   const BibleTranslation(id: 'gen', name: 'Geneva Bible', abbreviation: 'GEN', language: 'English'),
-  const BibleTranslation(id: 'montgomery', name: 'Montgomery New Testament', abbreviation: 'MONT', language: 'English'),
-  const BibleTranslation(id: 'murdock', name: 'Murdock Translation', abbreviation: 'MUR', language: 'English'),
-  const BibleTranslation(id: 'rotherham', name: 'Rotherham Emphasized Bible', abbreviation: 'RTH', language: 'English'),
-  const BibleTranslation(id: 'twentieth', name: 'Twentieth Century New Testament', abbreviation: 'TCNT', language: 'English'),
-  const BibleTranslation(id: 'weymouth', name: 'Weymouth New Testament', abbreviation: 'WEY', language: 'English'),
-  const BibleTranslation(id: 'worsley', name: 'Worsley New Testament', abbreviation: 'WOR', language: 'English'),
 ];
 
-/// Font size provider for reading
 final fontSizeProvider = StateProvider<double>((ref) => 18.0);
-
 enum ReadingMode { day, night, sepia, amoled }
 
 class DailyVerseTime {
@@ -101,7 +78,6 @@ class DailyVerseTime {
   const DailyVerseTime({required this.hour, required this.minute});
 }
 
-/// App settings class
 class AppSettings {
   final String selectedBibleId;
   final int fontSize;
@@ -111,8 +87,6 @@ class AppSettings {
   final bool dailyVerseNotifications;
   final DailyVerseTime dailyVerseTime;
   final bool audioEnabled;
-  final String theme;
-  final double lineHeight;
 
   const AppSettings({
     this.selectedBibleId = 'kjv',
@@ -123,8 +97,6 @@ class AppSettings {
     this.dailyVerseNotifications = true,
     this.dailyVerseTime = const DailyVerseTime(hour: 8, minute: 0),
     this.audioEnabled = true,
-    this.theme = 'system',
-    this.lineHeight = 1.5,
   });
 
   AppSettings copyWith({
@@ -136,8 +108,6 @@ class AppSettings {
     bool? dailyVerseNotifications,
     DailyVerseTime? dailyVerseTime,
     bool? audioEnabled,
-    String? theme,
-    double? lineHeight,
   }) {
     return AppSettings(
       selectedBibleId: selectedBibleId ?? this.selectedBibleId,
@@ -148,82 +118,29 @@ class AppSettings {
       dailyVerseNotifications: dailyVerseNotifications ?? this.dailyVerseNotifications,
       dailyVerseTime: dailyVerseTime ?? this.dailyVerseTime,
       audioEnabled: audioEnabled ?? this.audioEnabled,
-      theme: theme ?? this.theme,
-      lineHeight: lineHeight ?? this.lineHeight,
     );
   }
 }
 
-/// Highlights provider
-final highlightsProvider = StateNotifierProvider<HighlightsNotifier, Map<String, String>>((ref) => HighlightsNotifier());
-
-class HighlightsNotifier extends StateNotifier<Map<String, String>> {
-  HighlightsNotifier() : super({});
-
-  Future<void> init() async {
-    await VerseStorageService.initialize();
-    final storageHighlights = VerseStorageService.getHighlights();
-    final highlights = <String, String>{};
-    for (final entry in storageHighlights.entries) {
-      if (entry.value.highlightColor != null) {
-        highlights[entry.key] = entry.value.highlightColor!;
-      }
-    }
-    state = highlights;
-  }
-
-  Future<void> addHighlight(String verseId, String color) async {
-    state = {...state, verseId: color};
-  }
-
-  Future<void> removeHighlight(String verseId) async {
-    final newState = Map<String, String>.from(state);
-    newState.remove(verseId);
-    state = newState;
-  }
+/// Bible data class for ChapterReader compatibility
+class TranslationInfo {
+  final String id;
+  final String name;
+  const TranslationInfo({required this.id, required this.name});
 }
 
-/// Notes provider
-final notesProvider = StateNotifierProvider<NotesNotifier, Map<String, String>>((ref) => NotesNotifier());
-
-class NotesNotifier extends StateNotifier<Map<String, String>> {
-  NotesNotifier() : super({});
-
-  Future<void> init() async {
-    await VerseStorageService.initialize();
-    final storageNotes = VerseStorageService.getNotes();
-    final notes = <String, String>{};
-    for (final entry in storageNotes.entries) {
-      if (entry.value.note != null) {
-        notes[entry.key] = entry.value.note!;
-      }
-    }
-    state = notes;
-  }
-
-  Future<void> addNote(String verseId, String note) async {
-    state = {...state, verseId: note};
-  }
-
-  Future<void> removeNote(String verseId) async {
-    final newState = Map<String, String>.from(state);
-    newState.remove(verseId);
-    state = newState;
-  }
-}
-
-/// Bible data provider
 class BibleData {
-  final String translationId;
-  BibleData({this.translationId = 'kjv'});
+  final TranslationInfo? selectedTranslation;
+  BibleData({this.selectedTranslation});
 }
 
 final bibleDataProvider = StateNotifierProvider<BibleDataNotifier, BibleData>((ref) => BibleDataNotifier());
 
 class BibleDataNotifier extends StateNotifier<BibleData> {
-  BibleDataNotifier() : super(BibleData());
+  BibleDataNotifier() : super(BibleData(selectedTranslation: const TranslationInfo(id: 'kjv', name: 'King James Version')));
   void selectTranslation(String id) {
-    state = BibleData(translationId: id);
+    final t = availableTranslations.firstWhere((t) => t.id == id, orElse: () => availableTranslations.first);
+    state = BibleData(selectedTranslation: TranslationInfo(id: t.id, name: t.name));
     CurrentBible.set(id);
   }
 }
@@ -232,7 +149,6 @@ class PopularTranslations {
   static String getOfflineId(String id) => id;
 }
 
-/// Reading position class
 class ReadingPositionData {
   final String bookId;
   final int chapter;
@@ -252,46 +168,35 @@ class ReadingPositionNotifier extends StateNotifier<ReadingPositionData> {
   }
 }
 
-/// Settings provider - FIX: Remove async constructor load race condition
 final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>((ref) => SettingsNotifier());
 
 class SettingsNotifier extends StateNotifier<AppSettings> {
   bool _isLoaded = false;
-
-  SettingsNotifier() : super(const AppSettings()) {
-    _load();
-  }
+  SettingsNotifier() : super(const AppSettings()) { _load(); }
 
   Future<void> _load() async {
     try {
       await VerseStorageService.initialize();
-      final settings = VerseStorageService.getSettings();
-      if (settings.isEmpty) {
-        _isLoaded = true;
-        return;
-      }
-      
-      final modeIndex = settings['readingMode'] as int? ?? ReadingMode.day.index;
+      final s = VerseStorageService.getSettings();
+      if (s.isEmpty) { _isLoaded = true; return; }
+      final modeIndex = s['readingMode'] as int? ?? ReadingMode.day.index;
       state = state.copyWith(
-        fontSize: settings['fontSize'] as int? ?? state.fontSize,
+        fontSize: s['fontSize'] as int? ?? state.fontSize,
         readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
-        notificationsEnabled: settings['notificationsEnabled'] as bool? ?? state.notificationsEnabled,
-        dailyVerseNotifications: settings['dailyVerseNotifications'] as bool? ?? state.dailyVerseNotifications,
-        dailyVerseHour: settings['dailyVerseHour'] as int? ?? state.dailyVerseTime.hour,
-        dailyVerseMinute: settings['dailyVerseMinute'] as int? ?? state.dailyVerseTime.minute,
-        audioEnabled: settings['audioEnabled'] as bool? ?? state.audioEnabled,
+        notificationsEnabled: s['notificationsEnabled'] as bool? ?? state.notificationsEnabled,
+        dailyVerseNotifications: s['dailyVerseNotifications'] as bool? ?? state.dailyVerseNotifications,
+        dailyVerseTime: DailyVerseTime(hour: s['dailyVerseHour'] as int? ?? 8, minute: s['dailyVerseMinute'] as int? ?? 0),
+        audioEnabled: s['audioEnabled'] as bool? ?? state.audioEnabled,
         isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
       );
       _isLoaded = true;
-    } catch (_) {
-      _isLoaded = true;
-    }
+    } catch (_) { _isLoaded = true; }
   }
 
   Future<void> _save() async {
-    if (!_isLoaded) return; // Prevent overwriting with defaults during load
+    if (!_isLoaded) return;
     try {
-      final settings = {
+      final s = {
         'fontSize': state.fontSize,
         'readingMode': state.readingMode.index,
         'notificationsEnabled': state.notificationsEnabled,
@@ -300,27 +205,15 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
         'dailyVerseMinute': state.dailyVerseTime.minute,
         'audioEnabled': state.audioEnabled,
       };
-      await VerseStorageService.saveSettings(settings);
+      await VerseStorageService.saveSettings(s);
     } catch (_) {}
   }
 
-  void setFontSize(int size) {
-    state = state.copyWith(fontSize: size);
-    _save();
-  }
-
-  void setReadingMode(ReadingMode mode) {
-    state = state.copyWith(
-      readingMode: mode,
-      isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled,
-    );
-    _save();
-  }
-
-  void setAudioEnabled(bool enabled) {
-    state = state.copyWith(audioEnabled: enabled);
-    _save();
-  }
+  void setFontSize(int size) { state = state.copyWith(fontSize: size); _save(); }
+  void setReadingMode(ReadingMode mode) { state = state.copyWith(readingMode: mode, isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled); _save(); }
+  void setAudioEnabled(bool enabled) { state = state.copyWith(audioEnabled: enabled); _save(); }
+  Future<void> toggleNotifications() async { state = state.copyWith(notificationsEnabled: !state.notificationsEnabled); await _save(); }
+  Future<void> setDailyVerseTime(DailyVerseTime time) async { state = state.copyWith(dailyVerseTime: time); await _save(); }
 }
 
 final storageServiceProvider = Provider<StorageService>((ref) => StorageService.instance);
@@ -331,4 +224,34 @@ class ReadingPosition {
   final int chapter;
   final int verse;
   ReadingPosition({required this.bookId, required this.chapter, this.verse = 1});
+}
+
+final highlightsProvider = StateNotifierProvider<HighlightsNotifier, Map<String, String>>((ref) => HighlightsNotifier());
+class HighlightsNotifier extends StateNotifier<Map<String, String>> {
+  HighlightsNotifier() : super({});
+  Future<void> init() async {
+    await VerseStorageService.initialize();
+    final highlights = <String, String>{};
+    for (final entry in VerseStorageService.getHighlights().entries) {
+      if (entry.value.highlightColor != null) highlights[entry.key] = entry.value.highlightColor!;
+    }
+    state = highlights;
+  }
+  Future<void> addHighlight(String id, String color) async { state = {...state, id: color}; }
+  Future<void> removeHighlight(String id) async { final n = Map<String, String>.from(state); n.remove(id); state = n; }
+}
+
+final notesProvider = StateNotifierProvider<NotesNotifier, Map<String, String>>((ref) => NotesNotifier());
+class NotesNotifier extends StateNotifier<Map<String, String>> {
+  NotesNotifier() : super({});
+  Future<void> init() async {
+    await VerseStorageService.initialize();
+    final notes = <String, String>{};
+    for (final entry in VerseStorageService.getNotes().entries) {
+      if (entry.value.note != null) notes[entry.key] = entry.value.note!;
+    }
+    state = notes;
+  }
+  Future<void> addNote(String id, String note) async { state = {...state, id: note}; }
+  Future<void> removeNote(String id) async { final n = Map<String, String>.from(state); n.remove(id); state = n; }
 }
