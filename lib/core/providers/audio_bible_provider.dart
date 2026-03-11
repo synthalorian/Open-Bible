@@ -87,7 +87,13 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
       await stopSpeaking();
     }
     
-    final textToSpeak = reference != null ? '$reference. $verse' : verse;
+    final normalizedVerse = _normalizeForTts(verse);
+    if (normalizedVerse.isEmpty) return;
+    
+    final textToSpeak = reference != null 
+        ? '$reference. $normalizedVerse' 
+        : normalizedVerse;
+    
     state = state.copyWith(currentVerse: textToSpeak);
     await _flutterTts.speak(textToSpeak);
   }
@@ -97,9 +103,34 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
       await stopSpeaking();
     }
     
-    final fullText = '$reference\n\n${verses.join('\n')}';
-    state = state.copyWith(currentVerse: fullText);
-    await _flutterTts.speak(fullText);
+    // Normalize and limit text for TTS reliability
+    final buffer = StringBuffer();
+    buffer.write('$reference. ');
+    
+    for (final verse in verses) {
+      final normalized = _normalizeForTts(verse);
+      if (normalized.isEmpty) continue;
+      
+      // Keep under 2800 chars for TTS engine reliability
+      if (buffer.length + normalized.length + 2 > 2800) break;
+      buffer.write(normalized);
+      buffer.write(' ');
+    }
+    
+    final textToSpeak = buffer.toString().trim();
+    if (textToSpeak.isEmpty) return;
+    
+    state = state.copyWith(currentVerse: textToSpeak);
+    await _flutterTts.speak(textToSpeak);
+  }
+  
+  String _normalizeForTts(String input) {
+    // Remove characters that commonly break OEM TTS engines
+    return input
+        .replaceAll('¶', ' ')
+        .replaceAll(RegExp(r'[^\x20-\x7E]'), ' ')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
   }
   
   Future<void> stopSpeaking() async {
