@@ -90,12 +90,18 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     final normalizedVerse = _normalizeForTts(verse);
     if (normalizedVerse.isEmpty) return;
     
-    final textToSpeak = reference != null 
+    // Truncate to safe limit for single verse
+    String textToSpeak = reference != null 
         ? '$reference. $normalizedVerse' 
         : normalizedVerse;
+        
+    if (textToSpeak.length > 3500) {
+      textToSpeak = textToSpeak.substring(0, 3500);
+    }
     
     state = state.copyWith(currentVerse: textToSpeak);
-    await _flutterTts.speak(textToSpeak);
+    await _flutterTts.stop();
+    _flutterTts.speak(textToSpeak); // Fire and forget
   }
   
   Future<void> speakChapter(List<String> verses, String reference) async {
@@ -111,8 +117,8 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
       final normalized = _normalizeForTts(verse);
       if (normalized.isEmpty) continue;
       
-      // Keep under 1200 chars for TTS engine reliability
-      if (buffer.length + normalized.length + 2 > 1200) break;
+      // Strict limit for reliability across all Android engines
+      if (buffer.length + normalized.length + 2 > 3500) break;
       buffer.write(normalized);
       buffer.write(' ');
     }
@@ -122,8 +128,7 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     
     state = state.copyWith(currentVerse: textToSpeak);
     await _flutterTts.stop();
-    await Future.delayed(const Duration(milliseconds: 100));
-    await _flutterTts.speak(textToSpeak);
+    _flutterTts.speak(textToSpeak); // Fire and forget
   }
   
   String _normalizeForTts(String input) {
