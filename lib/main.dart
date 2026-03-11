@@ -23,6 +23,7 @@ import 'features/genealogy/presentation/pages/enhanced_genealogy_page.dart';
 import 'features/illustrations/presentation/pages/illustrations_gallery_page.dart';
 import 'features/settings/presentation/pages/settings_page.dart';
 import 'features/history/presentation/pages/history_page.dart';
+import 'features/search/presentation/pages/search_page.dart' as search_feature;
 import 'debug_storage_page.dart';
 
 void main() async {
@@ -98,7 +99,7 @@ class _MainNavigationPageState extends ConsumerState<MainNavigationPage> {
   
   final _pages = [
     const BiblePage(),
-    const SearchPage(),
+    const search_feature.SearchPage(),
     const SavedPage(),
     const PlansPage(),
     const MorePage(),
@@ -201,7 +202,7 @@ class _BiblePageState extends ConsumerState<BiblePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SearchPage()),
+                MaterialPageRoute(builder: (context) => const search_feature.SearchPage()),
               );
             },
           ),
