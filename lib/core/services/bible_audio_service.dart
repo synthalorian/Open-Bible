@@ -84,9 +84,21 @@ class BibleAudioService {
     final queue = <String>['Reading $bookName chapter $chapter.'];
     for (final v in verses) {
       final n = v['verse']?.toString() ?? '';
-      final t = (v['text'] ?? '').toString().trim();
+      final raw = (v['text'] ?? '').toString().trim();
+      final t = _normalizeForTts(raw);
       if (t.isEmpty) continue;
-      queue.add('Verse $n. $t');
+
+      // Keep utterances short and predictable for problematic engines.
+      final parts = t.split(RegExp(r'(?<=[\.;:!?])\s+'));
+      if (parts.isEmpty) {
+        queue.add('Verse $n. $t');
+      } else {
+        for (var i = 0; i < parts.length; i++) {
+          final p = parts[i].trim();
+          if (p.isEmpty) continue;
+          queue.add(i == 0 ? 'Verse $n. $p' : p);
+        }
+      }
     }
 
     if (queue.length <= 1) return false;
@@ -110,6 +122,16 @@ class BibleAudioService {
       }
     }
     _isPlaying = false;
+  }
+
+  String _normalizeForTts(String input) {
+    // Remove characters that commonly break OEM TTS engines.
+    final cleaned = input
+        .replaceAll('¶', ' ')
+        .replaceAll(RegExp(r'[^\x20-\x7E]'), ' ')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
+    return cleaned;
   }
 
   Future<void> stop() async {
