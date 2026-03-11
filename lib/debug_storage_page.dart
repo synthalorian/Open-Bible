@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'core/services/verse_storage_service.dart';
+import 'core/services/bible_audio_service.dart';
 
-/// Debug page to check storage
 class DebugStoragePage extends StatefulWidget {
   const DebugStoragePage({super.key});
 
@@ -10,221 +10,102 @@ class DebugStoragePage extends StatefulWidget {
 }
 
 class _DebugStoragePageState extends State<DebugStoragePage> {
-  Map<String, dynamic> _debugData = {};
-  String _error = '';
-  bool _loading = true;
-  
+  Map<String, dynamic> _snapshot = {};
+
   @override
   void initState() {
     super.initState();
-    _loadDebugData();
+    _refresh();
   }
-  
-  Future<void> _loadDebugData() async {
+
+  void _refresh() {
     setState(() {
-      _loading = true;
-      _error = '';
+      _snapshot = VerseStorageService.debugStorageSnapshot();
     });
-    
-    try {
-      debugPrint('\n🔍 DEBUG: Loading storage data...');
-      
-      // Check if initialized
-      debugPrint('  Initialized: ${VerseStorageService.isInitialized}');
-      
-      // Use VerseStorageService snapshot instead of direct SharedPreferences access.
-      final storageKeys = VerseStorageService.debugStorageSnapshot();
-      debugPrint('  Storage snapshot keys: ${storageKeys.length}');
-      
-      // Get cached data
-      final bookmarks = VerseStorageService.bookmarksCache;
-      final highlights = VerseStorageService.highlightsCache;
-      final notes = VerseStorageService.notesCache;
-      
-      debugPrint('  Bookmarks in cache: ${bookmarks.length}');
-      debugPrint('  Highlights in cache: ${highlights.length}');
-      debugPrint('  Notes in cache: ${notes.length}');
-      
-      if (mounted) {
-        setState(() {
-          _debugData = {
-            'Status': {
-              'Initialized': VerseStorageService.isInitialized,
-            },
-            'Storage Keys': storageKeys,
-            'Bookmarks Count': bookmarks.length,
-            'Bookmarks': bookmarks.map((b) => '${b.reference} (${b.id})').toList(),
-            'Highlights Count': highlights.length,
-            'Highlights': highlights.entries.map((e) => '${e.key}: ${e.value.highlightColor}').toList(),
-            'Notes Count': notes.length,
-            'Notes': notes.entries.map((e) => '${e.key}: ${e.value.note?.substring(0, e.value.note!.length > 30 ? 30 : e.value.note!.length)}...').toList(),
-          };
-          _loading = false;
-        });
-      }
-    } catch (e, stack) {
-      debugPrint('✗ ERROR in debug page: $e');
-      debugPrint('Stack: $stack');
-      if (mounted) {
-        setState(() {
-          _error = '$e\n\n$stack';
-          _loading = false;
-        });
-      }
-    }
   }
-  
-  Future<void> _clearAll() async {
-    final confirm = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Clear All Data?'),
-        content: const Text('This will remove all bookmarks, highlights, and notes.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Clear All'),
-          ),
-        ],
-      ),
-    );
-    
-    if (confirm == true) {
-      await VerseStorageService.clearAll();
-      await _loadDebugData();
-    }
-  }
-  
-  Future<void> _addTestBookmark() async {
-    final verse = SavedVerse(
-      id: 'test_genesis_1_1',
-      bookId: 'genesis',
-      bookName: 'Genesis',
-      chapter: 1,
-      verse: 1,
-      text: 'In the beginning God created the heaven and the earth.',
-      savedAt: DateTime.now(),
-      bibleId: 'kjv',
-    );
-    
-    debugPrint('\n🧪 Adding test bookmark...');
-    await VerseStorageService.addBookmark(verse);
-    debugPrint('  Result: SUCCESS');
-    
-    await _loadDebugData();
-  }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Storage Debug'),
+        title: const Text('Debug Panel'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: _loadDebugData,
-            tooltip: 'Refresh',
+          IconButton(icon: const Icon(Icons.refresh), onPressed: _refresh),
+        ],
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _buildSection('Persistence Diagnostics'),
+          _buildInfo('Initialized', _snapshot['initialized'].toString()),
+          _buildInfo('Has Prefs', _snapshot['hasPrefs'].toString()),
+          _buildInfo('Backup Path', _snapshot['backupPath'] ?? 'N/A'),
+          _buildInfo('Backup Exists', _snapshot['backupExists'].toString()),
+          _buildInfo('Backup Bytes', _snapshot['backupBytes'].toString()),
+          const Divider(),
+          _buildInfo('Bookmarks Count', _snapshot['bookmarksCount'].toString()),
+          _buildInfo('Highlights Count', _snapshot['highlightsCount'].toString()),
+          _buildInfo('Notes Count', _snapshot['notesCount'].toString()),
+          
+          const SizedBox(height: 24),
+          _buildSection('Audio Diagnostics'),
+          ElevatedButton.icon(
+            onPressed: () async {
+              final service = BibleAudioService.instance;
+              await service.initialize();
+              await service.speakChapter(
+                bookName: "Debug",
+                chapter: 1,
+                verses: [{'verse': 1, 'text': 'TTS engine test. Genesis 1 audio debugging active.'}]
+              );
+            },
+            icon: const Icon(Icons.volume_up),
+            label: const Text('Test TTS (Hello World)'),
           ),
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: _clearAll,
-            tooltip: 'Clear All',
+
+          const SizedBox(height: 24),
+          _buildSection('System Actions'),
+          ElevatedButton(
+            onPressed: () async {
+              await VerseStorageService.initialize();
+              _refresh();
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
+            },
+            child: const Text('Reload Storage from Disk'),
+          ),
+          const SizedBox(height: 8),
+          OutlinedButton(
+            onPressed: () async {
+              await VerseStorageService.clearAll();
+              _refresh();
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('All Data Wiped')));
+            },
+            style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Wipe All Saved Data'),
           ),
         ],
       ),
-      body: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Test button
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.add),
-                    label: const Text('Add Test Bookmark'),
-                    onPressed: _addTestBookmark,
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 48),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  
-                  // Error display
-                  if (_error.isNotEmpty)
-                    Card(
-                      color: Colors.red.shade50,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'ERROR',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              _error,
-                              style: const TextStyle(
-                                color: Colors.red,
-                                fontFamily: 'monospace',
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  
-                  // Data display
-                  ..._debugData.entries.map((entry) => 
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              entry.key,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            if (entry.value is List)
-                              ...(entry.value as List).map((e) => Padding(
-                                padding: const EdgeInsets.only(left: 8, top: 4),
-                                child: Text('• $e'),
-                              ))
-                            else if (entry.value is Map)
-                              ...(entry.value as Map).entries.map((e) => Padding(
-                                padding: const EdgeInsets.only(left: 8, top: 4),
-                                child: Text('• ${e.key}: ${e.value}'),
-                              ))
-                            else
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: Text('${entry.value}'),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+    );
+  }
+
+  Widget _buildSection(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12, top: 8),
+      child: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue)),
+    );
+  }
+
+  Widget _buildInfo(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(width: 16),
+          Expanded(child: Text(value, textAlign: TextAlign.end, style: const TextStyle(fontSize: 11, fontFamily: 'monospace'))),
+        ],
+      ),
     );
   }
 }
