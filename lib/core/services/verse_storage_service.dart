@@ -267,21 +267,34 @@ class VerseStorageService {
     try {
       final f = _backupFile;
       if (f == null) return;
+      
       final map = {
         'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
         'highlights': _highlights.map((k, v) => MapEntry(k, v.toJson())),
         'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
       };
-      await f.writeAsString(json.encode(map), flush: true);
-
-      // Read-after-write verification to catch silent IO failures.
-      final verifyRaw = await f.readAsString();
-      if (verifyRaw.trim().isEmpty) {
-        throw Exception('backup verify failed: empty file after write');
+      
+      final jsonString = json.encode(map);
+      
+      // Atomic write: Write to .tmp then rename to .json
+      final tmpFile = File('${f.path}.tmp');
+      await tmpFile.writeAsString(jsonString, flush: true);
+      
+      if (await tmpFile.exists() && (await tmpFile.length()) > 0) {
+        await tmpFile.rename(f.path);
+        debugPrint('VerseStorageService: Backup saved and verified (${jsonString.length} bytes)');
+      } else {
+        throw Exception('Backup verification failed: tmp file empty or missing');
       }
     } catch (e) {
       debugPrint('VerseStorageService: backup save failed: $e');
     }
+  }
+
+  /// Force a manual save to disk
+  static Future<void> forceSave() async {
+    if (!_initialized) await initialize();
+    await _saveToBackupFile();
   }
 
   static Future<void> _saveBookmarks() async {

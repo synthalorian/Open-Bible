@@ -67,6 +67,16 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           _buildSection('System Actions'),
           ElevatedButton(
             onPressed: () async {
+              await VerseStorageService.forceSave();
+              _refresh();
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Manual Save Triggered')));
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white),
+            child: const Text('FORCE SAVE TO DISK'),
+          ),
+          const SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: () async {
               await VerseStorageService.initialize();
               _refresh();
               if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
