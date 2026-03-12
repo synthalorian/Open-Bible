@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../presentation/widgets/strongs_concordance_widget.dart';
 import '../../presentation/widgets/strongs_concordance_widget.dart' as widgets;
 

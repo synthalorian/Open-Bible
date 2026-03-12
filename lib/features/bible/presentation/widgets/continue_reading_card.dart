@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/services/continue_reading_service.dart';
 
 /// Card widget showing continue reading progress
 class ContinueReadingCard extends StatelessWidget {
   final ContinueReadingData data;
   final VoidCallback? onTap;
-  
+  final VoidCallback? onDismiss;
+
   const ContinueReadingCard({
     super.key,
     required this.data,
     this.onTap,
+    this.onDismiss,
   });
 
   @override
@@ -27,8 +28,8 @@ class ContinueReadingCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             gradient: LinearGradient(
               colors: [
-                Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                Theme.of(context).colorScheme.primary.withValues(alpha:0.1),
+                Theme.of(context).colorScheme.secondary.withValues(alpha:0.1),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -58,7 +59,7 @@ class ContinueReadingCard extends StatelessWidget {
                       data.timeAgo,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.grey[600],
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                 ],
@@ -76,7 +77,7 @@ class ContinueReadingCard extends StatelessWidget {
                 data.bibleName,
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey[600],
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
               ),
               const SizedBox(height: 12),
@@ -94,15 +95,12 @@ class ContinueReadingCard extends StatelessWidget {
                   TextButton(
                     onPressed: () async {
                       await ContinueReadingService.clear();
-                      // Notify parent to refresh
                       if (context.mounted) {
-                        // Use a callback to parent or setState equivalent
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Reading history cleared')),
                         );
-                        // Trigger rebuild by popping and returning
-                        Navigator.of(context).maybePop();
                       }
+                      onDismiss?.call();
                     },
                     child: const Text('Dismiss'),
                   ),
@@ -131,7 +129,7 @@ class EmptyContinueReadingCard extends StatelessWidget {
             Icon(
               Icons.menu_book_outlined,
               size: 48,
-              color: Colors.grey[400],
+              color: Theme.of(context).colorScheme.outline,
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -143,7 +141,7 @@ class EmptyContinueReadingCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey[800],
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -151,7 +149,7 @@ class EmptyContinueReadingCard extends StatelessWidget {
                     'Your reading progress will appear here',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],

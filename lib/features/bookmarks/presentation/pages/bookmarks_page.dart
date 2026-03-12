@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/services/verse_storage_service.dart';
 
@@ -53,56 +52,16 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
       final highlightsMap = VerseStorageService.getHighlights();
       final notesMap = VerseStorageService.getNotes();
 
-      final providerBookmarks = ref.read(bookmarksProvider);
-      final providerHighlights = ref.read(highlightsProvider);
-      final providerNotes = ref.read(notesProvider);
-
-      // Backward compatibility: merge legacy bookmarks list used by older UI paths
-      List<String> legacyBookmarks = const [];
-      try {
-        final prefs = await SharedPreferences.getInstance();
-        legacyBookmarks = prefs.getStringList('bookmarks') ?? const [];
-      } catch (_) {
-        // SharedPreferences plugin may be unavailable on some builds; keep provider/storage fallback.
-      }
-
-      final mergedBookmarks = <SavedVerse>[...bookmarks];
-      for (final id in [...legacyBookmarks, ...providerBookmarks]) {
-        final exists = mergedBookmarks.any((b) => b.id == id);
-        if (!exists) {
-          mergedBookmarks.add(_savedVerseFromLegacyId(id));
-        }
-      }
-
-      final mergedHighlights = <SavedVerse>[...highlightsMap.values];
-      for (final entry in providerHighlights.entries) {
-        final exists = mergedHighlights.any((h) => h.id == entry.key);
-        if (!exists) {
-          mergedHighlights.add(
-            _savedVerseFromLegacyId(entry.key).copyWith(highlightColor: entry.value),
-          );
-        }
-      }
-
-      final mergedNotes = <SavedVerse>[...notesMap.values];
-      for (final entry in providerNotes.entries) {
-        final exists = mergedNotes.any((n) => n.id == entry.key);
-        if (!exists) {
-          mergedNotes.add(
-            _savedVerseFromLegacyId(entry.key).copyWith(note: entry.value),
-          );
-        }
-      }
-
       if (mounted) {
         setState(() {
-          _bookmarks = mergedBookmarks;
-          _highlights = mergedHighlights;
-          _notes = mergedNotes;
+          _bookmarks = bookmarks.toList();
+          _highlights = highlightsMap.values.toList();
+          _notes = notesMap.values.toList();
           _isLoading = false;
         });
       }
-    } catch (_) {
+    } catch (e) {
+      debugPrint('Failed to load bookmarks: $e');
       if (mounted) {
         setState(() => _isLoading = false);
       }
@@ -276,7 +235,7 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
           Icon(
             icon,
             size: 64,
-            color: Colors.grey[400],
+            color: Theme.of(context).colorScheme.outline,
           ),
           const SizedBox(height: 16),
           Text(
@@ -286,40 +245,10 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
           const SizedBox(height: 8),
           Text(
             subtitle,
-            style: TextStyle(color: Colors.grey[600]),
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
           ),
         ],
       ),
-    );
-  }
-
-  SavedVerse _savedVerseFromLegacyId(String id) {
-    final match = RegExp(r'^(.*?)\s+(\d+):(\d+)$').firstMatch(id);
-    if (match != null) {
-      final bookName = match.group(1) ?? 'Unknown';
-      final chapter = int.tryParse(match.group(2) ?? '1') ?? 1;
-      final verse = int.tryParse(match.group(3) ?? '1') ?? 1;
-      return SavedVerse(
-        id: id,
-        bookId: bookName.replaceAll(' ', '').toUpperCase(),
-        bookName: bookName,
-        chapter: chapter,
-        verse: verse,
-        text: 'Saved from legacy bookmark list',
-        savedAt: DateTime.now(),
-        bibleId: 'kjv',
-      );
-    }
-
-    return SavedVerse(
-      id: id,
-      bookId: 'UNK',
-      bookName: 'Unknown',
-      chapter: 1,
-      verse: 1,
-      text: 'Saved from legacy bookmark list',
-      savedAt: DateTime.now(),
-      bibleId: 'kjv',
     );
   }
 
@@ -364,7 +293,7 @@ class _SavedVerseCard extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: iconColor.withOpacity(0.2),
+                      color: iconColor.withValues(alpha:0.2),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(icon, color: iconColor, size: 24),
@@ -384,13 +313,13 @@ class _SavedVerseCard extends StatelessWidget {
                           _formatDate(verse.savedAt),
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey[600],
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Icon(Icons.chevron_right, color: Colors.grey),
+                  Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.outline),
                 ],
               ),
               const SizedBox(height: 12),
@@ -407,7 +336,7 @@ class _SavedVerseCard extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 6),
                   child: Text(
                     'Range: ${verse.highlightStart}-${verse.highlightEnd}',
-                    style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurfaceVariant),
                   ),
                 ),
               if (showNote && verse.note != null) ...[
@@ -415,13 +344,13 @@ class _SavedVerseCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.grey[100],
+                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey[300]!),
+                    border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.note, size: 16, color: Colors.grey[600]),
+                      Icon(Icons.note, size: 16, color: Theme.of(context).colorScheme.onSurfaceVariant),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
@@ -431,7 +360,7 @@ class _SavedVerseCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 12,
                             fontStyle: FontStyle.italic,
-                            color: Colors.grey[700],
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
                         ),
                       ),
