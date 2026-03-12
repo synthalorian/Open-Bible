@@ -55,7 +55,26 @@ class OpenBibleApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
-    
+
+    // Wait for persisted settings before applying theme to avoid restart flicker/reset.
+    if (!settings.isLoaded) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 12),
+                Text('Loading...'),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     // Select theme based on reading mode
     final ThemeData theme;
     final ThemeMode themeMode;
