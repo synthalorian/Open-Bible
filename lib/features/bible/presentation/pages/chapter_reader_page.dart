@@ -877,16 +877,19 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              final storage = ref.read(storageServiceProvider);
-              final note = Note(
-                id: '$widget.bookId-$_currentChapter-${DateTime.now().millisecondsSinceEpoch}',
-                verseId: '$widget.bookId-$_currentChapter',
-                reference: '$_bookName $_currentChapter',
-                content: controller.text,
-                createdAt: DateTime.now(),
-                updatedAt: DateTime.now(),
+              final verseId = '$widget.bookId-$_currentChapter';
+              final savedVerse = SavedVerse(
+                id: verseId,
+                bookId: widget.bookId,
+                bookName: _bookName,
+                chapter: _currentChapter,
+                verse: 1,
+                text: '',
+                note: controller.text,
+                savedAt: DateTime.now(),
+                bibleId: _currentBibleId,
               );
-              await storage.saveNote(note);
+              await VerseStorageService.saveNote(savedVerse, controller.text);
               if (!context.mounted) return;
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
