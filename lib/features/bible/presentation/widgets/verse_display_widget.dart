@@ -76,7 +76,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Verse number
-                Container(
+                SizedBox(
                   width: 32,
                   child: Text(
                     '${widget.verseNumber}',
