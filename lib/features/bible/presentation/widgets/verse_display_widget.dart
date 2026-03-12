@@ -6,6 +6,30 @@ import '../../../../core/providers/app_providers.dart';
 import '../../../../core/services/verse_storage_service.dart';
 import 'footnote_bottom_sheet.dart';
 
+/// Parse a highlight color name to a Color value.
+Color parseHighlightColor(String colorName) {
+  switch (colorName.toLowerCase()) {
+    case 'yellow':
+      return Colors.yellow;
+    case 'green':
+      return Colors.green;
+    case 'blue':
+      return Colors.blue;
+    case 'red':
+      return Colors.red;
+    case 'purple':
+      return Colors.purple;
+    case 'orange':
+      return Colors.orange;
+    case 'pink':
+      return Colors.pink;
+    case 'cyan':
+      return Colors.cyan;
+    default:
+      return Colors.grey;
+  }
+}
+
 /// Verse display widget with footnotes support
 class VerseDisplayWidget extends ConsumerStatefulWidget {
   final String verseId;
@@ -60,10 +84,10 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: _isFullVerseHighlight(highlightColor, preciseHighlight)
             ? BoxDecoration(
-                color: _parseColor(highlightColor!).withOpacity(0.2),
+                color: parseHighlightColor(highlightColor!).withOpacity(0.2),
                 border: Border(
                   left: BorderSide(
-                    color: _parseColor(highlightColor),
+                    color: parseHighlightColor(highlightColor),
                     width: 4,
                   ),
                 ),
@@ -76,7 +100,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Verse number
-                SizedBox(
+                Container(
                   width: 32,
                   child: Text(
                     '${widget.verseNumber}',
@@ -201,7 +225,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
     required String? highlightColor,
     required SavedVerse? preciseHighlight,
   }) {
-    final color = highlightColor != null ? _parseColor(highlightColor).withOpacity(0.35) : null;
+    final color = highlightColor != null ? parseHighlightColor(highlightColor).withOpacity(0.35) : null;
     final start = preciseHighlight?.highlightStart;
     final end = preciseHighlight?.highlightEnd;
     final canApplyRange = color != null && start != null && end != null && start >= 0 && end <= widget.verseText.length && start < end;
@@ -286,28 +310,6 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
     );
   }
   
-  Color _parseColor(String colorName) {
-    switch (colorName.toLowerCase()) {
-      case 'yellow':
-        return Colors.yellow;
-      case 'green':
-        return Colors.green;
-      case 'blue':
-        return Colors.blue;
-      case 'red':
-        return Colors.red;
-      case 'purple':
-        return Colors.purple;
-      case 'orange':
-        return Colors.orange;
-      case 'pink':
-        return Colors.pink;
-      case 'cyan':
-        return Colors.cyan;
-      default:
-        return Colors.grey;
-    }
-  }
 }
 
 /// Verse options bottom sheet
@@ -401,8 +403,10 @@ class VerseOptionsSheet extends ConsumerWidget {
               try {
                 if (isBookmarked) {
                   await ref.read(bookmarksProvider.notifier).removeBookmark(verseId);
+                  await VerseStorageService.removeBookmark(verseId);
                 } else {
-                  await ref.read(bookmarksProvider.notifier).addBookmark(verseId, verse: savedVerse);
+                  await ref.read(bookmarksProvider.notifier).addBookmark(verseId);
+                  await VerseStorageService.addBookmark(savedVerse);
                 }
 
                 if (context.mounted) {
@@ -428,7 +432,7 @@ class VerseOptionsSheet extends ConsumerWidget {
                     width: 24,
                     height: 24,
                     decoration: BoxDecoration(
-                      color: _parseColor(currentHighlightColor),
+                      color: parseHighlightColor(currentHighlightColor),
                       shape: BoxShape.circle,
                     ),
                   )
@@ -507,7 +511,7 @@ class VerseOptionsSheet extends ConsumerWidget {
             const SizedBox(height: 8),
             Text(
               isPrecision ? 'Applying to selection only' : 'Applying to full verse',
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: 16),
             Wrap(
@@ -533,7 +537,10 @@ class VerseOptionsSheet extends ConsumerWidget {
                       await container.read(highlightsProvider.notifier).addHighlight(
                         verseId,
                         colorName,
-                        verse: SavedVerse(
+                      );
+                      
+                      await VerseStorageService.setHighlight(
+                        SavedVerse(
                           id: verseId,
                           bookId: bookId,
                           bookName: bookName ?? bookId,
@@ -543,6 +550,7 @@ class VerseOptionsSheet extends ConsumerWidget {
                           savedAt: DateTime.now(),
                           bibleId: bibleId ?? 'kjv',
                         ),
+                        colorName,
                         start: isPrecision ? selectionStart : 0,
                         end: isPrecision ? selectionEnd : verseText.length,
                         selectedText: isPrecision ? selectedText : null,
@@ -569,11 +577,11 @@ class VerseOptionsSheet extends ConsumerWidget {
                       color: color,
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: isCurrent ? Colors.black : Colors.grey,
+                        color: isCurrent ? Theme.of(context).colorScheme.onSurface : Theme.of(context).colorScheme.outline,
                         width: isCurrent ? 3 : 1,
                       ),
                     ),
-                    child: isCurrent ? const Icon(Icons.check, color: Colors.black) : null,
+                    child: isCurrent ? Icon(Icons.check, color: Theme.of(context).colorScheme.onSurface) : null,
                   ),
                 );
               }).toList(),
@@ -583,6 +591,7 @@ class VerseOptionsSheet extends ConsumerWidget {
               TextButton.icon(
                 onPressed: () async {
                   await container.read(highlightsProvider.notifier).removeHighlight(verseId);
+                  await VerseStorageService.removeHighlight(verseId);
                   if (context.mounted) {
                     Navigator.pop(sheetContext);
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -625,10 +634,9 @@ class VerseOptionsSheet extends ConsumerWidget {
             onPressed: () async {
               try {
                 if (controller.text.isNotEmpty) {
-                  await container.read(notesProvider.notifier).addNote(
-                    verseId,
-                    controller.text,
-                    verse: SavedVerse(
+                  await container.read(notesProvider.notifier).addNote(verseId, controller.text);
+                  await VerseStorageService.saveNote(
+                    SavedVerse(
                       id: verseId,
                       bookId: bookId,
                       bookName: bookName ?? bookId,
@@ -639,9 +647,11 @@ class VerseOptionsSheet extends ConsumerWidget {
                       savedAt: DateTime.now(),
                       bibleId: bibleId ?? 'kjv',
                     ),
+                    controller.text,
                   );
                 } else {
                   await container.read(notesProvider.notifier).removeNote(verseId);
+                  await VerseStorageService.removeNote(verseId);
                 }
                 if (context.mounted) {
                   Navigator.pop(context);
@@ -664,26 +674,4 @@ class VerseOptionsSheet extends ConsumerWidget {
     );
   }
   
-  Color _parseColor(String colorName) {
-    switch (colorName.toLowerCase()) {
-      case 'yellow':
-        return Colors.yellow;
-      case 'green':
-        return Colors.green;
-      case 'blue':
-        return Colors.blue;
-      case 'red':
-        return Colors.red;
-      case 'purple':
-        return Colors.purple;
-      case 'orange':
-        return Colors.orange;
-      case 'pink':
-        return Colors.pink;
-      case 'cyan':
-        return Colors.cyan;
-      default:
-        return Colors.grey;
-    }
-  }
 }

@@ -1,13 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
-import '../../../../core/providers/app_providers.dart';
-import '../../bible/data/models/bible_book.dart';
+import '../../../core/services/direct_bible_loader.dart';
+import '../../../core/providers/app_providers.dart';
 import '../../bible/data/repositories/bible_repository.dart' show BibleRepository;
-import '../../bible/presentation/pages/chapter_reader_page.dart';
 
 /// Search provider
 final bibleSearchProvider = StateNotifierProvider<BibleSearchNotifier, BibleSearchState>((ref) {
@@ -36,11 +34,13 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final prefs = await SharedPreferences.getInstance();
       final jsonList = prefs.getStringList('recent_searches') ?? [];
       final searches = jsonList.map((json) {
-        try { return RecentSearch.fromJson(jsonDecode(json)); } catch (e) { return null; }
+        try { return RecentSearch.fromJson(jsonDecode(json)); } catch (e) { debugPrint('Failed to parse recent search: $e'); return null; }
       }).whereType<RecentSearch>().toList();
       searches.sort((a, b) => b.timestamp.compareTo(a.timestamp));
       state = searches;
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('Failed to load recent searches: $e');
+    }
   }
   Future<void> addSearch(String query, {int resultCount = 0}) async {
     if (query.trim().isEmpty) return;
@@ -52,7 +52,9 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final prefs = await SharedPreferences.getInstance();
       final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
       await prefs.setStringList('recent_searches', jsonList);
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('Failed to save recent search: $e');
+    }
   }
   Future<void> removeSearch(String query) async {
     final newState = state.where((s) => s.query != query).toList();
@@ -61,14 +63,18 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final prefs = await SharedPreferences.getInstance();
       final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
       await prefs.setStringList('recent_searches', jsonList);
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('Failed to save recent searches: $e');
+    }
   }
   Future<void> clearAll() async {
     state = [];
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('recent_searches');
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('Failed to clear recent searches: $e');
+    }
   }
 }
 
@@ -114,7 +120,13 @@ class BibleSearchNotifier extends StateNotifier<BibleSearchState> {
   final Ref ref;
   Timer? _debounceTimer;
   BibleSearchNotifier(this.ref) : super(const BibleSearchState());
-  
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    super.dispose();
+  }
+
   void updateQuery(String query) {
     state = state.copyWith(query: query);
     _debounceTimer?.cancel();
@@ -155,9 +167,8 @@ class BibleSearchNotifier extends StateNotifier<BibleSearchState> {
     for (var translationId in selectedTranslations) {
       if (translationId.isEmpty) translationId = 'kjv';
       try {
-        final path = 'assets/bible_data/${translationId.toLowerCase()}_bible.json';
-        final jsonString = await rootBundle.loadString(path);
-        final Map<String, dynamic> bibleJson = jsonDecode(jsonString);
+        final bibleJson = await DirectBibleLoader.loadBible(translationId);
+        if (bibleJson == null) continue;
         final books = bibleJson['books'] as List<dynamic>;
         final transName = bibleJson['name'] ?? translationId.toUpperCase();
         for (final book in books) {
@@ -182,7 +193,9 @@ class BibleSearchNotifier extends StateNotifier<BibleSearchState> {
           }
           if (results.length >= 200) break;
         }
-      } catch (_) {}
+      } catch (e) {
+        debugPrint('Failed to search translation $translationId: $e');
+      }
     }
     return results;
   }

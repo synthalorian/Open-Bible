@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import '../../../../core/constants/app_constants.dart' show BibleStructure;
 import '../../../../core/services/bible_commentary.dart';
+import '../../../bible/presentation/pages/chapter_reader_page.dart';
 
 /// Commentary page - study notes & commentary
 class CommentaryPage extends StatefulWidget {
@@ -94,7 +95,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
                       fillColor: Theme.of(context).colorScheme.surface,
                     ),
                     value: _selectedChapter,
-                    items: List.generate(150, (i) => i + 1)
+                    items: List.generate(BibleStructure.getChapterCount(_capitalize(_selectedBook)).clamp(1, 150), (i) => i + 1)
                         .map((n) => DropdownMenuItem(value: n, child: Text('$n')))
                         .toList(),
                     onChanged: (value) {
@@ -200,7 +201,15 @@ class _CommentaryPageState extends State<CommentaryPage> {
                   icon: const Icon(Icons.menu_book),
                   label: const Text('Read Chapter'),
                   onPressed: () {
-                    context.push('/bible/book/$_selectedBook/chapter/$_selectedChapter');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ChapterReaderPage(
+                          bookId: _selectedBook,
+                          chapter: _selectedChapter,
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -215,7 +224,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: Colors.grey[700],
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 8),
@@ -248,7 +257,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.note_alt_outlined, size: 64, color: Colors.grey[400]),
+          Icon(Icons.note_alt_outlined, size: 64, color: Theme.of(context).colorScheme.outline),
           const SizedBox(height: 16),
           Text(
             'No commentary available',
@@ -257,7 +266,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
           const SizedBox(height: 8),
           Text(
             'Try selecting a different book or chapter',
-            style: TextStyle(color: Colors.grey[600]),
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
@@ -325,7 +334,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
             const SizedBox(height: 16),
             Text(
               'Commentary is available for the following books:',
-              style: TextStyle(color: Colors.grey[600]),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: 16),
             Wrap(

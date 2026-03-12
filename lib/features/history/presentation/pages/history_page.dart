@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/services/reading_history_service.dart';
 import '../../../../core/config/bible_translations.dart';
+import '../../../bible/presentation/pages/chapter_reader_page.dart';
 
 /// History page showing reading history
 class HistoryPage extends StatefulWidget {
@@ -35,6 +35,7 @@ class _HistoryPageState extends State<HistoryPage> {
         });
       }
     } catch (e) {
+      debugPrint('Failed to load reading history: $e');
       if (mounted) {
         setState(() {
           _history = [];
@@ -78,7 +79,7 @@ class _HistoryPageState extends State<HistoryPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.history, size: 64, color: Colors.grey[400]),
+          Icon(Icons.history, size: 64, color: Theme.of(context).colorScheme.outline),
           const SizedBox(height: 16),
           Text(
             'No reading history yet',
@@ -87,7 +88,7 @@ class _HistoryPageState extends State<HistoryPage> {
           const SizedBox(height: 8),
           Text(
             'Start reading to track your progress',
-            style: TextStyle(color: Colors.grey[600]),
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
           ),
         ],
       ),
@@ -204,7 +205,7 @@ class _HistoryPageState extends State<HistoryPage> {
             color: Theme.of(context).colorScheme.primaryContainer,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: const Icon(Icons.menu_book, color: Colors.white),
+          child: Icon(Icons.menu_book, color: Theme.of(context).colorScheme.onPrimaryContainer),
         ),
         title: Text(
           entry.reference,
@@ -212,14 +213,22 @@ class _HistoryPageState extends State<HistoryPage> {
         ),
         subtitle: Text(
           BibleTranslations.getAbbreviation(entry.bibleId),
-          style: TextStyle(color: Colors.grey[600]),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
         ),
         trailing: Text(
           _formatTime(entry.readAt),
-          style: TextStyle(color: Colors.grey[500], fontSize: 12),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 12),
         ),
         onTap: () {
-          context.push('/bible/book/${entry.bookId}/chapter/${entry.chapter}');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ChapterReaderPage(
+                bookId: entry.bookId,
+                chapter: entry.chapter,
+              ),
+            ),
+          );
         },
       ),
     );
