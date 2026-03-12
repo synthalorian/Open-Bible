@@ -53,7 +53,7 @@ class TranslationSelectorWidget extends ConsumerWidget {
                     ),
                     if (!isDownloaded) ...[
                       const SizedBox(width: 8),
-                      Icon(Icons.download, size: 14, color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.7)),
+                      Icon(Icons.download, size: 14, color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.7)),
                     ],
                   ],
                 ),
@@ -61,7 +61,7 @@ class TranslationSelectorWidget extends ConsumerWidget {
                   Text(
                     translation.name,
                     style: TextStyle(
-                      color: (textColor ?? Theme.of(context).colorScheme.onPrimary).withValues(alpha:0.7),
+                      color: (textColor ?? Theme.of(context).colorScheme.onPrimary).withOpacity(0.7),
                       fontSize: 12,
                     ),
                   ),
