@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/services/verse_storage_service.dart';
 import 'footnote_bottom_sheet.dart';
+import '../../../comparison/presentation/pages/verse_comparison_page.dart';
 
 /// Parse a highlight color name to a Color value.
 Color parseHighlightColor(String colorName) {
@@ -488,6 +489,25 @@ class VerseOptionsSheet extends ConsumerWidget {
                   const SnackBar(content: Text('Verse copied to clipboard')),
                 );
               }
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.compare_arrows),
+            title: const Text('Compare Translations'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                hostContext,
+                MaterialPageRoute(
+                  builder: (context) => VerseComparisonPage(
+                    initialBookId: bookId,
+                    initialBookName: bookName,
+                    initialChapter: chapter,
+                    initialVerse: verseNumber,
+                    initialVerseText: verseText,
+                  ),
+                ),
+              );
             },
           ),
         ],

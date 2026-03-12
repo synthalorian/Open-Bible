@@ -95,6 +95,7 @@ class _InlineChapterReaderPageState extends ConsumerState<InlineChapterReaderPag
                   MaterialPageRoute(builder: (_) => const ConcordancePage()),
                 );
               }
+              // Removed 'translations' option - now available via long-press on verses
             },
             itemBuilder: (context) => [
               const PopupMenuItem(
@@ -111,6 +112,7 @@ class _InlineChapterReaderPageState extends ConsumerState<InlineChapterReaderPag
                   title: Text('Strong\'s Concordance'),
                 ),
               ),
+              // Translations removed from here - use long-press on verse instead
             ],
           ),
         ],
