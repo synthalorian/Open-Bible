@@ -401,10 +401,8 @@ class VerseOptionsSheet extends ConsumerWidget {
               try {
                 if (isBookmarked) {
                   await ref.read(bookmarksProvider.notifier).removeBookmark(verseId);
-                  await VerseStorageService.removeBookmark(verseId);
                 } else {
-                  await ref.read(bookmarksProvider.notifier).addBookmark(verseId);
-                  await VerseStorageService.addBookmark(savedVerse);
+                  await ref.read(bookmarksProvider.notifier).addBookmark(verseId, verse: savedVerse);
                 }
 
                 if (context.mounted) {
@@ -535,10 +533,7 @@ class VerseOptionsSheet extends ConsumerWidget {
                       await container.read(highlightsProvider.notifier).addHighlight(
                         verseId,
                         colorName,
-                      );
-                      
-                      await VerseStorageService.setHighlight(
-                        SavedVerse(
+                        verse: SavedVerse(
                           id: verseId,
                           bookId: bookId,
                           bookName: bookName ?? bookId,
@@ -548,7 +543,6 @@ class VerseOptionsSheet extends ConsumerWidget {
                           savedAt: DateTime.now(),
                           bibleId: bibleId ?? 'kjv',
                         ),
-                        colorName,
                         start: isPrecision ? selectionStart : 0,
                         end: isPrecision ? selectionEnd : verseText.length,
                         selectedText: isPrecision ? selectedText : null,
@@ -589,7 +583,6 @@ class VerseOptionsSheet extends ConsumerWidget {
               TextButton.icon(
                 onPressed: () async {
                   await container.read(highlightsProvider.notifier).removeHighlight(verseId);
-                  await VerseStorageService.removeHighlight(verseId);
                   if (context.mounted) {
                     Navigator.pop(sheetContext);
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -632,9 +625,10 @@ class VerseOptionsSheet extends ConsumerWidget {
             onPressed: () async {
               try {
                 if (controller.text.isNotEmpty) {
-                  await container.read(notesProvider.notifier).addNote(verseId, controller.text);
-                  await VerseStorageService.saveNote(
-                    SavedVerse(
+                  await container.read(notesProvider.notifier).addNote(
+                    verseId,
+                    controller.text,
+                    verse: SavedVerse(
                       id: verseId,
                       bookId: bookId,
                       bookName: bookName ?? bookId,
@@ -645,11 +639,9 @@ class VerseOptionsSheet extends ConsumerWidget {
                       savedAt: DateTime.now(),
                       bibleId: bibleId ?? 'kjv',
                     ),
-                    controller.text,
                   );
                 } else {
                   await container.read(notesProvider.notifier).removeNote(verseId);
-                  await VerseStorageService.removeNote(verseId);
                 }
                 if (context.mounted) {
                   Navigator.pop(context);

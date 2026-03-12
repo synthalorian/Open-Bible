@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'core/providers/app_providers.dart';
 import 'core/services/footnote_service.dart';
@@ -419,19 +418,8 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
                   bibleId: 'kjv',
                 );
                 
-                // Save to storage service
-                await VerseStorageService.addBookmark(verse);
-                
-                // Update provider for immediate UI update
-                ref.read(bookmarksProvider.notifier).addBookmark(chapterRef);
-                
-                // Also save to legacy SharedPreferences for backward compatibility
-                final prefs = await SharedPreferences.getInstance();
-                final legacy = prefs.getStringList('bookmarks') ?? <String>[];
-                if (!legacy.contains(chapterRef)) {
-                  legacy.add(chapterRef);
-                  await prefs.setStringList('bookmarks', legacy);
-                }
+                // Persist and sync provider in one path
+                await ref.read(bookmarksProvider.notifier).addBookmark(chapterRef, verse: verse);
                 
                 if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
