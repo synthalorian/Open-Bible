@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'core/services/verse_storage_service.dart';
-import 'core/services/bible_audio_service.dart';
 
 class DebugStoragePage extends StatefulWidget {
   const DebugStoragePage({super.key});
@@ -61,13 +61,9 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           _buildSection('Audio Diagnostics'),
           ElevatedButton.icon(
             onPressed: () async {
-              final service = BibleAudioService.instance;
-              await service.initialize();
-              await service.speakChapter(
-                bookName: "Debug",
-                chapter: 1,
-                verses: [{'verse': 1, 'text': 'TTS engine test. Genesis 1 audio debugging active.'}]
-              );
+              final tts = FlutterTts();
+              await tts.setLanguage('en-US');
+              await tts.speak('TTS engine test. Genesis 1 audio debugging active.');
             },
             icon: const Icon(Icons.volume_up),
             label: const Text('Test TTS (Hello World)'),

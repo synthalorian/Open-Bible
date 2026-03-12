@@ -52,7 +52,7 @@ class AppTheme {
       elevation: 0,
       centerTitle: true,
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: _lightSurface,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -69,11 +69,11 @@ class AppTheme {
     ),
     chipTheme: ChipThemeData(
       backgroundColor: _lightSurface,
-      selectedColor: _primaryColor.withOpacity(0.2),
+      selectedColor: _primaryColor.withValues(alpha:0.2),
       labelStyle: TextStyle(color: _lightText),
     ),
     dividerTheme: DividerThemeData(
-      color: _lightTextSecondary.withOpacity(0.2),
+      color: _lightTextSecondary.withValues(alpha:0.2),
     ),
   );
 
@@ -100,7 +100,7 @@ class AppTheme {
       elevation: 0,
       centerTitle: true,
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: const Color(0xFFFCF5E5),
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -113,7 +113,7 @@ class AppTheme {
     ),
     chipTheme: ChipThemeData(
       backgroundColor: const Color(0xFFFCF5E5),
-      selectedColor: _primaryColor.withOpacity(0.2),
+      selectedColor: _primaryColor.withValues(alpha:0.2),
       labelStyle: const TextStyle(color: Color(0xFF5B4636)),
     ),
   );
@@ -138,7 +138,7 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surface,
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -155,11 +155,11 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: surface,
-        selectedColor: const Color(0xFF9B7BA3).withOpacity(0.3),
+        selectedColor: const Color(0xFF9B7BA3).withValues(alpha:0.3),
         labelStyle: const TextStyle(color: _darkText),
       ),
       dividerTheme: DividerThemeData(
-        color: _darkTextSecondary.withOpacity(0.2),
+        color: _darkTextSecondary.withValues(alpha:0.2),
       ),
     );
   }
@@ -168,68 +168,68 @@ class AppTheme {
     return TextTheme(
       // Verse text - serif for readability
       bodyLarge: TextStyle(
-        fontFamily: 'Merriweather',
+        fontFamily: 'CrimsonText',
         fontSize: 18,
         height: 1.8,
         color: primary,
       ),
       bodyMedium: TextStyle(
-        fontFamily: 'Merriweather',
+        fontFamily: 'CrimsonText',
         fontSize: 16,
         height: 1.7,
         color: primary,
       ),
       bodySmall: TextStyle(
-        fontFamily: 'Merriweather',
+        fontFamily: 'CrimsonText',
         fontSize: 14,
         height: 1.6,
         color: secondary,
       ),
       // UI text - sans-serif
       headlineLarge: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 28,
         fontWeight: FontWeight.bold,
         color: primary,
       ),
       headlineMedium: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 24,
         fontWeight: FontWeight.bold,
         color: primary,
       ),
       headlineSmall: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 20,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
       titleLarge: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
       titleMedium: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: FontWeight.w500,
         color: primary,
       ),
       titleSmall: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 14,
         fontWeight: FontWeight.w500,
         color: secondary,
       ),
       labelLarge: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 14,
         fontWeight: FontWeight.w500,
         color: primary,
       ),
       labelMedium: TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 12,
         fontWeight: FontWeight.w500,
         color: secondary,

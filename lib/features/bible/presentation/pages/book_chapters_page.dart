@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_constants.dart';
+import 'chapter_reader_page.dart';
 
 /// Book chapters page - shows grid of chapters for a book
 class BookChaptersPage extends StatelessWidget {
@@ -64,8 +64,14 @@ class BookChaptersPage extends StatelessWidget {
                   final chapterNum = index + 1;
                   return _ChapterGridItem(
                     chapterNumber: chapterNum,
-                    onTap: () => context.push(
-                      '/bible/book/$bookId/chapter/$chapterNum',
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ChapterReaderPage(
+                          bookId: bookId,
+                          chapter: chapterNum,
+                        ),
+                      ),
                     ),
                   );
                 },

@@ -9,10 +9,8 @@ class AppConstants {
   // API Configuration
   static const String bibleApiBaseUrl = 'https://api.scripture.api.bible/v1';
   
-  // API Key - loaded from .env file at runtime
+  // API Key - passed via --dart-define at build time
   static String get bibleApiKey {
-    // Import dotenv in the file that uses this
-    // This is a placeholder - actual key comes from .env
     return const String.fromEnvironment('BIBLE_API_KEY', defaultValue: '');
   }
 
@@ -36,6 +34,33 @@ class AppConstants {
   static const int dailyVerseNotificationId = 1;
   static const int readingReminderNotificationId = 2;
   static const int streakWarningNotificationId = 3;
+
+  // Book abbreviations (canonical, shared across all features)
+  static const Map<String, String> bookAbbreviations = {
+    'genesis': 'Gen', 'exodus': 'Ex', 'leviticus': 'Lev',
+    'numbers': 'Num', 'deuteronomy': 'Deut', 'joshua': 'Josh',
+    'judges': 'Judg', 'ruth': 'Ruth', '1 samuel': '1 Sam',
+    '2 samuel': '2 Sam', '1 kings': '1 Kgs', '2 kings': '2 Kgs',
+    '1 chronicles': '1 Chr', '2 chronicles': '2 Chr', 'ezra': 'Ezra',
+    'nehemiah': 'Neh', 'esther': 'Esth', 'job': 'Job',
+    'psalms': 'Ps', 'proverbs': 'Prov', 'ecclesiastes': 'Eccl',
+    'song of solomon': 'Song', 'isaiah': 'Isa', 'jeremiah': 'Jer',
+    'lamentations': 'Lam', 'ezekiel': 'Ezek', 'daniel': 'Dan',
+    'hosea': 'Hos', 'joel': 'Joel', 'amos': 'Amos',
+    'obadiah': 'Obad', 'jonah': 'Jon', 'micah': 'Mic',
+    'nahum': 'Nah', 'habakkuk': 'Hab', 'zephaniah': 'Zeph',
+    'haggai': 'Hag', 'zechariah': 'Zech', 'malachi': 'Mal',
+    'matthew': 'Matt', 'mark': 'Mark', 'luke': 'Luke',
+    'john': 'John', 'acts': 'Acts', 'romans': 'Rom',
+    '1 corinthians': '1 Cor', '2 corinthians': '2 Cor', 'galatians': 'Gal',
+    'ephesians': 'Eph', 'philippians': 'Phil', 'colossians': 'Col',
+    '1 thessalonians': '1 Thess', '2 thessalonians': '2 Thess',
+    '1 timothy': '1 Tim', '2 timothy': '2 Tim', 'titus': 'Titus',
+    'philemon': 'Phlm', 'hebrews': 'Heb', 'james': 'Jas',
+    '1 peter': '1 Pet', '2 peter': '2 Pet', '1 john': '1 John',
+    '2 john': '2 John', '3 john': '3 John', 'jude': 'Jude',
+    'revelation': 'Rev',
+  };
 }
 
 /// Bible book structure
