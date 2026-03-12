@@ -70,7 +70,7 @@ final availableTranslations = [
   const BibleTranslation(id: 'darby', name: 'Darby Translation', abbreviation: 'DARBY', language: 'English'),
   const BibleTranslation(id: 'tyndale', name: 'Tyndale Bible', abbreviation: 'TYN', language: 'English'),
   const BibleTranslation(id: 'wycliffe', name: 'Wycliffe Bible', abbreviation: 'WYC', language: 'English'),
-  const BibleTranslation(id: 'gen', name: 'Geneva Bible', abbreviation: 'GEN', language: 'English'),
+  const BibleTranslation(id: 'geneva', name: 'Geneva Bible', abbreviation: 'GEN', language: 'English'),
 ];
 
 final fontSizeProvider = StateProvider<double>((ref) => 18.0);
