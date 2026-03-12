@@ -1,13 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../services/footnote_service.dart';
-import '../services/storage_service.dart' show StorageService;
 import '../services/current_bible.dart';
 import '../services/bible_download_manager.dart';
 import '../services/verse_storage_service.dart';
 
 // Re-export all providers
-export 'theme_provider.dart';
 export 'audio_bible_provider.dart';
 export '../../features/streaks/data/streaks_provider.dart';
 export '../../features/prayer_journal/data/prayer_journal_provider.dart';
@@ -38,6 +35,13 @@ class BookmarksNotifier extends StateNotifier<List<String>> {
   }
 
   bool isBookmarked(String verseId) => state.contains(verseId);
+
+  Future<void> clearBookmarks() async {
+    for (final id in state) {
+      await VerseStorageService.removeBookmark(id);
+    }
+    state = [];
+  }
 }
 
 /// Selected Bible translation provider
@@ -180,6 +184,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       final s = VerseStorageService.getSettings();
       if (s.isEmpty) { _isLoaded = true; return; }
       final modeIndex = s['readingMode'] as int? ?? ReadingMode.day.index;
+      final savedBibleId = s['selectedBibleId'] as String? ?? state.selectedBibleId;
       state = state.copyWith(
         fontSize: s['fontSize'] as int? ?? state.fontSize,
         readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
@@ -188,9 +193,12 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
         dailyVerseTime: DailyVerseTime(hour: s['dailyVerseHour'] as int? ?? 8, minute: s['dailyVerseMinute'] as int? ?? 0),
         audioEnabled: s['audioEnabled'] as bool? ?? state.audioEnabled,
         isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
+        selectedBibleId: savedBibleId,
       );
+      // Restore the selected translation across the app
+      CurrentBible.set(savedBibleId);
       _isLoaded = true;
-    } catch (_) { _isLoaded = true; }
+    } catch (e) { debugPrint('Failed to load app settings: $e'); _isLoaded = true; }
   }
 
   Future<void> _save() async {
@@ -204,9 +212,12 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
         'dailyVerseHour': state.dailyVerseTime.hour,
         'dailyVerseMinute': state.dailyVerseTime.minute,
         'audioEnabled': state.audioEnabled,
+        'selectedBibleId': state.selectedBibleId,
       };
       await VerseStorageService.saveSettings(s);
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('Failed to save settings: $e');
+    }
   }
 
   void setFontSize(int size) { state = state.copyWith(fontSize: size); _save(); }
@@ -214,9 +225,9 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
   void setAudioEnabled(bool enabled) { state = state.copyWith(audioEnabled: enabled); _save(); }
   Future<void> toggleNotifications() async { state = state.copyWith(notificationsEnabled: !state.notificationsEnabled); await _save(); }
   Future<void> setDailyVerseTime(DailyVerseTime time) async { state = state.copyWith(dailyVerseTime: time); await _save(); }
+  Future<void> setDailyVerseNotifications(bool enabled) async { state = state.copyWith(dailyVerseNotifications: enabled); await _save(); }
 }
 
-final storageServiceProvider = Provider<StorageService>((ref) => StorageService.instance);
 final bibleDownloadManagerProvider = ChangeNotifierProvider<BibleDownloadManager>((ref) => BibleDownloadManager()..init());
 
 class ReadingPosition {

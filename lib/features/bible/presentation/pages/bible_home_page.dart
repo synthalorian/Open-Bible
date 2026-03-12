@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import '../pages/chapter_reader_page.dart';
+import '../pages/book_chapters_page.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/continue_reading_service.dart';
@@ -31,7 +32,7 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
     return PopupMenuButton<String>(
       initialValue: widget.currentTranslationId,
       onSelected: (value) async {
-        print('PopupMenu selected: $value');
+        debugPrint('PopupMenu selected: $value');
         
         // Check if downloaded
         if (!downloadManager.isVersionAvailable(value)) {
@@ -112,11 +113,11 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
                   Expanded(
                     child: Text(
                       '(${t.year})',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 12),
                     ),
                   ),
                   if (!isDownloaded)
-                    const Icon(Icons.download, size: 16, color: Colors.grey),
+                    Icon(Icons.download, size: 16, color: Theme.of(context).colorScheme.outline),
                 ],
               ),
             ));
@@ -154,6 +155,7 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
   String _searchQuery = '';
   ContinueReadingData? _lastPosition;
   String _selectedTranslationId = 'kjv';
+  bool _hasLoadedContinueReading = false;
 
   @override
   void initState() {
@@ -170,7 +172,7 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
     try {
       _lastPosition = ContinueReadingService.getLastPosition();
     } catch (e) {
-      print('Error loading continue reading: $e');
+      debugPrint('Error loading continue reading: $e');
       _lastPosition = null;
     }
   }
@@ -185,11 +187,14 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _loadContinueReading();
+    if (!_hasLoadedContinueReading) {
+      _hasLoadedContinueReading = true;
+      _loadContinueReading();
+    }
   }
 
   void _onTranslationChanged(String newId) {
-    print('Translation changed to: $newId');
+    debugPrint('Translation changed to: $newId');
     
     // Update provider (this also syncs CurrentBible internally)
     ref.read(bibleDataProvider.notifier).selectTranslation(newId);
@@ -220,7 +225,6 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
             onPressed: () {
               final nextMode = settings.isDarkMode ? ReadingMode.day : ReadingMode.night;
               ref.read(settingsProvider.notifier).setReadingMode(nextMode);
-              ref.read(themeProvider.notifier).setDarkMode(!settings.isDarkMode);
             },
           ),
         ],
@@ -305,7 +309,15 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
     
     return ContinueReadingCard(
       data: data,
-      onTap: () => context.push('/bible/book/$routeBookId/chapter/${data.chapter}'),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => ChapterReaderPage(
+            bookId: routeBookId,
+            chapter: data.chapter,
+          ),
+        ),
+      ),
     );
   }
 
@@ -326,7 +338,12 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
             title: Text(book, style: const TextStyle(fontWeight: FontWeight.bold)),
             subtitle: Text('${BibleStructure.getChapterCount(book)} chapters'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.push('/bible/book/${book.toLowerCase()}'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => BookChaptersPage(bookId: book.toLowerCase()),
+              ),
+            ),
           ),
         );
       },
@@ -340,10 +357,4 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
     );
   }
 
-  void _toggleTheme() {
-    final newMode = ref.read(settingsProvider).isDarkMode 
-        ? ReadingMode.day 
-        : ReadingMode.night;
-    ref.read(settingsProvider.notifier).setReadingMode(newMode);
-  }
 }
