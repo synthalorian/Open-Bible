@@ -36,6 +36,11 @@ void main() async {
   } catch (e) {
     debugPrint('VerseStorageService Init Error: $e');
   }
+  try {
+    await ContinueReadingService.init();
+  } catch (e) {
+    debugPrint('ContinueReadingService Init Error: $e');
+  }
   
   runApp(
     const ProviderScope(
