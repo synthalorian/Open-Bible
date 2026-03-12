@@ -6,6 +6,7 @@ import 'core/models/parsed_bible.dart';
 import 'core/providers/app_providers.dart';
 import 'core/services/footnote_service.dart';
 import 'core/services/verse_storage_service.dart';
+import 'core/services/continue_reading_service.dart';
 import 'core/constants/app_constants.dart';
 import 'core/themes/app_theme.dart';
 import 'features/bible/presentation/widgets/translation_selector_widget.dart';
@@ -208,15 +209,6 @@ class _BiblePageState extends ConsumerState<BiblePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const search_feature.SearchPage()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.compare_arrows),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const VerseComparisonPage()),
               );
             },
           ),
