@@ -104,8 +104,6 @@ class SavedVerse {
 
 /// Unified storage service using local file as authority
 class VerseStorageService {
-  static const _bookmarksKey = 'verse_storage_bookmarks_v3';
-  
   static SharedPreferences? _prefs;
   static List<SavedVerse> _bookmarks = [];
   static Map<String, SavedVerse> _highlights = {};
