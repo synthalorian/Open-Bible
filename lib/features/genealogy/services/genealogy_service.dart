@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// Service for loading and managing genealogy data
@@ -22,7 +23,7 @@ class GenealogyService {
       _people = jsonData.map((json) => GenealogyPerson.fromJson(json)).toList();
       _isLoaded = true;
     } catch (e) {
-      print('Error loading genealogy data: $e');
+      debugPrint('Error loading genealogy data: $e');
       _people = [];
     }
   }
@@ -35,6 +36,7 @@ class GenealogyService {
     try {
       return _people.firstWhere((p) => p.id == id);
     } catch (e) {
+      debugPrint('Failed to find person by ID: $e');
       return null;
     }
   }

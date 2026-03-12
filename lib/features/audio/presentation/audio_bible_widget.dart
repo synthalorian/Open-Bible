@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/providers/app_providers.dart';
+import '../../../core/providers/app_providers.dart';
 
 /// Audio Bible widget with TTS controls
 class AudioBibleWidget extends ConsumerWidget {
@@ -52,7 +52,7 @@ class AudioBibleWidget extends ConsumerWidget {
         
         // Audio controls (shown when speaking)
         if (audioState.isSpeaking) ...[
-          AudioControlsWidget(),
+          const AudioControlsWidget(),
         ],
       ],
     );

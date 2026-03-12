@@ -133,7 +133,7 @@ class ReadingStreaksWidget extends ConsumerWidget {
                   label: const Text('Mark as Read'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
-                    foregroundColor: Colors.white,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
               ],

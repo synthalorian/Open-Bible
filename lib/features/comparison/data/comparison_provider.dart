@@ -123,7 +123,7 @@ class VerseComparisonNotifier extends StateNotifier<VerseComparisonState> {
             ));
           }
         } catch (e) {
-          // Skip translations that fail to load
+          debugPrint('Failed to load translation for comparison: $e');
           continue;
         }
       }
@@ -163,6 +163,7 @@ class VerseComparisonNotifier extends StateNotifier<VerseComparisonState> {
       }
       return null;
     } catch (e) {
+      debugPrint('Failed to load verse text: $e');
       return null;
     }
   }

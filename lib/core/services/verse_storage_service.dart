@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -104,12 +105,18 @@ class SavedVerse {
 
 /// Unified storage service using local file as authority
 class VerseStorageService {
+  /// Queue-based mutex: each save chains onto the previous one,
+  /// guaranteeing serial execution without the Completer race.
+  static Future<void> _writeChain = Future.value();
+
   static SharedPreferences? _prefs;
   static List<SavedVerse> _bookmarks = [];
   static Map<String, SavedVerse> _highlights = {};
   static Map<String, SavedVerse> _notes = {};
   static Map<String, dynamic> _settings = {};
   static List<dynamic> _history = [];
+  static Map<String, dynamic> _streaks = {};
+  static Map<String, dynamic> _continueReading = {};
   
   static bool _initialized = false;
   static File? _backupFile;
@@ -126,6 +133,7 @@ class VerseStorageService {
       try {
         dir = await getApplicationSupportDirectory();
       } catch (e) {
+        debugPrint('App support dir unavailable, falling back to documents dir: $e');
         dir = await getApplicationDocumentsDirectory();
       }
       
@@ -182,33 +190,51 @@ class VerseStorageService {
           
       _settings = map['settings'] as Map<String, dynamic>? ?? {};
       _history = map['history'] as List<dynamic>? ?? [];
-      
+      _streaks = map['streaks'] as Map<String, dynamic>? ?? {};
+      _continueReading = map['continueReading'] as Map<String, dynamic>? ?? {};
+
       debugPrint('VerseStorageService: Loaded data from file (Settings: ${_settings.length})');
     } catch (e) {
       _lastError = "LoadFile: $e";
     }
   }
 
-  static Future<void> _saveToBackupFile() async {
+  static Future<void> _saveToBackupFile() {
+    final completer = Completer<void>();
+    final previous = _writeChain;
+    _writeChain = completer.future;
+
+    previous.then((_) => _doSave()).whenComplete(() => completer.complete());
+    return completer.future;
+  }
+
+  static Future<void> _doSave() async {
     try {
       final f = _backupFile;
       if (f == null) return;
-      
+
       final map = {
         'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
         'highlights': _highlights.map((k, v) => MapEntry(k, v.toJson())),
         'notes': _notes.map((k, v) => MapEntry(k, v.toJson())),
         'settings': _settings,
         'history': _history,
+        'streaks': _streaks,
+        'continueReading': _continueReading,
       };
-      
+
       final jsonString = json.encode(map);
       final tmpFile = File('${f.path}.tmp');
       await tmpFile.writeAsString(jsonString, flush: true);
-      
+
       if (await tmpFile.exists() && (await tmpFile.length()) > 0) {
-        if (await f.exists()) await f.delete();
-        await tmpFile.rename(f.path);
+        try {
+          await tmpFile.rename(f.path);
+        } on FileSystemException {
+          // Cross-device rename fallback (common on Android)
+          await f.writeAsString(jsonString, flush: true);
+          try { await tmpFile.delete(); } catch (e) { debugPrint('Failed to delete temp file: $e'); }
+        }
       } else {
         throw Exception('File verify failed');
       }
@@ -238,11 +264,8 @@ class VerseStorageService {
   // Bookmarks
   static Future<void> addBookmark(SavedVerse verse) async {
     if (!_initialized) await initialize();
-    final exists = _bookmarks.any((v) => v.id == verse.id);
-    if (!exists) {
-      _bookmarks.add(verse);
-      await _saveToBackupFile();
-    }
+    _bookmarks.add(verse);
+    await _saveToBackupFile();
   }
   
   static Future<void> removeBookmark(String verseId) async {
@@ -322,12 +345,32 @@ class VerseStorageService {
     return _notes[verseId]?.note;
   }
 
+  // Streaks
+  static Map<String, dynamic> getStreaks() => Map.from(_streaks);
+
+  static Future<void> saveStreaks(Map<String, dynamic> streaks) async {
+    if (!_initialized) await initialize();
+    _streaks = Map.from(streaks);
+    await _saveToBackupFile();
+  }
+
+  // Continue Reading
+  static Map<String, dynamic> getContinueReading() => Map.from(_continueReading);
+
+  static Future<void> saveContinueReading(Map<String, dynamic> data) async {
+    if (!_initialized) await initialize();
+    _continueReading = Map.from(data);
+    await _saveToBackupFile();
+  }
+
   static Future<void> clearAll() async {
     if (!_initialized) await initialize();
     _bookmarks.clear();
     _highlights.clear();
     _notes.clear();
     _history.clear();
+    _streaks.clear();
+    _continueReading.clear();
     // Keep settings? Usually user expects settings to stay even if data is wiped.
     await _saveToBackupFile();
   }
@@ -364,7 +407,7 @@ class VerseStorageService {
       try {
         backupExists = _backupFile!.existsSync();
         if (backupExists) backupBytes = _backupFile!.lengthSync();
-      } catch (_) {}
+      } catch (e) { debugPrint('Failed to stat backup file: $e'); }
     }
 
     return {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/services/current_bible.dart';
 import '../../../../core/services/verse_storage_service.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/services/notification_service.dart';
@@ -99,7 +100,7 @@ class _DailyVersePageState extends ConsumerState<DailyVersePage> {
                   Text(
                     _dailyVerse.text,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontFamily: 'Merriweather',
+                          fontFamily: 'CrimsonText',
                           fontStyle: FontStyle.italic,
                           height: 1.6,
                         ),
@@ -254,6 +255,7 @@ class _DailyVersePageState extends ConsumerState<DailyVersePage> {
     
     if (_isBookmarked) {
       await VerseStorageService.removeBookmark(verseId);
+      if (!mounted) return;
       setState(() => _isBookmarked = false);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -269,9 +271,10 @@ class _DailyVersePageState extends ConsumerState<DailyVersePage> {
         verse: _dailyVerse.verse,
         text: _dailyVerse.text,
         savedAt: DateTime.now(),
-        bibleId: 'kjv',
+        bibleId: CurrentBible.id,
       );
       await VerseStorageService.addBookmark(savedVerse);
+      if (!mounted) return;
       setState(() => _isBookmarked = true);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -323,6 +326,7 @@ class _DailyVersePageState extends ConsumerState<DailyVersePage> {
     if (result != null) {
       if (result.isEmpty) {
         await VerseStorageService.removeNote(verseId);
+        if (!mounted) return;
         setState(() => _note = null);
       } else {
         final savedVerse = SavedVerse(
@@ -333,9 +337,10 @@ class _DailyVersePageState extends ConsumerState<DailyVersePage> {
           verse: _dailyVerse.verse,
           text: _dailyVerse.text,
           savedAt: DateTime.now(),
-          bibleId: 'kjv',
+          bibleId: CurrentBible.id,
         );
         await VerseStorageService.saveNote(savedVerse, result);
+        if (!mounted) return;
         setState(() => _note = result);
       }
     }

@@ -82,11 +82,9 @@ class _BibleDownloadsPageState extends ConsumerState<BibleDownloadsPage> {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      '• KJV and WEB are included with the app\n'
-                      '• Additional versions can be downloaded\n'
-                      '• Downloaded Bibles work without internet\n'
-                      '• Free versions are public domain\n'
-                      '• Licensed versions require internet',
+                      '• All 20 Bible translations are included with the app\n'
+                      '• Every translation works offline — no downloads needed\n'
+                      '• Switch between versions anytime from the reader',
                       style: TextStyle(fontSize: 14),
                     ),
                   ],
@@ -152,7 +150,7 @@ class _BibleDownloadsPageState extends ConsumerState<BibleDownloadsPage> {
               padding: const EdgeInsets.only(top: 8),
               child: LinearProgressIndicator(
                 value: progress?.progress ?? 0,
-                backgroundColor: Colors.grey[300],
+                backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
               ),
             ),
         ],
