@@ -1,27 +1,9 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import '../models/bible_book.dart';
 
-class BibleBook {
-  final String id;
-  final String name;
-  final String abbreviation;
-  final int chapters;
-  final Testament testament;
-  const BibleBook({required this.id, required this.name, required this.abbreviation, required this.chapters, required this.testament});
-  factory BibleBook.fromJson(Map<String, dynamic> json) => BibleBook(
-    id: json['id'] ?? '',
-    name: json['name'] ?? '',
-    abbreviation: json['abbreviation'] ?? '',
-    chapters: json['chapters'] ?? 0,
-    testament: _parseTestament(json['testament']),
-  );
-  static Testament _parseTestament(String? value) {
-    if (value?.toLowerCase() == 'new' || value?.toLowerCase() == 'new_testament') return Testament.newTestament;
-    return Testament.old;
-  }
-}
-
-enum Testament { old, newTestament }
+export '../models/bible_book.dart' show BibleBook, Testament;
 
 class ChapterData {
   final String bookId;
@@ -36,6 +18,9 @@ class BibleRepository {
   BibleRepository._internal();
   final Map<String, List<BibleBook>> _booksCache = {};
 
+  /// Cache for parsed Bible JSON to avoid re-parsing on every call
+  static final Map<String, Map<String, dynamic>> _cache = {};
+
   Future<List<BibleBook>> getBooks([String translationId = 'kjv']) async {
     if (_booksCache.containsKey(translationId)) return _booksCache[translationId]!;
     return _getDefaultBooks();
@@ -43,10 +28,17 @@ class BibleRepository {
 
   Future<ChapterData?> getChapter(String translationId, String bookId, int chapter) async {
     try {
-      final String jsonString = await rootBundle.loadString('assets/bible_data/${translationId.toLowerCase()}_bible.json');
-      final Map<String, dynamic> bibleJson = jsonDecode(jsonString);
+      final path = 'assets/bible_data/${translationId.toLowerCase()}_bible.json';
+
+      // Use cache to avoid re-parsing
+      if (!_cache.containsKey(path)) {
+        final String jsonString = await rootBundle.loadString(path);
+        _cache[path] = jsonDecode(jsonString) as Map<String, dynamic>;
+      }
+      final bibleJson = _cache[path]!;
+
       final books = bibleJson['books'] as List<dynamic>;
-      
+
       final normId = bookId.toUpperCase();
       final bookData = books.firstWhere(
         (b) {
@@ -56,10 +48,10 @@ class BibleRepository {
         },
         orElse: () => throw Exception('Book $bookId not found'),
       );
-      
+
       final chapters = bookData['chapters'] as List<dynamic>;
       final chapterData = chapters.firstWhere((c) => c['chapter'] == chapter, orElse: () => throw Exception('Chapter $chapter not found'));
-      
+
       final verses = chapterData['verses'] as List<dynamic>;
       final buffer = StringBuffer();
       for (final v in verses) {
@@ -69,7 +61,7 @@ class BibleRepository {
       }
       return ChapterData(bookId: bookId, chapter: chapter, content: buffer.toString());
     } catch (e) {
-      print('BibleRepository Error: $e');
+      debugPrint('BibleRepository Error: $e');
       return null;
     }
   }

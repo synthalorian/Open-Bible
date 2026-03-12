@@ -730,7 +730,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                     illustration.bibleReference,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.grey[600],
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],
@@ -752,9 +752,9 @@ class BibleIllustrationsPage extends StatelessWidget {
         minChildSize: 0.5,
         maxChildSize: 0.9,
         builder: (context, scrollController) => Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             children: [
@@ -764,7 +764,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                 height: 4,
                 margin: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'core/services/verse_storage_service.dart';
-import 'core/services/bible_audio_service.dart';
 
 class DebugStoragePage extends StatefulWidget {
   const DebugStoragePage({super.key});
@@ -40,7 +40,7 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           ElevatedButton(
             onPressed: () async {
               final result = await VerseStorageService.testNativeBridge();
-              if (!context.mounted) return;
+              if (!mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
             },
             child: const Text('TEST CUSTOM NATIVE BRIDGE'),
@@ -61,13 +61,9 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           _buildSection('Audio Diagnostics'),
           ElevatedButton.icon(
             onPressed: () async {
-              final service = BibleAudioService.instance;
-              await service.initialize();
-              await service.speakChapter(
-                bookName: "Debug",
-                chapter: 1,
-                verses: [{'verse': 1, 'text': 'TTS engine test. Genesis 1 audio debugging active.'}]
-              );
+              final tts = FlutterTts();
+              await tts.setLanguage('en-US');
+              await tts.speak('TTS engine test. Genesis 1 audio debugging active.');
             },
             icon: const Icon(Icons.volume_up),
             label: const Text('Test TTS (Hello World)'),
@@ -78,11 +74,8 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           ElevatedButton(
             onPressed: () async {
               await VerseStorageService.initialize(force: true);
-              if (!context.mounted) return;
               _refresh();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Storage Re-initialized')),
-              );
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
             },
             child: const Text('RETRY PLUGINS (RE-INIT)'),
           ),
@@ -90,11 +83,8 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           ElevatedButton(
             onPressed: () async {
               await VerseStorageService.forceSave();
-              if (!context.mounted) return;
               _refresh();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Manual Save Triggered')),
-              );
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Manual Save Triggered')));
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white),
             child: const Text('FORCE SAVE TO DISK'),
@@ -103,17 +93,13 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           ElevatedButton(
             onPressed: () async {
               final raw = await VerseStorageService.getRawBackupJson();
-              if (!context.mounted) return;
+              if (!mounted) return;
               showDialog(
                 context: context,
-                builder: (dialogContext) => AlertDialog(
+                builder: (context) => AlertDialog(
                   title: const Text('Raw JSON'),
-                  content: SingleChildScrollView(
-                    child: Text(raw, style: const TextStyle(fontSize: 10, fontFamily: 'monospace')),
-                  ),
-                  actions: [
-                    TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Close')),
-                  ],
+                  content: SingleChildScrollView(child: Text(raw, style: const TextStyle(fontSize: 10, fontFamily: 'monospace'))),
+                  actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
                 ),
               );
             },
@@ -123,11 +109,8 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           OutlinedButton(
             onPressed: () async {
               await VerseStorageService.clearAll();
-              if (!context.mounted) return;
               _refresh();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('All Data Wiped')),
-              );
+              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('All Data Wiped')));
             },
             style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Wipe All Saved Data'),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// Translation-specific footnote loader
@@ -27,7 +28,7 @@ class TranslationFootnotes {
       _cache[translationId] = footnotes;
       return footnotes;
     } catch (e) {
-      // Return empty map if no footnotes file exists
+      debugPrint('Failed to load footnotes for $translationId: $e');
       return {};
     }
   }

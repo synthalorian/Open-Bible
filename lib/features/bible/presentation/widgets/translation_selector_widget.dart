@@ -28,7 +28,7 @@ class TranslationSelectorWidget extends ConsumerWidget {
         ),
         dropdownColor: Theme.of(context).colorScheme.primary,
         style: TextStyle(
-          color: textColor ?? Colors.white,
+          color: textColor ?? Theme.of(context).colorScheme.onPrimary,
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
@@ -47,13 +47,13 @@ class TranslationSelectorWidget extends ConsumerWidget {
                     Text(
                       translation.abbreviation,
                       style: TextStyle(
-                        color: textColor ?? Colors.white,
+                        color: textColor ?? Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     if (!isDownloaded) ...[
                       const SizedBox(width: 8),
-                      const Icon(Icons.download, size: 14, color: Colors.white70),
+                      Icon(Icons.download, size: 14, color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.7)),
                     ],
                   ],
                 ),
@@ -61,7 +61,7 @@ class TranslationSelectorWidget extends ConsumerWidget {
                   Text(
                     translation.name,
                     style: TextStyle(
-                      color: (textColor ?? Colors.white).withOpacity(0.7),
+                      color: (textColor ?? Theme.of(context).colorScheme.onPrimary).withOpacity(0.7),
                       fontSize: 12,
                     ),
                   ),
@@ -93,13 +93,11 @@ class TranslationSelectorWidget extends ConsumerWidget {
             );
             
             if (confirm == true) {
-              if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
               );
-
+              
               final success = await downloadManager.downloadVersion(value);
-              if (!context.mounted) return;
               if (success) {
                 ref.read(selectedTranslationProvider.notifier).state = value;
                 ref.read(bibleDataProvider.notifier).selectTranslation(value);
@@ -170,13 +168,11 @@ class CompactTranslationSelector extends ConsumerWidget {
           );
           
           if (confirm == true) {
-            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
             );
-
+            
             final success = await downloadManager.downloadVersion(value);
-            if (!context.mounted) return;
             if (success) {
               ref.read(selectedTranslationProvider.notifier).state = value;
               ref.read(bibleDataProvider.notifier).selectTranslation(value);

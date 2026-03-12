@@ -27,13 +27,13 @@ class _ShareVersePageState extends State<ShareVersePage> {
     VerseStyle(
       name: 'Classic',
       textStyle: const TextStyle(
-        fontFamily: 'Merriweather',
+        fontFamily: 'CrimsonText',
         fontSize: 24,
         height: 1.6,
         color: Colors.white,
       ),
       referenceStyle: const TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: Colors.white70,
@@ -42,14 +42,14 @@ class _ShareVersePageState extends State<ShareVersePage> {
     VerseStyle(
       name: 'Modern',
       textStyle: const TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 22,
         height: 1.7,
         fontWeight: FontWeight.w300,
         color: Colors.white,
       ),
       referenceStyle: const TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 14,
         fontWeight: FontWeight.bold,
         color: Colors.white70,
@@ -58,14 +58,14 @@ class _ShareVersePageState extends State<ShareVersePage> {
     VerseStyle(
       name: 'Bold',
       textStyle: const TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 26,
         height: 1.5,
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
       referenceStyle: const TextStyle(
-        fontFamily: 'Lato',
+        fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: FontWeight.w600,
         color: Colors.white,
@@ -246,7 +246,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
             '"',
             style: TextStyle(
               fontSize: 64,
-              fontFamily: 'Merriweather',
+              fontFamily: 'CrimsonText',
               color: Colors.white.withOpacity(0.3),
             ),
           ),
@@ -270,7 +270,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
           
           // App branding
           Text(
-            'Holy Bible App',
+            'Open Bible',
             style: TextStyle(
               fontSize: 12,
               color: Colors.white.withOpacity(0.5),

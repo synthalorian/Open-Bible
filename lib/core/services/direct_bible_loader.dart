@@ -1,56 +1,79 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../config/bible_translations.dart';
 
 /// The MOST STACKED offline Bible loader on Earth
 class DirectBibleLoader {
   static final Map<String, Map<String, dynamic>> _cache = {};
-  
-  /// Load a Bible file by translation ID
+  static final List<String> _cacheOrder = []; // LRU tracking
+  static const int _maxCacheSize = 3;
+
+  /// Clear all cached Bible data from memory
+  static void clearCache() {
+    _cache.clear();
+    _cacheOrder.clear();
+  }
+
+  /// Load a Bible file by translation ID (public for search service)
+  static Future<Map<String, dynamic>?> loadBible(String bibleId) => _loadBible(bibleId);
+
   static Future<Map<String, dynamic>?> _loadBible(String bibleId) async {
     final normalizedId = bibleId.toLowerCase();
-    
-    if (_cache.containsKey(normalizedId)) return _cache[normalizedId];
+
+    if (_cache.containsKey(normalizedId)) {
+      // Move to end of LRU list (most recently used)
+      _cacheOrder.remove(normalizedId);
+      _cacheOrder.add(normalizedId);
+      return _cache[normalizedId];
+    }
     
     // Get file name from our unified config
     final fileName = BibleTranslations.getFileName(normalizedId);
     if (fileName == null) {
-      print('DirectBibleLoader: Unknown Bible ID: $bibleId');
+      debugPrint('DirectBibleLoader: Unknown Bible ID: $bibleId');
       return null;
     }
     
     try {
-      print('DirectBibleLoader: Loading $fileName for ID: $bibleId');
+      debugPrint('DirectBibleLoader: Loading $fileName for ID: $bibleId');
       final jsonString = await rootBundle.loadString('assets/bible_data/$fileName');
-      print('DirectBibleLoader: Loaded ${jsonString.length} chars');
+      debugPrint('DirectBibleLoader: Loaded ${jsonString.length} chars');
       final data = json.decode(jsonString);
-      print('DirectBibleLoader: Decoded JSON with ${(data['books'] as List?)?.length ?? 0} books');
+      debugPrint('DirectBibleLoader: Decoded JSON with ${(data['books'] as List?)?.length ?? 0} books');
+      // Evict LRU entry if at capacity
+      if (_cache.length >= _maxCacheSize && _cacheOrder.isNotEmpty) {
+        final evictId = _cacheOrder.removeAt(0);
+        _cache.remove(evictId);
+        debugPrint('DirectBibleLoader: Evicted $evictId from cache');
+      }
       _cache[normalizedId] = data;
+      _cacheOrder.add(normalizedId);
       return data;
     } catch (e, stackTrace) {
-      print('DirectBibleLoader ERROR loading $bibleId: $e');
-      print('Stack: $stackTrace');
+      debugPrint('DirectBibleLoader ERROR loading $bibleId: $e');
+      debugPrint('Stack: $stackTrace');
       return null;
     }
   }
   
   /// Get chapter content from a specific Bible translation
   static Future<String?> getChapter(String bibleId, String bookId, int chapter) async {
-    print('DirectBibleLoader.getChapter: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
+    debugPrint('DirectBibleLoader.getChapter: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
     
     final bible = await _loadBible(bibleId);
     if (bible == null) {
-      print('DirectBibleLoader: Failed to load Bible: $bibleId');
+      debugPrint('DirectBibleLoader: Failed to load Bible: $bibleId');
       return null;
     }
     
     final books = bible['books'] as List?;
     if (books == null) {
-      print('DirectBibleLoader: No books found in Bible');
+      debugPrint('DirectBibleLoader: No books found in Bible');
       return null;
     }
     
-    print('DirectBibleLoader: Found ${books.length} books');
+    debugPrint('DirectBibleLoader: Found ${books.length} books');
     
     // Normalize book ID for flexible matching
     String normalize(String s) => s.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
@@ -73,7 +96,7 @@ class DirectBibleLoader {
           (normalizedBookId.length >= 3 && bookIdInJson == normalizedBookId.substring(0, 3));
       
       if (isMatch) {
-        print('DirectBibleLoader: Found book "$bookIdInJsonRaw" ($bookNameInJsonRaw) for request "$bookId"');
+        debugPrint('DirectBibleLoader: Found book "$bookIdInJsonRaw" ($bookNameInJsonRaw) for request "$bookId"');
         final chapters = book['chapters'] as List?;
         if (chapters == null) continue;
         
@@ -81,15 +104,15 @@ class DirectBibleLoader {
           if (ch['chapter'] == chapter) {
             final verses = ch['verses'] as List?;
             if (verses == null) continue;
-            print('DirectBibleLoader: Found chapter $chapter with ${verses.length} verses');
+            debugPrint('DirectBibleLoader: Found chapter $chapter with ${verses.length} verses');
             return _formatVerses(verses);
           }
         }
-        print('DirectBibleLoader: Chapter $chapter not found in book');
+        debugPrint('DirectBibleLoader: Chapter $chapter not found in book');
         return null;
       }
     }
-    print('DirectBibleLoader: Book "$bookId" not found (tried matching: $normalizedBookId)');
+    debugPrint('DirectBibleLoader: Book "$bookId" not found (tried matching: $normalizedBookId)');
     return null;
   }
   
