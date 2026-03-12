@@ -1,0 +1,5 @@
+# Copy to android/key.properties (this file is ignored by git)
+storePassword=REPLACE_ME
+keyPassword=REPLACE_ME
+keyAlias=openbible
+storeFile=app/openbible-key.jks
