@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../constants/app_constants.dart';
 import '../../features/bible/domain/bible_models.dart';
 
@@ -11,17 +11,20 @@ class BibleApiService {
   BibleApiService({String? apiKey}) : _dio = Dio(BaseOptions(
     baseUrl: AppConstants.bibleApiBaseUrl,
     headers: {
-      'api-key': apiKey ?? dotenv.env['BIBLE_API_KEY'] ?? '',
+      'api-key': apiKey ?? '',
       'Accept': 'application/json',
     },
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 30),
   )) {
-    _dio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      error: true,
-    ));
+    if (kDebugMode) {
+      _dio.interceptors.add(LogInterceptor(
+        requestHeader: false, // never log headers (contains API key)
+        requestBody: true,
+        responseBody: true,
+        error: true,
+      ));
+    }
   }
 
   /// Get all available Bible translations
@@ -209,7 +212,10 @@ class ChapterContent {
   });
 
   factory ChapterContent.fromJson(Map<String, dynamic> json) {
-    // Parse content into verses
+    // TODO(M12): Parse individual verses from content string.
+    // The API returns plain text — splitting by verse numbers or HTML tags
+    // would require format-specific parsing. For now verses list stays empty
+    // and callers should use the raw `content` field.
     final verses = <Verse>[];
     final content = json['content'] ?? '';
     

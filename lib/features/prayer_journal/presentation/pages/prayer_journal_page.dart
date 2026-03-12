@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../presentation/widgets/prayer_journal_widget.dart';
 
 /// Prayer journal page

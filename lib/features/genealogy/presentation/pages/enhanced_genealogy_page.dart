@@ -14,7 +14,9 @@ class _GenealogyPageState extends State<GenealogyPage> {
   bool _isLoading = true;
   String _selectedView = 'tree'; // tree, lineage, tribes, patriarchs
   GenealogyPerson? _selectedPerson;
+  // ignore: unused_field
   String _searchQuery = '';
+  // ignore: unused_field
   List<GenealogyPerson> _searchResults = [];
 
   @override
@@ -198,115 +200,6 @@ class _GenealogyPageState extends State<GenealogyPage> {
     );
   }
 
-  Widget _buildTreeNode(GenealogyPerson person, int depth) {
-    final children = _service.getChildren(person.id);
-    final isSelected = _selectedPerson?.id == person.id;
-    final isPatriarch = person.isPatriarch;
-    final isTribe = person.isTribe;
-
-    return Column(
-      children: [
-        // Node
-        GestureDetector(
-          onTap: () => setState(() => _selectedPerson = person),
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? Theme.of(context).colorScheme.primaryContainer
-                  : isPatriarch
-                      ? Colors.amber.withOpacity(0.2)
-                      : isTribe
-                          ? Colors.blue.withOpacity(0.15)
-                          : Theme.of(context).colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: isSelected
-                    ? Theme.of(context).colorScheme.primary
-                    : isPatriarch
-                        ? Colors.amber
-                        : isTribe
-                            ? Colors.blue
-                            : Colors.transparent,
-                width: isSelected ? 3 : isPatriarch || isTribe ? 2 : 1,
-              ),
-              boxShadow: [
-                if (isPatriarch || isTribe)
-                  BoxShadow(
-                    color: (isPatriarch ? Colors.amber : Colors.blue).withOpacity(0.3),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-              ],
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (isPatriarch)
-                      const Icon(Icons.star, size: 16, color: Colors.amber),
-                    if (isPatriarch) const SizedBox(width: 4),
-                    Text(
-                      person.name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        color: isSelected
-                            ? Theme.of(context).colorScheme.onPrimaryContainer
-                            : Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ),
-                  ],
-                ),
-                if (person.title.isNotEmpty)
-                  Text(
-                    person.title,
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
-                    ),
-                  ),
-                if (person.birthYear != null)
-                  Text(
-                    'Gen ${person.generation}',
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        ),
-
-        // Children
-        if (children.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.arrow_downward,
-                  size: 16,
-                  color: Theme.of(context).colorScheme.outline,
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  alignment: WrapAlignment.center,
-                  children: children.map((child) => _buildTreeNode(child, depth + 1)).toList(),
-                ),
-              ],
-            ),
-          ),
-      ],
-    );
-  }
-
   Widget _buildLineageView() {
     final lineage = _service.getLineageOfJesus();
     
@@ -358,7 +251,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
                         'Gen ${person.generation}',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.6),
                         ),
                       ),
                     ],
@@ -368,7 +261,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
                       person.title,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                        color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.8),
                       ),
                     ),
                   if (person.lifespan.isNotEmpty)
@@ -376,7 +269,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
                       person.lifespan,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                        color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.6),
                       ),
                     ),
                 ],
@@ -413,13 +306,13 @@ class _GenealogyPageState extends State<GenealogyPage> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Colors.blue.withOpacity(0.2),
-                  Colors.blue.withOpacity(0.1),
+                  Colors.blue.withValues(alpha:0.2),
+                  Colors.blue.withValues(alpha:0.1),
                 ],
               ),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: isSelected ? Colors.blue : Colors.blue.withOpacity(0.3),
+                color: isSelected ? Colors.blue : Colors.blue.withValues(alpha:0.3),
                 width: isSelected ? 3 : 1,
               ),
             ),
@@ -439,7 +332,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
                   tribe.title,
                   style: TextStyle(
                     fontSize: 12,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.7),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -464,7 +357,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
         return Card(
           margin: const EdgeInsets.only(bottom: 12),
           elevation: isSelected ? 4 : 1,
-          color: isSelected ? Colors.amber.withOpacity(0.15) : null,
+          color: isSelected ? Colors.amber.withValues(alpha:0.15) : null,
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.amber,
@@ -506,7 +399,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Theme.of(context).colorScheme.shadow.withValues(alpha:0.1),
             blurRadius: 10,
             offset: const Offset(0, -4),
           ),
@@ -524,7 +417,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
                 width: 40,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -591,7 +484,7 @@ class _GenealogyPageState extends State<GenealogyPage> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
@@ -622,13 +515,13 @@ class _GenealogyPageState extends State<GenealogyPage> {
                   Icon(
                     Icons.calendar_today,
                     size: 16,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.6),
                   ),
                   const SizedBox(width: 8),
                   Text(
                     person.lifespan,
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.8),
                     ),
                   ),
                 ],
@@ -641,13 +534,13 @@ class _GenealogyPageState extends State<GenealogyPage> {
                 Icon(
                   Icons.account_tree,
                   size: 16,
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.6),
                 ),
                 const SizedBox(width: 8),
                 Text(
                   'Generation ${person.generation}',
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.8),
                   ),
                 ),
               ],
@@ -713,7 +606,7 @@ class TimelineTile extends StatelessWidget {
                     flex: 1,
                     child: Container(
                       width: 2,
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                      color: Theme.of(context).colorScheme.primary.withValues(alpha:0.3),
                     ),
                   ),
                 Container(
@@ -743,7 +636,7 @@ class TimelineTile extends StatelessWidget {
                     flex: 1,
                     child: Container(
                       width: 2,
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                      color: Theme.of(context).colorScheme.primary.withValues(alpha:0.3),
                     ),
                   ),
               ],

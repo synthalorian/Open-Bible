@@ -48,6 +48,7 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
         isLoading = false;
       });
     } catch (e) {
+      debugPrint('Failed to load dictionary entries: $e');
       setState(() => isLoading = false);
     }
   }
@@ -161,7 +162,7 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
               children: [
                 Text(
                   '${filteredEntries.length} of ${entries.length} terms',
-                  style: TextStyle(color: Colors.grey[600]),
+                  style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
                 ),
               ],
             ),
@@ -175,11 +176,11 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.search_off, size: 64, color: Colors.grey[400]),
+                      Icon(Icons.search_off, size: 64, color: Theme.of(context).colorScheme.outline),
                       const SizedBox(height: 16),
                       Text(
                         'No results found',
-                        style: TextStyle(color: Colors.grey[600], fontSize: 16),
+                        style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 16),
                       ),
                     ],
                   ),
@@ -196,7 +197,7 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
                           backgroundColor: Theme.of(context).colorScheme.primary,
                           child: Text(
                             entry.term[0],
-                            style: const TextStyle(color: Colors.white),
+                            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
                           ),
                         ),
                         title: Text(

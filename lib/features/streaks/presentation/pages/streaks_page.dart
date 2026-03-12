@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../presentation/widgets/streaks_widget.dart';
 
 /// Reading streaks page

@@ -46,7 +46,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
             hintText: 'Search the Bible...',
             border: InputBorder.none,
             hintStyle: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.5),
             ),
             suffixIcon: _searchController.text.isNotEmpty
                 ? IconButton(
@@ -333,6 +333,7 @@ class _SearchResultCard extends ConsumerWidget {
     );
   }
 
+  // TODO: Replace with AppConstants.bookAbbreviations once available from core/constants.
   String _normalizeBookId(String rawId, String fallbackName) {
     final id = rawId.trim().toLowerCase();
     // If provider result already has a slug-like id, keep it.
@@ -373,7 +374,7 @@ class _SearchFilterSheetState extends ConsumerState<SearchFilterSheet> {
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
+                    color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha:0.4),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),

@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/services/verse_storage_service.dart';
+import '../../../../core/services/direct_bible_loader.dart';
 import '../../../../debug_storage_page.dart';
 import '../../../../core/services/notification_service.dart';
 import 'bible_downloads_page.dart';
@@ -262,10 +263,8 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
       trailing: isSelected
           ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
           : null,
-      onTap: () async {
+      onTap: () {
         ref.read(settingsProvider.notifier).setReadingMode(mode);
-        final isDark = mode == ReadingMode.night || mode == ReadingMode.amoled;
-        await ref.read(themeProvider.notifier).setDarkMode(isDark);
         if (mounted) Navigator.pop(context);
       },
     );
@@ -322,18 +321,18 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
         final method = forceChooser ? 'openExternalUrlChooser' : 'openExternalUrl';
         final opened = await _platform.invokeMethod<bool>(method, {'url': url});
         if (opened == true) return;
-      } catch (_) {}
+      } catch (e) { debugPrint('Platform URL launch failed: $e'); }
     }
 
     try {
       final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
       if (launched) return;
-    } catch (_) {}
+    } catch (e) { debugPrint('External URL launch failed: $e'); }
 
     try {
       final launched = await launchUrl(uri, mode: LaunchMode.inAppWebView);
       if (launched) return;
-    } catch (_) {}
+    } catch (e) { debugPrint('In-app URL launch failed: $e'); }
 
     await Clipboard.setData(ClipboardData(text: url));
     if (mounted) {
@@ -378,9 +377,10 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           ),
           TextButton(
             onPressed: () {
+              DirectBibleLoader.clearCache();
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Cache cleared!')),
+                const SnackBar(content: Text('Cache cleared')),
               );
             },
             child: const Text('Clear', style: TextStyle(color: Colors.red)),

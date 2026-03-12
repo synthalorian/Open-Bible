@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:archive/archive.dart';
+import '../config/bible_translations.dart';
 
 /// Bible download manager for managing offline Bible versions
 class BibleDownloadManager extends ChangeNotifier {
-  static const String _apiBaseUrl = 'https://api.biblebrain.com/v1';
-  
+  /// Set of translation IDs that are bundled as app assets.
+  /// Derived from BibleTranslations.all so there is a single source of truth.
+  static final Set<String> _bundledIds =
+      BibleTranslations.allIds.toSet();
+
   final Map<String, BibleVersionInfo> _availableVersions = {
     'kjv': BibleVersionInfo(
       id: 'kjv',
@@ -23,7 +26,7 @@ class BibleDownloadManager extends ChangeNotifier {
       id: 'web',
       name: 'World English Bible',
       abbreviation: 'WEB',
-      language: 'English', 
+      language: 'English',
       isBundled: true,
       isPublicDomain: true,
       sizeMB: 5.1,
@@ -34,7 +37,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'American Standard Version',
       abbreviation: 'ASV',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.8,
       description: '1901 revision',
@@ -44,7 +47,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Bible in Basic English',
       abbreviation: 'BBE',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 3.5,
       description: 'Simplified English vocabulary',
@@ -54,7 +57,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Geneva Bible',
       abbreviation: 'GNV',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.9,
       description: 'Historic Reformation translation',
@@ -64,7 +67,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Young\'s Literal Translation',
       abbreviation: 'YLT',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.7,
       description: 'Formal literal translation',
@@ -74,7 +77,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Darby Translation',
       abbreviation: 'DBY',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.6,
       description: 'John Nelson Darby translation',
@@ -84,7 +87,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'American King James',
       abbreviation: 'AKJV',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 5.2,
       description: 'Americanized spelling of the KJV',
@@ -94,7 +97,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Lexham English Bible',
       abbreviation: 'LEB',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: false,
       sizeMB: 5.5,
       description: 'Modern literal translation',
@@ -104,7 +107,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'NET Bible',
       abbreviation: 'NET',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: false,
       sizeMB: 6.2,
       description: 'New English Translation with notes',
@@ -114,7 +117,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Douay-Rheims Challoner',
       abbreviation: 'DRA',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 5.8,
       description: 'Historic Catholic translation',
@@ -124,7 +127,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Wycliffe Bible',
       abbreviation: 'WYC',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.5,
       description: 'First English translation (1382)',
@@ -134,7 +137,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Tyndale Bible',
       abbreviation: 'TYN',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.2,
       description: 'First printed English Bible (1526)',
@@ -144,7 +147,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Literal Translation',
       abbreviation: 'LITV',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 5.1,
       description: 'Green\'s Literal Translation',
@@ -154,7 +157,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Rotherham Emphasized',
       abbreviation: 'REM',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 5.3,
       description: 'Emphasized Bible for study',
@@ -164,7 +167,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Montgomery NT',
       abbreviation: 'MNT',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 1.2,
       description: 'Centenary Translation of the NT',
@@ -174,7 +177,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Murdock NT',
       abbreviation: 'MUR',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 1.1,
       description: 'James Murdock\'s Syriac Peshitto',
@@ -184,7 +187,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Weymouth NT',
       abbreviation: 'WNT',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 1.3,
       description: 'New Testament in Modern Speech',
@@ -194,7 +197,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Worsley Bible',
       abbreviation: 'WOR',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 4.8,
       description: 'Worsley\'s 1770 translation',
@@ -204,7 +207,7 @@ class BibleDownloadManager extends ChangeNotifier {
       name: 'Twentieth Century NT',
       abbreviation: 'TCN',
       language: 'English',
-      isBundled: false,
+      isBundled: true,
       isPublicDomain: true,
       sizeMB: 1.4,
       description: 'First 20th-century modern version',
@@ -235,7 +238,7 @@ class BibleDownloadManager extends ChangeNotifier {
         );
       }
     } catch (e) {
-      print('Error loading download state: $e');
+      debugPrint('Error loading download state: $e');
     }
     notifyListeners();
   }
@@ -250,7 +253,7 @@ class BibleDownloadManager extends ChangeNotifier {
         'downloaded': _downloadedVersions,
       }));
     } catch (e) {
-      print('Error saving download state: $e');
+      debugPrint('Error saving download state: $e');
     }
   }
   
@@ -263,51 +266,22 @@ class BibleDownloadManager extends ChangeNotifier {
   }
   
   /// Download a Bible version
+  ///
+  /// NOTE: Real download is not yet implemented. Only bundled translations
+  /// (KJV, WEB) are available offline. This method will report an error
+  /// for any non-bundled version.
   Future<bool> downloadVersion(String versionId) async {
     final version = _availableVersions[versionId];
     if (version == null || version.isBundled) return false;
-    
+
     _downloadProgress[versionId] = DownloadProgress(
       versionId: versionId,
-      status: DownloadStatus.downloading,
+      status: DownloadStatus.error,
       progress: 0.0,
+      errorMessage: 'Bible download not yet implemented. Only bundled translations are available.',
     );
     notifyListeners();
-    
-    try {
-      // Simulate download for now - in production, this would download from API
-      for (int i = 0; i <= 10; i++) {
-        await Future.delayed(const Duration(milliseconds: 200));
-        _downloadProgress[versionId] = DownloadProgress(
-          versionId: versionId,
-          status: DownloadStatus.downloading,
-          progress: i / 10,
-        );
-        notifyListeners();
-      }
-      
-      // Mark as downloaded
-      _downloadedVersions[versionId] = true;
-      _downloadProgress[versionId] = DownloadProgress(
-        versionId: versionId,
-        status: DownloadStatus.completed,
-        progress: 1.0,
-      );
-      
-      await _saveDownloadedVersions();
-      notifyListeners();
-      return true;
-      
-    } catch (e) {
-      _downloadProgress[versionId] = DownloadProgress(
-        versionId: versionId,
-        status: DownloadStatus.error,
-        progress: 0.0,
-        errorMessage: e.toString(),
-      );
-      notifyListeners();
-      return false;
-    }
+    return false;
   }
   
   /// Delete a downloaded version
@@ -320,10 +294,13 @@ class BibleDownloadManager extends ChangeNotifier {
     notifyListeners();
   }
   
-  /// Get list of available versions for download
+  /// Get list of available versions for download.
+  /// Only shows versions that are NOT bundled as app assets.
+  /// Translations whose JSON files ship in assets/bible_data/ are excluded
+  /// because they are already available offline.
   List<BibleVersionInfo> get downloadableVersions {
     return _availableVersions.values
-        .where((v) => !v.isBundled)
+        .where((v) => !v.isBundled && !_bundledIds.contains(v.id))
         .toList();
   }
   

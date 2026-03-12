@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/providers/app_providers.dart';
-import '../../../../core/services/storage_service.dart';
 import '../../../../core/services/direct_bible_loader.dart';
 import '../../../../core/services/continue_reading_service.dart';
-import '../../../../core/services/bible_audio_service.dart';
 import '../../../../core/services/current_bible.dart';
 import '../../../../core/services/reading_history_service.dart';
 import '../../../../core/services/verse_storage_service.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../commentary/presentation/pages/commentary_page.dart';
+import '../../../maps/presentation/pages/bible_maps_page.dart';
 import '../widgets/verse_widget.dart';
 
 /// Chapter reader page - main reading view with swipe navigation
@@ -47,30 +46,6 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     return widget.bookId;
   }
   
-  String get _bookAbbr {
-    // Get standard abbreviation for API
-    final abbrMap = {
-      'genesis': 'GEN', 'exodus': 'EXO', 'leviticus': 'LEV', 'numbers': 'NUM',
-      'deuteronomy': 'DEU', 'joshua': 'JOS', 'judges': 'JDG', 'ruth': 'RUT',
-      '1 samuel': '1SA', '2 samuel': '2SA', '1 kings': '1KI', '2 kings': '2KI',
-      '1 chronicles': '1CH', '2 chronicles': '2CH', 'ezra': 'EZR', 'nehemiah': 'NEH',
-      'esther': 'EST', 'job': 'JOB', 'psalms': 'PSA', 'proverbs': 'PRO',
-      'ecclesiastes': 'ECC', 'song of solomon': 'SNG', 'isaiah': 'ISA',
-      'jeremiah': 'JER', 'lamentations': 'LAM', 'ezekiel': 'EZK', 'daniel': 'DAN',
-      'hosea': 'HOS', 'joel': 'JOL', 'amos': 'AMO', 'obadiah': 'OBA',
-      'jonah': 'JON', 'micah': 'MIC', 'nahum': 'NAM', 'habakkuk': 'HAB',
-      'zephaniah': 'ZEP', 'haggai': 'HAG', 'zechariah': 'ZEC', 'malachi': 'MAL',
-      'matthew': 'MAT', 'mark': 'MRK', 'luke': 'LUK', 'john': 'JHN',
-      'acts': 'ACT', 'romans': 'ROM', '1 corinthians': '1CO', '2 corinthians': '2CO',
-      'galatians': 'GAL', 'ephesians': 'EPH', 'philippians': 'PHP', 'colossians': 'COL',
-      '1 thessalonians': '1TH', '2 thessalonians': '2TH', '1 timothy': '1TI',
-      '2 timothy': '2TI', 'titus': 'TIT', 'philemon': 'PHM', 'hebrews': 'HEB',
-      'james': 'JAS', '1 peter': '1PE', '2 peter': '2PE', '1 john': '1JN',
-      '2 john': '2JN', '3 john': '3JN', 'jude': 'JUD', 'revelation': 'REV',
-    };
-    return abbrMap[_bookName.toLowerCase()] ?? _bookName.toUpperCase().substring(0, 3);
-  }
-  
   /// Parse verses from content string and display as interactive widgets
   Widget _buildVersesContent(String content, double fontSize, int chapter) {
     // Parse verses from format "1 In the beginning..."
@@ -105,7 +80,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: verses.map((v) => VerseWidget(
-        verseId: '${_currentBibleId}:$widget.bookId:$chapter:${v['verse']}',
+        verseId: '${_currentBibleId}:${widget.bookId}:$chapter:${v['verse']}',
         bookId: widget.bookId,
         bookName: _bookName,
         chapter: chapter,
@@ -189,7 +164,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   // Track current Bible ID for cache invalidation
   String _currentBibleId = 'kjv';
 
-  String _getCacheKey(String bibleId, int chapter) => '$bibleId.$_bookAbbr.$chapter';
+  String _getCacheKey(String bibleId, int chapter) => '$bibleId.${widget.bookId}.$chapter';
   
   Future<void> _loadChapterContent(int chapter) async {
     // Get current Bible ID from GLOBAL STATE (reliable!)
@@ -201,7 +176,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     
     final cacheKey = _getCacheKey(bibleId, chapter);
     
-    debugPrint('LOADING: Bible=$bibleId, Book=$bookId (not $_bookAbbr), Chapter=$chapter');
+    debugPrint('LOADING: Bible=$bibleId, Book=$bookId, Chapter=$chapter');
     
     // Already cached or loading
     if (_chapterCache.containsKey(cacheKey) || _loadingChapters.contains(cacheKey)) {
@@ -209,12 +184,12 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       return;
     }
     
-    _loadingChapters.add(cacheKey);
-    
+    setState(() => _loadingChapters.add(cacheKey));
+
     try {
       // === Try Direct Bible Loader (always works offline) ===
       debugPrint('Trying DirectBibleLoader with: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
-      
+
       var content = await DirectBibleLoader.getChapter(bibleId, bookId, chapter);
       if (content != null && content.isNotEmpty) {
         debugPrint('✓ Loaded from DirectBibleLoader');
@@ -226,7 +201,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
         }
         return;
       }
-      
+
       // === Fallback to KJV if requested Bible not found ===
       debugPrint('Direct loader failed for $bibleId, trying KJV fallback...');
       content = await DirectBibleLoader.getChapter('kjv', bookId, chapter);
@@ -240,7 +215,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
         }
         return;
       }
-      
+
       // === All failed ===
       if (mounted) {
         setState(() {
@@ -248,7 +223,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
           _loadingChapters.remove(cacheKey);
         });
       }
-      
+
     } catch (e) {
       debugPrint('Critical error loading chapter: $e');
       if (mounted) {
@@ -257,6 +232,9 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
           _loadingChapters.remove(cacheKey);
         });
       }
+    } finally {
+      // Guarantee cleanup even if widget was unmounted during async gaps
+      _loadingChapters.remove(cacheKey);
     }
   }
 
@@ -276,7 +254,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     final bibleName = _getBibleName(bibleId);
     
     debugPrint('Saving to ContinueReadingService:');
-    debugPrint('  bookId: $widget.bookId');
+    debugPrint('  bookId: ${widget.bookId}');
     debugPrint('  bookName: $_bookName');
     debugPrint('  chapter: $_currentChapter');
     debugPrint('  bibleId: $bibleId');
@@ -319,47 +297,38 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   }
 
   Future<void> _recordStreak() async {
-    final storage = ref.read(storageServiceProvider);
-    final streak = storage.getStreak();
+    await VerseStorageService.initialize();
+    final streakMap = VerseStorageService.getStreaks();
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
-    
-    if (streak == null) {
-      await storage.updateStreak(StreakData(
-        currentStreak: 1,
-        longestStreak: 1,
-        lastReadDate: today,
-        totalDaysRead: 1,
-      ));
-    } else {
-      final lastReadDate = streak.lastReadDate;
-      if (lastReadDate == null) {
-        await storage.updateStreak(StreakData(
-          currentStreak: 1,
-          longestStreak: 1,
-          lastReadDate: today,
-          totalDaysRead: streak.totalDaysRead + 1,
-        ));
-        return;
-      }
-      
-      final lastRead = DateTime(
-        lastReadDate.year,
-        lastReadDate.month,
-        lastReadDate.day,
-      );
-      
-      final difference = today.difference(lastRead).inDays;
-      
-      if (difference >= 1) {
-        final newStreak = difference == 1 ? streak.currentStreak + 1 : 1;
-        await storage.updateStreak(streak.copyWith(
-          currentStreak: newStreak,
-          longestStreak: newStreak > streak.longestStreak ? newStreak : streak.longestStreak,
-          lastReadDate: today,
-          totalDaysRead: streak.totalDaysRead + 1,
-        ));
-      }
+
+    final currentStreak = streakMap['currentStreak'] as int? ?? 0;
+    final longestStreak = streakMap['longestStreak'] as int? ?? 0;
+    final totalDaysRead = streakMap['totalDaysRead'] as int? ?? 0;
+    final lastReadStr = streakMap['lastReadDate'] as String?;
+    final lastReadDate = lastReadStr != null ? DateTime.tryParse(lastReadStr) : null;
+
+    if (lastReadDate == null) {
+      await VerseStorageService.saveStreaks({
+        'currentStreak': 1,
+        'longestStreak': longestStreak > 1 ? longestStreak : 1,
+        'totalDaysRead': totalDaysRead + 1,
+        'lastReadDate': today.toIso8601String(),
+      });
+      return;
+    }
+
+    final lastRead = DateTime(lastReadDate.year, lastReadDate.month, lastReadDate.day);
+    final difference = today.difference(lastRead).inDays;
+
+    if (difference >= 1) {
+      final newStreak = difference == 1 ? currentStreak + 1 : 1;
+      await VerseStorageService.saveStreaks({
+        'currentStreak': newStreak,
+        'longestStreak': newStreak > longestStreak ? newStreak : longestStreak,
+        'totalDaysRead': totalDaysRead + 1,
+        'lastReadDate': today.toIso8601String(),
+      });
     }
   }
 
@@ -391,16 +360,6 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     
     debugPrint('BUILD: CurrentBible.id = $currentBibleId, watched = ${bibleData.selectedTranslation?.id}');
     
-    // Check if Bible changed and reload
-    if (_currentBibleId != currentBibleId) {
-      debugPrint('BUILD: Bible changed from $_currentBibleId to $currentBibleId - RELOADING');
-      _currentBibleId = currentBibleId;
-      _chapterCache.clear();
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _loadChapterContent(_currentChapter);
-      });
-    }
-
     return Scaffold(
       body: NotificationListener<ScrollNotification>(
         onNotification: (notification) {
@@ -487,7 +446,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
                       abbreviation,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                        color: Theme.of(context).colorScheme.primary.withValues(alpha:0.7),
                       ),
                     ),
                   ],
@@ -502,7 +461,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
                   color: Theme.of(context)
                       .colorScheme
                       .surfaceContainerHighest
-                      .withOpacity(0.45),
+                      .withValues(alpha:0.45),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -564,7 +523,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             end: Alignment.bottomCenter,
             colors: [
               Theme.of(context).scaffoldBackgroundColor,
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(0),
+              Theme.of(context).scaffoldBackgroundColor.withValues(alpha:0),
             ],
           ),
         ),
@@ -573,7 +532,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             children: [
               IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => context.pop(),
+                onPressed: () => Navigator.pop(context),
               ),
               Expanded(
                 child: Text(
@@ -613,7 +572,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             end: Alignment.topCenter,
             colors: [
               Theme.of(context).scaffoldBackgroundColor,
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(0),
+              Theme.of(context).scaffoldBackgroundColor.withValues(alpha:0),
             ],
           ),
         ),
@@ -678,7 +637,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
               title: const Text('View Commentary'),
               onTap: () {
                 Navigator.pop(context);
-                context.push('/more/commentary');
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const CommentaryPage()));
               },
             ),
             ListTile(
@@ -694,7 +653,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
               title: const Text('Related Maps'),
               onTap: () {
                 Navigator.pop(context);
-                context.push('/more/maps');
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const BibleMapsPage()));
               },
             ),
             ListTile(
@@ -813,43 +772,18 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   void _showHistoricalContext() {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      ),
-      builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.7,
-        maxChildSize: 0.95,
-        minChildSize: 0.5,
-        expand: false,
-        builder: (context, scrollController) => SingleChildScrollView(
-          controller: scrollController,
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Historical Context',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                '$_bookName $_currentChapter',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              const SizedBox(height: 24),
-              const _ContextSection(
-                title: 'Author & Date',
-                content: 'Traditionally attributed to Moses, written around 1440-1400 BC.',
-              ),
-              const _ContextSection(
-                title: 'Key Themes',
-                content: '• Creation\n• Covenant\n• Faith\n• Redemption',
-              ),
-            ],
-          ),
+      builder: (context) => Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Historical Context: $_bookName',
+              style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 16),
+            const Text('Historical context for individual books is coming soon.'),
+            const SizedBox(height: 16),
+          ],
         ),
       ),
     );
@@ -877,16 +811,21 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              final storage = ref.read(storageServiceProvider);
-              final note = Note(
-                id: '$widget.bookId-$_currentChapter-${DateTime.now().millisecondsSinceEpoch}',
-                verseId: '$widget.bookId-$_currentChapter',
-                reference: '$_bookName $_currentChapter',
-                content: controller.text,
-                createdAt: DateTime.now(),
-                updatedAt: DateTime.now(),
+              final noteVerseId = '${widget.bookId}-$_currentChapter';
+              await VerseStorageService.saveNote(
+                SavedVerse(
+                  id: noteVerseId,
+                  bookId: widget.bookId,
+                  bookName: _bookName,
+                  chapter: _currentChapter,
+                  verse: 0,
+                  text: '',
+                  note: controller.text,
+                  savedAt: DateTime.now(),
+                  bibleId: CurrentBible.id,
+                ),
+                controller.text,
               );
-              await storage.saveNote(note);
               if (!context.mounted) return;
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
@@ -953,7 +892,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   }
 
   void _checkAudioState() {
-    final isPlaying = BibleAudioService.instance.isPlaying;
+    final isPlaying = ref.read(audioBibleProvider).isSpeaking;
     if (_isPlayingAudio != isPlaying) {
       setState(() => _isPlayingAudio = isPlaying);
     }
@@ -968,9 +907,10 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       );
     }
 
-    final service = BibleAudioService.instance;
-    if (service.isPlaying) {
-      await service.stop();
+    final audioNotifier = ref.read(audioBibleProvider.notifier);
+    final audioState = ref.read(audioBibleProvider);
+    if (audioState.isSpeaking) {
+      await audioNotifier.stopSpeaking();
       setState(() => _isPlayingAudio = false);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -998,8 +938,8 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             _chapterCache[cacheKey] = content!;
           });
         }
-      } catch (_) {
-        // Continue to user-facing error below.
+      } catch (e) {
+        debugPrint('Failed to load chapter content: $e');
       }
     }
 
@@ -1012,39 +952,31 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       return;
     }
 
-    final verses = <Map<String, dynamic>>[];
+    final verseTexts = <String>[];
     final lines = content.split('\n');
     for (final line in lines) {
       final trimmed = line.trim();
       if (trimmed.isEmpty || trimmed.startsWith('[')) continue;
-      
+
       final match = RegExp(r'^(\d+)\s+(.+)$').firstMatch(trimmed);
       if (match != null) {
-        verses.add({
-          'verse': int.parse(match.group(1)!),
-          'text': match.group(2)!,
-        });
+        verseTexts.add('${match.group(1)}. ${match.group(2)}');
       } else {
-        // Simple fallback parsing for lines like "1. Text" or just "Text"
         final firstSpace = trimmed.indexOf(' ');
         if (firstSpace != -1) {
           final firstPart = trimmed.substring(0, firstSpace).replaceAll('.', '').trim();
-          final vNum = int.tryParse(firstPart);
-          if (vNum != null) {
-            verses.add({
-              'verse': vNum,
-              'text': trimmed.substring(firstSpace + 1).trim(),
-            });
+          if (int.tryParse(firstPart) != null) {
+            verseTexts.add(trimmed);
           }
         }
       }
     }
 
-    if (verses.isEmpty && content.trim().isNotEmpty) {
-      verses.add({'verse': 1, 'text': content.trim()});
+    if (verseTexts.isEmpty && content.trim().isNotEmpty) {
+      verseTexts.add(content.trim());
     }
 
-    if (verses.isEmpty) {
+    if (verseTexts.isEmpty) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('No verse text found to play.')),
@@ -1054,26 +986,16 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     }
 
     try {
-      debugPrint('AUDIO: playing ${verses.length} verses, content len: ${content.length}');
-      final started = await service.speakChapter(
-        bookName: _bookName,
-        chapter: _currentChapter,
-        verses: verses,
+      debugPrint('AUDIO: playing ${verseTexts.length} verses, content len: ${content.length}');
+      await audioNotifier.speakChapter(
+        verseTexts,
+        '$_bookName $_currentChapter',
       );
-
-      if (started) {
-        setState(() => _isPlayingAudio = true);
-      }
+      setState(() => _isPlayingAudio = true);
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              started
-                  ? 'Playing audio (${verses.length} verses)...'
-                  : 'TTS engine rejected request. Try restarting app or checking media volume.',
-            ),
-          ),
+          SnackBar(content: Text('Playing audio (${verseTexts.length} verses)...')),
         );
       }
     } catch (e) {
@@ -1095,7 +1017,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       final verseNum = firstVerseMatch != null ? int.parse(firstVerseMatch.group(1)!) : 1;
       final verseText = firstVerseMatch?.group(2) ?? '';
 
-      final verseId = '${CurrentBible.id}:$widget.bookId:$_currentChapter:$verseNum';
+      final verseId = '${CurrentBible.id}:${widget.bookId}:$_currentChapter:$verseNum';
       final savedVerse = SavedVerse(
         id: verseId,
         bookId: widget.bookId,
@@ -1172,35 +1094,3 @@ class _TranslationCard extends StatelessWidget {
   }
 }
 
-class _ContextSection extends StatelessWidget {
-  final String title;
-  final String content;
-
-  const _ContextSection({
-    required this.title,
-    required this.content,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            content,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.6),
-          ),
-        ],
-      ),
-    );
-  }
-}

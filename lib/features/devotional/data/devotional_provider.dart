@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -105,17 +106,19 @@ class DevotionalNotifier extends StateNotifier<DevotionalState> {
           try {
             return DevotionalEntry.fromJson(jsonDecode(json));
           } catch (e) {
+            debugPrint('Failed to parse saved devotional entry: $e');
             return null;
           }
         })
         .whereType<DevotionalEntry>()
         .toList();
-    
+
     final recentDevotionals = recentJson
         .map((json) {
           try {
             return DevotionalEntry.fromJson(jsonDecode(json));
           } catch (e) {
+            debugPrint('Failed to parse recent devotional entry: $e');
             return null;
           }
         })

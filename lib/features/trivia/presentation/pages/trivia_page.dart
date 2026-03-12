@@ -87,6 +87,7 @@ class _TriviaPageState extends State<TriviaPage> {
         isLoading = false;
       });
     } catch (e) {
+      debugPrint('Failed to load trivia questions: $e');
       setState(() => isLoading = false);
     }
   }
@@ -142,7 +143,7 @@ class _TriviaPageState extends State<TriviaPage> {
           children: [
             Text(
               'Your Score',
-              style: TextStyle(fontSize: 18, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: 16),
             Text(
@@ -182,6 +183,7 @@ class _TriviaPageState extends State<TriviaPage> {
   }
 
   Color _getScoreColor() {
+    if (currentQuestions.isEmpty) return Colors.grey;
     final pct = score / currentQuestions.length;
     if (pct >= 0.8) return Colors.green;
     if (pct >= 0.6) return Colors.orange;
@@ -189,6 +191,7 @@ class _TriviaPageState extends State<TriviaPage> {
   }
 
   String _getScoreMessage() {
+    if (currentQuestions.isEmpty) return '';
     final pct = score / currentQuestions.length;
     if (pct >= 0.9) return '🏆 Bible Scholar!';
     if (pct >= 0.7) return '👍 Great Job!';
@@ -238,14 +241,14 @@ class _TriviaPageState extends State<TriviaPage> {
             // Progress bar
             LinearProgressIndicator(
               value: (currentIndex + 1) / currentQuestions.length,
-              backgroundColor: Colors.grey[300],
+              backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
             ),
             const SizedBox(height: 24),
             
             // Category tag
             Chip(
               label: Text(question.category),
-              backgroundColor: _getDifficultyColor(question.difficulty).withOpacity(0.2),
+              backgroundColor: _getDifficultyColor(question.difficulty).withValues(alpha:0.2),
             ),
             const SizedBox(height: 16),
             
@@ -364,7 +367,7 @@ class _TriviaPageState extends State<TriviaPage> {
                     ),
                     Text(
                       'Test your Bible knowledge!',
-                      style: TextStyle(color: Colors.white.withOpacity(0.8)),
+                      style: TextStyle(color: Colors.white.withValues(alpha:0.8)),
                     ),
                   ],
                 ),
@@ -455,7 +458,7 @@ class _TriviaPageState extends State<TriviaPage> {
             children: [
               Text('All Questions', style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 8),
-              Text('${allQuestions.length} questions available', style: TextStyle(color: Colors.grey[600])),
+              Text('${allQuestions.length} questions available', style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant)),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.builder(
