@@ -33,11 +33,11 @@ class VerseFootnotes extends ConsumerWidget {
       margin: const EdgeInsets.only(top: 8, left: 34),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha:0.5),
+        color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
         border: Border(
           left: BorderSide(
-            color: Theme.of(context).colorScheme.primary.withValues(alpha:0.3),
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
             width: 3,
           ),
         ),
@@ -71,7 +71,7 @@ class VerseFootnotes extends ConsumerWidget {
           Icon(
             Icons.menu_book,
             size: 12,
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.6),
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
           ),
           const SizedBox(width: 4),
           Expanded(
@@ -79,7 +79,7 @@ class VerseFootnotes extends ConsumerWidget {
               footnote.text,
               style: TextStyle(
                 fontSize: 11,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.7),
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
               ),
             ),
           ),
@@ -108,7 +108,7 @@ class VerseFootnotes extends ConsumerWidget {
         }
       },
       visualDensity: VisualDensity.compact,
-      side: BorderSide(color: Theme.of(context).colorScheme.primary.withValues(alpha:0.3)),
+      side: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.3)),
     );
   }
 }
