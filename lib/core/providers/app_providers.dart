@@ -27,19 +27,48 @@ class BookmarksNotifier extends StateNotifier<List<String>> {
     state = VerseStorageService.getBookmarks().map((b) => b.id).toList();
   }
 
-  Future<void> addBookmark(String verseId) async {
-    if (!state.contains(verseId)) state = [...state, verseId];
+  Future<void> addBookmark(String verseId, {SavedVerse? verse}) async {
+    await VerseStorageService.initialize();
+
+    final exists = VerseStorageService.isBookmarked(verseId);
+    if (!exists) {
+      await VerseStorageService.addBookmark(verse ?? _placeholderSavedVerse(verseId));
+    }
+
+    if (!state.contains(verseId)) {
+      state = [...state, verseId];
+    }
   }
 
   Future<void> removeBookmark(String verseId) async {
+    await VerseStorageService.initialize();
+    await VerseStorageService.removeBookmark(verseId);
     state = state.where((id) => id != verseId).toList();
   }
 
   Future<void> clearBookmarks() async {
+    await VerseStorageService.initialize();
+    final ids = List<String>.from(state);
+    for (final id in ids) {
+      await VerseStorageService.removeBookmark(id);
+    }
     state = [];
   }
 
   bool isBookmarked(String verseId) => state.contains(verseId);
+
+  SavedVerse _placeholderSavedVerse(String verseId) {
+    return SavedVerse(
+      id: verseId,
+      bookId: 'UNK',
+      bookName: 'Unknown',
+      chapter: 1,
+      verse: 1,
+      text: '',
+      savedAt: DateTime.now(),
+      bibleId: 'kjv',
+    );
+  }
 }
 
 /// Selected Bible translation provider
@@ -278,6 +307,7 @@ class ReadingPosition {
 final highlightsProvider = StateNotifierProvider<HighlightsNotifier, Map<String, String>>((ref) => HighlightsNotifier());
 class HighlightsNotifier extends StateNotifier<Map<String, String>> {
   HighlightsNotifier() : super({});
+
   Future<void> init() async {
     await VerseStorageService.initialize();
     final highlights = <String, String>{};
@@ -286,13 +316,43 @@ class HighlightsNotifier extends StateNotifier<Map<String, String>> {
     }
     state = highlights;
   }
-  Future<void> addHighlight(String id, String color) async { state = {...state, id: color}; }
-  Future<void> removeHighlight(String id) async { final n = Map<String, String>.from(state); n.remove(id); state = n; }
+
+  Future<void> addHighlight(
+    String id,
+    String color, {
+    SavedVerse? verse,
+    int? start,
+    int? end,
+    String? selectedText,
+  }) async {
+    await VerseStorageService.initialize();
+    final v = verse ?? SavedVerse(
+      id: id,
+      bookId: 'UNK',
+      bookName: 'Unknown',
+      chapter: 1,
+      verse: 1,
+      text: '',
+      savedAt: DateTime.now(),
+      bibleId: 'kjv',
+    );
+    await VerseStorageService.setHighlight(v, color, start: start, end: end, selectedText: selectedText);
+    state = {...state, id: color};
+  }
+
+  Future<void> removeHighlight(String id) async {
+    await VerseStorageService.initialize();
+    await VerseStorageService.removeHighlight(id);
+    final n = Map<String, String>.from(state);
+    n.remove(id);
+    state = n;
+  }
 }
 
 final notesProvider = StateNotifierProvider<NotesNotifier, Map<String, String>>((ref) => NotesNotifier());
 class NotesNotifier extends StateNotifier<Map<String, String>> {
   NotesNotifier() : super({});
+
   Future<void> init() async {
     await VerseStorageService.initialize();
     final notes = <String, String>{};
@@ -301,6 +361,29 @@ class NotesNotifier extends StateNotifier<Map<String, String>> {
     }
     state = notes;
   }
-  Future<void> addNote(String id, String note) async { state = {...state, id: note}; }
-  Future<void> removeNote(String id) async { final n = Map<String, String>.from(state); n.remove(id); state = n; }
+
+  Future<void> addNote(String id, String note, {SavedVerse? verse}) async {
+    await VerseStorageService.initialize();
+    final v = verse ?? SavedVerse(
+      id: id,
+      bookId: 'UNK',
+      bookName: 'Unknown',
+      chapter: 1,
+      verse: 1,
+      text: '',
+      note: note,
+      savedAt: DateTime.now(),
+      bibleId: 'kjv',
+    );
+    await VerseStorageService.saveNote(v, note);
+    state = {...state, id: note};
+  }
+
+  Future<void> removeNote(String id) async {
+    await VerseStorageService.initialize();
+    await VerseStorageService.removeNote(id);
+    final n = Map<String, String>.from(state);
+    n.remove(id);
+    state = n;
+  }
 }
