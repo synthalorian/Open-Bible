@@ -64,7 +64,7 @@ class _BookChapterGridPageState extends State<BookChapterGridPage> {
       final String jsonString = await rootBundle.loadString(
         'assets/bible_data/kjv_bible.json',
       );
-      final Map<String, dynamic> data = json.decode(jsonString);
+      final Map<String, dynamic> decodedData = json.decode(jsonString);
       
       final results = <_ChapterSearchResult>[];
       final lowerQuery = query.toLowerCase();
