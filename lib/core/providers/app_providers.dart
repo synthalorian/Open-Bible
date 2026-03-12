@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../services/footnote_service.dart';
 import '../services/storage_service.dart' show StorageService;
 import '../services/current_bible.dart';
 import '../services/bible_download_manager.dart';
@@ -35,6 +33,10 @@ class BookmarksNotifier extends StateNotifier<List<String>> {
 
   Future<void> removeBookmark(String verseId) async {
     state = state.where((id) => id != verseId).toList();
+  }
+
+  Future<void> clearBookmarks() async {
+    state = [];
   }
 
   bool isBookmarked(String verseId) => state.contains(verseId);
@@ -87,6 +89,7 @@ class AppSettings {
   final bool dailyVerseNotifications;
   final DailyVerseTime dailyVerseTime;
   final bool audioEnabled;
+  final bool isLoaded;
 
   const AppSettings({
     this.selectedBibleId = 'kjv',
@@ -97,6 +100,7 @@ class AppSettings {
     this.dailyVerseNotifications = true,
     this.dailyVerseTime = const DailyVerseTime(hour: 8, minute: 0),
     this.audioEnabled = true,
+    this.isLoaded = false,
   });
 
   AppSettings copyWith({
@@ -108,6 +112,7 @@ class AppSettings {
     bool? dailyVerseNotifications,
     DailyVerseTime? dailyVerseTime,
     bool? audioEnabled,
+    bool? isLoaded,
   }) {
     return AppSettings(
       selectedBibleId: selectedBibleId ?? this.selectedBibleId,
@@ -118,6 +123,7 @@ class AppSettings {
       dailyVerseNotifications: dailyVerseNotifications ?? this.dailyVerseNotifications,
       dailyVerseTime: dailyVerseTime ?? this.dailyVerseTime,
       audioEnabled: audioEnabled ?? this.audioEnabled,
+      isLoaded: isLoaded ?? this.isLoaded,
     );
   }
 }
@@ -172,25 +178,41 @@ final settingsProvider = StateNotifierProvider<SettingsNotifier, AppSettings>((r
 
 class SettingsNotifier extends StateNotifier<AppSettings> {
   bool _isLoaded = false;
-  SettingsNotifier() : super(const AppSettings()) { _load(); }
+
+  SettingsNotifier() : super(const AppSettings()) {
+    _load();
+  }
 
   Future<void> _load() async {
     try {
       await VerseStorageService.initialize();
       final s = VerseStorageService.getSettings();
-      if (s.isEmpty) { _isLoaded = true; return; }
+
+      if (s.isEmpty) {
+        _isLoaded = true;
+        state = state.copyWith(isLoaded: true);
+        return;
+      }
+
       final modeIndex = s['readingMode'] as int? ?? ReadingMode.day.index;
       state = state.copyWith(
         fontSize: s['fontSize'] as int? ?? state.fontSize,
         readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
         notificationsEnabled: s['notificationsEnabled'] as bool? ?? state.notificationsEnabled,
         dailyVerseNotifications: s['dailyVerseNotifications'] as bool? ?? state.dailyVerseNotifications,
-        dailyVerseTime: DailyVerseTime(hour: s['dailyVerseHour'] as int? ?? 8, minute: s['dailyVerseMinute'] as int? ?? 0),
+        dailyVerseTime: DailyVerseTime(
+          hour: s['dailyVerseHour'] as int? ?? 8,
+          minute: s['dailyVerseMinute'] as int? ?? 0,
+        ),
         audioEnabled: s['audioEnabled'] as bool? ?? state.audioEnabled,
         isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
+        isLoaded: true,
       );
       _isLoaded = true;
-    } catch (_) { _isLoaded = true; }
+    } catch (_) {
+      _isLoaded = true;
+      state = state.copyWith(isLoaded: true);
+    }
   }
 
   Future<void> _save() async {
@@ -209,11 +231,38 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     } catch (_) {}
   }
 
-  void setFontSize(int size) { state = state.copyWith(fontSize: size); _save(); }
-  void setReadingMode(ReadingMode mode) { state = state.copyWith(readingMode: mode, isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled); _save(); }
-  void setAudioEnabled(bool enabled) { state = state.copyWith(audioEnabled: enabled); _save(); }
-  Future<void> toggleNotifications() async { state = state.copyWith(notificationsEnabled: !state.notificationsEnabled); await _save(); }
-  Future<void> setDailyVerseTime(DailyVerseTime time) async { state = state.copyWith(dailyVerseTime: time); await _save(); }
+  void setFontSize(int size) {
+    state = state.copyWith(fontSize: size);
+    _save();
+  }
+
+  void setReadingMode(ReadingMode mode) {
+    state = state.copyWith(
+      readingMode: mode,
+      isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled,
+    );
+    _save();
+  }
+
+  void setAudioEnabled(bool enabled) {
+    state = state.copyWith(audioEnabled: enabled);
+    _save();
+  }
+
+  Future<void> toggleNotifications() async {
+    state = state.copyWith(notificationsEnabled: !state.notificationsEnabled);
+    await _save();
+  }
+
+  Future<void> setDailyVerseNotifications(bool enabled) async {
+    state = state.copyWith(dailyVerseNotifications: enabled);
+    await _save();
+  }
+
+  Future<void> setDailyVerseTime(DailyVerseTime time) async {
+    state = state.copyWith(dailyVerseTime: time);
+    await _save();
+  }
 }
 
 final storageServiceProvider = Provider<StorageService>((ref) => StorageService.instance);
