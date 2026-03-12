@@ -293,7 +293,7 @@ class _SavedVerseCard extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: iconColor.withValues(alpha:0.2),
+                      color: iconColor.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(icon, color: iconColor, size: 24),

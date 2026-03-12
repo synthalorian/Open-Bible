@@ -695,7 +695,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                         end: Alignment.bottomRight,
                         colors: [
                           illustration.color,
-                          illustration.color.withValues(alpha:0.7),
+                          illustration.color.withOpacity(0.7),
                         ],
                       ),
                     ),
@@ -703,7 +703,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                       child: Icon(
                         illustration.icon,
                         size: 80,
-                        color: Colors.white.withValues(alpha:0.9),
+                        color: Colors.white.withOpacity(0.9),
                       ),
                     ),
                   );
@@ -764,7 +764,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                 height: 4,
                 margin: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
+                  color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -789,7 +789,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                                   end: Alignment.bottomRight,
                                   colors: [
                                     illustration.color,
-                                    illustration.color.withValues(alpha:0.7),
+                                    illustration.color.withOpacity(0.7),
                                   ],
                                 ),
                               ),
@@ -797,7 +797,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                                 child: Icon(
                                   illustration.icon,
                                   size: 100,
-                                  color: Colors.white.withValues(alpha:0.9),
+                                  color: Colors.white.withOpacity(0.9),
                                 ),
                               ),
                             );
@@ -821,7 +821,7 @@ class BibleIllustrationsPage extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                               decoration: BoxDecoration(
-                                color: illustration.color.withValues(alpha:0.1),
+                                color: illustration.color.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(

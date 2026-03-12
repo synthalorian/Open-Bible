@@ -315,7 +315,7 @@ class IllustrationDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black.withValues(alpha:0.5),
+        backgroundColor: Colors.black.withOpacity(0.5),
         title: Text(illustration.title),
         actions: [
           IconButton(
@@ -349,7 +349,7 @@ class IllustrationDetailPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha:0.8),
+              color: Colors.black.withOpacity(0.8),
               borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
             ),
             child: Column(
