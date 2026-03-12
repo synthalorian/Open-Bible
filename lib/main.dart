@@ -58,9 +58,9 @@ class OpenBibleApp extends ConsumerWidget {
 
     // Wait for persisted settings before applying theme to avoid restart flicker/reset.
     if (!settings.isLoaded) {
-      return MaterialApp(
+      return const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const Scaffold(
+        home: Scaffold(
           body: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
