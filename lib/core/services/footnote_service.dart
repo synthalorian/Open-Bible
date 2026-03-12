@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'dart:convert';
 
 /// Comprehensive footnote service for providing verse footnotes and cross-references
 class FootnoteService {

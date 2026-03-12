@@ -12,7 +12,6 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - lib-backup-broken/**
-    - lib/screens/**
     - lib/main_full.dart
     - lib/main_minimal.dart
     - test_storage.dart

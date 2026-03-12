@@ -46,9 +46,7 @@ class PrivacyPolicyPage extends StatelessWidget {
               '• Bookmarks: Bible verses you bookmark for quick access\n'
               '• Reading Plans: Progress on reading plans you create or follow\n'
               '• Prayer Journal: Prayer requests and notes you enter\n'
-              '• Highlights: Verses you highlight within the app\n'
-              '• Usage Data: Anonymous app usage statistics\n'
-              '• Device Info: Device type, OS version (for compatibility)',
+              '• Highlights: Verses you highlight within the app',
             ),
             
             _SectionTitle('How We Use Your Information'),
@@ -68,8 +66,7 @@ class PrivacyPolicyPage extends StatelessWidget {
             
             _SectionTitle('Third-Party Services'),
             _SectionText(
-              '• API.Bible: For fetching Bible translations and content\n'
-              '• Analytics: Anonymous usage statistics (optional)',
+              '• API.Bible: For fetching Bible translations and content',
             ),
             
             _SectionTitle('Data Security'),
@@ -82,7 +79,6 @@ class PrivacyPolicyPage extends StatelessWidget {
             _SectionText(
               'You have the right to:\n'
               '• Delete all app data by uninstalling the app\n'
-              '• Opt-out of analytics in app settings\n'
               '• Request your data (contact support)',
             ),
             
@@ -94,7 +90,8 @@ class PrivacyPolicyPage extends StatelessWidget {
             _SectionTitle('Contact Us'),
             _SectionText(
               'If you have questions about this Privacy Policy, please contact:\n'
-              '• Developer: synth (synthalorian)',
+              '• Developer: synth (synthalorian)\n'
+              '• GitHub: https://github.com/synthalorian/open-bible/issues',
             ),
             
             SizedBox(height: 32),

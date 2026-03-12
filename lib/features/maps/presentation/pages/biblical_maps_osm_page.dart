@@ -16,7 +16,6 @@ class _BiblicalMapsOSMPageState extends ConsumerState<BiblicalMapsOSMPage> {
   final MapController _mapController = MapController();
   String _searchQuery = '';
   String _selectedRegion = 'All';
-  BibleLocation? _selectedLocation;
   bool _showList = true;
 
   final List<String> _regions = [

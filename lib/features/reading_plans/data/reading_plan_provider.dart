@@ -294,7 +294,8 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
           .map((json) {
             try {
               return ReadingPlan.fromJson(jsonDecode(json));
-            } catch (_) {
+            } catch (e) {
+              debugPrint('Failed to parse reading plan JSON: $e');
               return null;
             }
           })
@@ -334,8 +335,9 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
         await _savePlans([fallbackPlan]);
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('active_plan_id', fallbackPlan.id);
-      } catch (_) {
+      } catch (e) {
         // Storage may be unavailable on this build; keep fallback in memory.
+        debugPrint('Failed to save fallback reading plan: $e');
       }
 
       state = state.copyWith(
@@ -368,8 +370,9 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('active_plan_id', planId);
-    } catch (_) {
+    } catch (e) {
       // Storage unavailable; keep in-memory update.
+      debugPrint('Failed to persist active plan: $e');
     }
   }
 
@@ -410,8 +413,9 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
 
     try {
       await _savePlans(updatedPlans);
-    } catch (_) {
+    } catch (e) {
       // Storage may be unavailable on some builds; keep in-memory update.
+      debugPrint('Failed to save completed day: $e');
     }
 
     final shouldPromoteToActive = planId != null;
@@ -461,8 +465,9 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       await _savePlans(updatedPlans);
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('active_plan_id', startedPlan.id);
-    } catch (_) {
+    } catch (e) {
       // Storage may be unavailable on some builds; keep in-memory update.
+      debugPrint('Failed to save new reading plan: $e');
     }
 
     state = state.copyWith(
@@ -496,8 +501,9 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
           await prefs.remove('active_plan_id');
         }
       }
-    } catch (_) {
+    } catch (e) {
       // Storage unavailable; keep in-memory update.
+      debugPrint('Failed to save plan deletion: $e');
     }
   }
 
@@ -520,8 +526,9 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
 
     try {
       await _savePlans(updatedPlans);
-    } catch (_) {
+    } catch (e) {
       // Storage unavailable; keep in-memory update.
+      debugPrint('Failed to save plan reset: $e');
     }
   }
 

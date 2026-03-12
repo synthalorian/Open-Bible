@@ -333,6 +333,7 @@ class _SearchResultCard extends ConsumerWidget {
     );
   }
 
+  // TODO: Replace with AppConstants.bookAbbreviations once available from core/constants.
   String _normalizeBookId(String rawId, String fallbackName) {
     final id = rawId.trim().toLowerCase();
     // If provider result already has a slug-like id, keep it.
