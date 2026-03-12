@@ -240,8 +240,11 @@ class VerseStorageService {
   // Bookmarks
   static Future<void> addBookmark(SavedVerse verse) async {
     if (!_initialized) await initialize();
-    _bookmarks.add(verse);
-    await _saveToBackupFile();
+    final exists = _bookmarks.any((v) => v.id == verse.id);
+    if (!exists) {
+      _bookmarks.add(verse);
+      await _saveToBackupFile();
+    }
   }
   
   static Future<void> removeBookmark(String verseId) async {
