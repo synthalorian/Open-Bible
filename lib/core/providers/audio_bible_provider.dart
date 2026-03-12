@@ -101,6 +101,12 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     
     state = state.copyWith(currentVerse: textToSpeak);
     await _flutterTts.stop();
+    
+    // Apply current audio settings before speaking
+    await _flutterTts.setVolume(state.volume);
+    await _flutterTts.setPitch(state.pitch);
+    await _flutterTts.setSpeechRate(state.rate);
+    
     _flutterTts.speak(textToSpeak); // Fire and forget
   }
   
@@ -128,6 +134,12 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     
     state = state.copyWith(currentVerse: textToSpeak);
     await _flutterTts.stop();
+    
+    // Apply current audio settings before speaking
+    await _flutterTts.setVolume(state.volume);
+    await _flutterTts.setPitch(state.pitch);
+    await _flutterTts.setSpeechRate(state.rate);
+    
     _flutterTts.speak(textToSpeak); // Fire and forget
   }
   
