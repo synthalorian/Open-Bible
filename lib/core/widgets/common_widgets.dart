@@ -35,7 +35,7 @@ class VerseText extends StatelessWidget {
       onLongPress: onLongPress ?? () => _showVerseOptions(context),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 4),
-        color: isHighlighted ? (highlightColor ?? Colors.yellow.withOpacity(0.3)) : null,
+        color: isHighlighted ? (highlightColor ?? Colors.yellow.withValues(alpha:0.3)) : null,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -61,7 +61,7 @@ class VerseText extends StatelessWidget {
                   SelectableText(
                     text,
                     style: TextStyle(
-                      fontFamily: 'Merriweather',
+                      fontFamily: 'CrimsonText',
                       fontSize: fontSize,
                       height: 1.8,
                     ),
@@ -207,7 +207,7 @@ class VerseText extends StatelessWidget {
                         color: entry.value,
                         shape: BoxShape.circle,
                         border: highlightColor == entry.value
-                            ? Border.all(color: Colors.black, width: 2)
+                            ? Border.all(color: Theme.of(context).colorScheme.onSurface, width: 2)
                             : null,
                       ),
                     ),

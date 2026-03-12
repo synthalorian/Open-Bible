@@ -202,7 +202,7 @@ class _MapsTab extends ConsumerWidget {
                     width: 40,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
+                      color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha:0.4),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -264,7 +264,7 @@ class _MapsTab extends ConsumerWidget {
                               width: 40,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                                color: Theme.of(context).colorScheme.primary.withValues(alpha:0.7),
                                 shape: BoxShape.circle,
                                 border: Border.all(color: Colors.white, width: 2),
                               ),
@@ -420,7 +420,7 @@ class _GenealogyTab extends ConsumerWidget {
                             color: _getPersonColor(person.type),
                           ),
                           label: Text(person.name),
-                          backgroundColor: _getPersonColor(person.type).withOpacity(0.1),
+                          backgroundColor: _getPersonColor(person.type).withValues(alpha:0.1),
                         ),
                       ))
                       .toList(),
@@ -581,7 +581,7 @@ class _TimelineTab extends ConsumerWidget {
         leading: Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: timelineCategoryColor(event.category).withOpacity(0.2),
+            color: timelineCategoryColor(event.category).withValues(alpha:0.2),
             borderRadius: BorderRadius.circular(4),
           ),
           child: Text(
@@ -632,7 +632,7 @@ class GenealogyDetailPage extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 8),
             elevation: isKeyFigure ? 2 : 0,
             color: isKeyFigure 
-                ? _getPersonColor(person.type).withOpacity(0.1)
+                ? _getPersonColor(person.type).withValues(alpha:0.1)
                 : null,
             child: ListTile(
               leading: CircleAvatar(

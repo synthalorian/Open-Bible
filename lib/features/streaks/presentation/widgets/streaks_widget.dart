@@ -92,8 +92,8 @@ class ReadingStreaksWidget extends ConsumerWidget {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: streaksState.hasReadToday
-                      ? Colors.green.withOpacity(0.1)
-                      : Colors.orange.withOpacity(0.1),
+                      ? Colors.green.withValues(alpha:0.1)
+                      : Colors.orange.withValues(alpha:0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
@@ -133,7 +133,7 @@ class ReadingStreaksWidget extends ConsumerWidget {
                   label: const Text('Mark as Read'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
-                    foregroundColor: Colors.white,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
               ],
@@ -180,8 +180,8 @@ class CompactStreakIndicator extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: streaksState.hasReadToday
-            ? Colors.green.withOpacity(0.2)
-            : Colors.orange.withOpacity(0.2),
+            ? Colors.green.withValues(alpha:0.2)
+            : Colors.orange.withValues(alpha:0.2),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(

@@ -182,4 +182,10 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     final languages = await _flutterTts.getLanguages;
     return List<String>.from(languages);
   }
+
+  @override
+  void dispose() {
+    _flutterTts.stop();
+    super.dispose();
+  }
 }

@@ -68,8 +68,8 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
           _note = note;
         });
       }
-    } catch (_) {
-      // no-op: leave defaults when storage read fails
+    } catch (e) {
+      debugPrint('Failed to load verse storage data: $e');
     }
   }
   
@@ -181,13 +181,13 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.grey[100],
+                        color: Theme.of(context).colorScheme.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey[300]!),
+                        border: Border.all(color: Theme.of(context).dividerColor),
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.note, size: 14, color: Colors.grey[600]),
+                          Icon(Icons.note, size: 14, color: Theme.of(context).colorScheme.onSurfaceVariant),
                           const SizedBox(width: 4),
                           Expanded(
                             child: Text(
@@ -195,7 +195,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
                               style: TextStyle(
                                 fontSize: 12,
                                 fontStyle: FontStyle.italic,
-                                color: Colors.grey[700],
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                           ),
@@ -220,7 +220,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                              color: Theme.of(context).colorScheme.secondary.withValues(alpha:0.1),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Row(
@@ -294,7 +294,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
       return [TextSpan(text: widget.text)];
     }
 
-    final color = Color(HighlightColors.getColorValue(_highlightColor!)).withOpacity(0.35);
+    final color = Color(HighlightColors.getColorValue(_highlightColor!)).withValues(alpha:0.35);
     final start = _highlightStart!;
     final end = _highlightEnd!;
 
@@ -438,7 +438,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
+                          color: Theme.of(context).colorScheme.shadow.withValues(alpha:0.2),
                           blurRadius: 4,
                         ),
                       ],
@@ -525,18 +525,18 @@ class _VerseActionsSheet extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey[300]!),
+              border: Border.all(color: Theme.of(context).dividerColor),
             ),
             child: Text(
               text.isEmpty ? '[Verse text unavailable]' : text,
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 14, 
+                fontSize: 14,
                 height: 1.4,
-                color: Colors.black87,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),
@@ -544,7 +544,7 @@ class _VerseActionsSheet extends StatelessWidget {
           
           // Explicit highlight modes
           Text('Quick Highlight (whole verse):', style: TextStyle(
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
             fontWeight: FontWeight.w600,
           )),
           const SizedBox(height: 12),
@@ -561,7 +561,7 @@ class _VerseActionsSheet extends StatelessWidget {
           Text(
             'Precision Highlight (selected text only):',
             style: TextStyle(
-              color: Colors.grey[700],
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -580,7 +580,7 @@ class _VerseActionsSheet extends StatelessWidget {
           Text(
             'Tip: select text in the verse body, then use this button to color only that selected portion.',
             style: TextStyle(
-              color: Colors.grey[600],
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
               fontSize: 12,
             ),
           ),
@@ -752,9 +752,9 @@ class _VerseActionsSheet extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: color != null 
+          color: color != null
               ? Color(HighlightColors.getColorValue(color))
-              : Colors.grey[300],
+              : Theme.of(context).colorScheme.surfaceContainerHighest,
           shape: BoxShape.circle,
           border: isSelected 
               ? Border.all(
@@ -764,14 +764,14 @@ class _VerseActionsSheet extends StatelessWidget {
               : null,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.15),
+              color: Theme.of(context).colorScheme.shadow.withValues(alpha:0.15),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
           ],
         ),
-        child: color == null 
-            ? const Icon(Icons.clear, size: 20, color: Colors.grey)
+        child: color == null
+            ? Icon(Icons.clear, size: 20, color: Theme.of(context).colorScheme.outline)
             : null,
       ),
     );
