@@ -93,11 +93,13 @@ class TranslationSelectorWidget extends ConsumerWidget {
             );
             
             if (confirm == true) {
+              if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
               );
-              
+
               final success = await downloadManager.downloadVersion(value);
+              if (!context.mounted) return;
               if (success) {
                 ref.read(selectedTranslationProvider.notifier).state = value;
                 ref.read(bibleDataProvider.notifier).selectTranslation(value);
@@ -168,11 +170,13 @@ class CompactTranslationSelector extends ConsumerWidget {
           );
           
           if (confirm == true) {
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
             );
-            
+
             final success = await downloadManager.downloadVersion(value);
+            if (!context.mounted) return;
             if (success) {
               ref.read(selectedTranslationProvider.notifier).state = value;
               ref.read(bibleDataProvider.notifier).selectTranslation(value);
