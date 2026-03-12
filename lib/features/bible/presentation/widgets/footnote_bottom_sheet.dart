@@ -66,7 +66,7 @@ class _FootnoteBottomSheetState extends ConsumerState<FootnoteBottomSheet> {
                         width: 40,
                         height: 4,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha:0.4),
+                          color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -266,7 +266,7 @@ class _FootnoteBottomSheetState extends ConsumerState<FootnoteBottomSheet> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
         side: BorderSide(
-          color: _getTypeColor(footnote.type).withValues(alpha:0.3),
+          color: _getTypeColor(footnote.type).withOpacity(0.3),
           width: 1,
         ),
       ),
@@ -300,7 +300,7 @@ class _FootnoteBottomSheetState extends ConsumerState<FootnoteBottomSheet> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: _getTypeColor(footnote.type).withValues(alpha:0.1),
+                    color: _getTypeColor(footnote.type).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Row(

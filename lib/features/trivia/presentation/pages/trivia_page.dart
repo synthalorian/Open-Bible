@@ -248,7 +248,7 @@ class _TriviaPageState extends State<TriviaPage> {
             // Category tag
             Chip(
               label: Text(question.category),
-              backgroundColor: _getDifficultyColor(question.difficulty).withValues(alpha:0.2),
+              backgroundColor: _getDifficultyColor(question.difficulty).withOpacity(0.2),
             ),
             const SizedBox(height: 16),
             
@@ -367,7 +367,7 @@ class _TriviaPageState extends State<TriviaPage> {
                     ),
                     Text(
                       'Test your Bible knowledge!',
-                      style: TextStyle(color: Colors.white.withValues(alpha:0.8)),
+                      style: TextStyle(color: Colors.white.withOpacity(0.8)),
                     ),
                   ],
                 ),

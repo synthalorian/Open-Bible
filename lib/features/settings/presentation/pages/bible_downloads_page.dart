@@ -122,8 +122,8 @@ class _BibleDownloadsPageState extends ConsumerState<BibleDownloadsPage> {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: version.isPublicDomain 
-            ? Colors.green.withValues(alpha:0.2)
-            : Colors.orange.withValues(alpha:0.2),
+            ? Colors.green.withOpacity(0.2)
+            : Colors.orange.withOpacity(0.2),
         child: Text(
           version.abbreviation,
           style: TextStyle(

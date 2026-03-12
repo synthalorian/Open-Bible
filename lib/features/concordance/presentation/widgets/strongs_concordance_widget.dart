@@ -43,7 +43,7 @@ class StrongsConcordanceWidget extends ConsumerWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.red.withValues(alpha:0.1),
+              color: Colors.red.withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -96,7 +96,7 @@ class StrongsConcordanceWidget extends ConsumerWidget {
                   Icon(
                     Icons.menu_book,
                     size: 64,
-                    color: Theme.of(context).colorScheme.primary.withValues(alpha:0.5),
+                    color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                   ),
                   const SizedBox(height: 16),
                   const Text(
@@ -158,8 +158,8 @@ class StrongsEntryCard extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
                     color: entry.language == 'hebrew'
-                        ? Colors.blue.withValues(alpha:0.2)
-                        : Colors.purple.withValues(alpha:0.2),
+                        ? Colors.blue.withOpacity(0.2)
+                        : Colors.purple.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -180,8 +180,8 @@ class StrongsEntryCard extends ConsumerWidget {
                     style: const TextStyle(fontSize: 12),
                   ),
                   backgroundColor: entry.language == 'hebrew'
-                      ? Colors.blue.withValues(alpha:0.1)
-                      : Colors.purple.withValues(alpha:0.1),
+                      ? Colors.blue.withOpacity(0.1)
+                      : Colors.purple.withOpacity(0.1),
                 ),
                 const Spacer(),
                 IconButton(
@@ -355,8 +355,8 @@ class StrongsFavoritesList extends ConsumerWidget {
             height: 48,
             decoration: BoxDecoration(
               color: entry.language == 'hebrew'
-                  ? Colors.blue.withValues(alpha:0.1)
-                  : Colors.purple.withValues(alpha:0.1),
+                  ? Colors.blue.withOpacity(0.1)
+                  : Colors.purple.withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
