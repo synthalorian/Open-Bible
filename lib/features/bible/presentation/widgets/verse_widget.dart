@@ -220,7 +220,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.secondary.withValues(alpha:0.1),
+                              color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Row(
@@ -294,7 +294,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
       return [TextSpan(text: widget.text)];
     }
 
-    final color = Color(HighlightColors.getColorValue(_highlightColor!)).withValues(alpha:0.35);
+    final color = Color(HighlightColors.getColorValue(_highlightColor!)).withOpacity(0.35);
     final start = _highlightStart!;
     final end = _highlightEnd!;
 
@@ -438,7 +438,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).colorScheme.shadow.withValues(alpha:0.2),
+                          color: Theme.of(context).colorScheme.shadow.withOpacity(0.2),
                           blurRadius: 4,
                         ),
                       ],
@@ -764,7 +764,7 @@ class _VerseActionsSheet extends StatelessWidget {
               : null,
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.shadow.withValues(alpha:0.15),
+              color: Theme.of(context).colorScheme.shadow.withOpacity(0.15),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
