@@ -163,24 +163,24 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
   }
   
   Future<void> setVolume(double volume) async {
+    state = state.copyWith(volume: volume);
+    await _flutterTts.setVolume(volume);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('tts_volume', volume);
-    await _flutterTts.setVolume(volume);
-    state = state.copyWith(volume: volume);
   }
   
   Future<void> setPitch(double pitch) async {
+    state = state.copyWith(pitch: pitch);
+    await _flutterTts.setPitch(pitch);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('tts_pitch', pitch);
-    await _flutterTts.setPitch(pitch);
-    state = state.copyWith(pitch: pitch);
   }
   
   Future<void> setRate(double rate) async {
+    state = state.copyWith(rate: rate);
+    await _flutterTts.setSpeechRate(rate);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('tts_rate', rate);
-    await _flutterTts.setSpeechRate(rate);
-    state = state.copyWith(rate: rate);
   }
   
   Future<void> setLanguage(String language) async {

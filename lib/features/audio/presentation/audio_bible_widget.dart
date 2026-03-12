@@ -109,7 +109,7 @@ class AudioControlsWidget extends ConsumerWidget {
                 child: Slider(
                   value: audioState.rate,
                   onChanged: (value) => audioNotifier.setRate(value),
-                  min: 0.1,
+                  min: 0.0,
                   max: 1.0,
                 ),
               ),
