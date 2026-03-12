@@ -105,7 +105,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: verses.map((v) => VerseWidget(
-        verseId: '${_currentBibleId}:$widget.bookId:$chapter:${v['verse']}',
+        verseId: '$_currentBibleId:$widget.bookId:$chapter:${v['verse']}',
         bookId: widget.bookId,
         bookName: _bookName,
         chapter: chapter,
