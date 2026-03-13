@@ -1,143 +1,115 @@
-# Holy Bible App 📖
+# Open Bible 📖
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.22+-02569B?logo=flutter)](https://flutter.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50)](#)
 
-An extensive Bible study app for Android and iOS, built with Flutter.
+A comprehensive, performance-optimized, and high-precision Bible study application for Android and iOS. Built with a focus on stability, offline accessibility, and a seamless reading experience.
 
-## Features
+**This is the wave.** 🌊
 
-### Core Features
-- 📚 **Multiple Translations** - KJV, ESV, NIV, NASB, and more via api.bible
-- 🔍 **Powerful Search** - Find verses, phrases, and topics instantly
-- 📖 **Offline Support** - Download translations for offline reading
+## 🚀 Key Features
 
-### Study Tools
-- 🔖 **Bookmarks** - Save your favorite verses
-- 🎨 **Highlights** - 8 beautiful highlight colors
-- 📝 **Notes** - Add personal notes to any verse
-- 📅 **Reading Plans** - 365-day, 90-day, and thematic plans
-- 📊 **Reading Streaks** - Track your daily reading progress
+### 📖 The Word, Offline
+- **20+ Bundled Translations**: Immediate access to KJV, Geneva (1599), Wycliffe (1382), Tyndale (1526), ASV, YLT, and many more without needing a data connection.
+- **Deep Stabilization**: High-reliability persistence engine ensuring your reading mode, translation choice, and progress survive force-closes and system reboots.
+- **High-Precision Search**: Instant full-text search across all bundled translations with support for biblical references.
 
-### Advanced Features
-- 🌍 **Strong's Concordance** - Greek & Hebrew word lookup
-- 📜 **Commentary** - Matthew Henry, JFB, Barnes' Notes
-- 🗺️ **Biblical Maps** - Interactive maps of Bible lands
-- ⏳ **Timeline** - Biblical history timeline
-- 🎤 **Audio Bible** - Listen to scripture (TTS)
-- 🙏 **Prayer Journal** - Record and track prayers
+### 🛠️ Professional Study Tools
+- **Translation Comparison**: Long-press any verse to instantly compare it across all 20+ available versions.
+- **Strong's Concordance**: Deep Greek & Hebrew word lookups integrated directly into the reading flow.
+- **Precision Highlighting**: 8 theme-aware highlight colors with support for specific word-range selection.
+- **Integrated Notes & Bookmarks**: Add personal reflections to any verse or bookmark whole chapters for quick access.
 
-### Daily Features
-- ☀️ **Daily Verse** - New verse each day with reflection
-- 🔔 **Notifications** - Customizable verse reminders
-- 📱 **Home Screen Widget** - Daily verse on your home screen
+### 🎧 Audio & Daily Engagement
+- **Smart Audio Bible**: Integrated Text-to-Speech (TTS) with **Real-Time Slider Sync**. Adjust speed, pitch, and volume mid-verse with immediate feedback.
+- **Structured Reading Plans**: Complete the Bible in a Year (365 days), New Testament in 90 days, or focused Gospel journeys.
+- **Daily Verse & Streaks**: Stay consistent with customizable daily reminders and progress tracking.
 
-### Sharing
-- 🖼️ **Verse Images** - Create beautiful shareable graphics
-- 📋 **Copy & Share** - Easy sharing to social media
+### 🎨 Visuals & UI
+- **Four Reading Modes**: Optimized Day, Night, Sepia, and AMOLED modes for any lighting condition.
+- **Typographic Precision**: Featuring **CrimsonText** for a classic scriptural feel and **Roboto** for a clean UI.
+- **Zero-Flicker Startup**: Gated initialization ensures your theme is applied before the first frame, eliminating startup "white flashes."
 
-## Tech Stack
+---
+
+## 🛠️ Tech Stack
 
 - **Framework:** Flutter 3.22+
-- **State Management:** Riverpod
-- **Local Storage:** Hive + SQLite
-- **Networking:** Dio + Retrofit
-- **Navigation:** GoRouter
-- **Charts:** FL Chart
-- **Maps:** Flutter Map
+- **State Management:** Riverpod (Reactive state architecture)
+- **Local Storage:** Unified `VerseStorageService` with `SharedPreferences` mirroring for critical reliability.
+- **Audio:** `flutter_tts` with custom debounced re-sync logic.
+- **Build System:** Automated Gradle environment locking for consistent release artifacts.
 
-## Project Structure
+---
+
+## 📂 Project Architecture
+
+The codebase follows a modular feature-based architecture for maximum maintainability:
 
 ```
 lib/
-├── core/
-│   ├── constants/       # App constants, Bible structure
-│   ├── themes/          # Light/dark themes, reading modes
-│   ├── services/        # API, storage, notifications
-│   ├── providers/       # Riverpod providers
-│   └── widgets/         # Shared widgets
+├── core/                # App-wide services, themes, and unified persistence
 ├── features/
-│   ├── bible/           # Bible reading, chapters, verses
-│   ├── search/          # Search functionality
-│   ├── bookmarks/       # Bookmarks management
-│   ├── highlights/      # Highlight management
-│   ├── notes/           # Notes management
-│   ├── reading_plans/   # Reading plans
-│   ├── daily_verse/     # Daily verse feature
-│   ├── concordance/     # Strong's concordance
-│   ├── commentary/      # Bible commentary
-│   ├── maps/            # Biblical maps
-│   ├── timeline/        # Biblical timeline
-│   ├── prayer_journal/  # Prayer tracking
-│   ├── streaks/         # Reading streaks
-│   ├── sharing/         # Verse sharing
-│   ├── audio/           # Audio playback
-│   └── settings/        # App settings
-└── main.dart
+│   ├── bible/           # Multi-engine reader & book navigation
+│   ├── search/          # Optimized full-text search
+│   ├── comparison/      # Side-by-side translation analysis
+│   ├── audio/           # Real-time reactive TTS engine
+│   ├── concordance/     # Lexicon & word studies
+│   ├── reading_plans/   # Linear traversal scheduling
+│   └── ...              # Streaks, Prayer Journal, Maps, etc.
+└── main.dart            # Gated initialization & root navigation
 ```
 
-## Getting Started
+---
+
+## ⚙️ Getting Started
 
 ### Prerequisites
 - Flutter SDK 3.22+
 - Dart 3.4+
-- Android Studio / Xcode
+- Android Studio (OpenJDK 17 recommended) / Xcode
 
 ### Installation
 
-1. Clone the repository:
-```bash
-cd ~/projects
-git clone <repo-url> holy_bible_app
-cd holy_bible_app
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/synthalorian/open-bible.git
+   cd open-bible
+   ```
 
-2. Install dependencies:
-```bash
-flutter pub get
-```
+2. **Install dependencies:**
+   ```bash
+   flutter pub get
+   ```
 
-3. Set up API key:
-```bash
-cp .env.example .env
-# Edit .env and add your api.bible key
-```
-
-4. Run the app:
-```bash
-flutter run
-```
-
-### API Key
-
-Get a free API key from [api.bible](https://scripture.api.bible/):
-
-1. Sign up at api.bible
-2. Create a new application
-3. Copy your API key
-4. Add it to `.env` or `lib/core/constants/app_constants.dart`
-
-## Building for Release
-
-### Android
-```bash
-flutter build apk --release
-```
-
-### iOS
-```bash
-flutter build ios --release
-```
-
-## Contributing
-
-This is a personal project, but suggestions and improvements are welcome!
-
-## License
-
-MIT License - feel free to use this for your own projects.
+3. **Build the app:**
+   ```bash
+   flutter run
+   ```
 
 ---
 
-Made with ❤️ for the glory of God.
+## 📦 Building for Release
+
+The build environment is locked to OpenJDK 17 for stability.
+
+### Android
+```bash
+# Generate a new signing key locally if needed
+./scripts/generate-keystore.sh
+# Build release APK
+flutter build apk --release
+```
+
+---
+
+## 🙏 Credits & Dedication
+
+Every line of code in this project carries the DNA of those who came before. Developed by **synth** with assistance from **synthclaw**.
+
+**Write the future in the present while preserving the past.**
+
+---
+
+Made with ❤️ for the glory of God. ✝️
