@@ -211,7 +211,7 @@ class VerseStorageService {
   static Future<void> _doSave() async {
     try {
       final f = _backupFile;
-      if (f == null) return;
+      if (f == null) throw Exception('Storage not initialized');
 
       final map = {
         'bookmarks': _bookmarks.map((v) => v.toJson()).toList(),
@@ -240,6 +240,7 @@ class VerseStorageService {
       }
     } catch (e) {
       _lastError = "SaveFile: $e";
+      rethrow; // Propagate error to caller
     }
   }
 
