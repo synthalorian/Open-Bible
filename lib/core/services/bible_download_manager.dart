@@ -55,7 +55,7 @@ class BibleDownloadManager extends ChangeNotifier {
     'geneva': BibleVersionInfo(
       id: 'geneva',
       name: 'Geneva Bible',
-      abbreviation: 'GNV',
+      abbreviation: 'GEN',
       language: 'English',
       isBundled: true,
       isPublicDomain: true,
