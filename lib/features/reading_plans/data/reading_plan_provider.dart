@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../../../core/constants/app_constants.dart';
 
 /// Reading plan provider
 final readingPlanProvider = StateNotifierProvider<ReadingPlanNotifier, ReadingPlanState>((ref) {
@@ -718,14 +719,58 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       description: 'Complete Bible reading plan for 365 days',
       type: PlanType.wholeBible,
       totalDays: 365,
-      days: _generateSequentialDays(
-        totalDays: 365,
-        bookId: 'GEN',
-        bookName: 'Genesis',
-        maxChapter: 50,
-      ),
+      days: _generateWholeBibleDays(),
       createdAt: DateTime.now(),
     );
+  }
+
+  List<ReadingDay> _generateWholeBibleDays() {
+    final days = <ReadingDay>[];
+    final allBooks = BibleStructure.allBooks;
+    
+    // Create a list of all chapters in the Bible
+    final allChapters = <ReadingSegment>[];
+    for (final bookName in allBooks) {
+      final bookId = AppConstants.bookAbbreviations[bookName.toLowerCase()] ?? bookName.toUpperCase();
+      final chapterCount = BibleStructure.getChapterCount(bookName);
+      for (int i = 1; i <= chapterCount; i++) {
+        allChapters.add(ReadingSegment(
+          bookId: bookId,
+          bookName: bookName,
+          startChapter: i,
+        ));
+      }
+    }
+
+    // Total chapters in the Bible is 1189.
+    // 1189 / 365 is approx 3.25 chapters per day.
+    int chapterIndex = 0;
+    for (int day = 1; day <= 365; day++) {
+      // Calculate how many chapters to read today to stay on track
+      // (Total chapters read by end of day should be approx day * (1189/365))
+      final targetTotal = (day * allChapters.length / 365).floor();
+      final chaptersToday = <ReadingSegment>[];
+      
+      while (chapterIndex < targetTotal || (day == 365 && chapterIndex < allChapters.length)) {
+        chaptersToday.add(allChapters[chapterIndex]);
+        chapterIndex++;
+      }
+      
+      // Ensure at least one chapter per day if we have chapters left
+      if (chaptersToday.isEmpty && chapterIndex < allChapters.length) {
+        chaptersToday.add(allChapters[chapterIndex]);
+        chapterIndex++;
+      }
+
+      if (chaptersToday.isNotEmpty) {
+        days.add(ReadingDay(
+          dayNumber: day,
+          segments: chaptersToday,
+        ));
+      }
+    }
+
+    return days;
   }
 
   ReadingPlan _createChronologicalPlan() {
@@ -734,13 +779,8 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       name: 'Chronological Bible',
       description: 'Read the Bible in chronological order',
       type: PlanType.chronological,
-      totalDays: 120,
-      days: _generateSequentialDays(
-        totalDays: 120,
-        bookId: 'GEN',
-        bookName: 'Genesis',
-        maxChapter: 50,
-      ),
+      totalDays: 365, // Standardize to a year
+      days: _generateWholeBibleDays(), // Reusing the logic for now, but in order
       createdAt: DateTime.now(),
     );
   }
