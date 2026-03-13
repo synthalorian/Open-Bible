@@ -91,6 +91,7 @@ class AppSettings {
   final bool dailyVerseNotifications;
   final DailyVerseTime dailyVerseTime;
   final bool audioEnabled;
+  final bool isLoaded;
 
   const AppSettings({
     this.selectedBibleId = 'kjv',
@@ -101,6 +102,7 @@ class AppSettings {
     this.dailyVerseNotifications = true,
     this.dailyVerseTime = const DailyVerseTime(hour: 8, minute: 0),
     this.audioEnabled = true,
+    this.isLoaded = false,
   });
 
   AppSettings copyWith({
@@ -112,6 +114,7 @@ class AppSettings {
     bool? dailyVerseNotifications,
     DailyVerseTime? dailyVerseTime,
     bool? audioEnabled,
+    bool? isLoaded,
   }) {
     return AppSettings(
       selectedBibleId: selectedBibleId ?? this.selectedBibleId,
@@ -122,6 +125,7 @@ class AppSettings {
       dailyVerseNotifications: dailyVerseNotifications ?? this.dailyVerseNotifications,
       dailyVerseTime: dailyVerseTime ?? this.dailyVerseTime,
       audioEnabled: audioEnabled ?? this.audioEnabled,
+      isLoaded: isLoaded ?? this.isLoaded,
     );
   }
 }
@@ -182,10 +186,18 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     try {
       await VerseStorageService.initialize();
       final s = VerseStorageService.getSettings();
-      if (s.isEmpty) { _isLoaded = true; return; }
+      if (s.isEmpty) { 
+        // Force a microtask delay to ensure UI listeners are registered before state change
+        await Future.microtask(() {});
+        _isLoaded = true;
+        state = state.copyWith(isLoaded: true);
+        return; 
+      }
       final modeIndex = s['readingMode'] as int? ?? ReadingMode.day.index;
       final savedBibleId = s['selectedBibleId'] as String? ?? state.selectedBibleId;
-      state = state.copyWith(
+      
+      // Mirror the state update but ensure isLoaded triggers last
+      final newState = state.copyWith(
         fontSize: s['fontSize'] as int? ?? state.fontSize,
         readingMode: ReadingMode.values[modeIndex.clamp(0, ReadingMode.values.length - 1)],
         notificationsEnabled: s['notificationsEnabled'] as bool? ?? state.notificationsEnabled,
@@ -195,10 +207,17 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
         isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
         selectedBibleId: savedBibleId,
       );
-      // Restore the selected translation across the app
+      
+      await Future.microtask(() {});
       CurrentBible.set(savedBibleId);
+      state = newState.copyWith(isLoaded: true);
       _isLoaded = true;
-    } catch (e) { debugPrint('Failed to load app settings: $e'); _isLoaded = true; }
+    } catch (e) { 
+      debugPrint('Failed to load app settings: $e');
+      await Future.microtask(() {});
+      _isLoaded = true;
+      state = state.copyWith(isLoaded: true);
+    }
   }
 
   Future<void> _save() async {
