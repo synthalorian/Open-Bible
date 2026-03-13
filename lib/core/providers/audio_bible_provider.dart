@@ -165,6 +165,9 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
   Future<void> setVolume(double volume) async {
     state = state.copyWith(volume: volume);
     await _flutterTts.setVolume(volume);
+    if (state.isSpeaking && state.currentVerse != null) {
+      _debounceRestart();
+    }
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('tts_volume', volume);
   }
@@ -172,6 +175,9 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
   Future<void> setPitch(double pitch) async {
     state = state.copyWith(pitch: pitch);
     await _flutterTts.setPitch(pitch);
+    if (state.isSpeaking && state.currentVerse != null) {
+      _debounceRestart();
+    }
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('tts_pitch', pitch);
   }
@@ -179,8 +185,38 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
   Future<void> setRate(double rate) async {
     state = state.copyWith(rate: rate);
     await _flutterTts.setSpeechRate(rate);
+    if (state.isSpeaking && state.currentVerse != null) {
+      _debounceRestart();
+    }
     final prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('tts_rate', rate);
+  }
+
+  // Debounce logic to prevent audio stutter while dragging sliders
+  DateTime? _lastRestartRequest;
+  bool _isRestarting = false;
+
+  void _debounceRestart() async {
+    _lastRestartRequest = DateTime.now();
+    if (_isRestarting) return;
+    _isRestarting = true;
+
+    await Future.delayed(const Duration(milliseconds: 400));
+    
+    if (_lastRestartRequest != null && 
+        DateTime.now().difference(_lastRestartRequest!).inMilliseconds >= 400) {
+      if (state.isSpeaking && state.currentVerse != null) {
+        final text = state.currentVerse!;
+        await _flutterTts.stop();
+        // Wait for engine to clear
+        await Future.delayed(const Duration(milliseconds: 50));
+        await _flutterTts.setVolume(state.volume);
+        await _flutterTts.setPitch(state.pitch);
+        await _flutterTts.setSpeechRate(state.rate);
+        await _flutterTts.speak(text);
+      }
+    }
+    _isRestarting = false;
   }
   
   Future<void> setLanguage(String language) async {
