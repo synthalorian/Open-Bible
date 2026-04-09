@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Open Bible</string>
+    <string name="daily_verse_widget_label">Daily Verse</string>
+    <string name="daily_verse_widget_description">Shows a daily Bible verse on your home screen</string>
+</resources>
