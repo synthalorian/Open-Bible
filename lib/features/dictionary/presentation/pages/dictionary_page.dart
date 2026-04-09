@@ -222,8 +222,8 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAlphabeticalIndex,
-        child: const Icon(Icons.abc),
         tooltip: 'Alphabetical Index',
+        child: const Icon(Icons.abc),
       ),
     );
   }

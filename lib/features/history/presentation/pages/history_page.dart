@@ -187,7 +187,7 @@ class _HistoryPageState extends State<HistoryPage> {
           label,
           style: TextStyle(
             fontSize: 12,
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withValues(alpha: 0.8),
           ),
         ),
       ],
@@ -277,10 +277,9 @@ class _HistoryPageState extends State<HistoryPage> {
           TextButton(
             onPressed: () async {
               await ReadingHistoryService.clearHistory();
-              if (mounted) {
-                Navigator.pop(context);
-                _loadHistory();
-              }
+              if (!context.mounted) return;
+              Navigator.pop(context);
+              _loadHistory();
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Clear'),

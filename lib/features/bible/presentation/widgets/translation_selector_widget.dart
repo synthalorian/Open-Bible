@@ -53,7 +53,7 @@ class TranslationSelectorWidget extends ConsumerWidget {
                     ),
                     if (!isDownloaded) ...[
                       const SizedBox(width: 8),
-                      Icon(Icons.download, size: 14, color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.7)),
+                      Icon(Icons.download, size: 14, color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.7)),
                     ],
                   ],
                 ),
@@ -61,7 +61,7 @@ class TranslationSelectorWidget extends ConsumerWidget {
                   Text(
                     translation.name,
                     style: TextStyle(
-                      color: (textColor ?? Theme.of(context).colorScheme.onPrimary).withOpacity(0.7),
+                      color: (textColor ?? Theme.of(context).colorScheme.onPrimary).withValues(alpha: 0.7),
                       fontSize: 12,
                     ),
                   ),
@@ -93,15 +93,17 @@ class TranslationSelectorWidget extends ConsumerWidget {
             );
             
             if (confirm == true) {
+              if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
               );
-              
+
               final success = await downloadManager.downloadVersion(value);
               if (success) {
                 ref.read(selectedTranslationProvider.notifier).state = value;
                 ref.read(bibleDataProvider.notifier).selectTranslation(value);
               } else {
+                if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Download failed. Check your connection.')),
                 );
@@ -168,15 +170,17 @@ class CompactTranslationSelector extends ConsumerWidget {
           );
           
           if (confirm == true) {
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
             );
-            
+
             final success = await downloadManager.downloadVersion(value);
             if (success) {
               ref.read(selectedTranslationProvider.notifier).state = value;
               ref.read(bibleDataProvider.notifier).selectTranslation(value);
             } else {
+              if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Download failed. Check your connection.')),
               );

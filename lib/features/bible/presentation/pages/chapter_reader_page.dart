@@ -80,7 +80,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: verses.map((v) => VerseWidget(
-        verseId: '${_currentBibleId}:${widget.bookId}:$chapter:${v['verse']}',
+        verseId: '$_currentBibleId:${widget.bookId}:$chapter:${v['verse']}',
         bookId: widget.bookId,
         bookName: _bookName,
         chapter: chapter,
@@ -446,7 +446,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
                       abbreviation,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
                       ),
                     ),
                   ],
@@ -461,7 +461,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
                   color: Theme.of(context)
                       .colorScheme
                       .surfaceContainerHighest
-                      .withOpacity(0.45),
+                      .withValues(alpha: 0.45),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -523,7 +523,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             end: Alignment.bottomCenter,
             colors: [
               Theme.of(context).scaffoldBackgroundColor,
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(0),
+              Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0),
             ],
           ),
         ),
@@ -572,7 +572,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             end: Alignment.topCenter,
             colors: [
               Theme.of(context).scaffoldBackgroundColor,
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(0),
+              Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0),
             ],
           ),
         ),

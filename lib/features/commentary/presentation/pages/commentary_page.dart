@@ -70,7 +70,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
                       filled: true,
                       fillColor: Theme.of(context).colorScheme.surface,
                     ),
-                    value: _selectedBook,
+                    initialValue: _selectedBook,
                     items: _books.map((book) => DropdownMenuItem(
                       value: book,
                       child: Text(_capitalize(book)),
@@ -94,7 +94,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
                       filled: true,
                       fillColor: Theme.of(context).colorScheme.surface,
                     ),
-                    value: _selectedChapter,
+                    initialValue: _selectedChapter,
                     items: List.generate(BibleStructure.getChapterCount(_capitalize(_selectedBook)).clamp(1, 150), (i) => i + 1)
                         .map((n) => DropdownMenuItem(value: n, child: Text('$n')))
                         .toList(),
@@ -179,7 +179,7 @@ class _CommentaryPageState extends State<CommentaryPage> {
               color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
               ),
             ),
             child: SelectableText(

@@ -35,7 +35,7 @@ class VerseText extends StatelessWidget {
       onLongPress: onLongPress ?? () => _showVerseOptions(context),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 4),
-        color: isHighlighted ? (highlightColor ?? Colors.yellow.withOpacity(0.3)) : null,
+        color: isHighlighted ? (highlightColor ?? Colors.yellow.withValues(alpha: 0.3)) : null,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
