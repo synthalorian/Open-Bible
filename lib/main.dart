@@ -12,7 +12,7 @@ import 'core/themes/app_theme.dart';
 import 'features/bible/presentation/widgets/translation_selector_widget.dart';
 import 'features/bible/presentation/pages/book_chapter_grid_page.dart';
 import 'features/bookmarks/presentation/pages/bookmarks_page.dart';
-import 'features/comparison/presentation/pages/verse_comparison_page.dart';
+
 import 'features/reading_plans/presentation/pages/reading_plans_page.dart';
 import 'features/history/presentation/pages/history_page.dart';
 import 'features/search/presentation/pages/search_page.dart' as search_feature;
