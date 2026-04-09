@@ -118,7 +118,7 @@ class ReadingPlansPage extends ConsumerWidget {
 
     return Card(
       elevation: 4,
-      color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
+      color: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.3),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(
@@ -229,7 +229,7 @@ class ReadingPlansPage extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 12),
       elevation: isActive ? 0 : 0,
       color: isActive 
-          ? Theme.of(context).colorScheme.primaryContainer.withOpacity(0.1)
+          ? Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.1)
           : Theme.of(context).colorScheme.surfaceContainerHighest,
       child: ListTile(
         leading: Icon(
@@ -317,7 +317,7 @@ class ReadingPlansPage extends ConsumerWidget {
                     width: 40,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
+                      color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -412,7 +412,7 @@ class ReadingPlansPage extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: color.withOpacity(0.1),
+          backgroundColor: color.withValues(alpha: 0.1),
           child: Icon(icon, color: color),
         ),
         title: Text(title),
@@ -526,7 +526,7 @@ class PlanDetailsPage extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 12),
       elevation: isCompleted ? 0 : 1,
       color: isCompleted
-          ? Colors.green.withOpacity(0.1)
+          ? Colors.green.withValues(alpha: 0.1)
           : Theme.of(context).colorScheme.surfaceContainerHighest,
       child: InkWell(
         onTap: () => _showDayReadings(context, ref, day),
@@ -619,7 +619,7 @@ class PlanDetailsPage extends ConsumerWidget {
                     width: 40,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
+                      color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),

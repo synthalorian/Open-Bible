@@ -56,21 +56,19 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
           
           if (confirm == true) {
             // Show loading snackbar
-            if (mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
-              );
-            }
-            
+            if (!context.mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Downloading ${value.toUpperCase()}...')),
+            );
+
             final success = await downloadManager.downloadVersion(value);
             if (success) {
               widget.onTranslationChanged(value);
             } else {
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Download failed. Check your connection.')),
-                );
-              }
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Download failed. Check your connection.')),
+              );
             }
           }
         } else {

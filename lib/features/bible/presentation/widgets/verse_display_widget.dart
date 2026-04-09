@@ -85,7 +85,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: _isFullVerseHighlight(highlightColor, preciseHighlight)
             ? BoxDecoration(
-                color: parseHighlightColor(highlightColor!).withOpacity(0.2),
+                color: parseHighlightColor(highlightColor!).withValues(alpha: 0.2),
                 border: Border(
                   left: BorderSide(
                     color: parseHighlightColor(highlightColor),
@@ -101,7 +101,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Verse number
-                Container(
+                SizedBox(
                   width: 32,
                   child: Text(
                     '${widget.verseNumber}',
@@ -173,7 +173,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                    color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(
@@ -226,7 +226,7 @@ class _VerseDisplayWidgetState extends ConsumerState<VerseDisplayWidget> {
     required String? highlightColor,
     required SavedVerse? preciseHighlight,
   }) {
-    final color = highlightColor != null ? parseHighlightColor(highlightColor).withOpacity(0.35) : null;
+    final color = highlightColor != null ? parseHighlightColor(highlightColor).withValues(alpha: 0.35) : null;
     final start = preciseHighlight?.highlightStart;
     final end = preciseHighlight?.highlightEnd;
     final canApplyRange = color != null && start != null && end != null && start >= 0 && end <= widget.verseText.length && start < end;

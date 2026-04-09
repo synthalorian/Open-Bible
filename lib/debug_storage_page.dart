@@ -40,7 +40,7 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           ElevatedButton(
             onPressed: () async {
               final result = await VerseStorageService.testNativeBridge();
-              if (!mounted) return;
+              if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
             },
             child: const Text('TEST CUSTOM NATIVE BRIDGE'),
@@ -75,7 +75,8 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
             onPressed: () async {
               await VerseStorageService.initialize(force: true);
               _refresh();
-              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage Re-initialized')));
             },
             child: const Text('RETRY PLUGINS (RE-INIT)'),
           ),
@@ -84,7 +85,8 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
             onPressed: () async {
               await VerseStorageService.forceSave();
               _refresh();
-              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Manual Save Triggered')));
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Manual Save Triggered')));
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white),
             child: const Text('FORCE SAVE TO DISK'),
@@ -93,7 +95,7 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
           ElevatedButton(
             onPressed: () async {
               final raw = await VerseStorageService.getRawBackupJson();
-              if (!mounted) return;
+              if (!context.mounted) return;
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
@@ -110,7 +112,8 @@ class _DebugStoragePageState extends State<DebugStoragePage> {
             onPressed: () async {
               await VerseStorageService.clearAll();
               _refresh();
-              if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('All Data Wiped')));
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('All Data Wiped')));
             },
             style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Wipe All Saved Data'),

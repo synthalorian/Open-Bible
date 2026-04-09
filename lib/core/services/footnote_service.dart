@@ -1522,10 +1522,10 @@ class FootnoteService {
   /// Get all books that have footnotes
   List<String> getBooksWithFootnotes() {
     final books = <String>{};
-    _footnotes.keys.forEach((key) {
+    for (final key in _footnotes.keys) {
       final book = key.split(' ').first;
       books.add(book);
-    });
+    }
     return books.toList()..sort();
   }
 }

@@ -52,7 +52,7 @@ class AppTheme {
       elevation: 0,
       centerTitle: true,
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: _lightSurface,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -69,11 +69,11 @@ class AppTheme {
     ),
     chipTheme: ChipThemeData(
       backgroundColor: _lightSurface,
-      selectedColor: _primaryColor.withOpacity(0.2),
+      selectedColor: _primaryColor.withValues(alpha: 0.2),
       labelStyle: TextStyle(color: _lightText),
     ),
     dividerTheme: DividerThemeData(
-      color: _lightTextSecondary.withOpacity(0.2),
+      color: _lightTextSecondary.withValues(alpha: 0.2),
     ),
   );
 
@@ -100,7 +100,7 @@ class AppTheme {
       elevation: 0,
       centerTitle: true,
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: const Color(0xFFFCF5E5),
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -113,7 +113,7 @@ class AppTheme {
     ),
     chipTheme: ChipThemeData(
       backgroundColor: const Color(0xFFFCF5E5),
-      selectedColor: _primaryColor.withOpacity(0.2),
+      selectedColor: _primaryColor.withValues(alpha: 0.2),
       labelStyle: const TextStyle(color: Color(0xFF5B4636)),
     ),
   );
@@ -138,7 +138,7 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surface,
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -155,11 +155,11 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: surface,
-        selectedColor: const Color(0xFF9B7BA3).withOpacity(0.3),
+        selectedColor: const Color(0xFF9B7BA3).withValues(alpha: 0.3),
         labelStyle: const TextStyle(color: _darkText),
       ),
       dividerTheme: DividerThemeData(
-        color: _darkTextSecondary.withOpacity(0.2),
+        color: _darkTextSecondary.withValues(alpha: 0.2),
       ),
     );
   }
