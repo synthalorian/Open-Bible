@@ -90,7 +90,7 @@ class _DailyVersePageState extends ConsumerState<DailyVersePage> {
                           color: Theme.of(context)
                               .colorScheme
                               .onPrimaryContainer
-                              .withOpacity(0.3),
+                              .withValues(alpha: 0.3),
                           fontWeight: FontWeight.bold,
                         ),
                   ),

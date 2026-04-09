@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/providers/app_providers.dart';
-import '../../data/comparison_provider.dart';
 
 /// Verse comparison page - side-by-side translation comparison
 class VerseComparisonPage extends ConsumerStatefulWidget {
@@ -59,7 +58,7 @@ class _VerseComparisonPageState extends ConsumerState<VerseComparisonPage> {
               'Compare Translations',
               style: TextStyle(
                 fontSize: 12,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ],
@@ -120,7 +119,7 @@ class _VerseComparisonPageState extends ConsumerState<VerseComparisonPage> {
           margin: const EdgeInsets.only(bottom: 12),
           elevation: isPrimary ? 2 : 0,
           color: isPrimary 
-              ? Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3)
+              ? Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.3)
               : Theme.of(context).colorScheme.surfaceContainerHighest,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -223,7 +222,7 @@ class _VerseComparisonPageState extends ConsumerState<VerseComparisonPage> {
                     width: 40,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.4),
+                      color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),

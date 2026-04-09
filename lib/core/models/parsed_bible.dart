@@ -1,6 +1,6 @@
-/// Models for parsing local Bible JSON files (assets/bible_data/*.json).
-/// These are distinct from the API models in bible_models.dart and the
-/// catalog model in bible_book.dart.
+// Models for parsing local Bible JSON files (assets/bible_data/*.json).
+// These are distinct from the API models in bible_models.dart and the
+// catalog model in bible_book.dart.
 
 class ParsedBibleBook {
   final String id;
