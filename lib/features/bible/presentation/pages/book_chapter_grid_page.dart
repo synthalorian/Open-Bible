@@ -99,7 +99,7 @@ class _BookChapterGridPageState extends State<BookChapterGridPage> {
                 hintText: 'Search ${widget.book.name}...',
                 border: InputBorder.none,
                 hintStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(

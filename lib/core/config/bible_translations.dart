@@ -1,8 +1,8 @@
-/// Unified Bible Translation Configuration
-/// 
-/// This provides a single source of truth for all Bible translations,
-/// mapping dropdown IDs to file names and handling all the complexity
-/// in one place.
+// Unified Bible Translation Configuration
+//
+// This provides a single source of truth for all Bible translations,
+// mapping dropdown IDs to file names and handling all the complexity
+// in one place.
 
 class BibleTranslations {
   /// All available translations with their configurations

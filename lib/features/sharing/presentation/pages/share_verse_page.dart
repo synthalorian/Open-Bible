@@ -232,7 +232,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -247,7 +247,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
             style: TextStyle(
               fontSize: 64,
               fontFamily: 'CrimsonText',
-              color: Colors.white.withOpacity(0.3),
+              color: Colors.white.withValues(alpha: 0.3),
             ),
           ),
           
@@ -273,7 +273,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
             'Open Bible',
             style: TextStyle(
               fontSize: 12,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withValues(alpha: 0.5),
             ),
           ),
         ],

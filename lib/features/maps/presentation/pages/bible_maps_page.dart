@@ -151,7 +151,7 @@ class _BibleMapsPageState extends State<BibleMapsPage> {
                   Text(
                     map.description,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -244,7 +244,7 @@ class _BibleMapsPageState extends State<BibleMapsPage> {
                               border: Border.all(color: Colors.white, width: 2.5),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
+                                  color: Colors.black.withValues(alpha: 0.25),
                                   blurRadius: 5,
                                   offset: const Offset(0, 2),
                                 ),
@@ -436,7 +436,7 @@ class _BibleMapsPageState extends State<BibleMapsPage> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
