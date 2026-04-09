@@ -5,7 +5,7 @@ import 'package:home_widget/home_widget.dart';
 /// Home screen widget service
 class WidgetService {
   static const String _widgetName = 'DailyVerseWidget';
-  static const String _appGroupId = 'com.faith.holybible';
+  static const String _appGroupId = 'app.openbible';
 
   /// Initialize home widget
   Future<void> init() async {
