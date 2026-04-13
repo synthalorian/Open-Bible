@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../config/bible_translations.dart';
+import '../utils/logger.dart';
 
 /// The MOST STACKED offline Bible loader on Earth
 class DirectBibleLoader {
@@ -31,49 +31,49 @@ class DirectBibleLoader {
     // Get file name from our unified config
     final fileName = BibleTranslations.getFileName(normalizedId);
     if (fileName == null) {
-      debugPrint('DirectBibleLoader: Unknown Bible ID: $bibleId');
+      logDebug('DirectBibleLoader: Unknown Bible ID: $bibleId');
       return null;
     }
     
     try {
-      debugPrint('DirectBibleLoader: Loading $fileName for ID: $bibleId');
+      logDebug('DirectBibleLoader: Loading $fileName for ID: $bibleId');
       final jsonString = await rootBundle.loadString('assets/bible_data/$fileName');
-      debugPrint('DirectBibleLoader: Loaded ${jsonString.length} chars');
+      logDebug('DirectBibleLoader: Loaded ${jsonString.length} chars');
       final data = json.decode(jsonString);
-      debugPrint('DirectBibleLoader: Decoded JSON with ${(data['books'] as List?)?.length ?? 0} books');
+      logDebug('DirectBibleLoader: Decoded JSON with ${(data['books'] as List?)?.length ?? 0} books');
       // Evict LRU entry if at capacity
       if (_cache.length >= _maxCacheSize && _cacheOrder.isNotEmpty) {
         final evictId = _cacheOrder.removeAt(0);
         _cache.remove(evictId);
-        debugPrint('DirectBibleLoader: Evicted $evictId from cache');
+        logDebug('DirectBibleLoader: Evicted $evictId from cache');
       }
       _cache[normalizedId] = data;
       _cacheOrder.add(normalizedId);
       return data;
     } catch (e, stackTrace) {
-      debugPrint('DirectBibleLoader ERROR loading $bibleId: $e');
-      debugPrint('Stack: $stackTrace');
+      logDebug('DirectBibleLoader ERROR loading $bibleId: $e');
+      logDebug('Stack: $stackTrace');
       return null;
     }
   }
   
   /// Get chapter content from a specific Bible translation
   static Future<String?> getChapter(String bibleId, String bookId, int chapter) async {
-    debugPrint('DirectBibleLoader.getChapter: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
+    logDebug('DirectBibleLoader.getChapter: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
     
     final bible = await _loadBible(bibleId);
     if (bible == null) {
-      debugPrint('DirectBibleLoader: Failed to load Bible: $bibleId');
+      logDebug('DirectBibleLoader: Failed to load Bible: $bibleId');
       return null;
     }
     
     final books = bible['books'] as List?;
     if (books == null) {
-      debugPrint('DirectBibleLoader: No books found in Bible');
+      logDebug('DirectBibleLoader: No books found in Bible');
       return null;
     }
     
-    debugPrint('DirectBibleLoader: Found ${books.length} books');
+    logDebug('DirectBibleLoader: Found ${books.length} books');
     
     // Normalize book ID for flexible matching
     String normalize(String s) => s.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
@@ -96,7 +96,7 @@ class DirectBibleLoader {
           (normalizedBookId.length >= 3 && bookIdInJson == normalizedBookId.substring(0, 3));
       
       if (isMatch) {
-        debugPrint('DirectBibleLoader: Found book "$bookIdInJsonRaw" ($bookNameInJsonRaw) for request "$bookId"');
+        logDebug('DirectBibleLoader: Found book "$bookIdInJsonRaw" ($bookNameInJsonRaw) for request "$bookId"');
         final chapters = book['chapters'] as List?;
         if (chapters == null) continue;
         
@@ -104,15 +104,15 @@ class DirectBibleLoader {
           if (ch['chapter'] == chapter) {
             final verses = ch['verses'] as List?;
             if (verses == null) continue;
-            debugPrint('DirectBibleLoader: Found chapter $chapter with ${verses.length} verses');
+            logDebug('DirectBibleLoader: Found chapter $chapter with ${verses.length} verses');
             return _formatVerses(verses);
           }
         }
-        debugPrint('DirectBibleLoader: Chapter $chapter not found in book');
+        logDebug('DirectBibleLoader: Chapter $chapter not found in book');
         return null;
       }
     }
-    debugPrint('DirectBibleLoader: Book "$bookId" not found (tried matching: $normalizedBookId)');
+    logDebug('DirectBibleLoader: Book "$bookId" not found (tried matching: $normalizedBookId)');
     return null;
   }
   

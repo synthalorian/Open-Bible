@@ -10,6 +10,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../commentary/presentation/pages/commentary_page.dart';
 import '../../../maps/presentation/pages/bible_maps_page.dart';
 import '../widgets/verse_widget.dart';
+import '../../../../core/utils/logger.dart';
 
 /// Chapter reader page - main reading view with swipe navigation
 class ChapterReaderPage extends ConsumerStatefulWidget {
@@ -104,7 +105,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     final bibleData = ref.read(bibleDataProvider);
     final actualBibleId = bibleData.selectedTranslation?.id ?? 'kjv';
     _currentBibleId = PopularTranslations.getOfflineId(actualBibleId);
-    debugPrint('INIT: Bible ID set to $_currentBibleId');
+    logDebug('INIT: Bible ID set to $_currentBibleId');
     
     // Listen for Bible changes
     ref.listenManual(bibleDataProvider, (previous, next) {
@@ -115,7 +116,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
         final prevOffline = PopularTranslations.getOfflineId(prevId ?? 'kjv');
         final nextOffline = PopularTranslations.getOfflineId(nextId ?? 'kjv');
         
-        debugPrint('LISTENER: Bible changed from $prevOffline to $nextOffline');
+        logDebug('LISTENER: Bible changed from $prevOffline to $nextOffline');
         
         if (prevOffline != nextOffline) {
           setState(() {
@@ -176,11 +177,11 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     
     final cacheKey = _getCacheKey(bibleId, chapter);
     
-    debugPrint('LOADING: Bible=$bibleId, Book=$bookId, Chapter=$chapter');
+    logDebug('LOADING: Bible=$bibleId, Book=$bookId, Chapter=$chapter');
     
     // Already cached or loading
     if (_chapterCache.containsKey(cacheKey) || _loadingChapters.contains(cacheKey)) {
-      debugPrint('Already cached/loading: $cacheKey');
+      logDebug('Already cached/loading: $cacheKey');
       return;
     }
     
@@ -188,11 +189,11 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
 
     try {
       // === Try Direct Bible Loader (always works offline) ===
-      debugPrint('Trying DirectBibleLoader with: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
+      logDebug('Trying DirectBibleLoader with: bibleId=$bibleId, bookId=$bookId, chapter=$chapter');
 
       var content = await DirectBibleLoader.getChapter(bibleId, bookId, chapter);
       if (content != null && content.isNotEmpty) {
-        debugPrint('✓ Loaded from DirectBibleLoader');
+        logDebug('✓ Loaded from DirectBibleLoader');
         if (mounted) {
           setState(() {
             _chapterCache[cacheKey] = content!;
@@ -203,10 +204,10 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       }
 
       // === Fallback to KJV if requested Bible not found ===
-      debugPrint('Direct loader failed for $bibleId, trying KJV fallback...');
+      logDebug('Direct loader failed for $bibleId, trying KJV fallback...');
       content = await DirectBibleLoader.getChapter('kjv', bookId, chapter);
       if (content != null && content.isNotEmpty) {
-        debugPrint('✓ Loaded from KJV fallback');
+        logDebug('✓ Loaded from KJV fallback');
         if (mounted) {
           setState(() {
             _chapterCache[cacheKey] = '[KJV]\n\n$content';
@@ -225,7 +226,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       }
 
     } catch (e) {
-      debugPrint('Critical error loading chapter: $e');
+      logDebug('Critical error loading chapter: $e');
       if (mounted) {
         setState(() {
           _chapterCache[cacheKey] = 'Error: $e';
@@ -239,7 +240,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   }
 
   void _saveReadingPosition() {
-    debugPrint('SAVING READING POSITION: $_bookName $_currentChapter');
+    logDebug('SAVING READING POSITION: $_bookName $_currentChapter');
     
     ref.read(readingPositionProvider.notifier).updatePosition(
       ReadingPosition(
@@ -253,12 +254,12 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     final bibleId = settings.selectedBibleId;
     final bibleName = _getBibleName(bibleId);
     
-    debugPrint('Saving to ContinueReadingService:');
-    debugPrint('  bookId: ${widget.bookId}');
-    debugPrint('  bookName: $_bookName');
-    debugPrint('  chapter: $_currentChapter');
-    debugPrint('  bibleId: $bibleId');
-    debugPrint('  bibleName: $bibleName');
+    logDebug('Saving to ContinueReadingService:');
+    logDebug('  bookId: ${widget.bookId}');
+    logDebug('  bookName: $_bookName');
+    logDebug('  chapter: $_currentChapter');
+    logDebug('  bibleId: $bibleId');
+    logDebug('  bibleName: $bibleName');
     
     ContinueReadingService.savePosition(
       bookId: widget.bookId,
@@ -267,9 +268,9 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       bibleId: bibleId,
       bibleName: bibleName,
     ).then((_) {
-      debugPrint('✓ Position saved successfully');
+      logDebug('✓ Position saved successfully');
     }).catchError((e) {
-      debugPrint('✗ Error saving position: $e');
+      logDebug('✗ Error saving position: $e');
     });
     
     // Save to reading history
@@ -280,9 +281,9 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       bibleId: _currentBibleId,
       readAt: DateTime.now(),
     )).then((_) {
-      debugPrint('✓ History entry saved');
+      logDebug('✓ History entry saved');
     }).catchError((e) {
-      debugPrint('✗ Error saving history: $e');
+      logDebug('✗ Error saving history: $e');
     });
   }
   
@@ -342,7 +343,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     final offlineId = PopularTranslations.getOfflineId(currentBibleId);
     
     if (_currentBibleId != offlineId) {
-      debugPrint('DID CHANGE DEPENDENCIES: Bible changed from $_currentBibleId to $offlineId');
+      logDebug('DID CHANGE DEPENDENCIES: Bible changed from $_currentBibleId to $offlineId');
       setState(() {
         _chapterCache.clear();
         _currentBibleId = offlineId;
@@ -358,7 +359,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     final bibleData = ref.watch(bibleDataProvider); // Watch for translation changes
     final currentBibleId = CurrentBible.id;
     
-    debugPrint('BUILD: CurrentBible.id = $currentBibleId, watched = ${bibleData.selectedTranslation?.id}');
+    logDebug('BUILD: CurrentBible.id = $currentBibleId, watched = ${bibleData.selectedTranslation?.id}');
     
     return Scaffold(
       body: NotificationListener<ScrollNotification>(
@@ -375,9 +376,9 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
             GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: () {
-                debugPrint('CHAPTER_READER: Outer GestureDetector onTap triggered');
+                logDebug('CHAPTER_READER: Outer GestureDetector onTap triggered');
                 setState(() => _showControls = !_showControls);
-                debugPrint('CHAPTER_READER: Controls toggled to: $_showControls');
+                logDebug('CHAPTER_READER: Controls toggled to: $_showControls');
               },
               child: PageView.builder(
                 controller: _pageController,
@@ -424,7 +425,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          debugPrint('CHAPTER_READER: Inner GestureDetector onTap triggered');
+          logDebug('CHAPTER_READER: Inner GestureDetector onTap triggered');
           setState(() => _showControls = !_showControls);
         },
         child: SingleChildScrollView(
@@ -899,7 +900,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
   }
 
   Future<void> _playAudio() async {
-    debugPrint('AUDIO: _playAudio tapped');
+    logDebug('AUDIO: _playAudio tapped');
     final settings = ref.read(settingsProvider);
     if (!settings.audioEnabled && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -939,7 +940,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
           });
         }
       } catch (e) {
-        debugPrint('Failed to load chapter content: $e');
+        logDebug('Failed to load chapter content: $e');
       }
     }
 
@@ -986,7 +987,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
     }
 
     try {
-      debugPrint('AUDIO: playing ${verseTexts.length} verses, content len: ${content.length}');
+      logDebug('AUDIO: playing ${verseTexts.length} verses, content len: ${content.length}');
       await audioNotifier.speakChapter(
         verseTexts,
         '$_bookName $_currentChapter',

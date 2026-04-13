@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import '../utils/logger.dart';
 
 /// Simple global Bible selection state
 /// This avoids all the provider complexity
@@ -18,7 +18,7 @@ class CurrentBible {
   }
   
   static void set(String newId) {
-    debugPrint('CurrentBible.set: $_id -> $newId');
+    logDebug('CurrentBible.set: $_id -> $newId');
     _id = newId.toLowerCase();
   }
   

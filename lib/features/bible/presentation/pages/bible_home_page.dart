@@ -7,6 +7,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/continue_reading_service.dart';
 import '../../../../core/config/bible_translations.dart';
 import '../widgets/continue_reading_card.dart';
+import '../../../../core/utils/logger.dart';
 
 /// Simple translation selector that actually works
 class TranslationSelector extends ConsumerStatefulWidget {
@@ -32,7 +33,7 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
     return PopupMenuButton<String>(
       initialValue: widget.currentTranslationId,
       onSelected: (value) async {
-        debugPrint('PopupMenu selected: $value');
+        logDebug('PopupMenu selected: $value');
         
         // Check if downloaded
         if (!downloadManager.isVersionAvailable(value)) {
@@ -170,7 +171,7 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
     try {
       _lastPosition = ContinueReadingService.getLastPosition();
     } catch (e) {
-      debugPrint('Error loading continue reading: $e');
+      logDebug('Error loading continue reading: $e');
       _lastPosition = null;
     }
   }
@@ -192,7 +193,7 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
   }
 
   void _onTranslationChanged(String newId) {
-    debugPrint('Translation changed to: $newId');
+    logDebug('Translation changed to: $newId');
     
     // Update provider (this also syncs CurrentBible internally)
     ref.read(bibleDataProvider.notifier).selectTranslation(newId);

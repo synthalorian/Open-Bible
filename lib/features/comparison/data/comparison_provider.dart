@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers/app_providers.dart';
 import '../../bible/data/repositories/bible_repository.dart' show BibleRepository;
+import '../../../core/utils/logger.dart';
 
 /// Verse comparison provider
 final verseComparisonProvider = StateNotifierProvider<VerseComparisonNotifier, VerseComparisonState>((ref) {
@@ -123,7 +123,7 @@ class VerseComparisonNotifier extends StateNotifier<VerseComparisonState> {
             ));
           }
         } catch (e) {
-          debugPrint('Failed to load translation for comparison: $e');
+          logDebug('Failed to load translation for comparison: $e');
           continue;
         }
       }
@@ -163,7 +163,7 @@ class VerseComparisonNotifier extends StateNotifier<VerseComparisonState> {
       }
       return null;
     } catch (e) {
-      debugPrint('Failed to load verse text: $e');
+      logDebug('Failed to load verse text: $e');
       return null;
     }
   }
