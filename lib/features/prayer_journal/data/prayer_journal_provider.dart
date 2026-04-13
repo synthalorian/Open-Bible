@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../../../core/utils/logger.dart';
 
 /// Prayer journal provider for tracking prayers
 final prayerJournalProvider = StateNotifierProvider<PrayerJournalNotifier, PrayerJournalState>((ref) {
@@ -108,7 +108,7 @@ class PrayerJournalNotifier extends StateNotifier<PrayerJournalState> {
       try {
         return PrayerEntry.fromJson(jsonDecode(json));
       } catch (e) {
-        debugPrint('Failed to parse prayer entry: $e');
+        logDebug('Failed to parse prayer entry: $e');
         return null;
       }
     }).whereType<PrayerEntry>().toList();

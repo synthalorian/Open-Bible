@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../utils/logger.dart';
 
 /// Audio Bible provider for Text-to-Speech functionality
 final audioBibleProvider = StateNotifierProvider<AudioBibleNotifier, AudioBibleState>((ref) {
@@ -68,7 +68,7 @@ class AudioBibleNotifier extends StateNotifier<AudioBibleState> {
     
     _flutterTts.setErrorHandler((message) {
       state = state.copyWith(isSpeaking: false, currentVerse: null);
-      debugPrint('TTS Error: $message');
+      logDebug('TTS Error: $message');
     });
   }
   

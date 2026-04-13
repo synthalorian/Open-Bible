@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import '../../../../core/utils/logger.dart';
 
 class DictionaryEntry {
   final String term;
@@ -48,7 +49,7 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('Failed to load dictionary entries: $e');
+      logDebug('Failed to load dictionary entries: $e');
       setState(() => isLoading = false);
     }
   }

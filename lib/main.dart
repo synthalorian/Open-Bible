@@ -17,6 +17,7 @@ import 'features/reading_plans/presentation/pages/reading_plans_page.dart';
 import 'features/history/presentation/pages/history_page.dart';
 import 'features/search/presentation/pages/search_page.dart' as search_feature;
 import 'features/more/presentation/pages/more_page.dart';
+import 'core/utils/logger.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,17 +31,17 @@ void main() async {
   try {
     await FootnoteService().initialize();
   } catch (e) {
-    debugPrint('FootnoteService Init Error: $e');
+    logDebug('FootnoteService Init Error: $e');
   }
   try {
     await VerseStorageService.initialize();
   } catch (e) {
-    debugPrint('VerseStorageService Init Error: $e');
+    logDebug('VerseStorageService Init Error: $e');
   }
   try {
     await ContinueReadingService.init();
   } catch (e) {
-    debugPrint('ContinueReadingService Init Error: $e');
+    logDebug('ContinueReadingService Init Error: $e');
   }
   
   runApp(
@@ -180,7 +181,7 @@ class _BiblePageState extends ConsumerState<BiblePage> {
         _isLoading = false;
       });
     } catch (e) {
-      debugPrint('Failed to load translation $translationId: $e');
+      logDebug('Failed to load translation $translationId: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
       ScaffoldMessenger.of(context).showSnackBar(

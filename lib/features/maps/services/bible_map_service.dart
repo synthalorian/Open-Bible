@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import '../../../core/utils/logger.dart';
 
 /// Service for loading and managing Bible map data
 class BibleMapService {
@@ -24,7 +24,7 @@ class BibleMapService {
       _maps = mapsJson.map((json) => BibleMapData.fromJson(json)).toList();
       _isLoaded = true;
     } catch (e) {
-      debugPrint('Failed to load Bible maps data: $e');
+      logDebug('Failed to load Bible maps data: $e');
       _maps = [];
     }
   }
@@ -37,7 +37,7 @@ class BibleMapService {
     try {
       return _maps.firstWhere((m) => m.id == id);
     } catch (e) {
-      debugPrint('Failed to find map by ID: $e');
+      logDebug('Failed to find map by ID: $e');
       return null;
     }
   }

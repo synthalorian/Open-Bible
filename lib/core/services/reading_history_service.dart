@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'verse_storage_service.dart';
+import '../utils/logger.dart';
 
 /// Reading history entry
 class HistoryEntry {
@@ -50,7 +50,7 @@ class ReadingHistoryService {
           .map((j) => HistoryEntry.fromJson(Map<String, dynamic>.from(j)))
           .toList();
     } catch (e) {
-      debugPrint('Failed to load reading history: $e');
+      logDebug('Failed to load reading history: $e');
       return [];
     }
   }
@@ -79,7 +79,7 @@ class ReadingHistoryService {
 
       await VerseStorageService.saveHistory(history.map((h) => h.toJson()).toList());
     } catch (e) {
-      debugPrint('ReadingHistoryService: Error adding entry: $e');
+      logDebug('ReadingHistoryService: Error adding entry: $e');
     }
   }
   

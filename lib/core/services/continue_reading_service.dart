@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../utils/logger.dart';
 
 /// Service to track and restore reading progress using SharedPreferences
 class ContinueReadingService {
@@ -22,9 +22,9 @@ class ContinueReadingService {
   static Future<void> init() async {
     try {
       _prefs = await SharedPreferences.getInstance();
-      debugPrint('ContinueReadingService: initialized');
+      logDebug('ContinueReadingService: initialized');
     } catch (e) {
-      debugPrint('ContinueReadingService: init error: $e');
+      logDebug('ContinueReadingService: init error: $e');
     }
   }
 
@@ -63,9 +63,9 @@ class ContinueReadingService {
       );
 
       await _prefs!.setString(_keyPosition, jsonEncode(position));
-      debugPrint('ContinueReadingService: Saved - $bookName $chapter');
+      logDebug('ContinueReadingService: Saved - $bookName $chapter');
     } catch (e) {
-      debugPrint('ContinueReadingService: Error saving: $e');
+      logDebug('ContinueReadingService: Error saving: $e');
     }
   }
 
@@ -111,7 +111,7 @@ class ContinueReadingService {
       );
       return _cache;
     } catch (e) {
-      debugPrint('ContinueReadingService: Error getting position: $e');
+      logDebug('ContinueReadingService: Error getting position: $e');
       return null;
     }
   }
@@ -131,9 +131,9 @@ class ContinueReadingService {
       await _prefs!.remove(_keyBibleName);
       await _prefs!.remove(_keyTimestamp);
       await _prefs!.remove(_keyVersePosition);
-      debugPrint('ContinueReadingService: Cleared');
+      logDebug('ContinueReadingService: Cleared');
     } catch (e) {
-      debugPrint('ContinueReadingService: Error clearing: $e');
+      logDebug('ContinueReadingService: Error clearing: $e');
     }
   }
 

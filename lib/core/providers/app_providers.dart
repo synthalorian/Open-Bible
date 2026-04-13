@@ -1,8 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/current_bible.dart';
 import '../services/bible_download_manager.dart';
 import '../services/verse_storage_service.dart';
+import '../utils/logger.dart';
 
 // Re-export all providers
 export 'audio_bible_provider.dart';
@@ -213,7 +213,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       state = newState.copyWith(isLoaded: true);
       _isLoaded = true;
     } catch (e) { 
-      debugPrint('Failed to load app settings: $e');
+      logDebug('Failed to load app settings: $e');
       await Future.microtask(() {});
       _isLoaded = true;
       state = state.copyWith(isLoaded: true);
@@ -235,7 +235,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
       };
       await VerseStorageService.saveSettings(s);
     } catch (e) {
-      debugPrint('Failed to save settings: $e');
+      logDebug('Failed to save settings: $e');
     }
   }
 

@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/services/direct_bible_loader.dart';
 import '../../../core/providers/app_providers.dart';
 import '../../bible/data/repositories/bible_repository.dart' show BibleRepository;
+import '../../../core/utils/logger.dart';
 
 /// Search provider
 final bibleSearchProvider = StateNotifierProvider<BibleSearchNotifier, BibleSearchState>((ref) {
@@ -34,12 +35,12 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final prefs = await SharedPreferences.getInstance();
       final jsonList = prefs.getStringList('recent_searches') ?? [];
       final searches = jsonList.map((json) {
-        try { return RecentSearch.fromJson(jsonDecode(json)); } catch (e) { debugPrint('Failed to parse recent search: $e'); return null; }
+        try { return RecentSearch.fromJson(jsonDecode(json)); } catch (e) { logDebug('Failed to parse recent search: $e'); return null; }
       }).whereType<RecentSearch>().toList();
       searches.sort((a, b) => b.timestamp.compareTo(a.timestamp));
       state = searches;
     } catch (e) {
-      debugPrint('Failed to load recent searches: $e');
+      logDebug('Failed to load recent searches: $e');
     }
   }
   Future<void> addSearch(String query, {int resultCount = 0}) async {
@@ -53,7 +54,7 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
       await prefs.setStringList('recent_searches', jsonList);
     } catch (e) {
-      debugPrint('Failed to save recent search: $e');
+      logDebug('Failed to save recent search: $e');
     }
   }
   Future<void> removeSearch(String query) async {
@@ -64,7 +65,7 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final jsonList = newState.map((s) => jsonEncode(s.toJson())).toList();
       await prefs.setStringList('recent_searches', jsonList);
     } catch (e) {
-      debugPrint('Failed to save recent searches: $e');
+      logDebug('Failed to save recent searches: $e');
     }
   }
   Future<void> clearAll() async {
@@ -73,7 +74,7 @@ class RecentSearchesNotifier extends StateNotifier<List<RecentSearch>> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('recent_searches');
     } catch (e) {
-      debugPrint('Failed to clear recent searches: $e');
+      logDebug('Failed to clear recent searches: $e');
     }
   }
 }
@@ -194,7 +195,7 @@ class BibleSearchNotifier extends StateNotifier<BibleSearchState> {
           if (results.length >= 200) break;
         }
       } catch (e) {
-        debugPrint('Failed to search translation $translationId: $e');
+        logDebug('Failed to search translation $translationId: $e');
       }
     }
     return results;

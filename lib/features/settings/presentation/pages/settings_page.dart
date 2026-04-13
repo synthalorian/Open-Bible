@@ -10,6 +10,7 @@ import '../../../../core/services/direct_bible_loader.dart';
 import '../../../../debug_storage_page.dart';
 import '../../../../core/services/notification_service.dart';
 import 'bible_downloads_page.dart';
+import '../../../../core/utils/logger.dart';
 
 /// Settings page - app preferences
 class SettingsPage extends ConsumerStatefulWidget {
@@ -321,18 +322,18 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
         final method = forceChooser ? 'openExternalUrlChooser' : 'openExternalUrl';
         final opened = await _platform.invokeMethod<bool>(method, {'url': url});
         if (opened == true) return;
-      } catch (e) { debugPrint('Platform URL launch failed: $e'); }
+      } catch (e) { logDebug('Platform URL launch failed: $e'); }
     }
 
     try {
       final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
       if (launched) return;
-    } catch (e) { debugPrint('External URL launch failed: $e'); }
+    } catch (e) { logDebug('External URL launch failed: $e'); }
 
     try {
       final launched = await launchUrl(uri, mode: LaunchMode.inAppWebView);
       if (launched) return;
-    } catch (e) { debugPrint('In-app URL launch failed: $e'); }
+    } catch (e) { logDebug('In-app URL launch failed: $e'); }
 
     await Clipboard.setData(ClipboardData(text: url));
     if (mounted) {
