@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../../../core/utils/logger.dart';
 
 /// Strong's Concordance provider for Greek/Hebrew word lookup
 final strongsConcordanceProvider = StateNotifierProvider<StrongsConcordanceNotifier, StrongsConcordanceState>((ref) {
@@ -107,7 +107,7 @@ class StrongsConcordanceNotifier extends StateNotifier<StrongsConcordanceState> 
       try {
         return StrongsEntry.fromJson(jsonDecode(json));
       } catch (e) {
-        debugPrint('Failed to parse recent Strongs entry: $e');
+        logDebug('Failed to parse recent Strongs entry: $e');
         return null;
       }
     }).whereType<StrongsEntry>().toList();
@@ -116,7 +116,7 @@ class StrongsConcordanceNotifier extends StateNotifier<StrongsConcordanceState> 
       try {
         return StrongsEntry.fromJson(jsonDecode(json));
       } catch (e) {
-        debugPrint('Failed to parse favorite Strongs entry: $e');
+        logDebug('Failed to parse favorite Strongs entry: $e');
         return null;
       }
     }).whereType<StrongsEntry>().toList();

@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import '../utils/logger.dart';
 
 /// Translation-specific footnote loader
 class TranslationFootnotes {
@@ -28,7 +28,7 @@ class TranslationFootnotes {
       _cache[translationId] = footnotes;
       return footnotes;
     } catch (e) {
-      debugPrint('Failed to load footnotes for $translationId: $e');
+      logDebug('Failed to load footnotes for $translationId: $e');
       return {};
     }
   }

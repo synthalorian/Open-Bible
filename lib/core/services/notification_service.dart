@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import '../providers/app_providers.dart';
+import '../utils/logger.dart';
 
 /// Notification service for daily verses and reminders
 class NotificationService {
@@ -182,7 +182,7 @@ class NotificationService {
   void _onNotificationTapped(NotificationResponse response) {
     // Handle notification tap - navigate to relevant screen
     final payload = response.payload;
-    debugPrint('Notification tapped: $payload');
+    logDebug('Notification tapped: $payload');
   }
 }
 

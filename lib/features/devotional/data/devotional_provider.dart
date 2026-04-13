@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../../../core/utils/logger.dart';
 
 /// Devotional provider for daily devotional content
 final devotionalProvider = StateNotifierProvider<DevotionalNotifier, DevotionalState>((ref) {
@@ -106,7 +106,7 @@ class DevotionalNotifier extends StateNotifier<DevotionalState> {
           try {
             return DevotionalEntry.fromJson(jsonDecode(json));
           } catch (e) {
-            debugPrint('Failed to parse saved devotional entry: $e');
+            logDebug('Failed to parse saved devotional entry: $e');
             return null;
           }
         })
@@ -118,7 +118,7 @@ class DevotionalNotifier extends StateNotifier<DevotionalState> {
           try {
             return DevotionalEntry.fromJson(jsonDecode(json));
           } catch (e) {
-            debugPrint('Failed to parse recent devotional entry: $e');
+            logDebug('Failed to parse recent devotional entry: $e');
             return null;
           }
         })

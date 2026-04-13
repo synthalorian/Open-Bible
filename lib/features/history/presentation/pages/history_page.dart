@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/services/reading_history_service.dart';
 import '../../../../core/config/bible_translations.dart';
 import '../../../bible/presentation/pages/chapter_reader_page.dart';
+import '../../../../core/utils/logger.dart';
 
 /// History page showing reading history
 class HistoryPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _HistoryPageState extends State<HistoryPage> {
         });
       }
     } catch (e) {
-      debugPrint('Failed to load reading history: $e');
+      logDebug('Failed to load reading history: $e');
       if (mounted) {
         setState(() {
           _history = [];

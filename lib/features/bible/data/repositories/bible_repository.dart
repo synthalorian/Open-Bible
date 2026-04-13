@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../models/bible_book.dart';
+import '../../../../core/utils/logger.dart';
 
 export '../models/bible_book.dart' show BibleBook, Testament;
 
@@ -61,7 +61,7 @@ class BibleRepository {
       }
       return ChapterData(bookId: bookId, chapter: chapter, content: buffer.toString());
     } catch (e) {
-      debugPrint('BibleRepository Error: $e');
+      logDebug('BibleRepository Error: $e');
       return null;
     }
   }

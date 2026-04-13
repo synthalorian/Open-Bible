@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/services/verse_storage_service.dart';
 import '../../../comparison/presentation/pages/verse_comparison_page.dart';
 import 'footnote_bottom_sheet.dart';
+import '../../../../core/utils/logger.dart';
 
 /// Widget that wraps a verse with tap/long-press actions and text selection
 class VerseWidget extends ConsumerStatefulWidget {
@@ -69,7 +70,7 @@ class _VerseWidgetState extends ConsumerState<VerseWidget> {
         });
       }
     } catch (e) {
-      debugPrint('Failed to load verse storage data: $e');
+      logDebug('Failed to load verse storage data: $e');
     }
   }
   

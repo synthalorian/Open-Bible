@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/utils/logger.dart';
 
 /// Reading plan provider
 final readingPlanProvider = StateNotifierProvider<ReadingPlanNotifier, ReadingPlanState>((ref) {
@@ -296,7 +297,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
             try {
               return ReadingPlan.fromJson(jsonDecode(json));
             } catch (e) {
-              debugPrint('Failed to parse reading plan JSON: $e');
+              logDebug('Failed to parse reading plan JSON: $e');
               return null;
             }
           })
@@ -338,7 +339,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
         await prefs.setString('active_plan_id', fallbackPlan.id);
       } catch (e) {
         // Storage may be unavailable on this build; keep fallback in memory.
-        debugPrint('Failed to save fallback reading plan: $e');
+        logDebug('Failed to save fallback reading plan: $e');
       }
 
       state = state.copyWith(
@@ -373,7 +374,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       await prefs.setString('active_plan_id', planId);
     } catch (e) {
       // Storage unavailable; keep in-memory update.
-      debugPrint('Failed to persist active plan: $e');
+      logDebug('Failed to persist active plan: $e');
     }
   }
 
@@ -416,7 +417,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       await _savePlans(updatedPlans);
     } catch (e) {
       // Storage may be unavailable on some builds; keep in-memory update.
-      debugPrint('Failed to save completed day: $e');
+      logDebug('Failed to save completed day: $e');
     }
 
     final shouldPromoteToActive = planId != null;
@@ -468,7 +469,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       await prefs.setString('active_plan_id', startedPlan.id);
     } catch (e) {
       // Storage may be unavailable on some builds; keep in-memory update.
-      debugPrint('Failed to save new reading plan: $e');
+      logDebug('Failed to save new reading plan: $e');
     }
 
     state = state.copyWith(
@@ -504,7 +505,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       }
     } catch (e) {
       // Storage unavailable; keep in-memory update.
-      debugPrint('Failed to save plan deletion: $e');
+      logDebug('Failed to save plan deletion: $e');
     }
   }
 
@@ -529,7 +530,7 @@ class ReadingPlanNotifier extends StateNotifier<ReadingPlanState> {
       await _savePlans(updatedPlans);
     } catch (e) {
       // Storage unavailable; keep in-memory update.
-      debugPrint('Failed to save plan reset: $e');
+      logDebug('Failed to save plan reset: $e');
     }
   }
 

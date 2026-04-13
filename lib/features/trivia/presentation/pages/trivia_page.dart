@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/services.dart' show rootBundle;
+import '../../../../core/utils/logger.dart';
 
 class TriviaQuestion {
   final String id;
@@ -87,7 +88,7 @@ class _TriviaPageState extends State<TriviaPage> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('Failed to load trivia questions: $e');
+      logDebug('Failed to load trivia questions: $e');
       setState(() => isLoading = false);
     }
   }

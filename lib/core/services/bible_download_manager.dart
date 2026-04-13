@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import '../config/bible_translations.dart';
+import '../utils/logger.dart';
 
 /// Bible download manager for managing offline Bible versions
 class BibleDownloadManager extends ChangeNotifier {
@@ -238,7 +239,7 @@ class BibleDownloadManager extends ChangeNotifier {
         );
       }
     } catch (e) {
-      debugPrint('Error loading download state: $e');
+      logDebug('Error loading download state: $e');
     }
     notifyListeners();
   }
@@ -253,7 +254,7 @@ class BibleDownloadManager extends ChangeNotifier {
         'downloaded': _downloadedVersions,
       }));
     } catch (e) {
-      debugPrint('Error saving download state: $e');
+      logDebug('Error saving download state: $e');
     }
   }
   
