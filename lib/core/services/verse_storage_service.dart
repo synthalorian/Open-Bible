@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
+import '../utils/logger.dart';
 
 /// Saved verse model
 class SavedVerse {
@@ -133,7 +133,7 @@ class VerseStorageService {
       try {
         dir = await getApplicationSupportDirectory();
       } catch (e) {
-        debugPrint('App support dir unavailable, falling back to documents dir: $e');
+        logDebug('App support dir unavailable, falling back to documents dir: $e');
         dir = await getApplicationDocumentsDirectory();
       }
       
@@ -144,7 +144,7 @@ class VerseStorageService {
         final v4File = File('${dir.path}/verse_storage_backup_v4.json');
         if (await v4File.exists()) {
           await v4File.copy(_backupFile!.path);
-          debugPrint('VerseStorageService: Migrated v4 to v5');
+          logDebug('VerseStorageService: Migrated v4 to v5');
         }
       }
     } catch (e) {
@@ -158,7 +158,7 @@ class VerseStorageService {
     try {
       _prefs = await SharedPreferences.getInstance();
     } catch (e) {
-      debugPrint('VerseStorageService: SharedPreferences unavailable');
+      logDebug('VerseStorageService: SharedPreferences unavailable');
     }
 
     _initialized = true;
@@ -193,7 +193,7 @@ class VerseStorageService {
       _streaks = map['streaks'] as Map<String, dynamic>? ?? {};
       _continueReading = map['continueReading'] as Map<String, dynamic>? ?? {};
 
-      debugPrint('VerseStorageService: Loaded data from file (Settings: ${_settings.length})');
+      logDebug('VerseStorageService: Loaded data from file (Settings: ${_settings.length})');
     } catch (e) {
       _lastError = "LoadFile: $e";
     }
@@ -233,7 +233,7 @@ class VerseStorageService {
         } on FileSystemException {
           // Cross-device rename fallback (common on Android)
           await f.writeAsString(jsonString, flush: true);
-          try { await tmpFile.delete(); } catch (e) { debugPrint('Failed to delete temp file: $e'); }
+          try { await tmpFile.delete(); } catch (e) { logDebug('Failed to delete temp file: $e'); }
         }
       } else {
         throw Exception('File verify failed');
@@ -408,7 +408,7 @@ class VerseStorageService {
       try {
         backupExists = _backupFile!.existsSync();
         if (backupExists) backupBytes = _backupFile!.lengthSync();
-      } catch (e) { debugPrint('Failed to stat backup file: $e'); }
+      } catch (e) { logDebug('Failed to stat backup file: $e'); }
     }
 
     return {

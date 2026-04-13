@@ -13,6 +13,8 @@ android/app/debug/
 android/app/profile/
 android/app/release/
 android/key.properties
+android/*.jks
+android/*.keystore
 
 # iOS specific
 ios/Flutter/.last_build_id

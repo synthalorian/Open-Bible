@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/services/verse_storage_service.dart';
+import '../../../../core/utils/logger.dart';
 
 /// Saved page - bookmarks, highlights, and notes
 class BookmarksPage extends ConsumerStatefulWidget {
@@ -61,7 +62,7 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
         });
       }
     } catch (e) {
-      debugPrint('Failed to load bookmarks: $e');
+      logDebug('Failed to load bookmarks: $e');
       if (mounted) {
         setState(() => _isLoading = false);
       }
