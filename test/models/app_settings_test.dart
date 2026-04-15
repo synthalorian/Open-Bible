@@ -64,8 +64,8 @@ void main() {
   });
 
   group('ReadingMode', () {
-    test('has 4 modes', () {
-      expect(ReadingMode.values.length, 4);
+    test('has 5 modes', () {
+      expect(ReadingMode.values.length, 5);
     });
 
     test('day is index 0', () {
@@ -82,6 +82,10 @@ void main() {
 
     test('amoled is index 3', () {
       expect(ReadingMode.amoled.index, 3);
+    });
+
+    test('synthwave is index 4', () {
+      expect(ReadingMode.synthwave.index, 4);
     });
   });
 

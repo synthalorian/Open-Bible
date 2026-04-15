@@ -1,0 +1,400 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'widget_service.dart';
+
+/// Model for a daily verse
+class DailyVerse {
+  final String text;
+  final String reference;
+  final String bookId;
+  final String bookName;
+  final int chapter;
+  final int verse;
+  final String reflection;
+  final List<String> questions;
+  final List<String> relatedVerses;
+
+  const DailyVerse({
+    required this.text,
+    required this.reference,
+    required this.bookId,
+    required this.bookName,
+    required this.chapter,
+    required this.verse,
+    required this.reflection,
+    required this.questions,
+    required this.relatedVerses,
+  });
+}
+
+/// Service to manage daily verses
+class DailyVerseService {
+  final WidgetService _widgetService;
+
+  DailyVerseService(this._widgetService);
+
+  /// Get the verse for today
+  DailyVerse getDailyVerse() {
+    final now = DateTime.now();
+    final index = (now.year + now.month + now.day) % _verses.length;
+    final verse = _verses[index];
+    
+    // Update home screen widget
+    _widgetService.updateDailyVerse(
+      reference: verse.reference,
+      text: verse.text,
+    );
+    
+    return verse;
+  }
+
+  /// List of 31 daily verses (one for each day of any month)
+  static const List<DailyVerse> _verses = [
+    DailyVerse(
+      text: 'For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.',
+      reference: 'Jeremiah 29:11',
+      bookId: 'jeremiah',
+      bookName: 'Jeremiah',
+      chapter: 29,
+      verse: 11,
+      reflection: 'God has a purpose for your life that is bigger than your current circumstances. Trust in His timing and His heart.',
+      questions: ['How can you trust God more today?', 'What hope does this verse give you?'],
+      relatedVerses: ['Proverbs 3:5-6', 'Romans 8:28'],
+    ),
+    DailyVerse(
+      text: 'I can do all things through Christ who strengthens me.',
+      reference: 'Philippians 4:13',
+      bookId: 'philippians',
+      bookName: 'Philippians',
+      chapter: 4,
+      verse: 13,
+      reflection: 'Our strength does not come from ourselves, but from the power of Christ working in us.',
+      questions: ['Where do you need strength today?', 'How has Christ helped you in the past?'],
+      relatedVerses: ['Isaiah 41:10', 'Psalm 27:1'],
+    ),
+    DailyVerse(
+      text: 'But they that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.',
+      reference: 'Isaiah 40:31',
+      bookId: 'isaiah',
+      bookName: 'Isaiah',
+      chapter: 40,
+      verse: 31,
+      reflection: 'Waiting on the Lord is not passive; it is an active trust that brings spiritual renewal.',
+      questions: ['What are you waiting for right now?', 'How can you wait with hope?'],
+      relatedVerses: ['Psalm 27:14', 'Lamentations 3:25'],
+    ),
+    DailyVerse(
+      text: 'The Lord is my shepherd; I shall not want.',
+      reference: 'Psalm 23:1',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 23,
+      verse: 1,
+      reflection: 'God provides everything we truly need. In Him, we find rest and restoration.',
+      questions: ['In what way is God your shepherd?', 'What does "not wanting" mean to you?'],
+      relatedVerses: ['John 10:11', 'Ezekiel 34:11'],
+    ),
+    DailyVerse(
+      text: 'And we know that all things work together for good to them that love God, to them who are the called according to his purpose.',
+      reference: 'Romans 8:28',
+      bookId: 'romans',
+      bookName: 'Romans',
+      chapter: 8,
+      verse: 28,
+      reflection: 'Even in difficult times, God is weaving together a story for our ultimate good and His glory.',
+      questions: ['Can you see "good" in a recent trial?', 'How does this verse change your perspective?'],
+      relatedVerses: ['Genesis 50:20', 'Ephesians 1:11'],
+    ),
+    DailyVerse(
+      text: 'Be strong and of a good courage, fear not, nor be afraid of them: for the Lord thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.',
+      reference: 'Deuteronomy 31:6',
+      bookId: 'deuteronomy',
+      bookName: 'Deuteronomy',
+      chapter: 31,
+      verse: 6,
+      reflection: 'You are never alone. God goes before you and stays beside you in every battle.',
+      questions: ['What fear are you facing today?', 'How does God\'s presence give you courage?'],
+      relatedVerses: ['Joshua 1:9', 'Hebrews 13:5'],
+    ),
+    DailyVerse(
+      text: 'Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.',
+      reference: 'Proverbs 3:5-6',
+      bookId: 'proverbs',
+      bookName: 'Proverbs',
+      chapter: 3,
+      verse: 5,
+      reflection: 'Surrendering our own logic to God\'s wisdom is the path to true direction.',
+      questions: ['Where are you leaning on your own understanding?', 'How can you acknowledge God today?'],
+      relatedVerses: ['Psalm 37:5', 'James 1:5'],
+    ),
+    DailyVerse(
+      text: 'The Lord is my light and my salvation; whom shall I fear? the Lord is the strength of my life; of whom shall I be afraid?',
+      reference: 'Psalm 27:1',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 27,
+      verse: 1,
+      reflection: 'Fear loses its power when we fix our eyes on the Light of the World.',
+      questions: ['How is God a light in your darkness?', 'What "salvation" have you experienced?'],
+      relatedVerses: ['Psalm 118:6', 'Romans 8:31'],
+    ),
+    DailyVerse(
+      text: 'For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.',
+      reference: '2 Timothy 1:7',
+      bookId: '2 timothy',
+      bookName: '2 Timothy',
+      chapter: 1,
+      verse: 7,
+      reflection: 'Fear is not from God. He gives us the tools to overcome it: power, love, and clarity.',
+      questions: ['Which of these three do you need most today?', 'How can you exercise a "sound mind"?'],
+      relatedVerses: ['1 John 4:18', 'Isaiah 26:3'],
+    ),
+    DailyVerse(
+      text: 'Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.',
+      reference: 'Philippians 4:6-7',
+      bookId: 'philippians',
+      bookName: 'Philippians',
+      chapter: 4,
+      verse: 6,
+      reflection: 'Anxiety is traded for peace through the medium of thankful prayer.',
+      questions: ['What are you anxious about?', 'What can you be thankful for right now?'],
+      relatedVerses: ['1 Peter 5:7', 'John 14:27'],
+    ),
+    DailyVerse(
+      text: 'Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.',
+      reference: 'Isaiah 41:10',
+      bookId: 'isaiah',
+      bookName: 'Isaiah',
+      chapter: 41,
+      verse: 10,
+      reflection: 'God\'s "right hand" is a symbol of His power and commitment to sustaining His people.',
+      questions: ['How do you feel God upholding you?', 'What does it mean to be "dismayed"?'],
+      relatedVerses: ['Psalm 46:1', 'Exodus 15:6'],
+    ),
+    DailyVerse(
+      text: 'Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.',
+      reference: 'Matthew 7:7',
+      bookId: 'matthew',
+      bookName: 'Matthew',
+      chapter: 7,
+      verse: 7,
+      reflection: 'Persistence in prayer opens doors that we cannot open on our own.',
+      questions: ['What are you asking for?', 'Are you seeking God or just His gifts?'],
+      relatedVerses: ['Luke 11:9', 'Jeremiah 29:13'],
+    ),
+    DailyVerse(
+      text: 'But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.',
+      reference: 'Matthew 6:33',
+      bookId: 'matthew',
+      bookName: 'Matthew',
+      chapter: 6,
+      verse: 33,
+      reflection: 'When our priorities align with God\'s, our needs find their proper place.',
+      questions: ['What does "seeking the kingdom" look like today?', 'What worries can you release?'],
+      relatedVerses: ['Luke 12:31', '1 Kings 3:13'],
+    ),
+    DailyVerse(
+      text: 'Come unto me, all ye that labour and are heavy laden, and I will give you rest.',
+      reference: 'Matthew 11:28',
+      bookId: 'matthew',
+      bookName: 'Matthew',
+      chapter: 11,
+      verse: 28,
+      reflection: 'Jesus offers a rest that is deeper than physical sleep—a rest for the soul.',
+      questions: ['What is making you "heavy laden"?', 'How can you come to Jesus today?'],
+      relatedVerses: ['Psalm 55:22', 'John 6:35'],
+    ),
+    DailyVerse(
+      text: 'Jesus Christ the same yesterday, and to day, and for ever.',
+      reference: 'Hebrews 13:8',
+      bookId: 'hebrews',
+      bookName: 'Hebrews',
+      chapter: 13,
+      verse: 8,
+      reflection: 'In a world of constant change, Christ is our unchanging anchor.',
+      questions: ['How does Jesus\' constancy comfort you?', 'What has changed in your life recently?'],
+      relatedVerses: ['Malachi 3:6', 'James 1:17'],
+    ),
+    DailyVerse(
+      text: 'For with God nothing shall be impossible.',
+      reference: 'Luke 1:37',
+      bookId: 'luke',
+      bookName: 'Luke',
+      chapter: 1,
+      verse: 37,
+      reflection: 'Our "impossible" is God\'s opportunity to show His power.',
+      questions: ['What seems impossible to you right now?', 'Do you believe God can do it?'],
+      relatedVerses: ['Matthew 19:26', 'Genesis 18:14'],
+    ),
+    DailyVerse(
+      text: 'Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.',
+      reference: 'John 14:27',
+      bookId: 'john',
+      bookName: 'John',
+      chapter: 14,
+      verse: 27,
+      reflection: 'The world\'s peace is based on circumstances; Christ\'s peace is based on His presence.',
+      questions: ['How is Christ\'s peace different?', 'Is your heart troubled today?'],
+      relatedVerses: ['John 16:33', 'Colossians 3:15'],
+    ),
+    DailyVerse(
+      text: 'Cast thy burden upon the Lord, and he shall sustain thee: he shall never suffer the righteous to be moved.',
+      reference: 'Psalm 55:22',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 55,
+      verse: 22,
+      reflection: 'God doesn\'t always take the burden away, but He always sustains us as we carry it.',
+      questions: ['What burden can you cast on Him?', 'What does it mean to be "moved"?'],
+      relatedVerses: ['1 Peter 5:7', 'Psalm 37:5'],
+    ),
+    DailyVerse(
+      text: 'He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.',
+      reference: 'Psalm 91:1',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 91,
+      verse: 1,
+      reflection: 'Safety is found in the intimacy of God\'s presence.',
+      questions: ['What is your "secret place"?', 'How do you abide under His shadow?'],
+      relatedVerses: ['Psalm 27:5', 'Psalm 61:4'],
+    ),
+    DailyVerse(
+      text: 'My flesh and my heart faileth: but God is the strength of my heart, and my portion for ever.',
+      reference: 'Psalm 73:26',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 73,
+      verse: 26,
+      reflection: 'Our own resources will run dry, but God is an inexhaustible supply.',
+      questions: ['When have you felt your heart failing?', 'Is God your "portion"?'],
+      relatedVerses: ['Lamentations 3:24', '2 Corinthians 12:9'],
+    ),
+    DailyVerse(
+      text: 'Commit thy way unto the Lord; trust also in him; and he shall bring it to pass.',
+      reference: 'Psalm 37:5',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 37,
+      verse: 5,
+      reflection: 'Commitment and trust are two sides of the same coin in our walk with God.',
+      questions: ['What "way" do you need to commit?', 'What does "bring it to pass" mean here?'],
+      relatedVerses: ['Proverbs 16:3', 'Psalm 22:5'],
+    ),
+    DailyVerse(
+      text: 'Thy word is a lamp unto my feet, and a light unto my path.',
+      reference: 'Psalm 119:105',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 119,
+      verse: 105,
+      reflection: 'Scripture provides the immediate guidance for our next step and the vision for our future.',
+      questions: ['How has the Word been a lamp recently?', 'Are you looking at the path or the Light?'],
+      relatedVerses: ['Proverbs 6:23', '2 Peter 1:19'],
+    ),
+    DailyVerse(
+      text: 'Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.',
+      reference: 'Psalm 46:10',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 46,
+      verse: 10,
+      reflection: 'In the stillness, we find the perspective that God is in charge of the whole world.',
+      questions: ['When was the last time you were truly still?', 'Why is stillness necessary?'],
+      relatedVerses: ['Exodus 14:14', 'Habakkuk 2:20'],
+    ),
+    DailyVerse(
+      text: 'This is the day which the Lord hath made; we will rejoice and be glad in it.',
+      reference: 'Psalm 118:24',
+      bookId: 'psalms',
+      bookName: 'Psalms',
+      chapter: 118,
+      verse: 24,
+      reflection: 'Joy is a choice we make based on the reality of God\'s creation of each moment.',
+      questions: ['What can you rejoice in today?', 'Is this day a "gift" to you?'],
+      relatedVerses: ['Philippians 4:4', '1 Thessalonians 5:16'],
+    ),
+    DailyVerse(
+      text: 'Great is thy faithfulness.',
+      reference: 'Lamentations 3:23',
+      bookId: 'lamentations',
+      bookName: 'Lamentations',
+      chapter: 3,
+      verse: 23,
+      reflection: 'Even in the midst of sorrow, God\'s compassions are new every single morning.',
+      questions: ['How have you seen God\'s faithfulness?', 'What are the "new mercies" today?'],
+      relatedVerses: ['Psalm 36:5', '2 Timothy 2:13'],
+    ),
+    DailyVerse(
+      text: 'The name of the Lord is a strong tower: the righteous runneth into it, and is safe.',
+      reference: 'Proverbs 18:10',
+      bookId: 'proverbs',
+      bookName: 'Proverbs',
+      chapter: 18,
+      verse: 10,
+      reflection: 'God\'s character (His name) is our ultimate protection in times of trouble.',
+      questions: ['Which "name" of God do you need today?', 'How do you "run into" Him?'],
+      relatedVerses: ['Psalm 61:3', 'Psalm 144:2'],
+    ),
+    DailyVerse(
+      text: 'Call unto me, and I will answer thee, and show thee great and mighty things, which thou knowest not.',
+      reference: 'Jeremiah 33:3',
+      bookId: 'jeremiah',
+      bookName: 'Jeremiah',
+      chapter: 33,
+      verse: 3,
+      reflection: 'God invites us into a dialogue that reveals mysteries beyond our own capacity.',
+      questions: ['What "great things" are you asking God to show?', 'Are you listening for the answer?'],
+      relatedVerses: ['Psalm 91:15', 'Ephesians 3:20'],
+    ),
+    DailyVerse(
+      text: 'But my God shall supply all your need according to his riches in glory by Christ Jesus.',
+      reference: 'Philippians 4:19',
+      bookId: 'philippians',
+      bookName: 'Philippians',
+      chapter: 4,
+      verse: 19,
+      reflection: 'God\'s supply is limited only by His infinite riches, not by our lack.',
+      questions: ['What is your greatest need?', 'Do you trust God to supply it?'],
+      relatedVerses: ['Psalm 23:1', '2 Corinthians 9:8'],
+    ),
+    DailyVerse(
+      text: 'The Lord is good, a strong hold in the day of trouble; and he knoweth them that trust in him.',
+      reference: 'Nahum 1:7',
+      bookId: 'nahum',
+      bookName: 'Nahum',
+      chapter: 1,
+      verse: 7,
+      reflection: 'God\'s goodness is a refuge, and His knowledge of us is intimate and caring.',
+      questions: ['How is God a stronghold for you?', 'What does it mean that He "knows" you?'],
+      relatedVerses: ['Psalm 34:8', 'John 10:14'],
+    ),
+    DailyVerse(
+      text: 'For I the Lord thy God will hold thy right hand, saying unto thee, Fear not; I will help thee.',
+      reference: 'Isaiah 41:13',
+      bookId: 'isaiah',
+      bookName: 'Isaiah',
+      chapter: 41,
+      verse: 13,
+      reflection: 'God doesn\'t just point the way; He holds our hand and walks us through the fear.',
+      questions: ['Can you feel God holding your hand?', 'What is He saying to your fear?'],
+      relatedVerses: ['Psalm 73:23', 'Isaiah 43:1'],
+    ),
+    DailyVerse(
+      text: 'And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful.',
+      reference: 'Colossians 3:15',
+      bookId: 'colossians',
+      bookName: 'Colossians',
+      chapter: 3,
+      verse: 15,
+      reflection: 'Peace is not just a feeling; it is a ruler that arbitrates our decisions and emotions.',
+      questions: ['Is peace ruling your heart today?', 'How can gratitude invite peace?'],
+      relatedVerses: ['Philippians 4:7', 'John 14:27'],
+    ),
+  ];
+}
+
+/// Provider for daily verse service
+final dailyVerseServiceProvider = Provider<DailyVerseService>((ref) {
+  final widgetService = ref.watch(widgetServiceProvider);
+  return DailyVerseService(widgetService);
+});

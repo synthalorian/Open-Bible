@@ -79,6 +79,10 @@ class OpenBibleApp extends ConsumerWidget {
         theme = AppTheme.amoledTheme;
         themeMode = ThemeMode.dark;
         break;
+      case ReadingMode.synthwave:
+        theme = AppTheme.synthwaveTheme;
+        themeMode = ThemeMode.dark;
+        break;
     }
     
     return MaterialApp(
