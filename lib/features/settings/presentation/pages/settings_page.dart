@@ -233,6 +233,8 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
         return 'Sepia Mode';
       case ReadingMode.amoled:
         return 'AMOLED Mode';
+      case ReadingMode.synthwave:
+        return 'Synthwave Mode';
     }
   }
 
@@ -248,6 +250,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
             _buildReadingModeOption(ReadingMode.night, 'Night Mode', Icons.dark_mode),
             _buildReadingModeOption(ReadingMode.sepia, 'Sepia Mode', Icons.auto_stories),
             _buildReadingModeOption(ReadingMode.amoled, 'AMOLED Mode', Icons.brightness_2),
+            _buildReadingModeOption(ReadingMode.synthwave, 'Synthwave Mode', Icons.grid_on),
           ],
         ),
       ),

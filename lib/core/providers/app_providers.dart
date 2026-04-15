@@ -74,7 +74,7 @@ final availableTranslations = [
 ];
 
 final fontSizeProvider = StateProvider<double>((ref) => 18.0);
-enum ReadingMode { day, night, sepia, amoled }
+enum ReadingMode { day, night, sepia, amoled, synthwave }
 
 class DailyVerseTime {
   final int hour;
@@ -204,7 +204,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
         dailyVerseNotifications: s['dailyVerseNotifications'] as bool? ?? state.dailyVerseNotifications,
         dailyVerseTime: DailyVerseTime(hour: s['dailyVerseHour'] as int? ?? 8, minute: s['dailyVerseMinute'] as int? ?? 0),
         audioEnabled: s['audioEnabled'] as bool? ?? state.audioEnabled,
-        isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index,
+        isDarkMode: modeIndex == ReadingMode.night.index || modeIndex == ReadingMode.amoled.index || modeIndex == ReadingMode.synthwave.index,
         selectedBibleId: savedBibleId,
       );
       
@@ -240,7 +240,7 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
   }
 
   void setFontSize(int size) { state = state.copyWith(fontSize: size); _save(); }
-  void setReadingMode(ReadingMode mode) { state = state.copyWith(readingMode: mode, isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled); _save(); }
+  void setReadingMode(ReadingMode mode) { state = state.copyWith(readingMode: mode, isDarkMode: mode == ReadingMode.night || mode == ReadingMode.amoled || mode == ReadingMode.synthwave); _save(); }
   void setAudioEnabled(bool enabled) { state = state.copyWith(audioEnabled: enabled); _save(); }
   Future<void> toggleNotifications() async { state = state.copyWith(notificationsEnabled: !state.notificationsEnabled); await _save(); }
   Future<void> setDailyVerseTime(DailyVerseTime time) async { state = state.copyWith(dailyVerseTime: time); await _save(); }
