@@ -81,6 +81,59 @@ class AppTheme {
 
   static ThemeData get amoledTheme => _buildDarkTheme(Brightness.dark, Colors.black, Colors.black);
 
+  // Synthwave theme colors - neon grid energy
+  static const Color _synthBackground = Color(0xFF0D0221); // Deep void purple
+  static const Color _synthSurface = Color(0xFF1A0A3E); // Dark neon purple
+  static const Color _synthPrimary = Color(0xFFFF2975); // Hot pink neon
+  static const Color _synthSecondary = Color(0xFF00F0FF); // Electric cyan
+  static const Color _synthAccent = Color(0xFFB026FF); // Neon purple
+  static const Color _synthText = Color(0xFFF0E6FF); // Soft lavender white
+  static const Color _synthTextSecondary = Color(0xFF9B8FC2); // Muted purple
+
+  static ThemeData get synthwaveTheme => ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    colorScheme: ColorScheme.dark(
+      primary: _synthPrimary,
+      secondary: _synthSecondary,
+      tertiary: _synthAccent,
+      surface: _synthSurface,
+      onPrimary: Colors.white,
+      onSecondary: Colors.black,
+      onSurface: _synthText,
+    ),
+    scaffoldBackgroundColor: _synthBackground,
+    appBarTheme: AppBarTheme(
+      backgroundColor: _synthBackground,
+      foregroundColor: _synthText,
+      elevation: 0,
+      centerTitle: true,
+    ),
+    cardTheme: CardThemeData(
+      color: _synthSurface,
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+    textTheme: _buildTextTheme(_synthText, _synthTextSecondary),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: _synthBackground,
+      selectedItemColor: _synthPrimary,
+      unselectedItemColor: _synthTextSecondary,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: _synthPrimary,
+      foregroundColor: Colors.white,
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: _synthSurface,
+      selectedColor: _synthPrimary.withValues(alpha: 0.3),
+      labelStyle: TextStyle(color: _synthText),
+    ),
+    dividerTheme: DividerThemeData(
+      color: _synthAccent.withValues(alpha: 0.3),
+    ),
+  );
+
   static ThemeData get sepiaTheme => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
