@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../data/models/christian_history_models.dart';
-import 'history_detail_page.dart';
+import 'history_gallery_page.dart';
 
 /// Generic list page for any history category.
 /// Shows a searchable list of entries that belong to the given category.
+/// Tapping an entry opens the swipeable gallery view.
 class HistoryCategoryPage extends StatefulWidget {
   final HistoryCategory category;
 
@@ -53,6 +54,19 @@ class _HistoryCategoryPageState extends State<HistoryCategoryPage> {
     }).toList();
   }
 
+  void _openGallery(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => HistoryGalleryPage(
+          entries: _filteredEntries,
+          categoryTitle: widget.category.title,
+          initialIndex: index,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -97,13 +111,7 @@ class _HistoryCategoryPageState extends State<HistoryCategoryPage> {
                       final entry = _filteredEntries[index];
                       return _EntryListTile(
                         entry: entry,
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) =>
-                                HistoryDetailPage(entry: entry),
-                          ),
-                        ),
+                        onTap: () => _openGallery(index),
                       );
                     },
                   ),
