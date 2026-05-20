@@ -60,27 +60,33 @@ class OpenBibleApp extends ConsumerWidget {
     
     // Select theme based on reading mode
     final ThemeData theme;
+    final ThemeData darkTheme;
     final ThemeMode themeMode;
     
     switch (settings.readingMode) {
       case ReadingMode.day:
         theme = AppTheme.lightTheme;
+        darkTheme = AppTheme.darkTheme;
         themeMode = ThemeMode.light;
         break;
       case ReadingMode.night:
-        theme = AppTheme.darkTheme;
+        theme = AppTheme.lightTheme;
+        darkTheme = AppTheme.darkTheme;
         themeMode = ThemeMode.dark;
         break;
       case ReadingMode.sepia:
         theme = AppTheme.sepiaTheme;
+        darkTheme = AppTheme.darkTheme;
         themeMode = ThemeMode.light;
         break;
       case ReadingMode.amoled:
-        theme = AppTheme.amoledTheme;
+        theme = AppTheme.lightTheme;
+        darkTheme = AppTheme.amoledTheme;
         themeMode = ThemeMode.dark;
         break;
       case ReadingMode.synthwave:
-        theme = AppTheme.synthwaveTheme;
+        theme = AppTheme.lightTheme;
+        darkTheme = AppTheme.synthwaveTheme;
         themeMode = ThemeMode.dark;
         break;
     }
@@ -89,7 +95,7 @@ class OpenBibleApp extends ConsumerWidget {
       title: 'Open Bible',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      darkTheme: AppTheme.darkTheme,
+      darkTheme: darkTheme,
       themeMode: themeMode,
       home: const MainNavigationPage(),
     );
