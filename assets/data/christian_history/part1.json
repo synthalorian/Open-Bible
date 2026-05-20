@@ -1,0 +1,1388 @@
+{
+  "categories": [
+    {
+      "id": "church_history",
+      "title": "Church History",
+      "description": "A comprehensive timeline of Christianity from its founding at Pentecost to the present day. Explore the key events, figures, and movements that shaped the faith across two millennia.",
+      "icon": "timeline",
+      "entries": [
+        {
+          "id": "pentecost",
+          "title": "Pentecost",
+          "subtitle": "The Birth of the Christian Church",
+          "description": "Pentecost, occurring fifty days after Passover, is considered the birthday of the Christian Church. According to Acts 2, the disciples were gathered in Jerusalem when suddenly a sound like a rushing wind filled the house and tongues of fire appeared, resting on each person. They were filled with the Holy Spirit and began speaking in other languages, enabling them to preach to the multilingual crowds gathered in Jerusalem for the festival. Peter preached to the crowd, converting approximately 3,000 people who were baptized that day. This event marked the transition from Jesus's earthly ministry to the era of the Church, empowered by the Holy Spirit for global mission.",
+          "category": "church_history",
+          "period": "c. 30 AD",
+          "location": "Jerusalem",
+          "keyFigures": [
+            "Peter",
+            "Apostles",
+            "Mary mother of Jesus"
+          ],
+          "keyEvents": [
+            "Descent of the Holy Spirit",
+            "Peter's sermon",
+            "3,000 converted"
+          ],
+          "tags": [
+            "apostolic",
+            "holy spirit",
+            "founding",
+            "jerusalem"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "council_jerusalem",
+          "title": "Council of Jerusalem",
+          "subtitle": "The First Church Council",
+          "description": "The Council of Jerusalem, described in Acts 15, was the first major council of the early Church, convened to address the most critical question facing early Christianity: must Gentile converts follow Jewish law, including circumcision? Paul and Barnabas had been successfully evangelizing Gentiles, but some Pharisaic believers insisted that salvation required full Torah observance. The council, led by James the brother of Jesus and Peter, deliberated and reached a landmark decision: Gentile converts did not need to be circumcised or follow the entire Mosaic Law. However, they were asked to abstain from certain practices — food sacrificed to idols, blood, strangled animals, and sexual immorality. This decision preserved the unity of the early Church and established Christianity as a distinct faith open to all peoples, not merely a Jewish sect.",
+          "category": "church_history",
+          "period": "c. 49 AD",
+          "location": "Jerusalem",
+          "keyFigures": [
+            "James the Just",
+            "Peter",
+            "Paul the Apostle",
+            "Barnabas"
+          ],
+          "keyEvents": [
+            "Gentile inclusion debate",
+            "Jerusalem decree",
+            "Apostolic authority established"
+          ],
+          "tags": [
+            "council",
+            "jerusalem",
+            "gentiles",
+            "paul",
+            "apostolic"
+          ]
+        },
+        {
+          "id": "martyrdom_stephen",
+          "title": "Martyrdom of Stephen",
+          "subtitle": "The First Christian Martyr",
+          "description": "Stephen, described in Acts 6-7 as a man full of faith and the Holy Spirit, was one of the seven deacons appointed to serve the Hellenistic Jewish Christian community. Known for performing wonders and signs, Stephen's powerful preaching and disputation with members of the Synagogue of the Freedmen led to his arrest. Brought before the Sanhedrin, Stephen delivered a masterful speech tracing Israel's history and accusing the council of resisting the Holy Spirit, just as their ancestors had resisted the prophets. Enraged, the council dragged him outside the city and stoned him to death. As he died, Stephen prayed, 'Lord Jesus, receive my spirit' and 'Lord, do not hold this sin against them.' A young Pharisee named Saul of Tarsus witnessed and approved of the execution, setting the stage for his later conversion. Stephen's martyrdom sparked widespread persecution that scattered believers throughout Judea and Samaria, inadvertently spreading the Gospel beyond Jerusalem.",
+          "category": "church_history",
+          "period": "c. 34 AD",
+          "location": "Jerusalem",
+          "keyFigures": [
+            "Stephen",
+            "Saul of Tarsus"
+          ],
+          "keyEvents": [
+            "First Christian martyr",
+            "Scattering of the Church",
+            "Saul's involvement"
+          ],
+          "tags": [
+            "martyr",
+            "jerusalem",
+            "persecution",
+            "apostolic"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "paul_missionary",
+          "title": "Paul's Missionary Journeys",
+          "subtitle": "The Apostle to the Gentiles",
+          "description": "Paul of Tarsus, formerly the persecutor Saul, became the most influential missionary in Christian history after his dramatic conversion on the road to Damascus. Over approximately 15 years, Paul undertook three major missionary journeys across the Mediterranean world, traveling thousands of miles through modern-day Turkey, Greece, Cyprus, and the Levant. His first journey (47-49 AD) with Barnabas took them to Cyprus and southern Galatia, establishing churches in Pisidian Antioch, Iconium, Lystra, and Derbe. His second journey (49-52 AD) with Silas covered Asia Minor and crossed into Macedonia and Greece, establishing churches in Philippi, Thessalonica, Berea, Athens, and Corinth. His third journey (53-57 AD) focused on strengthening existing churches and included an extended stay in Ephesus. Throughout these journeys, Paul faced imprisonment, beatings, shipwreck, and constant opposition. His letters to these churches, written during and after his travels, form a substantial portion of the New Testament and have shaped Christian theology for two millennia.",
+          "category": "church_history",
+          "period": "47-57 AD",
+          "location": "Mediterranean world",
+          "keyFigures": [
+            "Paul the Apostle",
+            "Barnabas",
+            "Silas",
+            "Timothy",
+            "Luke the Evangelist",
+            "Priscilla and Aquila"
+          ],
+          "keyEvents": [
+            "Conversion on Damascus Road",
+            "Three missionary journeys",
+            "Epistles to the churches"
+          ],
+          "tags": [
+            "paul",
+            "missionary",
+            "gentiles",
+            "new testament",
+            "mediterranean"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        },
+        {
+          "id": "destruction_temple",
+          "title": "Destruction of the Jerusalem Temple",
+          "subtitle": "The End of the Second Temple Era",
+          "description": "In 70 AD, Roman forces under General Titus besieged Jerusalem and destroyed the Second Temple, an event that fundamentally transformed both Judaism and Christianity. The Temple had been the center of Jewish worship — the place of sacrifice, pilgrimage, and the dwelling place of God's presence. The revolt against Rome had begun in 66 AD, and the Roman response was devastating. The Temple was burned and systematically dismantled, with its treasures carried to Rome (depicted on the Arch of Titus). For Christianity, this event had profound implications. It validated Jesus's prophecy that 'not one stone will be left upon another' and definitively severed Christianity from its Jewish temple roots. The loss of the Temple accelerated the development of rabbinic Judaism, which replaced sacrifice with prayer and study. For Christians, it underscored the theological shift from Temple-centered worship to Christ-centered faith, and from ethnic Israel to the worldwide Church.",
+          "category": "church_history",
+          "period": "70 AD",
+          "location": "Jerusalem",
+          "keyFigures": [
+            "Titus",
+            "Josephus"
+          ],
+          "keyEvents": [
+            "Siege of Jerusalem",
+            "Temple destroyed",
+            "Jewish diaspora"
+          ],
+          "tags": [
+            "temple",
+            "jerusalem",
+            "rome",
+            "judaism",
+            "prophecy"
+          ],
+          "imageUrl": "assets/data/christian_history/images/holy_sepulchre.jpg"
+        },
+        {
+          "id": "john_revelation",
+          "title": "John Writes Revelation",
+          "subtitle": "The Last Book of the Bible",
+          "description": "The Book of Revelation, also called the Apocalypse of John, was written around 95 AD by the Apostle John while exiled on the island of Patmos by Emperor Domitian. Revelation is the final and most controversial book of the Christian biblical canon — a apocalyptic prophecy filled with vivid symbolism, cosmic conflict, and visions of the end times. John wrote to seven churches in Asia Minor (modern Turkey), addressing their spiritual condition while revealing God's ultimate plan for history. The book presents a dramatic narrative of Christ's victory over evil, featuring the Four Horsemen, the Beast, Armageddon, the Millennium, and the New Jerusalem. Its rich imagery — the Lamb on the throne, the sea of glass, the tree of life — has inspired Christian art, music, and theology for centuries. Revelation closes with a promise that has echoed through church history: 'Surely I am coming quickly.'",
+          "category": "church_history",
+          "period": "c. 95 AD",
+          "location": "Patmos, Greece",
+          "keyFigures": [
+            "John the Apostle",
+            "Emperor Domitian"
+          ],
+          "keyEvents": [
+            "Exile on Patmos",
+            "Vision of Christ",
+            "Messages to seven churches"
+          ],
+          "tags": [
+            "revelation",
+            "apocalypse",
+            "john",
+            "patmos",
+            "new testament"
+          ]
+        },
+        {
+          "id": "ignatius_antioch",
+          "title": "Martyrdom of Ignatius of Antioch",
+          "subtitle": "Witness to the Apostolic Faith",
+          "description": "Ignatius, bishop of Antioch, was arrested during the persecution of Emperor Trajan and transported to Rome for execution in the arena. During his journey, he wrote seven letters to churches across Asia Minor and to Polycarp of Smyrna — letters that are among the most precious documents of the early Church. Ignatius's letters are the first surviving writings to use the term 'Catholic Church' (katholike ekklesia) and strongly emphasize the divinity of Christ, the reality of the Eucharist as Christ's true body and blood, and the authority of bishops as successors to the apostles. Writing with passionate anticipation of his martyrdom, Ignatius begged the Roman Christians not to interfere with his execution: 'I am God's wheat, and I am ground by the teeth of the wild beasts, that I may be found pure bread.' His letters provide invaluable insight into early Christian theology, worship, and church structure at the turn of the second century.",
+          "category": "church_history",
+          "period": "107 AD",
+          "location": "Antioch to Rome",
+          "keyFigures": [
+            "Ignatius of Antioch",
+            "Polycarp",
+            "Emperor Trajan"
+          ],
+          "keyEvents": [
+            "Seven letters written on journey",
+            "Martyrdom in Rome",
+            "First use of 'Catholic Church'"
+          ],
+          "tags": [
+            "martyr",
+            "apostolic fathers",
+            "antioch",
+            "bishop",
+            "eucharist"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "polycarp_martyrdom",
+          "title": "Martyrdom of Polycarp",
+          "subtitle": "The Beloved Bishop of Smyrna",
+          "description": "Polycarp, the aged bishop of Smyrna and a disciple of the Apostle John himself, was martyred around 155 AD in one of the most well-documented early Christian executions. The account of his martyrdom, preserved in a letter from the church of Smyrna, provides a detailed glimpse into the persecution of Christians under Roman rule. When authorities came to arrest him, Polycarp refused to flee, saying 'God's will be done.' Given the chance to save himself by cursing Christ, he famously replied: 'Eighty-six years I have served Him, and He never did me any wrong. How can I blaspheme my King and my Savior?' He was burned at the stake, and when the flames failed to consume him, he was stabbed. Witnesses reported that his blood extinguished the flames. Polycarp's martyrdom became a model for Christian witness, demonstrating steadfast faith in the face of death.",
+          "category": "church_history",
+          "period": "155 AD",
+          "location": "Smyrna (modern Izmir, Turkey)",
+          "keyFigures": [
+            "Polycarp of Smyrna",
+            "John the Apostle (teacher)"
+          ],
+          "keyEvents": [
+            "Arrest and trial",
+            "Refusal to recant",
+            "Burning at stake"
+          ],
+          "tags": [
+            "martyr",
+            "apostolic fathers",
+            "smyrna",
+            "persecution"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "constantine_conversion",
+          "title": "Constantine's Conversion",
+          "subtitle": "The Battle of Milvian Bridge",
+          "description": "The conversion of Emperor Constantine the Great stands as one of the most pivotal events in church history. According to Lactantius and Eusebius, on the eve of the crucial Battle of Milvian Bridge in 312 AD, Constantine saw a vision of a cross of light above the sun with the words 'In hoc signo vinces' (In this sign, conquer). He ordered his soldiers to mark their shields with the Chi-Rho symbol (☧). Despite being heavily outnumbered, Constantine won decisively and attributed his victory to the Christian God. The following year, he issued the Edict of Milan, legalizing Christianity throughout the Roman Empire. Constantine's conversion dramatically shifted Christianity from a persecuted minority faith to an increasingly favored religion, eventually becoming the empire's dominant faith. While historians debate the depth of Constantine's personal faith, his political embrace of Christianity fundamentally transformed the Church's relationship with the state, for better and for worse — inaugurating an era of imperial Christianity that would shape Europe for a millennium.",
+          "category": "church_history",
+          "period": "312 AD",
+          "location": "Rome, Italy",
+          "keyFigures": [
+            "Constantine the Great",
+            "Eusebius of Caesarea",
+            "Pope Sylvester I"
+          ],
+          "keyEvents": [
+            "Vision of the cross",
+            "Battle of Milvian Bridge",
+            "Edict of Milan (313 AD)"
+          ],
+          "tags": [
+            "constantine",
+            "rome",
+            "conversion",
+            "chi-rho",
+            "edict of milan"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+        },
+        {
+          "id": "council_nicaea",
+          "title": "Council of Nicaea",
+          "subtitle": "The First Ecumenical Council",
+          "description": "The First Council of Nicaea, convened by Emperor Constantine in 325 AD, was the first ecumenical (worldwide) council of the Christian Church, bringing together approximately 300 bishops from across the empire. The council's primary purpose was to resolve the Arian controversy, which questioned whether Jesus Christ was truly divine (homoousios — 'same substance' with the Father) or a created being (Arius's teaching). After weeks of debate, the council overwhelmingly affirmed the full divinity of Christ, producing the original Nicene Creed — the first universal statement of Christian faith. The council also addressed the date of Easter, establishing a uniform calculation independent of the Jewish calendar, and dealt with various church discipline matters. Constantine presided over parts of the council, setting a precedent for imperial involvement in church affairs. The Nicene Creed, later expanded at the Council of Constantinople (381 AD), remains the most widely accepted statement of Christian orthodoxy across Catholic, Orthodox, Protestant, and Anglican traditions.",
+          "category": "church_history",
+          "period": "325 AD",
+          "location": "Nicaea (modern Iznik, Turkey)",
+          "keyFigures": [
+            "Constantine the Great",
+            "Athanasius of Alexandria",
+            "Arius",
+            "Eusebius of Caesarea"
+          ],
+          "keyEvents": [
+            "Arian controversy",
+            "Nicene Creed composed",
+            "Easter date fixed"
+          ],
+          "tags": [
+            "council",
+            "nicaea",
+            "creed",
+            "arian",
+            "constantine",
+            "trinity"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+        },
+        {
+          "id": "augustine_hippo",
+          "title": "Augustine of Hippo",
+          "subtitle": "Theologian of Grace",
+          "description": "Augustine of Hippo (354-430 AD) was the most influential Christian theologian between Paul and Thomas Aquinas, whose writings shaped Western Christianity profoundly. Born in Thagaste, North Africa to a Christian mother (Monica) and pagan father, Augustine lived a restless youth of intellectual seeking and moral struggle before his dramatic conversion in a Milan garden at age 31. As bishop of Hippo Regius, he wrote prolifically, producing masterpieces that would define Western theology: 'Confessions' (the first spiritual autobiography), 'The City of God' (a theology of history), and 'On the Trinity.' His doctrines of original sin, divine grace, and predestination became foundational for both Catholic and Protestant theology. Augustine's concept of the 'Two Cities' — the earthly city built on self-love and the heavenly city built on love of God — provided a framework for understanding the relationship between church and state. His writings on just war theory, the Trinity, and biblical interpretation continue to influence Christian thought 1,600 years later.",
+          "category": "church_history",
+          "period": "354-430 AD",
+          "location": "Hippo Regius (modern Annaba, Algeria)",
+          "keyFigures": [
+            "Augustine",
+            "Monica (mother)",
+            "Ambrose of Milan",
+            "Jerome"
+          ],
+          "keyEvents": [
+            "Conversion in Milan",
+            "Wrote Confessions",
+            "Siege of Hippo",
+            "Wrote City of God"
+          ],
+          "tags": [
+            "augustine",
+            "church father",
+            "theology",
+            "grace",
+            "confessions"
+          ],
+          "imageUrl": "assets/data/christian_history/images/augustine.jpg"
+        },
+        {
+          "id": "jerome_vulgate",
+          "title": "Jerome Translates the Vulgate",
+          "subtitle": "The Latin Bible",
+          "description": "Jerome (c. 347-420 AD), one of the four great Latin Doctors of the Church, undertook the monumental task of translating the Bible into Latin, producing the Vulgate — the standard Latin Bible that would serve Western Christianity for over a thousand years. Commissioned by Pope Damasus I in 382 AD, Jerome retreated to Bethlehem where he established a monastery and dedicated 23 years to the translation. Significantly, Jerome translated directly from the Hebrew Old Testament rather than from the Greek Septuagint, a decision that was controversial in his day. His work demonstrated remarkable scholarly rigor, consulting Jewish rabbis and the best manuscripts available. The Vulgate became the official Bible of the Roman Catholic Church (declared at the Council of Trent) and profoundly influenced Western literature, theology, and culture. Even today, the Vulgate's Latin phrasing echoes in English translations: 'In the beginning was the Word' traces back to Jerome's 'In principio erat Verbum.'",
+          "category": "church_history",
+          "period": "382-405 AD",
+          "location": "Bethlehem",
+          "keyFigures": [
+            "Jerome",
+            "Pope Damasus I"
+          ],
+          "keyEvents": [
+            "Commissioned by Pope Damasus",
+            "Hebrew-to-Latin translation",
+            "Vulgate becomes standard"
+          ],
+          "tags": [
+            "bible",
+            "translation",
+            "jerome",
+            "vulgate",
+            "latin"
+          ],
+          "imageUrl": "assets/data/christian_history/images/augustine.jpg"
+        },
+        {
+          "id": "council_chalcedon",
+          "title": "Council of Chalcedon",
+          "subtitle": "The Nature of Christ Defined",
+          "description": "The Council of Chalcedon in 451 AD was the fourth ecumenical council, convened to resolve the most complex theological question facing the Church: how are Christ's divine and human natures related? The debate pitted the Alexandrian school (emphasizing Christ's divinity) against the Antiochene school (emphasizing his humanity). The council rejected both Nestorianism (which separated the two natures too sharply) and Eutychian monophysitism (which merged them into one), producing the Chalcedonian Definition: Christ is 'one person in two natures, without confusion, without change, without division, without separation.' These four adverbs became the bedrock of orthodox Christology. However, the council's decision was not universally accepted — the Oriental Orthodox churches (Coptic, Syrian, Armenian, Ethiopian) rejected Chalcedon, creating a schism that persists to this day. The Chalcedonian Definition remains the standard for Catholic, Orthodox, and Protestant Christianity.",
+          "category": "church_history",
+          "period": "451 AD",
+          "location": "Chalcedon (modern Kadıköy, Turkey)",
+          "keyFigures": [
+            "Pope Leo I",
+            "Emperor Marcian",
+            "Dioscorus of Alexandria"
+          ],
+          "keyEvents": [
+            "Rejection of Nestorianism",
+            "Rejection of Monophysitism",
+            "Chalcedonian Definition"
+          ],
+          "tags": [
+            "council",
+            "chalcedon",
+            "christology",
+            "incarnation",
+            "schism"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+        },
+        {
+          "id": "fall_rome",
+          "title": "Fall of the Western Roman Empire",
+          "subtitle": "The End of an Era",
+          "description": "In 476 AD, the Germanic chieftain Odoacer deposed the last Western Roman Emperor, Romulus Augustulus, marking the traditional end of the Western Roman Empire. The fall of Rome was not a single event but a centuries-long process of decline, invasion, and transformation. The Western Empire fragmented under the pressure of Germanic migrations and invasions, while the Eastern Empire (Byzantine) continued for another thousand years. For Christianity, the collapse of imperial authority in the West had paradoxical effects. The Church emerged as the only stable institution remaining, with bishops assuming civic leadership roles and the papacy filling the power vacuum in Italy. Monasteries became centers of learning and preservation of classical culture. The fall of Rome also cemented the Great Schism in miniature — the Latin West and Greek East grew increasingly separate. In 'The City of God,' Augustine responded to pagans who blamed Christianity for Rome's fall, arguing that Christians belong to an eternal city not subject to earthly empires.",
+          "category": "church_history",
+          "period": "476 AD",
+          "location": "Rome, Italy",
+          "keyFigures": [
+            "Odoacer",
+            "Romulus Augustulus",
+            "Pope Gelasius I"
+          ],
+          "keyEvents": [
+            "Deposition of last Western emperor",
+            "Church assumes civic role",
+            "Rise of monasticism as cultural guardian"
+          ],
+          "tags": [
+            "rome",
+            "empire",
+            "fall",
+            "medieval",
+            "augustine"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        },
+        {
+          "id": "benedictine_rule",
+          "title": "Benedictine Rule",
+          "subtitle": "The Foundation of Western Monasticism",
+          "description": "In 529 AD, Benedict of Nursia established the monastery of Monte Cassino in Italy and composed his 'Rule for Monasteries' — a document that would become the foundational text of Western monasticism. The Benedictine Rule struck a brilliant balance between prayer, work, and study, summarized by the motto 'Ora et Labora' (Pray and Work). The Rule organized monastic life with careful attention to spiritual formation, communal living, and practical administration. It required vows of stability (remaining in one monastery), conversion of life (poverty and chastity), and obedience to the abbot. The daily schedule balanced communal prayer (the Divine Office — eight times daily), manual labor, scriptural reading (lectio divina), and sleep. Benedictine monasteries became powerhouses of agricultural innovation, education, manuscript preservation, and missionary activity throughout medieval Europe. Without the Benedictine scribes who meticulously copied ancient texts, much of classical literature and many early Christian writings would have been lost. The Rule remains followed today by thousands of Benedictine monks and nuns worldwide.",
+          "category": "church_history",
+          "period": "529 AD",
+          "location": "Monte Cassino, Italy",
+          "keyFigures": [
+            "Benedict of Nursia",
+            "Scholastica (sister)"
+          ],
+          "keyEvents": [
+            "Foundation of Monte Cassino",
+            "Rule composed",
+            "Western monastic tradition established"
+          ],
+          "tags": [
+            "monasticism",
+            "benedict",
+            "monte cassino",
+            "ora et labora",
+            "medieval"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "east_west_schism",
+          "title": "East-West Schism of 1054",
+          "subtitle": "The Great Schism",
+          "description": "The East-West Schism, also known as the Great Schism, formalized in 1054 the centuries-long deterioration of relations between the Latin Church of Rome and the Greek Church of Constantinople. The schism was the culmination of accumulating disagreements: theological (the Filioque clause — whether the Holy Spirit proceeds from the Father alone or from the Father and the Son), political (the authority of the Pope vs. the Patriarch, and the icon of the Emperor), cultural (Latin vs. Greek language and liturgy), and practical (clerical celibacy vs. married priests, use of unleavened bread). The final rupture came when papal legates, led by Cardinal Humbert, marched into Hagia Sophia during a liturgy and placed a bull of excommunication against Patriarch Michael Cerularius on the high altar. The patriarch responded by excommunicating the legates. This mutual excommunication divided Christendom into Roman Catholic and Eastern Orthodox branches — a division that persists, despite modern ecumenical efforts, with theological differences still unresolved. In 1965, Pope Paul VI and Patriarch Athenagoras I mutually lifted the excommunications, signaling a new era of dialogue.",
+          "category": "church_history",
+          "period": "1054 AD",
+          "location": "Constantinople and Rome",
+          "keyFigures": [
+            "Pope Leo IX",
+            "Cardinal Humbert",
+            "Patriarch Michael Cerularius"
+          ],
+          "keyEvents": [
+            "Filioque controversy",
+            "Papal supremacy dispute",
+            "Mutual excommunications"
+          ],
+          "tags": [
+            "schism",
+            "catholic",
+            "orthodox",
+            "constantinople",
+            "filioque"
+          ],
+          "imageUrl": "assets/data/christian_history/images/hagia_sophia.jpg"
+        },
+        {
+          "id": "luther_95_theses",
+          "title": "Martin Luther's 95 Theses",
+          "subtitle": "The Spark of the Reformation",
+          "description": "On October 31, 1517, an Augustinian monk and theology professor named Martin Luther nailed his 95 Theses to the door of the Castle Church in Wittenberg, Germany — a conventional academic invitation to debate that accidentally ignited the Protestant Reformation. The theses, written in Latin, primarily criticized the sale of indulgences (certificates promising reduced time in purgatory), which were being aggressively marketed by Johann Tetzel to finance St. Peter's Basilica in Rome. Luther argued that repentance was a lifelong posture, not a transaction, and that the Pope had no authority over purgatory. Thanks to the printing press, the theses were translated into German, printed, and distributed across Europe within weeks. Luther's core convictions — sola scriptura (Scripture alone), sola fide (faith alone), sola gratia (grace alone), and the priesthood of all believers — challenged the medieval Church's sacramental and hierarchical system. When summoned to the Diet of Worms in 1521, Luther refused to recant: 'Unless I am convinced by Scripture and plain reason — I am bound by the Scriptures I have quoted and my conscience is captive to the Word of God.' The Reformation had begun.",
+          "category": "church_history",
+          "period": "1517 AD",
+          "location": "Wittenberg, Saxony (Germany)",
+          "keyFigures": [
+            "Martin Luther",
+            "Johann Tetzel",
+            "Pope Leo X",
+            "Frederick the Wise"
+          ],
+          "keyEvents": [
+            "Nailing of the 95 Theses",
+            "Diet of Worms",
+            "Excommunication",
+            "Translation of Bible into German"
+          ],
+          "tags": [
+            "reformation",
+            "luther",
+            "wittenberg",
+            "indulgences",
+            "protestant",
+            "95 theses"
+          ],
+          "imageUrl": "assets/data/christian_history/images/martin_luther.jpg"
+        },
+        {
+          "id": "council_trent",
+          "title": "Council of Trent",
+          "subtitle": "The Catholic Counter-Reformation",
+          "description": "The Council of Trent (1545-1563) was the most important council of the Roman Catholic Church, convened in response to the Protestant Reformation. Meeting in three sessions over 18 years in the city of Trento, Italy, the council clarified and reaffirmed Catholic doctrine on every point challenged by the Reformers: justification by faith AND works (not faith alone), seven sacraments, the real presence of Christ in the Eucharist (transubstantiation), the authority of Tradition alongside Scripture, the sacrificial nature of the Mass, and the role of good works in salvation. The council also enacted sweeping reforms: it required bishops to reside in their dioceses, established seminaries for priestly training, forbade the selling of church offices, and mandated regular preaching and catechism instruction. The Tridentine Mass (the traditional Latin Mass) was standardized and remained the universal form of Catholic worship until Vatican II in the 1960s. Trent defined Roman Catholicism in its modern form, creating a more disciplined, educated clergy and a clearly defined doctrinal system.",
+          "category": "church_history",
+          "period": "1545-1563 AD",
+          "location": "Trento, Italy",
+          "keyFigures": [
+            "Pope Paul III",
+            "Pope Pius IV",
+            "Cardinal Carlo Borromeo",
+            "Ignatius of Loyola"
+          ],
+          "keyEvents": [
+            "Reaffirmation of Catholic doctrine",
+            "Seminary system established",
+            "Index of Forbidden Books",
+            "Tridentine Mass standardized"
+          ],
+          "tags": [
+            "council",
+            "trent",
+            "catholic",
+            "counter-reformation",
+            "tridentine"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "king_james_bible",
+          "title": "King James Bible Published",
+          "subtitle": "The Authorized Version",
+          "description": "The King James Bible (also called the Authorized Version), first published in 1611, remains the most influential English Bible translation in history. Commissioned by King James I of England in response to Puritan concerns about existing translations, the project assembled 47 of England's finest biblical scholars and linguists, divided into six committees working at Oxford, Cambridge, and Westminster. The translators were instructed to follow the Bishop's Bible as their base but to consult all major previous translations (Tyndale, Coverdale, Geneva, etc.), ensuring continuity with English Bible tradition. Their instructions also avoided extreme Puritan or Catholic positions. The KJV's language, already somewhat archaic in 1611, achieved a majestic prose style that profoundly shaped English literature and speech for four centuries. Phrases like 'the powers that be,' 'fight the good fight,' 'a thorn in the flesh,' 'fell flat on his face,' and 'the apple of his eye' entered everyday English from the KJV. While modern translations have largely supplanted it for study, the KJV remains beloved for worship by many traditional churches and is still the official Bible of the Church of England.",
+          "category": "church_history",
+          "period": "1611 AD",
+          "location": "England",
+          "keyFigures": [
+            "King James I",
+            "Lancelot Andrewes",
+            "John Rainolds"
+          ],
+          "keyEvents": [
+            "Hampton Court Conference (1604)",
+            "Translation by 47 scholars",
+            "Published 1611",
+            "Revised 1769"
+          ],
+          "tags": [
+            "bible",
+            "translation",
+            "king james",
+            "english",
+            "authorized version"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "first_great_awakening",
+          "title": "The First Great Awakening",
+          "subtitle": "Revival in the American Colonies",
+          "description": "The First Great Awakening (1730s-1740s) was a wave of religious revival that swept across the British American colonies, profoundly shaping American religious culture and preparing the ground for the American Revolution. Sparked by the fiery preaching of Jonathan Edwards, whose sermon 'Sinners in the Hands of an Angry God' remains a masterpiece of American literature, the revival was turbo-charged by the transatlantic ministry of George Whitefield, the most famous preacher of the 18th century. Whitefield's dramatic, emotional style drew thousands at outdoor meetings — he preached to crowds of up to 30,000 without amplification. The Awakening emphasized personal conversion, emotional religious experience, and individual spiritual agency over formal church membership. It challenged established clerical authority, as laypeople were encouraged to decide for themselves. This democratic impulse carried over into the American Revolution — many of the Awakening's leaders also championed colonial independence. The revival also spawned new denominations (Methodists, Baptists) and missionary movements, permanently reshaping American Protestantism.",
+          "category": "church_history",
+          "period": "1730s-1740s",
+          "location": "British American Colonies",
+          "keyFigures": [
+            "Jonathan Edwards",
+            "George Whitefield",
+            "John Wesley",
+            "Gilbert Tennent"
+          ],
+          "keyEvents": [
+            "Edwards' 'Sinners in the Hands of an Angry God'",
+            "Whitefield's colonial tours",
+            "Formation of Methodism"
+          ],
+          "tags": [
+            "revival",
+            "awakening",
+            "america",
+            "edwards",
+            "whitefield",
+            "methodist"
+          ],
+          "imageUrl": "assets/data/christian_history/images/bible_open.jpg"
+        },
+        {
+          "id": "azusa_street",
+          "title": "Azusa Street Revival",
+          "subtitle": "Birth of Pentecostalism",
+          "description": "The Azusa Street Revival (1906-1909) was a historic revival meeting at the Apostolic Faith Mission on Azusa Street in Los Angeles that gave birth to the modern Pentecostal movement. Led by William J. Seymour, a one-eyed African American preacher and son of former slaves, the revival featured dramatic manifestations of the Holy Spirit: speaking in tongues (glossolalia), healings, prophecies, and ecstatic worship. The revival was radically interracial — blacks, whites, Hispanics, and Asians worshiped together in an era of strict segregation, drawing national and international attention. Participants who experienced the 'baptism of the Holy Spirit' traveled the world spreading Pentecostal theology: Spirit baptism evidenced by speaking in tongues, divine healing, and the imminent return of Christ. From this small Los Angeles mission, Pentecostalism grew into the fastest-growing Christian movement of the 20th century, now representing over 600 million adherents worldwide. The revival also birthed numerous denominations including the Assemblies of God, the Church of God in Christ, and the Pentecostal Holiness Church.",
+          "category": "church_history",
+          "period": "1906-1909",
+          "location": "Los Angeles, California",
+          "keyFigures": [
+            "William J. Seymour",
+            "Charles Parham",
+            "Lucy Farrow"
+          ],
+          "keyEvents": [
+            "Baptism of the Holy Spirit",
+            "Speaking in tongues",
+            "Interracial worship",
+            "Global missionary expansion"
+          ],
+          "tags": [
+            "pentecostal",
+            "revival",
+            "azusa",
+            "holy spirit",
+            "tongues",
+            "los angeles"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "second_vatican",
+          "title": "Second Vatican Council",
+          "subtitle": "Aggiornamento — The Church Renewed",
+          "description": "The Second Vatican Council (Vatican II, 1962-1965), convened by Pope John XXIII, was the most transformative event in modern Catholic history. John XXIII described its purpose as 'aggiornamento' — updating the Church to engage the modern world. The council produced 16 documents that fundamentally reshaped Catholic worship, theology, and self-understanding. The most visible change was liturgical: the Mass shifted from Latin to vernacular languages, the priest faced the congregation (versus populum), and lay participation was emphasized. The council also embraced religious freedom (Dignitatis Humanae), affirmed the value of other Christian traditions (ecumenism), recognized the Church's historical failures in its relationship with Jews (Nostra Aetate), and redefined the Church as the 'People of God' rather than a hierarchical pyramid. Vatican II's vision of a Church in dialogue with the modern world, committed to social justice, and open to reform, has been both celebrated and contested within Catholicism since the council closed.",
+          "category": "church_history",
+          "period": "1962-1965",
+          "location": "Vatican City, Rome",
+          "keyFigures": [
+            "Pope John XXIII",
+            "Pope Paul VI",
+            "Cardinal Augustin Bea",
+            "Cardinal Giovanni Montini",
+            "Cardinal Léon-Joseph Suenens"
+          ],
+          "keyEvents": [
+            "Liturgical reform (Novus Ordo)",
+            "Declaration on Religious Freedom",
+            "Ecumenism",
+            "Nostra Aetate on Jews"
+          ],
+          "tags": [
+            "council",
+            "vatican",
+            "catholic",
+            "modern",
+            "liturgy",
+            "ecumenism"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        }
+      ]
+    },
+    {
+      "id": "denominations",
+      "title": "Christian Denominations",
+      "description": "A comprehensive guide to the major Christian traditions and denominations worldwide. Learn about their history, beliefs, founders, and distinctive practices.",
+      "icon": "people",
+      "entries": [
+        {
+          "id": "roman_catholic",
+          "title": "Roman Catholic Church",
+          "subtitle": "The Largest Christian Communion",
+          "description": "The Roman Catholic Church, with over 1.3 billion members, is the largest Christian denomination worldwide. Tracing its origins to Jesus Christ and the Apostle Peter, whom Catholics consider the first Bishop of Rome (Pope), the Catholic Church has maintained apostolic succession — an unbroken line of papal authority for nearly 2,000 years. Catholic theology is rooted in both Scripture and Sacred Tradition, with authority vested in the Magisterium (the Pope and bishops in communion with him). Key doctrines include the Trinity, the Incarnation, the real presence of Christ in the Eucharist (transubstantiation), seven sacraments, the veneration of Mary and the saints, purgatory, and papal infallibility (defined in 1870). The Catholic Church is organized hierarchically: Pope, cardinals, archbishops, bishops, priests, and deacons. Religious orders — Benedictines, Franciscans, Dominicans, Jesuits, and many others — enrich Catholic life with diverse spiritual traditions.",
+          "category": "denominations",
+          "period": "c. 30 AD - Present",
+          "foundedBy": "Jesus Christ / Apostle Peter",
+          "yearFounded": "c. 30 AD",
+          "headquarters": "Vatican City (Holy See)",
+          "adherents": "1.3+ billion",
+          "keyFigures": [
+            "Pope Francis",
+            "St. Peter",
+            "St. Paul",
+            "St. Augustine",
+            "St. Thomas Aquinas",
+            "St. Francis of Assisi",
+            "St. John Paul II"
+          ],
+          "keyEvents": [
+            "Great Schism (1054)",
+            "Council of Trent (1545-1563)",
+            "First Vatican Council (1870)",
+            "Second Vatican Council (1962-1965)"
+          ],
+          "tags": [
+            "catholic",
+            "pope",
+            "vatican",
+            "sacraments",
+            "apostolic"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        },
+        {
+          "id": "eastern_orthodox",
+          "title": "Eastern Orthodox Church",
+          "subtitle": "The Ancient Faith of the East",
+          "description": "The Eastern Orthodox Church comprises a communion of autocephalous (self-governing) churches united by shared faith, liturgy, and tradition, with approximately 220-260 million members worldwide. The Orthodox Church traces its roots directly to the apostolic churches of the Eastern Mediterranean and split from the Roman Catholic Church in the Great Schism of 1054. Orthodox theology emphasizes the mystery of God (apophatic theology), theosis (deification — becoming partakers of the divine nature), and the importance of Holy Tradition. The liturgy, particularly the Divine Liturgy of St. John Chrysostom, is central to Orthodox worship, characterized by incense, icons, chant, and elaborate ritual. Orthodox Christianity recognizes seven ecumenical councils (the first seven, before the schism) and rejects the papacy, instead maintaining conciliar governance with the Ecumenical Patriarch of Constantinople as 'first among equals.' Major Orthodox churches include the Ecumenical Patriarchate of Constantinople, the Russian Orthodox Church, the Greek Orthodox Church, the Serbian Orthodox Church, and the Romanian Orthodox Church.",
+          "category": "denominations",
+          "period": "33 AD - Present",
+          "foundedBy": "Apostles / Christ",
+          "yearFounded": "33 AD (apostolic); 1054 (autocephalous)",
+          "headquarters": "Ecumenical Patriarchate of Constantinople (Istanbul)",
+          "adherents": "220-260 million",
+          "keyFigures": [
+            "Ecumenical Patriarch Bartholomew I",
+            "St. John Chrysostom",
+            "St. Basil the Great",
+            "St. Gregory the Theologian",
+            "St. John of Damascus"
+          ],
+          "keyEvents": [
+            "Great Schism (1054)",
+            "Fall of Constantinople (1453)",
+            "Establishment of Moscow as Third Rome"
+          ],
+          "tags": [
+            "orthodox",
+            "eastern",
+            "byzantine",
+            "icons",
+            "liturgy",
+            "patriarch"
+          ],
+          "imageUrl": "assets/data/christian_history/images/hagia_sophia.jpg"
+        },
+        {
+          "id": "oriental_orthodox",
+          "title": "Oriental Orthodox Churches",
+          "subtitle": "The Non-Chalcedonian Tradition",
+          "description": "The Oriental Orthodox Churches are a communion of six ancient churches that rejected the Council of Chalcedon (451 AD) over its definition of Christ's two natures. These churches — the Coptic Orthodox Church of Alexandria, the Syriac Orthodox Church, the Armenian Apostolic Church, the Ethiopian Orthodox Tewahedo Church, the Eritrean Orthodox Tewahedo Church, and the Malankara Orthodox Syrian Church — together represent approximately 70-80 million Christians. They hold to miaphysite Christology: that Christ's divinity and humanity are united in one nature (physis), 'without confusion, without change, without division, without separation' — using language they argue is faithful to St. Cyril of Alexandria. Each Oriental Orthodox church maintains its own ancient liturgy and traditions while affirming the Nicene Creed and the first three ecumenical councils. In recent decades, theological dialogues have substantially narrowed the Christological divide with the Eastern Orthodox and Catholic Churches, though full communion has not been restored.",
+          "category": "denominations",
+          "period": "451 AD - Present",
+          "foundedBy": "Various apostolic sees",
+          "yearFounded": "Rejected Chalcedon in 451 AD",
+          "headquarters": "Decentralized (Alexandria, Antioch, Etchmiadzin, Addis Ababa)",
+          "adherents": "70-80 million",
+          "keyFigures": [
+            "Pope Tawadros II of Alexandria",
+            "Ignatius Aphrem II",
+            "St. Athanasius",
+            "St. Cyril of Alexandria"
+          ],
+          "keyEvents": [
+            "Council of Chalcedon (451)",
+            "Miaphysite controversy",
+            "20th century ecumenical dialogues"
+          ],
+          "tags": [
+            "orthodox",
+            "oriental",
+            "coptic",
+            "syriac",
+            "armenian",
+            "miaphysite"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "lutheran",
+          "title": "Lutheran Church",
+          "subtitle": "The First Protestant Reformation",
+          "description": "Lutheranism, the oldest Protestant tradition, traces its origins to Martin Luther's Reformation in 1517 and encompasses approximately 80 million members worldwide. Lutheranism's foundational confession is the Augsburg Confession (1530), written by Philipp Melanchthon, which articulates core Protestant principles: justification by grace through faith alone, the authority of Scripture alone, and the priesthood of all believers. Lutheran worship maintains a liturgical structure resembling the Catholic Mass but with emphasis on the preached Word and congregational hymnody — Luther himself wrote hymns including 'A Mighty Fortress Is Our God.' The Lutheran sacramental theology affirms two sacraments (Baptism and the Lord's Supper), teaches the real presence of Christ in the Eucharist (consubstantiation rather than transubstantiation), and maintains infant baptism. Major Lutheran bodies include the Evangelical Lutheran Church in America (ELCA), the Lutheran Church–Missouri Synod (LCMS), the Wisconsin Evangelical Lutheran Synod (WELS), and the Church of Sweden. Lutheran theology has been particularly influential in Germany, Scandinavia, and the American Upper Midwest.",
+          "category": "denominations",
+          "period": "1517 AD - Present",
+          "foundedBy": "Martin Luther",
+          "yearFounded": "1517",
+          "headquarters": "Lutheran World Federation (Geneva)",
+          "adherents": "~80 million",
+          "keyFigures": [
+            "Martin Luther",
+            "Philipp Melanchthon",
+            "Martin Chemnitz",
+            "Dietrich Bonhoeffer"
+          ],
+          "keyEvents": [
+            "95 Theses (1517)",
+            "Diet of Worms (1521)",
+            "Augsburg Confession (1530)",
+            "Peace of Augsburg (1555)"
+          ],
+          "tags": [
+            "protestant",
+            "lutheran",
+            "luther",
+            "reformation",
+            "augsburg confession"
+          ],
+          "imageUrl": "assets/data/christian_history/images/martin_luther.jpg"
+        },
+        {
+          "id": "anglican",
+          "title": "Anglican Communion",
+          "subtitle": "The Via Media",
+          "description": "The Anglican Communion is a global fellowship of churches in communion with the Archbishop of Canterbury, representing approximately 85 million members in over 165 countries. Anglicanism originated in the English Reformation, when Henry VIII broke with Rome in 1534 over papal authority and his marriage to Catherine of Aragon. However, the Church of England's distinctive character — the 'via media' (middle way) between Catholicism and Protestantism — was shaped more by the Elizabethan Settlement (1559) and the theological vision of Richard Hooker, who grounded Anglican identity on a three-legged stool: Scripture, Tradition, and Reason. Anglican worship is liturgical, centered on the Book of Common Prayer (first published 1549, revised 1662), which provides a rich pattern of daily prayer, sacraments, and the church year. The monarch of England is the Supreme Governor of the Church of England, but global Anglicanism is decentralized, with each province autonomous. The 39 Articles (1571) provide a doctrinal framework, but Anglicanism allows considerable theological diversity — it includes evangelical, Anglo-Catholic, and liberal streams. Recent divisions over the ordination of women and sexuality have strained but not broken the Communion.",
+          "category": "denominations",
+          "period": "1534 AD - Present",
+          "foundedBy": "Henry VIII / Thomas Cranmer",
+          "yearFounded": "1534 (Act of Supremacy)",
+          "headquarters": "Canterbury, England",
+          "adherents": "~85 million",
+          "keyFigures": [
+            "Thomas Cranmer",
+            "Henry VIII",
+            "Richard Hooker",
+            "John Wesley",
+            "C.S. Lewis",
+            "Desmond Tutu"
+          ],
+          "keyEvents": [
+            "Act of Supremacy (1534)",
+            "Book of Common Prayer (1549)",
+            "Elizabethan Settlement (1559)",
+            "Ordination of women (1970s)"
+          ],
+          "tags": [
+            "anglican",
+            "episcopal",
+            "via media",
+            "cranmer",
+            "common prayer"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "southern_baptist",
+          "title": "Southern Baptist Convention",
+          "subtitle": "America's Largest Protestant Denomination",
+          "description": "The Southern Baptist Convention (SBC) is the largest Protestant denomination in the United States, with approximately 13-14 million members in over 47,000 churches. Founded in 1845 in Augusta, Georgia, after splitting from northern Baptists over slavery, the SBC has evolved significantly over its history. Baptist distinctives include believer's baptism by immersion (as opposed to infant baptism), the autonomy of the local church, the priesthood of all believers, and the absolute authority of Scripture. The SBC experienced a major theological shift in the 'Conservative Resurgence' (1979-1990s), during which moderates were replaced by conservatives in denominational leadership, cementing the SBC's commitment to biblical inerrancy. In recent years, the SBC has faced internal debates over racial justice (including its founding ties to slavery), the role of women in ministry, and sexual abuse in churches. The SBC's cooperative program pools resources for international missions, church planting, and theological education through six seminaries. The denomination's missionary arm, the International Mission Board, supports over 3,500 missionaries worldwide.",
+          "category": "denominations",
+          "period": "1845 AD - Present",
+          "foundedBy": "Southern Baptist delegates",
+          "yearFounded": "1845",
+          "headquarters": "Nashville, Tennessee",
+          "adherents": "~13-14 million",
+          "keyFigures": [
+            "Billy Graham",
+            "Adrian Rogers",
+            "Paige Patterson",
+            "Martin Luther King Jr. (ordained Baptist)"
+          ],
+          "keyEvents": [
+            "Formation in Augusta (1845)",
+            "Conservative Resurgence (1979)",
+            "Resolution on Racial Reconciliation (1995)"
+          ],
+          "tags": [
+            "baptist",
+            "evangelical",
+            "southern",
+            "biblical inerrancy",
+            "missions"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "methodist",
+          "title": "Methodist Church",
+          "subtitle": "The Heart Strangely Warmed",
+          "description": "Methodism traces its origins to the 18th-century evangelical revival led by John and Charles Wesley, Anglican priests who sought to revitalize the Church of England through small-group accountability, practical piety, and social holiness. The name 'Methodist' was originally a pejorative for the Wesley's disciplined 'method' of spiritual practice. John Wesley, the theologian, organized the movement, while Charles Wesley wrote over 6,500 hymns — many still beloved ('Hark! the Herald Angels Sing,' 'Christ the Lord Is Risen Today,' 'O for a Thousand Tongues to Sing'). Methodist theology is Arminian (emphasizing free will and universal atonement), stresses entire sanctification (Christian perfection — love of God and neighbor), and balances personal piety with social engagement. After the American Revolution, Methodism became an independent church in America and grew explosively on the frontier through circuit-riding preachers. The United Methodist Church, formed by a 1968 merger, is the largest Methodist body but has recently undergone significant division over LGBTQ inclusion, with traditionalist churches forming the Global Methodist Church in 2022.",
+          "category": "denominations",
+          "period": "1738 AD - Present",
+          "foundedBy": "John Wesley",
+          "yearFounded": "1738",
+          "headquarters": "World Methodist Council (Lake Junaluska, NC)",
+          "adherents": "~60-80 million globally",
+          "keyFigures": [
+            "John Wesley",
+            "Charles Wesley",
+            "Francis Asbury",
+            "Susanna Wesley"
+          ],
+          "keyEvents": [
+            "Wesley's Aldersgate experience (1738)",
+            "Christmas Conference (1784)",
+            "Merger creating UMC (1968)",
+            "Global Methodist Church split (2022)"
+          ],
+          "tags": [
+            "methodist",
+            "wesley",
+            "arminian",
+            "sanctification",
+            "hymns"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "presbyterian",
+          "title": "Presbyterian Church",
+          "subtitle": "Reformed and Always Reforming",
+          "description": "Presbyterianism is a Reformed Protestant tradition rooted in the theology of John Calvin and systematized by his successor John Knox in Scotland. The name derives from the Greek presbyteros (elder), reflecting the Presbyterian polity of governance by elected elders (the session, presbytery, synod, and general assembly) rather than bishops. Presbyterian theology is classically Calvinist, emphasizing the sovereignty of God, predestination, covenant theology, and the authority of Scripture. The Westminster Confession of Faith (1646) and the Larger and Shorter Catechisms are the definitive confessional standards of Presbyterianism. Worship in the Reformed tradition focuses on the preaching of the Word and the administration of the two sacraments (Baptism and the Lord's Supper), with simplicity and reverence. Presbyterianism spread through Scottish and Ulster Scots immigration to become a major force in American religious life. Major Presbyterian bodies include the Presbyterian Church (USA) (PCUSA), the Presbyterian Church in America (PCA), the Orthodox Presbyterian Church (OPC), and the Evangelical Presbyterian Church (EPC). The tradition has influenced American political thought — the Presbyterian system of representative governance influenced the framers of the U.S. Constitution.",
+          "category": "denominations",
+          "period": "1560 AD - Present",
+          "foundedBy": "John Calvin / John Knox",
+          "yearFounded": "1560 (Scottish Reformation)",
+          "headquarters": "Decentralized (Geneva, Edinburgh historically)",
+          "adherents": "~40-50 million",
+          "keyFigures": [
+            "John Calvin",
+            "John Knox",
+            "John Witherspoon",
+            "Francis Schaeffer",
+            "Timothy Keller"
+          ],
+          "keyEvents": [
+            "Scots Confession (1560)",
+            "Westminster Assembly (1643-1653)",
+            "PCUSA formation (1983)"
+          ],
+          "tags": [
+            "presbyterian",
+            "reformed",
+            "calvinist",
+            "elders",
+            "westminster"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "assemblies_god",
+          "title": "Assemblies of God",
+          "subtitle": "Pentecostal Power and Global Mission",
+          "description": "The Assemblies of God (AG) is the world's largest Pentecostal denomination, with over 69 million adherents globally and approximately 13,000 churches in the United States. Founded in 1914 at a convention in Hot Springs, Arkansas, the AG emerged from the Azusa Street Revival and the broader Pentecostal outpouring. The denomination's core distinctive is the doctrine of the baptism in the Holy Spirit as a second work of grace subsequent to conversion, evidenced by speaking in tongues. The AG affirms the Four Square Gospel: Jesus saves, heals, baptizes in the Holy Spirit, and is coming again. Worship in Assemblies of God churches is typically energetic, contemporary, and Spirit-led, with vibrant congregational singing, spontaneous prayer, and the exercise of spiritual gifts (prophecy, healing, tongues with interpretation). The AG maintains evangelical orthodoxy on Scripture, the Trinity, and the atonement. The denomination has emphasized global missions from its inception — by 2023, it had planted church networks in over 255 countries and territories.",
+          "category": "denominations",
+          "period": "1914 AD - Present",
+          "foundedBy": "Pentecostal leaders (E.N. Bell, J. Roswell Flower, etc.)",
+          "yearFounded": "1914",
+          "headquarters": "Springfield, Missouri",
+          "adherents": "~69 million globally",
+          "keyFigures": [
+            "E.N. Bell",
+            "J. Roswell Flower",
+            "William J. Seymour",
+            "Smith Wigglesworth"
+          ],
+          "keyEvents": [
+            "Hot Springs Convention (1914)",
+            "Azusa Street Revival influence",
+            "Global missions expansion"
+          ],
+          "tags": [
+            "pentecostal",
+            "assemblies of god",
+            "holy spirit",
+            "tongues",
+            "spirit baptism"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "coptics",
+          "title": "Coptic Orthodox Church of Alexandria",
+          "subtitle": "The Church of the Martyrs",
+          "description": "The Coptic Orthodox Church of Alexandria is one of the oldest Christian churches in the world, tracing its foundation to St. Mark the Evangelist, who brought Christianity to Egypt around 42 AD. The word 'Copt' derives from the Greek 'Aigyptos' (Egypt). The Coptic Church is an Oriental Orthodox church, having rejected the Council of Chalcedon in 451 AD. It uses the Coptic language (derived from ancient Egyptian) in its liturgy alongside Arabic. Coptic spirituality is deeply monastic — St. Anthony the Great (251-356 AD) and St. Pachomius pioneered Christian monasticism in the Egyptian desert. The Coptic Church has preserved distinctive traditions: a liturgy attributed to St. Cyril, elaborate fasting disciplines (over 210 days per year), and the veneration of a large number of martyrs from the Roman persecutions. In modern times, Coptic Christians have faced significant persecution in Egypt, including church bombings, mob attacks, and discrimination — earning the Church's ancient title 'the Church of the Martyrs' renewed relevance. The current pope is Pope Tawadros II (enthroned 2012).",
+          "category": "denominations",
+          "period": "42 AD - Present",
+          "foundedBy": "St. Mark the Evangelist",
+          "yearFounded": "c. 42 AD",
+          "headquarters": "Cairo, Egypt (St. Mark's Coptic Orthodox Cathedral)",
+          "adherents": "~10-15 million",
+          "keyFigures": [
+            "St. Mark",
+            "St. Anthony the Great",
+            "St. Athanasius",
+            "St. Cyril of Alexandria",
+            "Pope Tawadros II",
+            "Pope Shenouda III"
+          ],
+          "keyEvents": [
+            "Martyrdom of St. Mark (68 AD)",
+            "Council of Chalcedon rejection (451)",
+            "Arab conquest of Egypt (641)",
+            "Modern persecution"
+          ],
+          "tags": [
+            "coptic",
+            "egypt",
+            "orthodox",
+            "oriental",
+            "desert fathers",
+            "martyr"
+          ],
+          "imageUrl": "assets/data/christian_history/images/mount_sinai.jpg"
+        },
+        {
+          "id": "ethiopian_orthodox",
+          "title": "Ethiopian Orthodox Tewahedo Church",
+          "subtitle": "An Ancient African Faith",
+          "description": "The Ethiopian Orthodox Tewahedo Church is one of the oldest Christian churches, with origins dating to the conversion of the Ethiopian eunuch by Philip the Evangelist in Acts 8 and the later missionary work of Frumentius in the 4th century. 'Tewahedo' means 'being made one,' reflecting the church's miaphysite Christology. Unique among Christian traditions, Ethiopian Orthodoxy preserves many Jewish practices: circumcision, dietary distinctions, the Saturday Sabbath alongside Sunday, and the Ark of the Covenant tradition (Ethiopian tradition claims the Ark is housed at the Church of Our Lady Mary of Zion in Axum). The church has a distinctive canon that includes books not found in other Christian Bibles, including Enoch, Jubilees, and the Ascension of Isaiah. Worship is elaborate, featuring drumming, sistra (sistrum rattles), chanting, and the tabot (a replica of the Ark of the Covenant) carried in procession. The church has over 40 million members, making Ethiopia one of the oldest Christian nations and the largest Christian population in Africa.",
+          "category": "denominations",
+          "period": "c. 330 AD - Present",
+          "foundedBy": "St. Frumentius",
+          "yearFounded": "c. 330 AD",
+          "headquarters": "Addis Ababa, Ethiopia",
+          "adherents": "~40-45 million",
+          "keyFigures": [
+            "St. Frumentius",
+            "St. Tekle Haymanot",
+            "Emperor Haile Selassie (patron)",
+            "Abune Mathias (current Patriarch)"
+          ],
+          "keyEvents": [
+            "Conversion of Ethiopia (330)",
+            "Rejection of Chalcedon (451)",
+            "Solomonic dynasty connection"
+          ],
+          "tags": [
+            "ethiopian",
+            "tewahedo",
+            "orthodox",
+            "ark",
+            "african",
+            "ancient"
+          ],
+          "imageUrl": "assets/data/christian_history/images/ethiopian_cross.jpg"
+        },
+        {
+          "id": "mennonite",
+          "title": "Mennonite Church",
+          "subtitle": "Peace, Community, and Simplicity",
+          "description": "The Mennonite tradition emerged from the Radical Reformation (Anabaptist movement) of the 16th century, named after Menno Simons (1496-1561), a Dutch Catholic priest who converted to Anabaptism. Anabaptists rejected infant baptism in favor of believer's baptism by profession of faith — a radical position that put them at odds with both Catholic and Protestant authorities. Menno Simons's writings organized and unified persecuted Anabaptist groups. Core Mennonite distinctives include: nonviolence (historic peace church position), community discernment, adult baptism, separation of church and state, simple living, and mutual aid. Worship is typically simple, emphasizing Scripture reading, congregational singing (often acapella four-part harmony), and preaching. The Amish (formed 1693 under Jakob Ammann) are a conservative offshoot of the Mennonite tradition. Mennonites have a strong tradition of relief and development work (Mennonite Central Committee, founded 1920). North America has about 500,000 Mennonites; globally, the community numbers about 2.1 million, with rapidly growing churches in Africa, Asia, and Latin America.",
+          "category": "denominations",
+          "period": "1525 AD - Present",
+          "foundedBy": "Menno Simons",
+          "yearFounded": "1525 (Anabaptist); 1536 (Mennonite named)",
+          "headquarters": "Mennonite World Conference (MWC)",
+          "adherents": "~2.1 million",
+          "keyFigures": [
+            "Menno Simons",
+            "Jakob Ammann",
+            "Conrad Grebel",
+            "George Blaurock"
+          ],
+          "keyEvents": [
+            "Zürich Anabaptist beginnings (1525)",
+            "Menno Simons joins (1536)",
+            "Amish division (1693)",
+            "MCC founded (1920)"
+          ],
+          "tags": [
+            "mennonite",
+            "anabaptist",
+            "peace",
+            "nonviolence",
+            "believer's baptism"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "seventh_day_adventist",
+          "title": "Seventh-day Adventist Church",
+          "subtitle": "Prophecy, Health, and Sabbath",
+          "description": "The Seventh-day Adventist Church (SDA) is a Protestant denomination that grew out of the Millerite movement of the 1840s, which anticipated Christ's second coming in 1844. When the 'Great Disappointment' occurred, a group led by James White, Ellen G. White, and Joseph Bates reinterpreted the event as the beginning of Christ's heavenly sanctuary ministry rather than his earthly return. The church's name reflects its two most distinctive beliefs: worship on Saturday (the seventh-day Sabbath) and the imminent second coming (Advent). Ellen G. White, considered the denomination's prophet, produced extensive writings that, while not considered Scripture, are held as inspired guidance. The SDA church emphasizes holistic health: many Adventists follow a vegetarian diet, avoid alcohol and tobacco, and the denomination operates one of the largest Protestant healthcare systems in the world. The 'investigative judgment' doctrine (Christ's work in the heavenly sanctuary since 1844) and soul sleep (the dead are unconscious until the resurrection) are distinctive teachings. The SDA church has strong educational institutions worldwide and has grown rapidly, reaching over 22 million members globally.",
+          "category": "denominations",
+          "period": "1863 AD - Present",
+          "foundedBy": "James White, Ellen G. White, Joseph Bates",
+          "yearFounded": "1863 (formally organized)",
+          "headquarters": "Silver Spring, Maryland",
+          "adherents": "~22 million",
+          "keyFigures": [
+            "Ellen G. White",
+            "James White",
+            "Joseph Bates",
+            "Hiram Edson"
+          ],
+          "keyEvents": [
+            "Millerite movement (1840s)",
+            "Sabbath adoption (1845)",
+            "Formal organization (1863)",
+            "Great Disappointment reinterpretation"
+          ],
+          "tags": [
+            "adventist",
+            "sabbath",
+            "prophecy",
+            "health",
+            "white",
+            "second coming"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "jehovahs_witnesses",
+          "title": "Jehovah's Witnesses",
+          "subtitle": "Kingdom Proclaimers",
+          "description": "Jehovah's Witnesses are a restorationist Christian denomination that emerged from the Bible Student movement founded by Charles Taze Russell in the 1870s in Pittsburgh. Taking their name in 1931, Jehovah's Witnesses are known for their distinctive theology and zealous door-to-door evangelism. Key doctrines include: the use of God's personal name Jehovah (Yahweh); rejection of the Trinity (Jesus is God's first creation, the archangel Michael); denial of hell (the dead are unconscious until resurrection); refusal of blood transfusions based on Acts 15; conscientious objection to military service and political involvement; and the belief that 144,000 anointed believers will rule with Christ in heaven. The Governing Body in Warwick, New York provides centralized leadership. Witnesses meet in Kingdom Halls, not churches. The Watchtower Society, their primary publishing organization, produces The Watchtower and Awake! magazines with circulation in the tens of millions. Their annual Memorial of Christ's Death is their most important observance. With approximately 8.7 million active members worldwide, Jehovah's Witnesses continue aggressive evangelism and have grown particularly in developing nations.",
+          "category": "denominations",
+          "period": "1870s AD - Present",
+          "foundedBy": "Charles Taze Russell",
+          "yearFounded": "1870s (Bible Student movement); 1931 (name adopted)",
+          "headquarters": "Warwick, New York",
+          "adherents": "~8.7 million",
+          "keyFigures": [
+            "Charles Taze Russell",
+            "Joseph Franklin Rutherford",
+            "Nathan Knorr"
+          ],
+          "keyEvents": [
+            "Zion's Watchtower founded (1879)",
+            "Name 'Jehovah's Witnesses' adopted (1931)",
+            "Blood doctrine formalized (1945)"
+          ],
+          "tags": [
+            "jehovah's witnesses",
+            "watchtower",
+            "kingdom hall",
+            "non-trinitarian",
+            "door-to-door"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "lds",
+          "title": "The Church of Jesus Christ of Latter-day Saints",
+          "subtitle": "The Mormon Tradition",
+          "description": "The Church of Jesus Christ of Latter-day Saints (LDS), commonly known as the Mormon Church, is the largest denomination in the Latter Day Saint movement, with over 17 million members worldwide. Founded by Joseph Smith in upstate New York in 1830, the church teaches that Smith was visited by God the Father and Jesus Christ (the First Vision, 1820), and later guided by the angel Moroni to translate the Book of Mormon — an ancient record of God's dealings with peoples in the Americas. The LDS canon includes the Bible, the Book of Mormon, the Doctrine and Covenants (Smith's revelations), and the Pearl of Great Price. Distinctive LDS doctrines include: the Godhead (three separate beings in unity, not the Trinity), pre-mortal existence, eternal progression (humans can become like God), salvation for the dead through vicarious baptism, temple worship (including sealings for eternity), and continued revelation through living prophets. The church is organized hierarchically with a President/Prophet, Quorum of the Twelve Apostles, and local leadership. Headquarters are in Salt Lake City, Utah, which the early Mormons settled under Brigham Young's leadership after Smith's martyrdom in 1844.",
+          "category": "denominations",
+          "period": "1830 AD - Present",
+          "foundedBy": "Joseph Smith Jr.",
+          "yearFounded": "1830",
+          "headquarters": "Salt Lake City, Utah",
+          "adherents": "~17 million",
+          "keyFigures": [
+            "Joseph Smith Jr.",
+            "Brigham Young",
+            "Russell M. Nelson (current president)"
+          ],
+          "keyEvents": [
+            "First Vision (1820)",
+            "Book of Mormon published (1830)",
+            "Exodus to Utah (1846-1847)",
+            "Priesthood revelation (1978)"
+          ],
+          "tags": [
+            "mormon",
+            "lds",
+            "book of mormon",
+            "salt lake",
+            "restoration"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        }
+      ]
+    },
+    {
+      "id": "councils",
+      "title": "Church Councils & Creeds",
+      "description": "The major councils and creeds that shaped Christian doctrine, from the Council of Jerusalem to Vatican II. Each council addressed critical theological questions and defined the boundaries of Christian orthodoxy.",
+      "icon": "account_balance",
+      "entries": [
+        {
+          "id": "council_jerusalem_detailed",
+          "title": "Council of Jerusalem (49 AD)",
+          "subtitle": "The First Church Council",
+          "description": "The Council of Jerusalem, described in Acts 15, was the first Christian council, convened to resolve whether Gentile converts must follow the Law of Moses. After Peter's vision and Paul's missionary success among Gentiles, the question of circumcision and Torah observance threatened to split the early church. The council, presided over by James the brother of Jesus, issued a landmark decision: Gentiles need not be circumcised but should abstain from idolatry, blood, strangled meat, and sexual immorality. This apostolic decree preserved the unity of the church and established Christianity as a universal faith accessible to all peoples.",
+          "category": "councils",
+          "period": "c. 49 AD",
+          "location": "Jerusalem",
+          "keyFigures": [
+            "James the Just",
+            "Peter",
+            "Paul the Apostle",
+            "Barnabas",
+            "Silas"
+          ],
+          "keyEvents": [
+            "Gentile inclusion debate",
+            "Apostolic decree",
+            "Unity preserved"
+          ],
+          "tags": [
+            "council",
+            "jerusalem",
+            "gentiles",
+            "apostolic"
+          ]
+        },
+        {
+          "id": "council_nicaea_detailed",
+          "title": "First Council of Nicaea (325 AD)",
+          "subtitle": "The Nicene Creed",
+          "description": "The First Council of Nicaea, convened by Emperor Constantine in 325 AD, was the first ecumenical council, bringing ~300 bishops to resolve the Arian controversy. The council affirmed the full divinity of Christ as 'homoousios' (same substance) with the Father, producing the original Nicene Creed. It also standardized the date of Easter and enacted 20 canons of church discipline. This council established the pattern of imperial ecumenical councils and created Christianity's first universal creedal statement.",
+          "category": "councils",
+          "period": "325 AD",
+          "location": "Nicaea (Iznik, Turkey)",
+          "keyFigures": [
+            "Constantine the Great",
+            "Athanasius",
+            "Arius",
+            "Eusebius of Caesarea",
+            "Hosius of Córdoba"
+          ],
+          "keyEvents": [
+            "Arian controversy resolved",
+            "Nicene Creed composed",
+            "Easter date fixed"
+          ],
+          "tags": [
+            "council",
+            "nicaea",
+            "creed",
+            "arian",
+            "constantine"
+          ]
+        },
+        {
+          "id": "council_constantinople",
+          "title": "First Council of Constantinople (381 AD)",
+          "subtitle": "The Holy Spirit Defined",
+          "description": "The First Council of Constantinople, the second ecumenical council, was convened by Emperor Theodosius I to resolve the Arian and Macedonian controversies. The council expanded the Nicene Creed, adding the section on the Holy Spirit (affirming his divinity against the Pneumatomachians who denied it) and the article on the Church, baptism, and resurrection. This Niceno-Constantinopolitan Creed is the creed recited in most Christian liturgies today. The council also affirmed Constantinople as 'New Rome,' second in honor after Rome, establishing the pentarchy system.",
+          "category": "councils",
+          "period": "381 AD",
+          "location": "Constantinople (Istanbul)",
+          "keyFigures": [
+            "Emperor Theodosius I",
+            "Gregory of Nazianzus",
+            "Gregory of Nyssa",
+            "Meletius of Antioch"
+          ],
+          "keyEvents": [
+            "Nicene Creed expanded",
+            "Holy Spirit's divinity affirmed",
+            "Constantinople's primacy established"
+          ],
+          "tags": [
+            "council",
+            "constantinople",
+            "creed",
+            "holy spirit",
+            "trinity"
+          ]
+        },
+        {
+          "id": "council_ephesus",
+          "title": "Council of Ephesus (431 AD)",
+          "subtitle": "Theotokos — Mary as Mother of God",
+          "description": "The Council of Ephesus, the third ecumenical council, addressed the Nestorian controversy: whether Mary could be called Theotokos (God-bearer/Mother of God) or only Christotokos (Christ-bearer). Nestorius, Patriarch of Constantinople, argued for the latter, believing Christ's human and divine natures were too separate to allow calling Mary the Mother of God. Cyril of Alexandria championed Theotokos, arguing that the unity of Christ's person made the title theologically necessary. The council affirmed Theotokos, condemned Nestorius, and declared the hypostatic union of Christ's two natures in one person.",
+          "category": "councils",
+          "period": "431 AD",
+          "location": "Ephesus, Turkey",
+          "keyFigures": [
+            "Cyril of Alexandria",
+            "Nestorius of Constantinople",
+            "Pope Celestine I",
+            "Emperor Theodosius II"
+          ],
+          "keyEvents": [
+            "Theotokos affirmed",
+            "Nestorius condemned",
+            "Nestorian Schism"
+          ],
+          "tags": [
+            "council",
+            "ephesus",
+            "theotokos",
+            "nestorian",
+            "mary"
+          ]
+        },
+        {
+          "id": "council_chalcedon_detailed",
+          "title": "Council of Chalcedon (451 AD)",
+          "subtitle": "One Person, Two Natures",
+          "description": "The Council of Chalcedon, the fourth ecumenical council, was the largest council of the ancient church with over 500 bishops attending. It addressed the Eutychian (monophysite) controversy — whether Christ's divine nature subsumed his humanity into a single nature. The council produced the Chalcedonian Definition: Christ is 'one hypostasis (person) in two natures (divine and human), without confusion, without change, without division, without separation.' These four adverbs became the Christological standard for Catholic, Orthodox, and Protestant Christianity. The council's decision was rejected by the Oriental Orthodox churches, creating a schism that persists today.",
+          "category": "councils",
+          "period": "451 AD",
+          "location": "Chalcedon (Kadıköy, Turkey)",
+          "keyFigures": [
+            "Pope Leo I",
+            "Emperor Marcian",
+            "Dioscorus of Alexandria",
+            "Eutyches"
+          ],
+          "keyEvents": [
+            "Chalcedonian Definition",
+            "Monophysitism condemned",
+            "Oriental Orthodox schism"
+          ],
+          "tags": [
+            "council",
+            "chalcedon",
+            "christology",
+            "two natures",
+            "schism"
+          ]
+        },
+        {
+          "id": "apostles_creed",
+          "title": "Apostles' Creed",
+          "subtitle": "The Oldest Creed",
+          "description": "The Apostles' Creed is the oldest and shortest of the three universal Christian creeds, dating in its current form from the 8th century but rooted in the Old Roman Creed of the 2nd century. Legend credits each of the twelve apostles with contributing one of its twelve articles. The creed's simple three-part structure follows the Trinitarian formula: belief in God the Father, Jesus Christ the Son (covering his birth, death, resurrection, and return), and the Holy Spirit (covering the Church, forgiveness, and eternal life). Used widely in baptismal liturgies, the Apostles' Creed serves as a basic statement of Christian orthodoxy across Catholic, Orthodox, and Protestant traditions.",
+          "category": "councils",
+          "period": "2nd-8th centuries",
+          "location": "Rome / Western Church",
+          "keyFigures": [
+            "Traditionally the Twelve Apostles"
+          ],
+          "keyEvents": [
+            "Old Roman Creed (c. 180)",
+            "Current form (8th century)"
+          ],
+          "tags": [
+            "creed",
+            "apostle's",
+            "trinity",
+            "baptism"
+          ]
+        },
+        {
+          "id": "nicene_creed",
+          "title": "Nicene Creed",
+          "subtitle": "The Universal Symbol of Faith",
+          "description": "The Nicene Creed, in its full Niceno-Constantinopolitan form (381 AD), is the most widely accepted statement of Christian faith across the major traditions. It affirms belief in one God the Father, Jesus Christ as 'begotten, not made, consubstantial with the Father,' the Holy Spirit as 'Lord and Giver of Life,' and the Church. The controversial Filioque clause ('and the Son'), stating the Holy Spirit proceeds from the Father and the Son, was added by the Western Church and remains a point of contention between Catholic/Protestant and Orthodox churches. The creed is recited weekly in most liturgical churches.",
+          "category": "councils",
+          "period": "325 AD / 381 AD",
+          "location": "Nicaea / Constantinople",
+          "keyFigures": [
+            "Athanasius",
+            "Gregory of Nazianzus"
+          ],
+          "keyEvents": [
+            "Composed at Nicaea (325)",
+            "Expanded at Constantinople (381)",
+            "Filioque controversy"
+          ],
+          "tags": [
+            "creed",
+            "nicaea",
+            "constantinople",
+            "trinity",
+            "filioque"
+          ]
+        },
+        {
+          "id": "council_trent_detailed",
+          "title": "Council of Trent (1545-1563)",
+          "subtitle": "The Counter-Reformation Council",
+          "description": "The Council of Trent, meeting in three sessions over 18 years, was the Roman Catholic Church's definitive response to the Protestant Reformation. It reaffirmed Catholic doctrines challenged by Protestants: justification by faith and works, seven sacraments, transubstantiation, the sacrificial Mass, purgatory, veneration of saints, and the authority of Tradition alongside Scripture. It also enacted major reforms, including the establishment of seminaries for priestly training, requirements for bishops to reside in their dioceses, and prohibition of simony and pluralism. The Tridentine Mass was standardized and became the universal Catholic liturgy until Vatican II. Trent defined Catholicism's shape for 400 years.",
+          "category": "councils",
+          "period": "1545-1563",
+          "location": "Trento, Italy",
+          "keyFigures": [
+            "Pope Paul III",
+            "Pope Pius IV",
+            "St. Charles Borromeo",
+            "St. Ignatius of Loyola",
+            "Cardinal Reginald Pole"
+          ],
+          "keyEvents": [
+            "Counter-Reformation defined",
+            "Seminaries established",
+            "Index of Forbidden Books",
+            "Tridentine Mass standardized"
+          ],
+          "tags": [
+            "council",
+            "trent",
+            "counter-reformation",
+            "catholic",
+            "tridentine"
+          ]
+        },
+        {
+          "id": "vatican1",
+          "title": "First Vatican Council (1869-1870)",
+          "subtitle": "Papal Infallibility",
+          "description": "The First Vatican Council (Vatican I), convened by Pope Pius IX, was the 20th ecumenical council of the Catholic Church. Its most significant and controversial achievement was the definition of papal infallibility: when the Pope speaks ex cathedra (from the chair, as pastor of all Christians) on matters of faith and morals, he is preserved from error by the Holy Spirit. The council also affirmed the Pope's primacy of jurisdiction over the entire Church. The definition sparked controversy, leading a minority of Catholics (led by Johann Joseph Ignaz von Döllinger) to separate as Old Catholics. The council was suspended indefinitely in October 1870 due to the capture of Rome by Italian troops, with many items on its agenda left unfinished.",
+          "category": "councils",
+          "period": "1869-1870",
+          "location": "Vatican City / Rome",
+          "keyFigures": [
+            "Pope Pius IX",
+            "Cardinal Henry Edward Manning",
+            "John Henry Newman",
+            "Johann Joseph Ignaz von Döllinger"
+          ],
+          "keyEvents": [
+            "Papal infallibility defined",
+            "Primacy of jurisdiction",
+            "Old Catholic schism"
+          ],
+          "tags": [
+            "council",
+            "vatican",
+            "pope",
+            "infallibility",
+            "catholic"
+          ]
+        },
+        {
+          "id": "vatican2",
+          "title": "Second Vatican Council (1962-1965)",
+          "subtitle": "The Council of the Modern Age",
+          "description": "The Second Vatican Council (Vatican II), called by Pope John XXIII, was the most significant Catholic event of the 20th century. Its purpose was 'aggiornamento' — updating the Church for engagement with the modern world. The council produced 16 documents reforming nearly every aspect of Catholic life. Key changes included: Mass in vernacular languages, priest facing the congregation, expanded lay participation, affirmation of religious freedom, commitment to ecumenism, reconciliation with Jews (Nostra Aetate), and a collegial view of church governance. Vatican II's vision has been both embraced and contested, and its implementation continues to shape Catholic identity.",
+          "category": "councils",
+          "period": "1962-1965",
+          "location": "Vatican City / Rome",
+          "keyFigures": [
+            "Pope John XXIII",
+            "Pope Paul VI",
+            "Cardinal Augustin Bea",
+            "Cardinal Suenens",
+            "Cardinal Lercaro",
+            "Yves Congar (theologian)"
+          ],
+          "keyEvents": [
+            "Liturgical reform",
+            "Declaration on Religious Freedom",
+            "Ecumenism",
+            "Nostra Aetate"
+          ],
+          "tags": [
+            "council",
+            "vatican",
+            "modern",
+            "liturgy",
+            "ecumenism",
+            "aggiornamento"
+          ]
+        }
+      ]
+    }
+  ]
+}

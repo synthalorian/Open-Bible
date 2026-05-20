@@ -6,6 +6,7 @@ import '../../../concordance/presentation/pages/concordance_page.dart';
 import '../../../maps/presentation/pages/bible_maps_page.dart';
 import '../../../genealogy/presentation/pages/enhanced_genealogy_page.dart';
 import '../../../illustrations/presentation/pages/illustrations_gallery_page.dart';
+import '../../../christian_history/presentation/pages/christian_history_hub_page.dart';
 import '../../../settings/presentation/pages/settings_page.dart';
 import '../../../../debug_storage_page.dart';
 
@@ -70,6 +71,15 @@ class MorePage extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const IllustrationsGalleryPage()),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.history_edu),
+            title: const Text('Christian History'),
+            subtitle: const Text('Real-world history, denominations, crosses & more'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ChristianHistoryHubPage()),
             ),
           ),
           const Divider(),

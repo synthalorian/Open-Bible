@@ -1,0 +1,913 @@
+{
+  "categories": [
+    {
+      "id": "saints",
+      "title": "Saints & Key Figures",
+      "description": "The heroes of the Christian faith — apostles, martyrs, church fathers, theologians, and modern witnesses who shaped Christianity through their lives, teachings, and sacrifices.",
+      "icon": "star",
+      "entries": [
+        {
+          "id": "peter_apostle",
+          "title": "St. Peter the Apostle",
+          "subtitle": "The Rock on Which the Church Was Built",
+          "description": "Simon Peter, originally a fisherman from Bethsaida on the Sea of Galilee, was the first-called disciple of Jesus and the leader of the Twelve Apostles. Jesus named him 'Peter' (Petros — rock), declaring 'on this rock I will build my church' (Matthew 16:18). Peter was present at the Transfiguration, walked on water (briefly), and denied Jesus three times before the crucifixion — only to be restored three times by the risen Christ. After Pentecost, Peter emerged as the leader of the early Church, preaching the first Christian sermon (converting 3,000), healing the lame man at the Beautiful Gate, and making the decisive declaration that Gentiles should be welcomed into the Church without circumcision (Council of Jerusalem). According to strong tradition, Peter went to Rome, where he was crucified upside down under Emperor Nero around 64 AD, feeling unworthy to die in the same manner as Christ. The Catholic Church considers Peter the first Bishop of Rome (Pope), and his tomb is beneath St. Peter's Basilica. His symbols are the keys (the keys of the kingdom) and the inverted cross. His feast day is June 29 (with St. Paul).",
+          "category": "saints",
+          "period": "c. 1 BC - c. 64 AD",
+          "location": "Galilee, Jerusalem, Rome",
+          "keyFigures": [
+            "Jesus Christ",
+            "Andrew the Apostle (brother)"
+          ],
+          "keyEvents": [
+            "Called by Jesus",
+            "Confession of Christ",
+            "Denial and restoration",
+            "Pentecost sermon",
+            "Council of Jerusalem",
+            "Martyrdom in Rome"
+          ],
+          "tags": [
+            "apostle",
+            "peter",
+            "pope",
+            "keys",
+            "martyr",
+            "rome"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        },
+        {
+          "id": "paul_apostle",
+          "title": "St. Paul the Apostle",
+          "subtitle": "The Apostle to the Gentiles",
+          "description": "Paul of Tarsus (originally Saul) was the most influential missionary and theologian of early Christianity. Born a Roman citizen and a Pharisee educated under Gamaliel, he initially persecuted Christians with zeal, witnessing and approving of Stephen's martyrdom. On the road to Damascus to arrest Christians, he was struck blind by a vision of the risen Christ, who asked, 'Saul, Saul, why are you persecuting me?' After his conversion and baptism, Paul spent three years in Arabia, then began the missionary career that would take him across the Mediterranean world. His three missionary journeys established churches in Asia Minor, Macedonia, and Greece. His letters (epistles) to these churches — Romans, Corinthians, Galatians, Ephesians, Philippians, Colossians, Thessalonians, and others — form a substantial portion of the New Testament and contain the foundational formulations of Christian theology: justification by faith, the nature of the Church as the Body of Christ, the resurrection, and the role of the Law. Paul was imprisoned in Jerusalem, appealed to Caesar (as a Roman citizen), and was sent to Rome, where he was martyred by beheading under Nero around 64-67 AD. His writings have shaped Christian theology more than any other author. His feast day is June 29 (with St. Peter).",
+          "category": "saints",
+          "period": "c. 5 AD - c. 64 AD",
+          "location": "Tarsus, Damascus, Antioch, Greece, Rome",
+          "keyFigures": [
+            "Gamaliel",
+            "Barnabas",
+            "Silas",
+            "Timothy",
+            "Luke the Evangelist"
+          ],
+          "keyEvents": [
+            "Conversion on Damascus Road",
+            "Three missionary journeys",
+            "Epistles to the churches",
+            "Shipwreck on Malta",
+            "Martyrdom in Rome"
+          ],
+          "tags": [
+            "apostle",
+            "paul",
+            "conversion",
+            "epistles",
+            "missionary",
+            "gentiles"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        },
+        {
+          "id": "augustine_hippo_saint",
+          "title": "St. Augustine of Hippo",
+          "subtitle": "The Doctor of Grace",
+          "description": "Augustine of Hippo (354-430 AD) is the most influential theologian in Western Christianity after the Apostle Paul. Born in Thagaste, North Africa, to a pagan father (Patricius) and a devout Christian mother (Monica), Augustine lived a restless early life of intellectual exploration, Manichaeism, and moral struggle. He taught rhetoric in Carthage, Rome, and Milan. In Milan, he came under the influence of Bishop Ambrose and experienced a dramatic conversion in a garden, hearing a child's voice chanting 'Tolle lege' (take up and read) — he opened the Bible to Romans 13:13-14 and was instantly converted. Augustine was baptized by Ambrose in 387. Returning to North Africa, he became bishop of Hippo Regius (395-430) and spent 34 years pastoring his flock while writing the works that would define Western theology. His 'Confessions' is the first spiritual autobiography and a masterpiece of world literature. 'The City of God' was the first Christian theology of history, written in response to the fall of Rome. 'On the Trinity' developed the psychological analogy for the Trinity. Augustine's doctrines of original sin, divine grace, and predestination shaped both Catholic and Protestant theology profoundly. He died on August 28, 430 during the Vandal siege of Hippo.",
+          "category": "saints",
+          "period": "354-430 AD",
+          "location": "Thagaste, Carthage, Milan, Hippo Regius (Algeria)",
+          "keyFigures": [
+            "St. Monica (mother)",
+            "St. Ambrose of Milan",
+            "St. Jerome"
+          ],
+          "keyEvents": [
+            "Conversion in Milan (386)",
+            "Baptism by Ambrose (387)",
+            "Ordained priest (391)",
+            "Bishop of Hippo (395)",
+            "Wrote Confessions (397-400)",
+            "Wrote City of God (412-427)",
+            "Death during siege (430)"
+          ],
+          "tags": [
+            "church father",
+            "augustine",
+            "theology",
+            "grace",
+            "confessions",
+            "doctor of the church"
+          ],
+          "imageUrl": "assets/data/christian_history/images/augustine.jpg"
+        },
+        {
+          "id": "thomas_aquinas",
+          "title": "St. Thomas Aquinas",
+          "subtitle": "The Angelic Doctor",
+          "description": "Thomas Aquinas (1225-1274) is the greatest theologian and philosopher of the medieval Catholic Church. Born to a noble family at Roccasecca Castle near Aquino, Italy, he shocked his family by joining the Dominican Order (the Order of Preachers) against their wishes. His family imprisoned him for a year to prevent his joining, but he refused to relent. He studied under Albert the Great in Paris and Cologne, where his quiet demeanor earned him the nickname 'the Dumb Ox' — to which Albert replied, 'This dumb ox will fill the world with his bellowing.' Thomas's masterpiece, the 'Summa Theologica,' is the most comprehensive synthesis of Christian theology ever attempted, systematically covering God, creation, humanity, Christ, sacraments, and the purpose of existence. His 'Summa Contra Gentiles' addressed the relationship between faith and reason, arguing that reason can demonstrate many truths about God but faith is necessary for salvation. Thomas integrated Aristotelian philosophy with Christian theology, arguing that faith and reason are complementary, not contradictory. His Five Ways (proofs for God's existence) — from motion, causality, contingency, perfection, and design — remain influential arguments in natural theology. Thomas had a mystical vision near the end of his life after which he declared his writings 'like straw' compared to what he had seen. He died on March 7, 1274 on his way to the Council of Lyons.",
+          "category": "saints",
+          "period": "1225-1274",
+          "location": "Aquino, Paris, Cologne, Naples, Fossanova",
+          "keyFigures": [
+            "Albert the Great (teacher)",
+            "Pope Innocent V"
+          ],
+          "keyEvents": [
+            "Joined Dominicans (1244)",
+            "Studied under Albert (1248-1252)",
+            "Wrote Summa Theologica (1265-1274)",
+            "Mystical vision (1273)",
+            "Canonized (1323)",
+            "Doctor of the Church (1567)"
+          ],
+          "tags": [
+            "thomas aquinas",
+            "summa",
+            "scholastic",
+            "doctor of the church",
+            "dominican",
+            "five ways"
+          ],
+          "imageUrl": "assets/data/christian_history/images/thomas_aquinas.jpg"
+        },
+        {
+          "id": "francis_assisi",
+          "title": "St. Francis of Assisi",
+          "subtitle": "The Little Poor Man",
+          "description": "Francis of Assisi (1181/1182-1226) is one of the most beloved saints in Christian history, known for his radical poverty, love of nature, and devotion to Christ. Born Giovanni di Pietro di Bernardone to a wealthy cloth merchant in Assisi, Italy, Francis was a carefree young man who dreamed of knightly glory. After a failed military campaign and a period of imprisonment, illness, and disillusionment, he experienced a profound conversion. While praying in the run-down church of San Damiano, he heard the crucifix say: 'Francis, repair my house, which is falling into ruin.' He took this literally, selling his father's cloth to pay for repairs, leading to a dramatic public break with his father, who disowned him. Francis renounced his inheritance, stripping naked in the bishop's square and declaring, 'From now on, I can say with total freedom, Our Father who art in heaven.' He embraced Lady Poverty as his bride, living in extreme simplicity and preaching the Gospel to all. His preaching attracted followers, and the Franciscan Order was approved by Pope Innocent III in 1210. In 1224, Francis received the stigmata (the wounds of Christ) on Mount La Verna. He composed the 'Canticle of the Sun' (Canticle of the Creatures), one of the first great poems in Italian, praising God through Brother Sun, Sister Moon, and all creation. Francis died at the Porziuncola chapel on October 3, 1226.",
+          "category": "saints",
+          "period": "1181/1182-1226",
+          "location": "Assisi, Italy",
+          "keyFigures": [
+            "St. Clare of Assisi",
+            "Pope Innocent III",
+            "Brother Leo"
+          ],
+          "keyEvents": [
+            "Conversion at San Damiano (1205)",
+            "Renunciation of wealth (1206)",
+            "Franciscan Order approved (1210)",
+            "Meeting with Sultan al-Kamil (1219)",
+            "Stigmata (1224)",
+            "Canticle of the Sun"
+          ],
+          "tags": [
+            "francis of assisi",
+            "franciscan",
+            "poverty",
+            "stigmata",
+            "nature",
+            "assisi"
+          ],
+          "imageUrl": "assets/data/christian_history/images/francis_assisi.jpg"
+        },
+        {
+          "id": "mother_teresa",
+          "title": "St. Teresa of Calcutta (Mother Teresa)",
+          "subtitle": "The Saint of the Gutters",
+          "description": "Mother Teresa (1910-1997), canonized as St. Teresa of Calcutta, was one of the most recognizable figures of the 20th century and a powerful witness to Christian service among the poorest of the poor. Born Anjezë Gonxhe Bojaxhiu in Skopje (now North Macedonia), she joined the Loreto Sisters at age 18 and was sent to Calcutta, India, where she taught at St. Mary's High School for girls. On September 10, 1946, while traveling to her annual retreat, she received what she called 'the call within a call' — a divine inspiration to leave the convent and serve the poorest of the poor in the slums. In 1950, she founded the Missionaries of Charity, a religious congregation dedicated to serving 'the hungry, the naked, the homeless, the crippled, the blind, the lepers, all those people who feel unwanted, unloved, uncared for.' Her order grew from 13 sisters to thousands operating in over 130 countries, running homes for the dying, orphanages, and leper colonies. Mother Teresa received the Nobel Peace Prize in 1979 and was beatified in 2003. Her legacy includes both profound admiration for her holiness and some criticism regarding the quality of medical care in her homes. Her spiritual life was marked by decades of 'dark night of the soul' — an intense sense of spiritual dryness and feeling abandoned by God, revealed in her posthumously published letters.",
+          "category": "saints",
+          "period": "1910-1997",
+          "location": "Calcutta, India / Worldwide",
+          "keyFigures": [
+            "Pope John Paul II",
+            "Blessed Mother Veronica of the Passion"
+          ],
+          "keyEvents": [
+            "Founded Missionaries of Charity (1950)",
+            "Nobel Peace Prize (1979)",
+            "Beatified (2003)",
+            "Canonized (2016)"
+          ],
+          "tags": [
+            "mother teresa",
+            "calcutta",
+            "charity",
+            "nobel",
+            "dark night",
+            "service"
+          ],
+          "imageUrl": "assets/data/christian_history/images/mother_teresa.jpg"
+        },
+        {
+          "id": "cs_lewis",
+          "title": "C.S. Lewis",
+          "subtitle": "The Apostle to the Skeptics",
+          "description": "Clive Staples Lewis (1898-1963) was a brilliant Oxford and Cambridge literary scholar who became the most influential Christian apologist of the 20th century. Raised in Belfast, Ireland, Lewis lost his mother at age 9 and became an atheist as a teenager. His intellectual journey back to faith was influenced by J.R.R. Tolkien and G.K. Chesterton — by his own account, he was 'the most reluctant convert in all England,' dragged 'kicking and screaming' into the Kingdom of God. The night he converted, he walked a night in 1931 with Tolkien and Hugo Dyson, discussing myth and the Gospel as 'true myth.' His conversion is chronicled in 'Surprised by Joy.' Lewis wrote across multiple genres: theological classics ('Mere Christianity,' 'The Problem of Pain,' 'Miracles'), academic literary criticism ('The Allegory of Love,' 'The Discarded Image'), science fiction ('The Space Trilogy'), and above all, his beloved Chronicles of Narnia (seven children's books that function as Christian allegory). 'Mere Christianity,' originally broadcast as BBC radio talks during World War II, remains one of the most read works of Christian apologetics. Lewis also wrote 'The Screwtape Letters,' letters from a senior demon to a junior tempter. He married Joy Davidman, a former Communist and American poet, in a late-in-life romance that ended tragically with her death from cancer. Lewis died on November 22, 1963 — the same day President John F. Kennedy was assassinated.",
+          "category": "saints",
+          "period": "1898-1963",
+          "location": "Belfast, Oxford, Cambridge, England",
+          "keyFigures": [
+            "J.R.R. Tolkien",
+            "Joy Davidman (wife)",
+            "George MacDonald (influence)"
+          ],
+          "keyEvents": [
+            "Conversion (1931)",
+            "BBC Radio talks (1941-1944)",
+            "Mere Christianity published (1952)",
+            "Narnia series (1950-1956)",
+            "Married Joy Davidman (1956)",
+            "Death (1963)"
+          ],
+          "tags": [
+            "cs lewis",
+            "narnia",
+            "apologist",
+            "oxford",
+            "inclusivist",
+            "mere christianity"
+          ],
+          "imageUrl": "assets/data/christian_history/images/cs_lewis.jpg"
+        },
+        {
+          "id": "dietrich_bonhoeffer",
+          "title": "Dietrich Bonhoeffer",
+          "subtitle": "The Cost of Discipleship",
+          "description": "Dietrich Bonhoeffer (1906-1945) was a German Lutheran pastor, theologian, and martyr who became one of the most influential Christian witnesses of the 20th century. Born into an academic family in Breslau (now Wrocław, Poland), Bonhoeffer demonstrated exceptional intellectual gifts, earning his doctorate at age 21. He studied at Union Theological Seminary in New York (1930-1931), where he was deeply influenced by the African American church and its spirituals. Returning to Germany as Hitler rose to power, Bonhoeffer became an early and vocal critic of the Nazi regime, which sought to control the church through the 'German Christian' movement. He helped found the Confessing Church (Bekennende Kirche), which opposed Nazi church policies. In 1939, he had the opportunity to stay safely in America but famously returned to Germany, writing to Reinhold Niebuhr: 'I have had time to think and pray about my situation ... I will have no right to participate in the reconstruction of Christian life in Germany after the war if I do not share the trials of this time with my people.' Bonhoeffer's involvement in the Abwehr (German military intelligence) was actually a cover for his participation in the resistance against Hitler, including Operation Valkyrie — the July 20, 1944 assassination plot. His role was discovered, and he was imprisoned. In April 1945, just weeks before the war ended, Bonhoeffer was hanged at Flossenbürg concentration camp. His writings — 'The Cost of Discipleship,' 'Life Together,' 'Letters and Papers from Prison' — continue to inspire Christians with their emphasis on costly grace, Christian community, and the importance of concrete obedience to Christ in a world of moral compromise.",
+          "category": "saints",
+          "period": "1906-1945",
+          "location": "Berlin, London, New York, Flossenbürg",
+          "keyFigures": [
+            "Karl Barth",
+            "Reinhold Niebuhr"
+          ],
+          "keyEvents": [
+            "Confessing Church founded (1934)",
+            "Returned from America (1939)",
+            "Arrested (1943)",
+            "Execution at Flossenbürg (1945)"
+          ],
+          "tags": [
+            "bonhoeffer",
+            "confessing church",
+            "costly grace",
+            "martyr",
+            "nazi"
+          ],
+          "imageUrl": "assets/data/christian_history/images/bonhoeffer.jpg"
+        },
+        {
+          "id": "billy_graham",
+          "title": "Billy Graham",
+          "subtitle": "America's Pastor",
+          "description": "Billy Graham (1918-2018) was the most influential evangelist of the 20th century, preaching the Gospel to more people in person (over 215 million) than anyone in history. Born William Franklin Graham Jr. on a dairy farm near Charlotte, North Carolina, he was converted at a revival meeting led by Mordecai Ham in 1934. He was ordained a Southern Baptist minister in 1939, graduated from Wheaton College (1943), and married Ruth Bell, the daughter of missionaries to China. Graham's breakthrough came in 1949 during a tent revival in Los Angeles that was scheduled for three weeks but extended to eight, drawing national attention thanks to media mogul William Randolph Hearst, who famously told his editors to 'puff Graham.' Graham went on to lead hundreds of 'Crusades' across the United States and around the world. He developed a distinctive approach: clear Gospel preaching, an altar call, and careful organization with local churches. His counsel extended to every U.S. president from Truman to Obama. Graham pioneered the use of mass media — radio ('Hour of Decision'), television, films, and books (including the bestselling 'Angels' and 'Peace with God'). He died at age 99 and was buried at the Billy Graham Library in Charlotte. His reputation for integrity — including the 'Billy Graham Rule' of never being alone with a woman other than his wife — set a standard for evangelical leadership.",
+          "category": "saints",
+          "period": "1918-2018",
+          "location": "Charlotte, North Carolina / Worldwide",
+          "keyFigures": [
+            "Ruth Bell Graham (wife)",
+            "Franklin Graham (son)",
+            "Cliff Barrows",
+            "George Beverly Shea",
+            "Mordecai Ham"
+          ],
+          "keyEvents": [
+            "Los Angeles Crusade (1949)",
+            "Hour of Radio first broadcast (1950)",
+            "London Crusade at Wembley (1954)",
+            "Moscow visit (1982)",
+            "Final Crusade, New York (2005)"
+          ],
+          "tags": [
+            "billy graham",
+            "evangelist",
+            "crusade",
+            "gospel",
+            "southern baptist",
+            "america's pastor"
+          ],
+          "imageUrl": "assets/data/christian_history/images/billy_graham.jpg"
+        },
+        {
+          "id": "st_patrick",
+          "title": "St. Patrick",
+          "subtitle": "The Apostle of Ireland",
+          "description": "St. Patrick (c. 385-461 AD) is the patron saint of Ireland, remembered for bringing Christianity to the Emerald Isle. Born in Roman Britain (possibly in Wales or Scotland), Patrick was captured by Irish pirates at age 16 and taken to Ireland as a slave, where he worked as a shepherd. During his six years of slavery, he turned to prayer and experienced a deepening faith. After escaping and returning to Britain, he studied for the priesthood but felt called to return to the people who had enslaved him. Patrick returned to Ireland as a missionary bishop, using the shamrock (a three-leaf clover) to explain the Trinity. He established monasteries, churches, and schools across Ireland, converting local chieftains and their tribes. He faced opposition from pagan druids and endured many hardships. The famous 'Lorica of St. Patrick' (St. Patrick's Breastplate) prayer invokes Christ's protection. He died on March 17, which became his feast day — now celebrated worldwide as a celebration of Irish heritage. Legend attributes driving the snakes out of Ireland to Patrick, but this likely symbolizes the eradication of paganism rather than literal snakes. Patrick's legacy is a Christian Ireland that became a beacon of learning and missionary zeal in the early Middle Ages.",
+          "category": "saints",
+          "period": "c. 385-461 AD",
+          "location": "Roman Britain, Ireland",
+          "keyFigures": [
+            "St. Brigid of Ireland",
+            "Pope Celestine I"
+          ],
+          "keyEvents": [
+            "Captured by Irish pirates (c. 401)",
+            "Escape from slavery (c. 407)",
+            "Return to Ireland as missionary (c. 432)",
+            "Death on March 17 (c. 461)"
+          ],
+          "tags": [
+            "patrick",
+            "ireland",
+            "missionary",
+            "shamrock",
+            "slave",
+            "patron saint"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_patrick.jpg"
+        },
+        {
+          "id": "joan_arc",
+          "title": "St. Joan of Arc",
+          "subtitle": "The Maid of Orléans",
+          "description": "Joan of Arc (1412-1431) is one of history's most remarkable figures — a teenage peasant girl who, guided by religious visions, led the French army to victory and was burned at the stake, only to be canonized 500 years later. Born in Domrémy, France, Joan began at age 13 hearing voices of St. Michael, St. Catherine, and St. Margaret, who told her to drive the English from France and escort the Dauphin (the future Charles VII) to be crowned king at Reims. In 1429, at age 17, she convinced Charles to give her command of an army. Wearing white armor and carrying a banner, she inspired the French troops to lift the Siege of Orléans (May 1429) — a turning point in the Hundred Years' War. She then escorted Charles to Reims for his coronation. In 1430, Joan was captured by Burgundian forces and sold to the English. She was tried for heresy and witchcraft by a church court controlled by the English. The trial was a travesty of justice — she had no legal counsel, and the judges had predetermined the outcome. She was condemned and burned at the stake in Rouen on May 30, 1431. Her last word was 'Jesus.' A rehabilitation trial in 1456 declared her innocent. She was canonized in 1920 and declared a patron saint of France.",
+          "category": "saints",
+          "period": "1412-1431",
+          "location": "Domrémy, Orléans, Reims, Rouen, France",
+          "keyFigures": [
+            "Charles VII of France",
+            "Bishop Pierre Cauchon"
+          ],
+          "keyEvents": [
+            "First heard voices (1425)",
+            "Relief of Orléans (1429)",
+            "Coronation of Charles VII (1429)",
+            "Capture (1430)",
+            "Trial and execution (1431)",
+            "Canonization (1920)"
+          ],
+          "tags": [
+            "joan of arc",
+            "france",
+            "hundred years war",
+            "orleans",
+            "martyr",
+            "patron saint"
+          ],
+          "imageUrl": "assets/data/christian_history/images/joan_arc.jpg"
+        },
+        {
+          "id": "mlkjr",
+          "title": "Rev. Dr. Martin Luther King Jr.",
+          "subtitle": "The Drum Major for Justice",
+          "description": "Martin Luther King Jr. (1929-1968) was a Baptist minister and civil rights leader who transformed American society through his Christian witness and nonviolent activism. Born in Atlanta to a prominent Baptist family (son of Martin Luther King Sr. and Alberta Williams King), he was ordained at age 19 and earned a Ph.D. in theology from Boston University. King was heavily influenced by Mahatma Gandhi's philosophy of nonviolent resistance and by the Christian vision of justice rooted in the prophets and the Sermon on the Mount. He rose to national leadership during the Montgomery Bus Boycott (1955-1956), sparked by Rosa Parks's refusal to give up her seat. King founded the Southern Christian Leadership Conference (SCLC) in 1957. His campaigns — Birmingham (1963), March on Washington (1963), Selma to Montgomery (1965), Chicago (1966) — combined mass protests, civil disobedience, and powerful Christian oratory. His 'Letter from Birmingham Jail' is a theological and moral defense of nonviolent direct action and civil disobedience. His 'I Have a Dream' speech is one of the greatest American speeches. He was awarded the Nobel Peace Prize in 1964 at age 35, the youngest recipient. King also opposed the Vietnam War and broadened his focus to economic justice (the Poor People's Campaign). He was assassinated on April 4, 1968 at the Lorraine Motel in Memphis, Tennessee. His last speech, 'I've Been to the Mountaintop,' foreshadowed his death: 'I've seen the Promised Land. I may not get there with you.' King's Christian witness demonstrates faith active in the struggle for justice.",
+          "category": "saints",
+          "period": "1929-1968",
+          "location": "Atlanta, Montgomery, Birmingham, Memphis, USA",
+          "keyFigures": [
+            "Coretta Scott King (wife)",
+            "Ralph Abernathy",
+            "Rosa Parks",
+            "John Lewis"
+          ],
+          "keyEvents": [
+            "Montgomery Bus Boycott (1955-1956)",
+            "Birmingham Campaign (1963)",
+            "March on Washington / I Have a Dream (1963)",
+            "Nobel Peace Prize (1964)",
+            "Selma March / Bloody Sunday (1965)",
+            "Assassination (1968)",
+            "MLK Day federal holiday (1986)"
+          ],
+          "tags": [
+            "martin luther king",
+            "civil rights",
+            "nonviolence",
+            "justice",
+            "baptist",
+            "assassination"
+          ],
+          "imageUrl": "assets/data/christian_history/images/mlk.jpg"
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "title": "Christian Symbols & Iconography",
+      "description": "The rich visual language of Christianity — symbols from the catacombs to the cathedrals that express the deepest truths of the faith through image, pattern, and color.",
+      "icon": "palette",
+      "entries": [
+        {
+          "id": "ichthys",
+          "title": "Ichthys (Jesus Fish)",
+          "subtitle": "The Secret Symbol of the Early Church",
+          "description": "The Ichthys (or Ichthus) — the simple outline of a fish — is one of the earliest and most important Christian symbols. In Greek, the word ΙΧΘΥΣ (ichthys, fish) served as an acrostic: Iēsous Christos Theou Hyios Sōtēr (Jesus Christ, Son of God, Savior). During the Roman persecutions, Christians used the fish as a secret sign to identify themselves. According to tradition, when a Christian met a stranger, one would draw the arc of a fish in the sand; if the second person drew the other arc, they knew each other as fellow believers. The fish is also connected to Jesus's ministry: he called fishermen as disciples, multiplied fish to feed the 5,000, and called his followers 'fishers of men.' The fish appears in catacomb art, on early Christian tombs, and in the mosaics of ancient basilicas. Today, the ichthys symbol has experienced a revival, appearing on car bumpers, jewelry, and as a Christian identity marker.",
+          "category": "symbols",
+          "period": "1st century AD - Present",
+          "origin": "Roman Empire / Catacombs of Rome",
+          "keyFigures": [
+            "Apostles (fishermen)"
+          ],
+          "keyEvents": [
+            "Early Christian secret identification",
+            "Catacomb art"
+          ],
+          "tags": [
+            "ichthys",
+            "fish",
+            "acrostic",
+            "early church",
+            "catacombs"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "chi_rho_symbol",
+          "title": "Chi-Rho (☧)",
+          "subtitle": "Constantine's Vision — The First Christian Monogram",
+          "description": "The Chi-Rho (☧) is formed by superimposing the first two letters of Christ's name in Greek: Chi (Χ) and Rho (Ρ). It is one of the oldest Christian symbols, dating to the 2nd century in the catacombs, where it served as a discreet Christian identifier. The symbol gained extraordinary prominence after Constantine the Great's vision at the Battle of Milvian Bridge (312 AD), where he reportedly saw the Chi-Rho in the sky with the words 'In hoc signo vinces' (in this sign, conquer). Constantine then adopted the Chi-Rho as his imperial standard (the labarum), and his soldiers marked their shields with it. The Chi-Rho appears on Roman coins, sarcophagi, and imperial monuments. It represents the victory of Christ over death and the triumph of Christianity over paganism. In the catacombs, it was often flanked by Alpha and Omega, signifying Christ as the beginning and the end. The Chi-Rho remains a powerful symbol of Christ's identity and the intersection of the divine and human in the person of Jesus.",
+          "category": "symbols",
+          "period": "2nd century AD - Present",
+          "origin": "Rome / Catacombs",
+          "keyFigures": [
+            "Constantine the Great"
+          ],
+          "keyEvents": [
+            "Vision at Milvian Bridge (312)",
+            "Adopted as imperial standard"
+          ],
+          "tags": [
+            "chi-rho",
+            "christogram",
+            "constantine",
+            "labarum",
+            "catacombs"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+        },
+        {
+          "id": "alpha_omega",
+          "title": "Alpha and Omega",
+          "subtitle": "The First and the Last",
+          "description": "Alpha (Α) and Omega (Ω) are the first and last letters of the Greek alphabet, used in the Book of Revelation as a title of God: 'I am the Alpha and the Omega, the First and the Last, the Beginning and the End' (Revelation 22:13). The symbol proclaims Christ's eternal nature — he existed before all creation and will exist after all things have passed away. Alpha and Omega appear in Christian art from the early church onward, often flanking the Chi-Rho monogram or standing on either side of a depiction of Christ. In the catacombs, they marked Christian tombs as statements of resurrection hope. The letters are frequently found on crucifixes, church furniture, vestments, and Christian jewelry. The symbol also appears in the Orthodox tradition on icons of Christ Pantocrator. Alpha and Omega remind believers that the God who began the work of creation and redemption will complete it — history is not random but moves toward a divinely ordained conclusion.",
+          "category": "symbols",
+          "period": "1st century AD - Present",
+          "origin": "Book of Revelation / Early Church",
+          "keyFigures": [
+            "John the Apostle"
+          ],
+          "keyEvents": [
+            "Usage in Revelation (c. 95 AD)"
+          ],
+          "tags": [
+            "alpha",
+            "omega",
+            "greek letters",
+            "eternity",
+            "revelation"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+        },
+        {
+          "id": "dove_holy_spirit",
+          "title": "Dove (Holy Spirit)",
+          "subtitle": "The Spirit Descending Like a Dove",
+          "description": "The dove is the primary symbol of the Holy Spirit in Christian iconography, rooted in the Gospel accounts of Jesus's baptism, when 'the Holy Spirit descended on him in bodily form like a dove' (Luke 3:22). The dove also appears in the Old Testament — Noah sent a dove from the ark, and it returned with an olive branch, signaling the end of God's judgment and the beginning of a new creation. In Christian art, the dove is typically depicted with outstretched wings, often with a halo and a ray of light, descending from heaven. The dove symbolizes peace, purity, the new creation, and the continuing presence of God's Spirit in the Church. In Orthodox iconography, the dove appears above Christ in baptism scenes and above the Virgin Mary in Annunciation scenes. The dove also represents the gift of the Holy Spirit at Pentecost (though there the flames of fire are more common). As a cultural symbol, the dove carrying an olive branch has become the universal symbol of peace.",
+          "category": "symbols",
+          "period": "1st century AD - Present",
+          "origin": "Gospels / Old Testament",
+          "keyFigures": [
+            "John the Baptist",
+            "Jesus Christ",
+            "Noah"
+          ],
+          "keyEvents": [
+            "Baptism of Jesus",
+            "Noah's dove",
+            "Pentecost (tongues of fire)"
+          ],
+          "tags": [
+            "dove",
+            "holy spirit",
+            "baptism",
+            "peace",
+            "noah"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "lamb_god",
+          "title": "Lamb of God (Agnus Dei)",
+          "subtitle": "The Sacrificial Lamb",
+          "description": "The Lamb of God (Agnus Dei) is one of the most significant symbols of Christ, depicting a lamb carrying a cross or a banner. The image draws from multiple biblical sources: John the Baptist's declaration 'Behold, the Lamb of God, who takes away the sin of the world!' (John 1:29), the Passover lamb whose blood saved Israel from the Angel of Death in Egypt, and the Suffering Servant of Isaiah 'led like a lamb to the slaughter.' In the Book of Revelation, the Lamb appears as the victorious yet slain center of heavenly worship — worthy to open the seals of God's judgment. The Agnus Dei symbol appears in early Christian art, medieval manuscripts, church mosaics, and vestments. In Orthodox iconography, the Lamb is shown lying on an altar. In Catholic tradition, the Agnus Dei is invoked in every Mass before Communion. The symbol powerfully conveys the paradox of Christianity: the conqueror who conquers through sacrifice, the King who rules by being slain.",
+          "category": "symbols",
+          "period": "1st century AD - Present",
+          "origin": "Jewish Passover / Gospels / Revelation",
+          "keyFigures": [
+            "John the Baptist",
+            "John the Apostle"
+          ],
+          "keyEvents": [
+            "Passover in Egypt",
+            "Crucifixion of Jesus",
+            "Heavenly worship in Revelation"
+          ],
+          "tags": [
+            "lamb",
+            "agnus dei",
+            "sacrifice",
+            "passover",
+            "revelation"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "pelican",
+          "title": "Pelican in Her Piety",
+          "subtitle": "The Medieval Symbol of Sacrifice",
+          "description": "The Pelican in Her Piety (or Pelican vulning herself) is a powerful medieval Christian symbol depicting a mother pelican pecking her own breast to feed her chicks with her blood. According to medieval bestiary legend (based on a misunderstanding of actual pelican behavior), the mother pelican would wound herself to revive her dead chicks with her blood. Christians saw this as a perfect image of Christ's sacrifice on the cross — he gave his blood to give eternal life to his children. The pelican appears in this pose in countless medieval church carvings, stained glass windows, and illuminated manuscripts. It is also used on the missals and vestments for the Mass, emphasizing the sacrificial nature of the Eucharist. In Dante's 'Paradiso,' Christ is called 'nostro Pelicano' (our Pelican). Thomas Aquinas referenced the pelican in his Eucharistic hymn 'Adoro Te Devote.' The symbol appears in the logos of various Christian institutions, including some Anglican and Catholic schools.",
+          "category": "symbols",
+          "period": "12th-16th centuries (peak popularity)",
+          "origin": "Medieval bestiaries / Europe",
+          "keyFigures": [
+            "Thomas Aquinas"
+          ],
+          "keyEvents": [],
+          "tags": [
+            "pelican",
+            "sacrifice",
+            "medieval",
+            "eucharist",
+            "bestiary"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "triquetra",
+          "title": "Triquetra (Trinity Knot)",
+          "subtitle": "The Three-in-One Celtic Knot",
+          "description": "The Triquetra (from Latin 'three-cornered'), also called the Trinity Knot, is a three-pointed interlocking knot found in Celtic and Insular art, adopted as a symbol of the Holy Trinity. The endless knot has three equal loops with no beginning or end, representing the equality and eternity of the Father, Son, and Holy Spirit. The triquetra appears in the Book of Kells (c. 800 AD) and on Celtic high crosses. The symbol's three arcs also represent the three-in-one nature of God simultaneously — three distinct but inseparable persons in one being. Sometimes the triquetra incorporates a circle, symbolizing eternity, at its center. The triquetra has been revived in modern Celtic Christian jewelry and art, and even appeared in popular culture (on the cover of the Book of Shadows in the TV show 'Charmed'). In early Christian contexts, the triquetra was also used as a symbol of the Evangelists or of the three theological virtues (Faith, Hope, and Charity).",
+          "category": "symbols",
+          "period": "7th century AD - Present",
+          "origin": "Ireland / Celtic Christianity",
+          "keyFigures": [],
+          "keyEvents": [
+            "Book of Kells (c. 800)",
+            "Celtic high crosses"
+          ],
+          "tags": [
+            "triquetra",
+            "trinity knot",
+            "celtic",
+            "book of kells",
+            "trinity"
+          ],
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+        },
+        {
+          "id": "inri",
+          "title": "INRI",
+          "subtitle": "Jesus of Nazareth, King of the Jews",
+          "description": "INRI is the Latin abbreviation for 'Iesus Nazarenus, Rex Iudaeorum' — 'Jesus of Nazareth, King of the Jews' — the inscription Pilate placed on the cross above Jesus's head (John 19:19). The titulus was written in three languages: Hebrew (Aramaic), Greek, and Latin, ensuring that all who passed could read it. The Gospels record that the chief priests protested to Pilate, insisting he write 'He said, I am King of the Jews,' but Pilate famously replied: 'What I have written, I have written.' In Christian art, the letters INRI appear on a scroll or board (the titulus) at the top of the crucifix, typically written in Latin letters. In Eastern Orthodox iconography, the inscription is usually abbreviated as ΙΝΒΙ (the Greek equivalent) or as 'IC XC' (the Christogram). The INRI inscription is a powerful reminder of Jesus's kingship, exercised not through earthly power but through the sacrifice of the cross. It proclaims that the cross is the throne from which Christ rules.",
+          "category": "symbols",
+          "period": "1st century AD - Present",
+          "origin": "Crucifixion of Jesus / Gospel of John",
+          "keyFigures": [
+            "Pontius Pilate",
+            "Jesus Christ"
+          ],
+          "keyEvents": [
+            "Crucifixion (c. 30 AD)",
+            "The titulus"
+          ],
+          "tags": [
+            "inri",
+            "titulus",
+            "crucifixion",
+            "pilot",
+            "king"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "sacred_heart",
+          "title": "Sacred Heart of Jesus",
+          "subtitle": "The Burning Heart of Divine Love",
+          "description": "The Sacred Heart of Jesus is a Catholic devotion depicting the physical heart of Jesus, encircled by a crown of thorns, surmounted by a cross, and radiating flames of divine love. The devotion's modern form originated from the visions of St. Margaret Mary Alacoque (1647-1690), a French Visitation nun who reported revelations in which Jesus showed her his heart, saying, 'Behold the Heart which has so loved men.' The Sacred Heart symbolizes Jesus's human love for humanity and his divine love willing to suffer for salvation. The image combines multiple elements: the heart (love), the flames (passionate and purifying love), the crown of thorns (suffering and sacrifice), the cross (salvation), the wound (the opening in his side at the crucifixion), and the light radiating outward (the Gospel spreading). The devotion was promoted by the Jesuits and became one of the most widespread Catholic devotions. The Feast of the Sacred Heart is celebrated on the Friday after the octave of Corpus Christi. The image appears in Catholic homes, churches, and religious art worldwide.",
+          "category": "symbols",
+          "period": "17th century AD (formal devotion); Medieval (early forms)",
+          "origin": "France / Catholic Church",
+          "keyFigures": [
+            "St. Margaret Mary Alacoque",
+            "St. John Eudes",
+            "St. Claude de la Colombière"
+          ],
+          "keyEvents": [
+            "Visions of Paray-le-Monial (1673-1675)",
+            "Feast established (1856)",
+            "Basilica of Sacré-Coeur built (1914)"
+          ],
+          "tags": [
+            "sacred heart",
+            "jesus",
+            "catholic",
+            "love",
+            "margaret mary",
+            "devotion"
+          ],
+          "imageUrl": "assets/data/christian_history/images/sacred_heart.jpg"
+        },
+        {
+          "id": "trinity_shield",
+          "title": "Shield of the Trinity (Scutum Fidei)",
+          "subtitle": "The Diagram of the Triune God",
+          "description": "The Shield of the Trinity (Scutum Fidei, 'Shield of Faith') is a medieval diagram illustrating the doctrine of the Trinity. It consists of a central circle labeled 'God' connected by lines to three outer circles labeled 'Father,' 'Son,' and 'Holy Spirit.' Around the connecting lines are the words 'is not' (between the persons) and 'is' (between the persons and the divine substance). The diagram makes Trinitarian theology visually clear: the Father is God, the Son is God, the Holy Spirit is God, but the Father is not the Son, the Father is not the Holy Spirit, and the Son is not the Holy Spirit. The diagram appears in medieval manuscripts, stained glass windows, and church art throughout Europe. It dates to at least the 12th century and was used as a teaching tool for instructing clergy and laity in Trinitarian doctrine. The Shield of the Trinity reflects the careful theological precision of medieval scholasticism and the importance of the Trinity as the central mystery of the Christian faith.",
+          "category": "symbols",
+          "period": "12th century AD - Present",
+          "origin": "Medieval Europe / Scholasticism",
+          "keyFigures": [
+            "Augustine of Hippo (theological foundation)"
+          ],
+          "keyEvents": [],
+          "tags": [
+            "trinity",
+            "shield",
+            "medieval",
+            "diagram",
+            "scutum fidei"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "fleur_de_lis",
+          "title": "Fleur-de-Lis",
+          "subtitle": "The Lily of Purity and Royalty",
+          "description": "The Fleur-de-Lis (French: 'lily flower'), a stylized iris or lily, has been a symbol of the Virgin Mary since the early Middle Ages. The three petals represent faith, wisdom, and virtue, or the Holy Trinity. Its association with Mary comes from its purity and beauty — the lily is the 'lily among thorns' from the Song of Solomon, interpreted as Mary among women. The fleur-de-lis also became the royal symbol of France, and the Virgin Mary was considered the patroness of the French monarchy. In Christian art, the fleur-de-lis appears in Annunciation scenes (often held by the angel Gabriel or placed in a vase near Mary), on the coat of arms of French kings, and in architectural decoration throughout Europe. The symbol has been adopted by the Boy Scouts, various cities, and the US Navy SEALs (through its association with their original WWII insignia). In the Christian context, the fleur-de-lis represents Mary's purity, the flowering of grace, and the fruitful union of the human and divine.",
+          "category": "symbols",
+          "period": "12th century AD - Present",
+          "origin": "France / Medieval Europe",
+          "keyFigures": [
+            "Virgin Mary",
+            "St. Louis IX of France"
+          ],
+          "keyEvents": [],
+          "tags": [
+            "fleur-de-lis",
+            "lily",
+            "mary",
+            "france",
+            "purity"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "host_chalice",
+          "title": "Host and Chalice",
+          "subtitle": "The Eucharist — Sacrament of the Altar",
+          "description": "The Host (altar bread) and Chalice (wine cup) together symbolize the Eucharist, the central sacrament of Christian worship. The bread and wine recall Christ's institution of the Lord's Supper at the Last Supper: 'This is my body... This is my blood.' Depicted together on altars, vestments, and church furnishings, the Host and Chalice represent Christ's sacrificial death and its ongoing memorial in the Church. The Host is typically shown as a round wafer, sometimes with a cross or IHS inscribed on it. The Chalice is often depicted as a gold or silver cup, sometimes with a knop (bulge) on the stem. In Catholic tradition, they are often accompanied by a cluster of grapes and wheat stalks, further emphasizing their Eucharistic symbolism. The image of the Host and Chalice appears on the vestments worn for the Mass, on altar frontals, and in church stained glass windows. During the Counter-Reformation, the Host and Chalice became a common subject in Catholic art, emphasizing the real presence of Christ in the Eucharist against Protestant denials.",
+          "category": "symbols",
+          "period": "1st century AD - Present",
+          "origin": "Last Supper / Christian liturgy",
+          "keyFigures": [
+            "Jesus Christ"
+          ],
+          "keyEvents": [
+            "Last Supper",
+            "Institution of the Eucharist"
+          ],
+          "tags": [
+            "host",
+            "chalice",
+            "eucharist",
+            "mass",
+            "sacrament",
+            "last supper"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        }
+      ]
+    },
+    {
+      "id": "holy_sites",
+      "title": "Holy Sites & Pilgrimage",
+      "description": "The sacred places of Christianity — from the Church of the Holy Sepulchre in Jerusalem to the great cathedrals of Europe. Explore the locations where faith, history, and architecture meet.",
+      "icon": "map",
+      "entries": [
+        {
+          "id": "holy_sepulchre",
+          "title": "Church of the Holy Sepulchre",
+          "subtitle": "The Site of Crucifixion and Resurrection",
+          "description": "The Church of the Holy Sepulchre in Jerusalem is the holiest site in Christianity, built over what is traditionally considered Golgotha (the hill of crucifixion) and the tomb where Jesus was buried and resurrected. First identified by St. Helena, mother of Emperor Constantine, in 326 AD, a magnificent church was built and consecrated in 335 AD. The current structure dates primarily to the Crusader period (12th century) with later additions. The church contains several key sites: the Stone of Anointing (where Jesus's body was prepared for burial), the Rotunda surrounding the Edicule (the small building housing the tomb itself), the Chapel of the Finding of the Cross, and the Rock of Golgotha (visible under glass at the Altar of the Crucifixion). For centuries, control of the church has been shared among several Christian denominations — Greek Orthodox, Roman Catholic, Armenian Apostolic, Coptic, Ethiopian, and Syriac — under the 'Status Quo' agreement established in 1852. The church's keys are held by a Muslim family (the Nuseibehs) to maintain the delicate balance. The site has been destroyed and rebuilt multiple times — destroyed by the Fatimid caliph Al-Hakim in 1009, rebuilt by the Byzantines, then by the Crusaders. Today it remains the destination of Christian pilgrims from around the world.",
+          "category": "holy_sites",
+          "period": "326 AD - Present",
+          "location": "Jerusalem, Israel",
+          "keyFigures": [
+            "St. Helena",
+            "Constantine the Great",
+            "Al-Hakim bi-Amr Allah"
+          ],
+          "keyEvents": [
+            "Church built (326-335)",
+            "Destruction by Al-Hakim (1009)",
+            "Crusader rebuilding (12th c.)",
+            "Status Quo established (1852)"
+          ],
+          "tags": [
+            "jerusalem",
+            "holy sepulchre",
+            "crucifixion",
+            "resurrection",
+            "pilgrimage"
+          ],
+          "imageUrl": "assets/data/christian_history/images/holy_sepulchre.jpg"
+        },
+        {
+          "id": "st_peters_basilica",
+          "title": "St. Peter's Basilica",
+          "subtitle": "The Greatest Church in Christendom",
+          "description": "St. Peter's Basilica in Vatican City is the largest and most famous church in Christendom, built on the site where St. Peter, the first Bishop of Rome, was martyred and buried (c. 64 AD). The original basilica was built by Emperor Constantine in the 4th century. By the 15th century, the Constantinian church was crumbling, and Pope Julius II commissioned its reconstruction in 1506. The project spanned 120 years and involved the greatest artists and architects of the Renaissance. Donato Bramante designed the original Greek cross plan. Michelangelo, who took over at age 71, designed the magnificent dome that towers 448 feet (136.5 meters) — the tallest dome in the world. Gian Lorenzo Bernini designed the massive bronze baldachin (canopy) over the papal altar and the piazza with its embracing colonnades. Carlo Maderno extended the nave and designed the facade. The interior is a breathtaking display of Renaissance and Baroque art, including Michelangelo's 'Pietà' (the only work he signed), Bernini's 'Cathedra Petri' (the Chair of St. Peter) in the apse, and countless other masterpieces. Beneath the high altar, excavations in the 1940s revealed what are believed to be the bones of St. Peter himself. St. Peter's serves as the primary church of the Pope and the site of major papal liturgies.",
+          "category": "holy_sites",
+          "period": "4th century (original); 1506-1626 (current)",
+          "location": "Vatican City, Rome",
+          "keyFigures": [
+            "St. Peter",
+            "Constantine the Great",
+            "Pope Julius II",
+            "Michelangelo",
+            "Bernini",
+            "Bramante",
+            "Raphael"
+          ],
+          "keyEvents": [
+            "Original basilica built (c. 326)",
+            "Rebuilding begins (1506)",
+            "Dome completed (1590)",
+            "Facade completed (1614)",
+            "Basilica consecrated (1626)"
+          ],
+          "tags": [
+            "rome",
+            "vatican",
+            "st peter",
+            "michelangelo",
+            "renaissance",
+            "pope"
+          ],
+          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+        },
+        {
+          "id": "hagia_sophia",
+          "title": "Hagia Sophia",
+          "subtitle": "The Holy Wisdom of God",
+          "description": "Hagia Sophia (Holy Wisdom) in Istanbul, Turkey, is one of the most important buildings in world history. Built by Emperor Justinian I in 532-537 AD as the cathedral of Constantinople, it was the largest enclosed space in the world for nearly 1,000 years. The architects Anthemius of Tralles and Isidorus of Miletus achieved what was thought impossible: a massive central dome (108 feet / 33 meters in diameter) that appears to float on a ring of windows, creating an effect of light-filled heavenly space. The dome was described as 'a dome suspended from heaven by a golden chain.' For nearly 1,000 years, Hagia Sophia was the seat of the Ecumenical Patriarch of Constantinople and the center of Eastern Orthodox Christianity. After the Ottoman conquest in 1453, it was converted into a mosque — minarets were added, mosaics were covered, and Islamic calligraphic medallions were hung in the nave. In 1935, it became a museum (under Atatürk's secularization), allowing the magnificence of both its Christian mosaics (including the Deësis mosaic — Christ Pantocrator flanked by Mary and John the Baptist) and Islamic additions to be appreciated. In 2020, it was reconverted into a functioning mosque while remaining open to visitors. Hagia Sophia's architecture profoundly influenced both Byzantine and Ottoman building traditions and remains a symbol of the meeting of East and West, Christian and Muslim.",
+          "category": "holy_sites",
+          "period": "537 AD - Present",
+          "location": "Istanbul, Turkey (formerly Constantinople)",
+          "keyFigures": [
+            "Emperor Justinian I",
+            "Empress Theodora",
+            "Anthemius of Tralles",
+            "Isidorus of Miletus",
+            "Sultan Mehmed II",
+            "Atatürk"
+          ],
+          "keyEvents": [
+            "Consecration (537)",
+            "Great Schism excommunications (1054)",
+            "Latin occupation (1204-1261)",
+            "Conversion to mosque (1453)",
+            "Conversion to museum (1935)",
+            "Conversion to mosque (2020)"
+          ],
+          "tags": [
+            "constantinople",
+            "istanbul",
+            "byzantine",
+            "justinian",
+            "dome",
+            "mosque"
+          ],
+          "imageUrl": "assets/data/christian_history/images/hagia_sophia.jpg"
+        },
+        {
+          "id": "santiago_compostela",
+          "title": "Santiago de Compostela",
+          "subtitle": "The Pilgrim's Way to St. James",
+          "description": "Santiago de Compostela in Galicia, Spain, is believed to be the burial site of St. James the Apostle (Santiago in Spanish), one of the Twelve Apostles and the patron saint of Spain. According to tradition, after James's martyrdom in Jerusalem (c. 44 AD), his body was transported by boat to the coast of Spain and buried. The site was lost for centuries until a hermit named Pelagius saw a star shining over a field (Campus Stellae — Field of the Star, hence Compostela) in 813 AD. The bishop confirmed the discovery of St. James's tomb, and a church was built. The city became the third-holiest site in Christendom (after Jerusalem and Rome), and the Camino de Santiago (Way of St. James) network of pilgrimage routes across Europe became the greatest pilgrimage phenomenon of the Middle Ages. The Romanesque cathedral (begun 1075) is a masterpiece, with its Portico de la Gloria (a stunning sculpted portal), massive thurible (Botafumeiro — a giant incense burner swung across the transept), and the silver-covered tomb of St. James. Pilgrims who walk at least 100 km (or cycle 200 km) receive the Compostela certificate. The Camino has experienced a massive revival since the 1980s, with over 300,000 pilgrims annually.",
+          "category": "holy_sites",
+          "period": "813 AD (rediscovery); 1075 (cathedral)",
+          "location": "Santiago de Compostela, Galicia, Spain",
+          "keyFigures": [
+            "St. James the Apostle",
+            "Pelagius (hermit)"
+          ],
+          "keyEvents": [
+            "Tomb rediscovery (813)",
+            "Cathedral built (1075-1211)",
+            "Camino de Santiago pilgrimage"
+          ],
+          "tags": [
+            "santiago",
+            "compostela",
+            "camino",
+            "spain",
+            "pilgrimage",
+            "st james"
+          ],
+          "imageUrl": "assets/data/christian_history/images/santiago.jpg"
+        },
+        {
+          "id": "chartres_cathedral",
+          "title": "Chartres Cathedral",
+          "subtitle": "The High Gothic Masterpiece",
+          "description": "Chartres Cathedral (Cathédrale Notre-Dame de Chartres) in France is considered the finest example of French Gothic architecture, famous for its stunning stained glass windows, distinctive mismatched spires, and its precious relic — the Sancta Camisa (the tunic believed to have been worn by Mary at Christ's birth). The current cathedral was built after a fire destroyed the previous church in 1194. The reconstruction (1194-1220) was remarkably rapid and coherent, giving the cathedral an architectural harmony rare among Gothic cathedrals. Chartres houses one of the world's greatest collections of medieval stained glass — 176 windows covering 2,600 square meters (28,000 square feet), almost entirely original from the 12th and 13th centuries. The windows' vivid blue ('Chartres blue') is legendary and its exact chemical composition has never been replicated. The cathedral's floor labyrinth (a 13th-century stone maze) was walked by pilgrims as an act of penitence or meditation, symbolizing the journey to salvation. The Royal Portal (west facade) contains some of the finest Romanesque sculpture in existence. Chartres was a major Marian pilgrimage site in the Middle Ages. The cathedral survived both world wars (its glass was removed for protection) and remains a spiritual and architectural treasure.",
+          "category": "holy_sites",
+          "period": "1194-1220 (current cathedral)",
+          "location": "Chartres, France",
+          "keyFigures": [],
+          "keyEvents": [
+            "Fire destroys old church (1194)",
+            "Rapid reconstruction (1194-1220)",
+            "Stained glass installation (13th c.)"
+          ],
+          "tags": [
+            "chartres",
+            "france",
+            "gothic",
+            "stained glass",
+            "mary",
+            "cathedral"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chartres.jpg"
+        },
+        {
+          "id": "lourdes",
+          "title": "Sanctuary of Our Lady of Lourdes",
+          "subtitle": "The Grotto of Apparitions and Healing Waters",
+          "description": "The Sanctuary of Our Lady of Lourdes in southern France is one of the world's most visited Catholic pilgrimage sites, drawing about 5 million visitors annually. The site's significance dates to 1858, when a 14-year-old peasant girl, Bernadette Soubirous, reported 18 apparitions of a beautiful lady who identified herself as 'the Immaculate Conception' in the Grotto of Massabielle. During the apparitions, a spring of water miraculously appeared, and the lady instructed Bernadette to 'drink from the spring and wash in it.' Pilgrims began to bathe in and drink the water, reporting healings. Since 1858, the Catholic Church has recognized 70+ miraculous healings at Lourdes (the 'Lourdes miracles'), though thousands of other healings have been reported. The Medical Bureau of Lourdes rigorously investigates all claims. The sanctuary includes the Grotto of Massabielle (where the apparitions occurred), the Basilica of the Immaculate Conception, the Basilica of Our Lady of the Rosary, the underground Basilica of St. Pius X (one of the largest churches in the world), the baths where pilgrims immerse themselves, and a massive candle procession every evening. Lourdes has a special ministry to the sick — the 'white army' of the sick and disabled is at the heart of its pilgrimage.",
+          "category": "holy_sites",
+          "period": "1858 (apparitions)",
+          "location": "Lourdes, Hautes-Pyrénées, France",
+          "keyFigures": [
+            "St. Bernadette Soubirous",
+            "Our Lady of Lourdes"
+          ],
+          "keyEvents": [
+            "First apparition (February 11, 1858)",
+            "The spring appears",
+            "Bernadette's revelations",
+            "St. Bernadette canonized (1933)"
+          ],
+          "tags": [
+            "lourdes",
+            "france",
+            "bernadette",
+            "apparition",
+            "healing",
+            "mary"
+          ],
+          "imageUrl": "assets/data/christian_history/images/lourdes.jpg"
+        },
+        {
+          "id": "mount_sinai",
+          "title": "Mount Sinai & St. Catherine's Monastery",
+          "subtitle": "The Mountain of God",
+          "description": "Mount Sinai (Jebel Musa — 'Mountain of Moses') in Egypt is revered as the place where God gave the Ten Commandments to Moses. At its foot lies St. Catherine's Monastery, one of the oldest continuously operating Christian monasteries in the world. Built by Emperor Justinian I between 548 and 565 AD, the monastery surrounds the site of the Burning Bush, where God first called Moses. St. Catherine's Monastery is a treasure house of Christian civilization: its library contains the second-largest collection of ancient manuscripts in the world (after the Vatican), including the Codex Sinaiticus (the oldest complete New Testament in Greek) and the Syriac Sinaiticus (the earliest translation of the Gospels). The monastery's icon collection spans 1,500 years of Christian art, including the earliest known icon of Christ Pantocrator (6th century). The monastery has never been destroyed or captured in its 1,500-year history, protected first by its fortifications and later by its status as a UNESCO World Heritage site. Pilgrims climb Sinai's 3,750 steps ('Steps of Repentance') to the summit at 2,285 meters, often arriving before dawn to watch the sunrise over the desert where Moses and the Israelites wandered.",
+          "category": "holy_sites",
+          "period": "548 AD - Present (monastery); Biblical (mount)",
+          "location": "Sinai Peninsula, Egypt",
+          "keyFigures": [
+            "Moses",
+            "St. Catherine of Alexandria",
+            "Emperor Justinian I"
+          ],
+          "keyEvents": [
+            "Building of monastery (548-565)",
+            "Codex Sinaiticus written (4th c.)",
+            "Monastery's survival through centuries"
+          ],
+          "tags": [
+            "sinai",
+            "moses",
+            "st catherine",
+            "monastery",
+            "ten commandments",
+            "manuscripts"
+          ],
+          "imageUrl": "assets/data/christian_history/images/mount_sinai.jpg"
+        },
+        {
+          "id": "assisi_basilica",
+          "title": "Basilica of St. Francis of Assisi",
+          "subtitle": "The Spiritual Heart of Franciscanism",
+          "description": "The Basilica of St. Francis of Assisi (Basilica di San Francesco) in Assisi, Italy, is the mother church of the Franciscan Order and a UNESCO World Heritage site. Built in 1228-1253, just years after St. Francis's death, the basilica consists of two churches built one atop the other: the Lower Basilica (dark, atmospheric, Romanesque) and the Upper Basilica (bright, airy, Gothic). The Upper Basilica contains one of the most important fresco cycles in Western art — 28 scenes from the life of St. Francis painted by Giotto (c. 1297-1300), showing the saint preaching to birds, renouncing his wealth, receiving the stigmata, and dying. These frescoes are considered the beginning of the Renaissance style, breaking from Byzantine flatness to show naturalistic figures and emotion. The Lower Basilica contains frescoes by Cimabue, Simone Martini, and Pietro Lorenzetti. St. Francis's tomb lies in the crypt (discovered in 1818). Assisi itself, a medieval hill town in Umbria, has become a pilgrimage destination and a symbol of peace (St. Francis being the saint of peace and ecology). The basilica was severely damaged in the 1997 Umbrian earthquake — four people were killed, parts of the vault collapsed, and frescoes were shattered into thousands of pieces. A masterful restoration (completed 1999) reassembled the fragments using computer-guided reconstruction.",
+          "category": "holy_sites",
+          "period": "1228-1253",
+          "location": "Assisi, Umbria, Italy",
+          "keyFigures": [
+            "St. Francis of Assisi",
+            "St. Clare of Assisi",
+            "Giotto",
+            "Cimabue"
+          ],
+          "keyEvents": [
+            "Construction (1228-1253)",
+            "Giotto fresco cycle (c. 1297-1300)",
+            "Earthquake damage (1997)",
+            "Restoration completed (1999)"
+          ],
+          "tags": [
+            "assisi",
+            "francis",
+            "fresco",
+            "giotto",
+            "umbria",
+            "franciscan"
+          ],
+          "imageUrl": "assets/data/christian_history/images/assisi.jpg"
+        }
+      ]
+    }
+  ]
+}

@@ -81,14 +81,20 @@ class AppTheme {
 
   static ThemeData get amoledTheme => _buildDarkTheme(Brightness.dark, Colors.black, Colors.black);
 
-  // Synthwave theme colors - neon grid energy
-  static const Color _synthBackground = Color(0xFF0D0221); // Deep void purple
-  static const Color _synthSurface = Color(0xFF1A0A3E); // Dark neon purple
-  static const Color _synthPrimary = Color(0xFFFF2975); // Hot pink neon
-  static const Color _synthSecondary = Color(0xFF00F0FF); // Electric cyan
-  static const Color _synthAccent = Color(0xFFB026FF); // Neon purple
-  static const Color _synthText = Color(0xFFF0E6FF); // Soft lavender white
-  static const Color _synthTextSecondary = Color(0xFF9B8FC2); // Muted purple
+  // Synthwave '84 theme — canonical Omarchy palette (purple, not navy)
+  static const Color _synthBackground = Color(0xFF0D0221); // Deepest background / scaffold
+  static const Color _synthSurface = Color(0xFF240037); // Card backgrounds, base surface
+  static const Color _synthSurfaceAlt = Color(0xFF2D0047); // Slightly lighter surface
+  static const Color _synthNavBackground = Color(0xFF0A011A); // App bar, sidebar, bottom nav
+  static const Color _synthPrimary = Color(0xFF8F00FF); // Electric purple — main accent
+  static const Color _synthSecondary = Color(0xFFFF00FF); // Hot pink — complementary accent
+  static const Color _synthAccent = Color(0xFF00FFFF); // Cyan — tertiary accent
+  static const Color _synthText = Color(0xFFFFFFFF); // White — primary text
+  static const Color _synthTextDim = Color(0xFFC0A0D0); // Lighter purple-gray — secondary text
+  static const Color _synthTextMuted = Color(0xFF663388); // Muted purple — hints, placeholders
+  static const Color _synthBorder = Color(0xFF8F00FF); // Active borders (same as primary)
+  static const Color _synthBorderDim = Color(0xFF4A0068); // Subtle borders
+  static const Color _synthSelectedBg = Color(0xFF3A0055); // Row selection background
 
   static ThemeData get synthwaveTheme => ThemeData(
     useMaterial3: true,
@@ -99,26 +105,34 @@ class AppTheme {
       tertiary: _synthAccent,
       surface: _synthSurface,
       onPrimary: Colors.white,
-      onSecondary: Colors.black,
+      onSecondary: Colors.white,
       onSurface: _synthText,
+      outline: _synthBorder,
+      outlineVariant: _synthBorderDim,
+      surfaceContainerHighest: _synthSurfaceAlt,
     ),
     scaffoldBackgroundColor: _synthBackground,
     appBarTheme: AppBarTheme(
-      backgroundColor: _synthBackground,
+      backgroundColor: _synthNavBackground,
       foregroundColor: _synthText,
       elevation: 0,
       centerTitle: true,
+      surfaceTintColor: Colors.transparent,
     ),
     cardTheme: CardThemeData(
       color: _synthSurface,
       elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shadowColor: _synthPrimary.withValues(alpha: 0.3),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: _synthBorderDim, width: 0.5),
+      ),
     ),
-    textTheme: _buildTextTheme(_synthText, _synthTextSecondary),
+    textTheme: _buildTextTheme(_synthText, _synthTextDim),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: _synthBackground,
+      backgroundColor: _synthNavBackground,
       selectedItemColor: _synthPrimary,
-      unselectedItemColor: _synthTextSecondary,
+      unselectedItemColor: _synthTextMuted,
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: _synthPrimary,
@@ -128,9 +142,79 @@ class AppTheme {
       backgroundColor: _synthSurface,
       selectedColor: _synthPrimary.withValues(alpha: 0.3),
       labelStyle: TextStyle(color: _synthText),
+      side: BorderSide(color: _synthBorderDim),
     ),
     dividerTheme: DividerThemeData(
-      color: _synthAccent.withValues(alpha: 0.3),
+      color: _synthBorderDim,
+    ),
+    tabBarTheme: TabBarThemeData(
+      labelColor: _synthPrimary,
+      unselectedLabelColor: _synthTextDim,
+      indicatorColor: _synthPrimary,
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: _synthSurface,
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: _synthBorderDim),
+      ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: _synthSurface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: _synthSurface,
+      contentTextStyle: TextStyle(color: _synthText),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(color: _synthBorderDim),
+      ),
+    ),
+    listTileTheme: ListTileThemeData(
+      selectedColor: _synthText,
+      selectedTileColor: _synthSelectedBg,
+      iconColor: _synthPrimary,
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return _synthPrimary;
+        return _synthTextMuted;
+      }),
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return _synthPrimary.withValues(alpha: 0.5);
+        return _synthBorderDim;
+      }),
+    ),
+    iconTheme: IconThemeData(
+      color: _synthText,
+    ),
+    primaryIconTheme: IconThemeData(
+      color: _synthPrimary,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: _synthSurface,
+      hintStyle: TextStyle(color: _synthTextMuted),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _synthBorderDim),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _synthBorderDim),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _synthPrimary, width: 1.5),
+      ),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: _synthPrimary,
+      linearTrackColor: _synthBorderDim,
     ),
   );
 

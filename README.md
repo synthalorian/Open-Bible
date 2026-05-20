@@ -1,15 +1,16 @@
 # Open Bible 📖
 
-[![Flutter](https://img.shields.io/badge/Flutter-3.22+-02569B?logo=flutter)](https://flutter.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-3.41+-02569B?logo=flutter)](https://flutter.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50)](#)
-[![Download APK](https://img.shields.io/badge/Download-Latest%20APK-orange.svg?style=for-the-badge&logo=android)](https://github.com/synthalorian/open-bible/releases/download/v1.2.2/open-bible-v1.2.2.apk)
+[![Version](https://img.shields.io/badge/Version-v1.3.0-blue.svg?logo=github)](https://github.com/synthalorian/Open-Bible/releases/tag/v1.3.0)
+[![Download APK](https://img.shields.io/badge/Download-Latest%20APK-orange.svg?style=for-the-badge&logo=android)](https://github.com/synthalorian/Open-Bible/releases/download/v1.3.0/Open-Bible-v1.3.0.apk)
 
 A comprehensive, performance-optimized, and high-precision Bible study application for Android and iOS. Built with a focus on stability, offline accessibility, and a seamless reading experience.
 
 **This is the wave.** 🌊
 
-## 🚀 Key Features
+## 🚀 Feature Highlights
 
 ### 📖 The Word, Offline
 - **20+ Bundled Translations**: Immediate access to KJV, Geneva (1599), Wycliffe (1382), Tyndale (1526), ASV, YLT, and many more without needing a data connection.
@@ -28,7 +29,8 @@ A comprehensive, performance-optimized, and high-precision Bible study applicati
 - **Daily Verse & Streaks**: Stay consistent with customizable daily reminders and progress tracking.
 
 ### 🎨 Visuals & UI
-- **Four Reading Modes**: Optimized Day, Night, Sepia, and AMOLED modes for any lighting condition.
+- **Five Reading Modes**: Optimized Day, Night, Sepia, AMOLED, and **Synthwave '84** modes for any lighting condition.
+- **Christian History Encyclopedia**: Explore 122+ entries across 9 categories — church history, denominations, crosses, crusades, knights templar, saints, symbols, holy sites, and councils. Each entry features detailed text, key figures, real dates, and public domain imagery.
 - **Typographic Precision**: Featuring **CrimsonText** for a classic scriptural feel and **Roboto** for a clean UI.
 - **Zero-Flicker Startup**: Gated initialization ensures your theme is applied before the first frame, eliminating startup "white flashes."
 
@@ -36,11 +38,11 @@ A comprehensive, performance-optimized, and high-precision Bible study applicati
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Flutter 3.22+
+- **Framework:** Flutter 3.41+
 - **State Management:** Riverpod (Reactive state architecture)
-- **Local Storage:** Unified `VerseStorageService` with `SharedPreferences` mirroring for critical reliability.
-- **Audio:** `flutter_tts` with custom debounced re-sync logic.
-- **Build System:** Automated Gradle environment locking for consistent release artifacts.
+- **Local Storage:** SharedPreferences with versioned persistence.
+- **Audio:** flutter_tts with custom debounced re-sync logic.
+- **Data:** 20+ bundled Bible translations, Strong's Concordance, Bible dictionary, genealogy data, and Christian History encyclopedia (122 entries, 26 images).
 
 ---
 
@@ -58,7 +60,8 @@ lib/
 │   ├── audio/           # Real-time reactive TTS engine
 │   ├── concordance/     # Lexicon & word studies
 │   ├── reading_plans/   # Linear traversal scheduling
-│   └── ...              # Streaks, Prayer Journal, Maps, etc.
+|   ├── christian_history/  # Encyclopedia: 9 categories, 122 entries, 26 images
+|   ├── ...              # Streaks, Prayer Journal, Maps, etc.
 └── main.dart            # Gated initialization & root navigation
 ```
 
