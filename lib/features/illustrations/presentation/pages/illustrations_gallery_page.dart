@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'illustration_gallery_viewer.dart';
 
 /// Bible Illustrations Gallery - Gustave Doré and other classic biblical artwork
 class IllustrationsGalleryPage extends StatelessWidget {
@@ -296,10 +297,14 @@ class IllustrationsGalleryPage extends StatelessWidget {
   }
 
   void _showIllustrationDetail(BuildContext context, BibleIllustration illustration) {
+    final index = illustrations.indexOf(illustration);
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => IllustrationDetailPage(illustration: illustration),
+        builder: (context) => IllustrationGalleryViewer(
+          illustrations: illustrations,
+          initialIndex: index < 0 ? 0 : index,
+        ),
       ),
     );
   }
