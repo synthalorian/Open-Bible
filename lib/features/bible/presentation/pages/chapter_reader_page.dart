@@ -423,7 +423,7 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
 
     return SafeArea(
       child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+        behavior: HitTestBehavior.translucent,
         onTap: () {
           logDebug('CHAPTER_READER: Inner GestureDetector onTap triggered');
           setState(() => _showControls = !_showControls);
