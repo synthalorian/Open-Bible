@@ -56,6 +56,12 @@ app.*.symbols
 # Local build artifacts
 *.apk
 *.aab
+*.keystore
+key.properties
+
+# Build artifacts
+build/
+app/build/
 
 # Local env
 .env

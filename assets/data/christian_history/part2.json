@@ -1,0 +1,1207 @@
+{
+  "categories": [
+    {
+      "id": "crosses",
+      "title": "Crosses of the World",
+      "description": "An encyclopedia of every major type of Christian cross in existence. Each cross tells a story of faith, culture, and history through its unique form and symbolism.",
+      "icon": "cross",
+      "entries": [
+        {
+          "id": "latin_cross",
+          "title": "Latin Cross",
+          "subtitle": "Crux Ordinaria — The Universal Symbol of Christianity",
+          "description": "The Latin Cross (✝) is the most recognized Christian symbol in the world, featuring a longer vertical beam intersected by a horizontal beam placed above the midpoint. According to tradition, this was the shape of the cross on which Jesus Christ was crucified. The cross was a Roman instrument of execution, designed for maximum pain and public humiliation. Early Christians avoided depicting the cross openly due to persecution, using the anchor, ichthys fish, or Chi-Rho monogram instead. After Constantine's conversion and the abolition of crucifixion, the cross gradually became the central symbol of Christianity. The Latin cross appears in countless variations across Christian art, architecture, jewelry, and iconography. Its proportions vary by tradition, but the distinctive longer vertical beam is universal. The cross represents not just Christ's death but his victory over death — the empty cross is the ultimate symbol of resurrection hope.",
+          "category": "crosses",
+          "period": "1st century AD - Present",
+          "location": "Worldwide",
+          "crossType": "Latin",
+          "origin": "Roman Empire",
+          "keyFigures": [
+            "Jesus Christ",
+            "Constantine the Great"
+          ],
+          "keyEvents": [
+            "Crucifixion of Jesus",
+            "Abolition of crucifixion under Constantine"
+          ],
+          "tags": [
+            "latin cross",
+            "crucifix",
+            "universal",
+            "roman"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "greek_cross",
+          "title": "Greek Cross",
+          "subtitle": "Crux Immissa Quadrata — The Equal-Armed Cross",
+          "description": "The Greek Cross has four arms of equal length, creating a perfectly symmetrical cross shape. It is one of the oldest Christian cross forms, predating even the Latin cross in Christian art. The equal-armed cross appears in early Byzantine art, catacomb paintings, and the mosaics of Ravenna. In architecture, the Greek cross plan — with four equal arms extending from a central dome — became the classic form of Byzantine church design, exemplified by Hagia Sophia in Constantinople and St. Mark's Basilica in Venice. The Greek cross is the primary cross of the Eastern Orthodox churches, often depicted with a short crossbar at the top (the titulus) and a slanted footrest at the bottom. Its perfect symmetry symbolizes divine perfection and the four directions of the earth, recalling Christ's command to preach the Gospel to 'all nations.' The Greek red cross on a white background is the symbol of the International Red Cross movement, chosen because it is a clearly recognized symbol of humanitarian neutrality.",
+          "category": "crosses",
+          "period": "4th century AD - Present",
+          "location": "Byzantine Empire / Eastern Orthodox world",
+          "crossType": "Eastern / Byzantine",
+          "origin": "Byzantine Empire",
+          "keyFigures": [
+            "Constantine the Great",
+            "Justinian I"
+          ],
+          "keyEvents": [
+            "Hagia Sophia built with Greek cross plan (537 AD)",
+            "Adopted as Red Cross symbol (1863)"
+          ],
+          "tags": [
+            "greek cross",
+            "byzantine",
+            "orthodox",
+            "equal-armed",
+            "red cross"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "celtic_cross",
+          "title": "Celtic Cross",
+          "subtitle": "The Cross with the Ring of Eternity",
+          "description": "The Celtic Cross is distinguished by a ring (nimbus) encircling the intersection of the cross beams, creating a unique combination of cross and circle. The most famous examples are the high stone crosses of Ireland and Scotland — monumental carved crosses that served as preaching stations, boundary markers, and monuments. The earliest surviving high crosses date to the 8th-9th centuries, such as the Cross of Muiredach at Monasterboice and the crosses at Clonmacnoise. These crosses are richly carved with biblical scenes in Celtic interlace patterns. The ring may originally have served a structural purpose, reinforcing the cross arms. Symbolically, the circle represents eternity, God's infinite love, or the sun (connecting Christianity with pre-Christian Celtic solar symbolism). St. Patrick is sometimes credited with combining the cross with the sun symbol to make Christianity more accessible to pagan Celts. The Celtic cross experienced a major revival in the 19th-century Celtic Revival and remains a powerful symbol of Irish and Scottish Christian heritage.",
+          "category": "crosses",
+          "period": "8th century AD - Present",
+          "location": "Ireland, Scotland, Britain",
+          "crossType": "Celtic",
+          "origin": "Ireland / Scotland",
+          "keyFigures": [
+            "St. Patrick",
+            "St. Columba",
+            "St. Brigid"
+          ],
+          "keyEvents": [
+            "Creation of high crosses (8th-9th c.)",
+            "Celtic Revival (19th c.)"
+          ],
+          "tags": [
+            "celtic cross",
+            "ireland",
+            "scotland",
+            "ring",
+            "high cross"
+          ],
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+        },
+        {
+          "id": "st_andrews_cross",
+          "title": "St. Andrew's Cross",
+          "subtitle": "The Saltire — Symbol of Scotland",
+          "description": "St. Andrew's Cross, also called the Saltire, is an X-shaped cross (crux decussata) formed by two diagonal beams crossing at their centers. According to tradition, the Apostle Andrew was crucified on an X-shaped cross at Patras, Greece, considering himself unworthy to die on the same shape as Christ. The saltire became Scotland's national symbol in the 9th century, when legend says St. Andrew appeared to King Óengus II promising victory in battle — the white saltire on a blue sky background became the Scottish flag. The saltire cross appears in vexillology worldwide, from the Union Jack (combining the crosses of St. George, St. Andrew, and St. Patrick) to the Confederate battle flag. In Christian symbolism, the X-shape also represents the Greek Chi (Χ), the first letter of Christ. St. Andrew's Cross is associated with martyrdom, humility, and the call to follow Christ even to an unconventional death.",
+          "category": "crosses",
+          "period": "1st century AD (tradition); 9th century (national symbol)",
+          "location": "Scotland / Greece",
+          "crossType": "Diagonal / National",
+          "origin": "Scotland",
+          "keyFigures": [
+            "St. Andrew the Apostle",
+            "King Óengus II"
+          ],
+          "keyEvents": [
+            "Martyrdom of St. Andrew",
+            "Legendary battle vision",
+            "Adoption as Scottish flag"
+          ],
+          "tags": [
+            "st andrew",
+            "saltire",
+            "scotland",
+            "x-cross",
+            "diagonal"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "maltese_cross",
+          "title": "Maltese Cross",
+          "subtitle": "The Eight-Pointed Cross of the Knights",
+          "description": "The Maltese Cross is a distinctive eight-pointed cross with four indented arms, each narrowing to a V-shaped notch. It is the symbol of the Knights Hospitaller (Order of Malta) and embodies their values. Each of the eight points represents one of the Beatitudes from the Sermon on the Mount. The four arms represent the four cardinal virtues: Prudence, Justice, Fortitude, and Temperance. The eight points also recall the eight obligations of the knights: to live in truth, have faith, repent of sins, give proof of humility, love justice, be merciful, be sincere and whole-hearted, and endure persecution. The Maltese cross evolved from the crosses worn by the Amalfitan hospitaliers in Jerusalem and became the distinctive emblem of the Order of St. John. After the knights' relocation to Malta in 1530, the cross became permanently associated with the island. The Maltese cross remains the symbol of the Sovereign Military Order of Malta and appears on Maltese currency, architecture, and the national airline.",
+          "category": "crosses",
+          "period": "12th century AD - Present",
+          "location": "Malta / Mediterranean",
+          "crossType": "Heraldic / Military",
+          "origin": "Crusader states / Malta",
+          "keyFigures": [
+            "Blessed Gerard",
+            "Jean Parisot de Valette"
+          ],
+          "keyEvents": [
+            "Knights Hospitaller in Jerusalem",
+            "Great Siege of Malta (1565)"
+          ],
+          "tags": [
+            "maltese cross",
+            "knights hospitaller",
+            "malta",
+            "eight-pointed",
+            "crusader"
+          ],
+          "imageUrl": "assets/data/christian_history/images/maltese_cross.jpg"
+        },
+        {
+          "id": "patriarchal_cross",
+          "title": "Patriarchal Cross",
+          "subtitle": "The Double-Barred Cross",
+          "description": "The Patriarchal Cross features two horizontal crossbars, the upper one shorter than the lower. It originated in the Byzantine Empire as a symbol of the Patriarch — the upper bar representing the titulus (the INRI inscription placed over Jesus's head) and the lower representing the main crossbeam. In Orthodox tradition, the double cross also symbolizes Jesus as both God and man. The Patriarchal Cross was adopted by the Kingdom of Hungary and appears on the Hungarian coat of arms. In Slavic tradition, the three-barred cross (Orthodox cross) adds a slanted footrest. The Patriarchal Cross should not be confused with the Cross of Lorraine, which has a similar double-bar design. The double cross appears in the coat of arms of many European cities and nations with Orthodox or Catholic heritage, symbolizing the authority of both church and state.",
+          "category": "crosses",
+          "period": "6th century AD - Present",
+          "location": "Byzantine Empire / Eastern Europe",
+          "crossType": "Eastern / Hierarchical",
+          "origin": "Byzantine Empire",
+          "keyFigures": [
+            "Justinian I",
+            "Hungarian kings"
+          ],
+          "keyEvents": [
+            "Byzantine imperial use",
+            "Adoption by Hungarian crown"
+          ],
+          "tags": [
+            "patriarchal cross",
+            "double cross",
+            "byzantine",
+            "hungary",
+            "eastern"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "orthodox_cross",
+          "title": "Russian Orthodox Cross",
+          "subtitle": "The Three-Barred Cross",
+          "description": "The Russian Orthodox Cross (also called the Byzantine Cross or Eastern Cross) has three horizontal bars: a short top bar (the titulus — INRI), a long main bar, and a slanted footrest at the bottom. The slanted footrest is the most distinctive feature — one end points upward toward the good thief (St. Dismas) and the other downward toward the unrepentant thief, symbolizing the scales of judgment and the choice between heaven and hell. In Russian tradition, the bottom bar is often shown with the left side higher, representing the penitent thief's ascent. The cross is typically depicted with the inscription 'ИНЦИ' (Russian for INRI) on the top bar and 'IC XC' (abbreviation for Jesus Christ in Greek) on either side of the main beam. This cross appears on Russian Orthodox churches, grave markers, and icons. It embodies the distinctive spirituality of Eastern Orthodoxy with its emphasis on the cosmic significance of Christ's sacrifice.",
+          "category": "crosses",
+          "period": "10th century AD - Present",
+          "location": "Russia, Ukraine, Eastern Europe",
+          "crossType": "Eastern Orthodox",
+          "origin": "Byzantine Empire / Kievan Rus",
+          "keyFigures": [
+            "St. Vladimir the Great",
+            "Prince Yaroslav the Wise"
+          ],
+          "keyEvents": [
+            "Christianization of Kievan Rus (988)",
+            "Russian Orthodox Church autocephaly"
+          ],
+          "tags": [
+            "orthodox cross",
+            "russian",
+            "three-barred",
+            "slanted footrest",
+            "byzantine"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "inverted_cross",
+          "title": "Cross of St. Peter",
+          "subtitle": "The Inverted Cross",
+          "description": "The Cross of St. Peter (Petrine Cross) is a Latin cross inverted 180 degrees — an upside-down cross. According to tradition, when the Apostle Peter was sentenced to crucifixion under Emperor Nero (c. 64 AD), he requested to be crucified upside down because he felt unworthy to die in the same manner as Christ. The inverted cross thus became a symbol of humility and the ultimate act of following Christ 'even unto death.' In early and medieval Christianity, the Petrine cross appeared in art to signify Peter's unique martyrdom. In modern popular culture, the inverted cross has been appropriated by anti-Christian groups and horror movies (following the 1969 Satanic Bible by Anton LaVey), creating confusion about its original meaning. Within traditional Catholic iconography, the inverted cross remains a symbol of St. Peter's apostolic authority and is often depicted with two crossed keys. Pope Francis uses an inverted cross as his personal symbol, honoring Peter's humble martyrdom.",
+          "category": "crosses",
+          "period": "1st century AD - Present",
+          "location": "Rome, Italy",
+          "crossType": "Apostolic / Latin variant",
+          "origin": "Rome",
+          "keyFigures": [
+            "St. Peter the Apostle",
+            "Pope Francis"
+          ],
+          "keyEvents": [
+            "Martyrdom of St. Peter (c. 64 AD)"
+          ],
+          "tags": [
+            "st peter",
+            "inverted cross",
+            "pope",
+            "martyrdom",
+            "rome"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "jerusalem_cross",
+          "title": "Jerusalem Cross",
+          "subtitle": "The Crusader's Cross",
+          "description": "The Jerusalem Cross (also called the Crusader Cross) features a large central Greek cross with four smaller Greek crosses in the quadrants between the arms. It was the symbol of the Kingdom of Jerusalem, established after the First Crusade's capture of Jerusalem in 1099. The five crosses represent the five wounds of Christ (the central cross for the spear wound in his side, the four smaller crosses for the nail wounds in hands and feet). Alternatively, the central cross represents Christ, and the four evangelists spread the Gospel to the four corners of the earth. The cross became the emblem of the Crusader states and remains associated with the Franciscan Custody of the Holy Land (the Franciscan order charged with caring for Christian holy sites in Israel/Palestine). Today, the Jerusalem cross appears on the flag of Georgia and the coat of arms of the Kingdom of Jerusalem (used by various crusader-linked European nobility).",
+          "category": "crosses",
+          "period": "11th century AD - Present",
+          "location": "Jerusalem / Holy Land",
+          "crossType": "Crusader / Heraldic",
+          "origin": "Jerusalem",
+          "keyFigures": [
+            "Godfrey of Bouillon",
+            "Baldwin I of Jerusalem"
+          ],
+          "keyEvents": [
+            "First Crusade (1099)",
+            "Kingdom of Jerusalem established"
+          ],
+          "tags": [
+            "jerusalem cross",
+            "crusader",
+            "five crosses",
+            "holy land",
+            "kingdom of jerusalem"
+          ],
+          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+        },
+        {
+          "id": "ankh",
+          "title": "Ankh (Coptic Cross)",
+          "subtitle": "The Key of Life",
+          "description": "The Ankh (☥) is an ancient Egyptian hieroglyphic symbol meaning 'life' or 'breath of life,' adopted by Egyptian Coptic Christians as a cross. The symbol has a loop or teardrop-shaped handle above a T-shaped cross. In ancient Egypt, the ankh represented eternal life and was carried by gods and pharaohs. When Christianity spread through Egypt, the Coptic Church adapted the familiar ankh symbol, investing it with Christian meaning as an emblem of Christ's victory over death and the promise of eternal life. The ankh's loop represents the resurrection and the endless nature of God's love. The Coptic cross often incorporates the ankh's looped top, creating variations found on Coptic churches, textiles, and jewelry. The ankh is a beautiful example of cultural continuity — a pre-Christian symbol transformed by the Christian faith into a sign of the cross and eternal life through Christ.",
+          "category": "crosses",
+          "period": "1st century AD - Present (Christian use); 3rd millennium BC (Egyptian origin)",
+          "location": "Egypt / Coptic Christian world",
+          "crossType": "Coptic / Looped",
+          "origin": "Egypt",
+          "keyFigures": [
+            "St. Mark the Evangelist",
+            "St. Anthony the Great"
+          ],
+          "keyEvents": [
+            "Christianization of Egypt (1st c.)",
+            "Coptic Church adopts ankh"
+          ],
+          "tags": [
+            "ankh",
+            "coptic",
+            "egypt",
+            "looped cross",
+            "life"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "cross_lorraine",
+          "title": "Cross of Lorraine",
+          "subtitle": "The Cross of Liberation",
+          "description": "The Cross of Lorraine features two horizontal crossbars, similar to the Patriarchal Cross but typically with the upper bar closer to the top and sometimes with both bars of equal length. Originating in the Byzantine Empire, it was adopted by the Dukes of Anjou and later the Duchy of Lorraine in France. During World War II, the Cross of Lorraine became the symbol of the Free French Forces under General Charles de Gaulle, representing resistance against Nazi occupation and the liberation of France. A French naval ensign with the cross was flown by Free French ships. The cross has also been associated with Joan of Arc, who carried a banner with a similar design. In the Middle Ages, the Cross of Lorraine was associated with the relic of the True Cross kept in the Abbey of St. Denis. Today it appears on French postage stamps, military medals, and the flag of Lorraine.",
+          "category": "crosses",
+          "period": "12th century AD - Present",
+          "location": "France / Lorraine region",
+          "crossType": "Double-barred / National",
+          "origin": "France (Lorraine)",
+          "keyFigures": [
+            "Charles de Gaulle",
+            "Joan of Arc",
+            "Godfrey of Bouillon (Duke of Lower Lorraine)"
+          ],
+          "keyEvents": [
+            "First Crusade",
+            "Free French Forces symbol (1940)"
+          ],
+          "tags": [
+            "cross of lorraine",
+            "france",
+            "free french",
+            "de gaulle",
+            "double cross"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "cross_pattee",
+          "title": "Cross Pattée",
+          "subtitle": "The Iron Cross",
+          "description": "The Cross Pattée (from French 'patte' — paw) has arms that widen toward the ends, with the outer edges curving outward. The most famous version is the Iron Cross (Eisernes Kreuz), a Prussian and German military decoration established by King Frederick William III in 1813. The Iron Cross was designed by Karl Friedrich Schinkel and based on the cross pattée of the Teutonic Knights. Despite its later unfortunate association with Nazi Germany (where it appeared as the Wehrmacht's Balkenkreuz), the original cross pattée has deep Christian roots. In heraldry and ecclesiastical art, the cross pattée represents the spread of the Gospel to the ends of the earth, with its flared arms suggesting motion outward. The cross pattée appears in the coat of arms of many European cities and institutions. The cross pattée is also similar to the cross formée used by the Order of Christ (successor to the Knights Templar in Portugal).",
+          "category": "crosses",
+          "period": "13th century AD - Present",
+          "location": "Germany / Prussia",
+          "crossType": "Heraldic / Military",
+          "origin": "Teutonic Knights / Prussia",
+          "keyFigures": [
+            "King Frederick William III",
+            "Karl Friedrich Schinkel"
+          ],
+          "keyEvents": [
+            "Iron Cross created (1813)",
+            "Teutonic Order symbol"
+          ],
+          "tags": [
+            "cross pattee",
+            "iron cross",
+            "teutonic",
+            "prussia",
+            "military"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "tau_cross",
+          "title": "Tau Cross",
+          "subtitle": "The Anticipatory Cross",
+          "description": "The Tau Cross (or St. Anthony's Cross) is shaped like the Greek letter Tau (Τ), the last letter of the Hebrew alphabet — a T-shaped cross. According to some traditions, this was the actual shape of the cross used to crucify Jesus — a simple T without the upper extension, which was sometimes called a patibulum cross. The letter Tau was considered the 'sign of God' in the Old Testament (Ezekiel 9:4). The Tau cross is associated with St. Anthony the Great, the father of monasticism, and later with St. Francis of Assisi. Francis used the Tau cross as his personal signature and symbol, seeing it as a sign of conversion and redemption. The Franciscan Order continues to use the Tau cross as its emblem. In the Middle Ages, the Tau cross was believed to have protective powers, and it was often carved on church doors and buildings. The Tau cross connects the Old Testament (the Tau marked on the forehead), Christ's crucifixion, and the Franciscan call to simplicity and conversion.",
+          "category": "crosses",
+          "period": "13th century AD - Present (Franciscan use)",
+          "location": "Franciscan world",
+          "crossType": "T-shaped / Franciscan",
+          "origin": "Middle East / Assisi, Italy",
+          "keyFigures": [
+            "St. Francis of Assisi",
+            "St. Anthony the Great"
+          ],
+          "keyEvents": [
+            "St. Francis adopts Tau (c. 1205)",
+            "Franciscan Order uses as emblem"
+          ],
+          "tags": [
+            "tau cross",
+            "franciscan",
+            "st anthony",
+            "st francis",
+            "t-shaped"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "constantinian_cross",
+          "title": "Chi-Rho (Labarum)",
+          "subtitle": "Constantine's Vision — The First Christian Imperial Symbol",
+          "description": "The Chi-Rho (☧) is one of the oldest Christian symbols, formed by superimposing the first two letters of Christ's name in Greek: Chi (Χ) and Rho (Ρ). It was the symbol Constantine the Great saw in his vision before the Battle of Milvian Bridge (312 AD), accompanied by the words 'In hoc signo vinces' (in this sign, conquer). Constantine then ordered his soldiers to mark their shields with the Chi-Rho and used it as his imperial standard (the labarum). The Chi-Rho predates the cross as a public Christian symbol — it was a discreet way for early Christians to identify themselves and mark Christian graves in the catacombs. After Constantine's conversion, the Chi-Rho became the first officially authorized Christian symbol in the Roman Empire. It appears on Roman coins, imperial monuments, and early Christian art. The Chi-Rho represents the intersection of human history and divine intervention at the moment when Christianity emerged from persecution to become the favored religion of the empire.",
+          "category": "crosses",
+          "period": "2nd century AD - Present (Christian use)",
+          "location": "Roman Empire / Worldwide",
+          "crossType": "Christogram / Early Christian",
+          "origin": "Rome / Byzantium",
+          "keyFigures": [
+            "Constantine the Great",
+            "Eusebius of Caesarea"
+          ],
+          "keyEvents": [
+            "Vision at Milvian Bridge (312)",
+            "Edict of Milan (313)"
+          ],
+          "tags": [
+            "chi-rho",
+            "christogram",
+            "constantine",
+            "labarum",
+            "constantinian"
+          ],
+          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+        },
+        {
+          "id": "cross_calvary",
+          "title": "Cross of Calvary",
+          "subtitle": "The Graded Cross on Three Steps",
+          "description": "The Cross of Calvary (also called the Graded Cross) depicts a Latin cross resting on a base of three steps (or gradines), each representing a theological virtue — traditionally Faith, Hope, and Charity (Love). From bottom to top: Faith (the foundation), Hope (the middle step, looking upward), and Charity (the top step, nearest to Christ). The three steps also represent the hill of Golgotha (Calvary) — the 'Place of the Skull' where Jesus was crucified. In heraldry, the Cross of Calvary appears on coats of arms and ecclesiastical seals. The graded cross is a common motif on altars, tombstones, and cemetery monuments. It emphasizes the historical event of the crucifixion at a specific place (Golgotha) while inviting meditation on the theological meaning of Christ's sacrifice.",
+          "category": "crosses",
+          "period": "Medieval period - Present",
+          "location": "Western Christianity",
+          "crossType": "Graded / Heraldic",
+          "origin": "Europe",
+          "keyFigures": [],
+          "keyEvents": [],
+          "tags": [
+            "cross of calvary",
+            "graded cross",
+            "golgotha",
+            "three steps"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "coptic_cross_variant",
+          "title": "Coptic Cross (Modern)",
+          "subtitle": "The Cross of the Egyptian Church",
+          "description": "The modern Coptic cross typically features two perpendicular lines crossed with equal arms, surrounded by a circle or with intricate interlacing patterns filling the quadrants. Unlike the Latin cross, the Coptic cross is often highly ornate, with geometric and floral patterns reflecting the Egyptian artistic tradition. The crossbars sometimes have tiny crosses at each tip, creating a complex and beautiful design. Coptic crosses are frequently tattooed on the inner wrist of Coptic Christians — a practice dating to the 7th century when Muslim rulers required identification marks. The tattoo became a defiant mark of faith. Modern Coptic crosses incorporate Pharaonic motifs (the ankh) and ancient Egyptian artistic elements, creating a unique visual tradition. The Coptic cross is a symbol of endurance, representing a church that has survived Roman persecution, Byzantine persecution, Arab conquest, and modern persecution while maintaining its distinctive identity for 2,000 years.",
+          "category": "crosses",
+          "period": "7th century AD - Present",
+          "location": "Egypt / Coptic diaspora",
+          "crossType": "Coptic / Ornate",
+          "origin": "Egypt",
+          "keyFigures": [
+            "Pope Shenouda III"
+          ],
+          "keyEvents": [
+            "Arab conquest of Egypt (641)",
+            "Coptic tattoo tradition"
+          ],
+          "tags": [
+            "coptic",
+            "egypt",
+            "tattoo",
+            "intricate",
+            "martyr"
+          ],
+          "imageUrl": "assets/data/christian_history/images/coptic_cross.jpg"
+        },
+        {
+          "id": "cross_bottony",
+          "title": "Cross Bottony",
+          "subtitle": "The Trefoil Cross",
+          "description": "The Cross Bottony (also called Cross Treflée) has arms ending in three rounded lobes (trefoils), resembling a clover or lily. 'Bottony' derives from French 'bouton' (bud), as the ends suggest flower buds. The trefoil ends symbolize the Holy Trinity, with each lobe representing Father, Son, and Holy Spirit. This cross appears frequently in heraldry, particularly in British and Irish coats of arms. The cross bottony is closely related to the cross fleury (with sharper, fleur-de-lis shaped ends) and the cross pattée (with flared ends). In ecclesiastical art and architecture, the cross bottony adorns vestments, church furnishings, and manuscript illuminations. The trefoil ends connect the cross to the natural world, suggesting that from Christ's sacrifice springs new life and growth, like buds opening in spring.",
+          "category": "crosses",
+          "period": "Medieval period - Present",
+          "location": "Western Europe",
+          "crossType": "Heraldic / Botanical",
+          "origin": "European heraldry",
+          "keyFigures": [],
+          "keyEvents": [],
+          "tags": [
+            "cross bottony",
+            "trefoil",
+            "heraldry",
+            "trinity",
+            "bud"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "scandinavian_cross",
+          "title": "Scandinavian Cross",
+          "subtitle": "The Nordic Cross Flag",
+          "description": "The Scandinavian Cross (Nordic Cross) is a Christian cross with the vertical bar offset to the hoist (left) side of the flag. It appears on the national flags of all Nordic countries: Denmark (Dannebrog — the oldest continuously used national flag), Sweden, Norway, Finland, Iceland, and their autonomous territories. The Dannebrog legend states that the flag fell from heaven during the Battle of Lyndanisse (1219), a sign from God ensuring Danish victory. The Scandinavian cross design represents the Christianization of the Nordic region. The offset cross allows the flag to fly with the cross centered when the flag is in motion, creating a dynamic visual effect. The colors vary by country (red with white cross for Denmark, blue with yellow cross for Sweden, etc.), but the basic Christian cross design unifies them. The Scandinavian cross appears on numerous regional and municipal flags across the Nordic countries, making it one of the most widespread Christian cross variants in the world.",
+          "category": "crosses",
+          "period": "13th century AD - Present",
+          "location": "Scandinavia / Nordic countries",
+          "crossType": "National / Vexillological",
+          "origin": "Denmark",
+          "keyFigures": [
+            "King Valdemar II",
+            "Queen Margaret I"
+          ],
+          "keyEvents": [
+            "Battle of Lyndanisse (1219)",
+            "Kalmar Union (1397)"
+          ],
+          "tags": [
+            "scandinavian cross",
+            "nordic",
+            "flag",
+            "dannebrog",
+            "denmark"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "st_georges_cross",
+          "title": "St. George's Cross",
+          "subtitle": "The Cross of England",
+          "description": "St. George's Cross is a red Latin cross on a white field, the national flag of England and one of the components of the Union Jack. The association with St. George, the legendary dragon-slaying saint and patron of England, dates to the Crusades. The red cross on white was also the symbol of the Knights Templar (worn on their white mantles) and appears in the coats of arms of numerous cities, including London, Genoa, and Milan. The flag originated as the Banner of St. George, carried by English soldiers during the Crusades and the Hundred Years' War. St. George's Day (April 23) is celebrated with the cross displayed prominently. The red on white color scheme is one of the oldest heraldic combinations, representing martyrdom (red) and purity (white). The cross appears on church flags, sports teams, and cultural celebrations throughout England.",
+          "category": "crosses",
+          "period": "12th century AD - Present",
+          "location": "England / United Kingdom",
+          "crossType": "National",
+          "origin": "England / Crusader states",
+          "keyFigures": [
+            "St. George",
+            "King Richard the Lionheart"
+          ],
+          "keyEvents": [
+            "Adoption as English flag (c. 1190)",
+            "Union Jack creation (1606)"
+          ],
+          "tags": [
+            "st george",
+            "england",
+            "red cross",
+            "flag",
+            "crusader"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "cross_fleury",
+          "title": "Cross Fleury",
+          "subtitle": "The Lily Cross",
+          "description": "The Cross Fleury (or Cross Fleur-de-lis) features arms with ends shaped like fleurs-de-lis (the lily flower, symbol of the Virgin Mary). The fleur-de-lis has three petals, representing faith, wisdom, and virtue, or the Holy Trinity. The cross fleury is a beautiful combination of the cross of Christ's sacrifice and the lily of Mary's purity and the resurrection. This cross appears frequently in French heraldry and ecclesiastical art. The fleur-de-lis was the symbol of French royalty, and the cross fleury thus connects the cross with the idea of Christ as King. In Catholic iconography, the cross fleury adorns vestments, altar frontals, and processional crosses. The arms of the cross ending in lilies suggests that from the wood of the cross springs new life — the resurrection blooming from death. The cross fleury's elegant, flowing lines make it one of the most aesthetically sophisticated cross designs.",
+          "category": "crosses",
+          "period": "Medieval period - Present",
+          "location": "France / Western Europe",
+          "crossType": "Heraldic / Botanical",
+          "origin": "France",
+          "keyFigures": [
+            "St. Louis IX of France",
+            "Joan of Arc"
+          ],
+          "keyEvents": [],
+          "tags": [
+            "cross fleury",
+            "fleur-de-lis",
+            "lily",
+            "france",
+            "heraldry"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "ethiopian_cross",
+          "title": "Ethiopian Cross",
+          "subtitle": "The Intricate Cross of African Christianity",
+          "description": "The Ethiopian Cross (or Lalibela Cross) is one of the most elaborate Christian cross designs, featuring intricate geometric latticework, interlacing patterns, and decorative finials. Ethiopian crosses come in three main types: hand crosses (held by priests for blessing), processional crosses (mounted on staffs), and pendant crosses (worn by the faithful). The Lalibela Cross, the most famous example, is a massive processional cross carved from a single piece of rock and associated with the rock-hewn churches of Lalibela. Ethiopian cross designs incorporate elements of Aksumite, Byzantine, and indigenous African artistic traditions. Many Ethiopian crosses are made from brass, silver, or wood, and their complex patterns — often featuring diamond shapes, circles, and interlace — represent the infinite nature of God and the interconnectedness of creation. The Ethiopian cross reflects a Christian tradition that has evolved independently for 1,700 years, creating a uniquely African expression of the universal Christian symbol.",
+          "category": "crosses",
+          "period": "4th century AD - Present",
+          "location": "Ethiopia",
+          "crossType": "Ethiopian / African",
+          "origin": "Ethiopia",
+          "keyFigures": [
+            "King Ezana",
+            "St. Frumentius",
+            "King Lalibela"
+          ],
+          "keyEvents": [
+            "Conversion of Ethiopia (330)",
+            "Rock-hewn churches built (12th-13th c.)"
+          ],
+          "tags": [
+            "ethiopian cross",
+            "lalibela",
+            "africa",
+            "intricate",
+            "latticework"
+          ],
+          "imageUrl": "assets/data/christian_history/images/ethiopian_cross.jpg"
+        },
+        {
+          "id": "cross_celtic_knot",
+          "title": "Celtic Knot Cross",
+          "subtitle": "The Interwoven Cross of Endless Love",
+          "description": "The Celtic Knot Cross incorporates the intricate interlacing patterns of Celtic art, where lines weave together endlessly without beginning or end. This cross embodies the Celtic Christian understanding of eternity — God's love without beginning or end, the Trinity as an endless mystery, and the interconnectedness of all creation. Celtic knotwork is found on the high stone crosses of Ireland and on illuminated manuscripts like the Book of Kells. The cross and circle combine with zoomorphic (animal) and geometric patterns in complex interlace designs. The endless knots symbolize the binding love of God and the eternal nature of the soul. Each knot is a prayer in visual form, inviting contemplation. The Celtic knot cross remains popular in jewelry, art, and tattoos, connecting modern Christians with the ancient Celtic spiritual tradition of seeing God's presence woven through all of creation.",
+          "category": "crosses",
+          "period": "7th century AD - Present",
+          "location": "Ireland, Scotland, Britain",
+          "crossType": "Celtic / Insular",
+          "origin": "Ireland / Western Britain",
+          "keyFigures": [
+            "St. Columba",
+            "St. Aidan of Lindisfarne"
+          ],
+          "keyEvents": [
+            "Book of Kells (c. 800)",
+            "Carved high crosses of Ireland"
+          ],
+          "tags": [
+            "celtic knot",
+            "interlace",
+            "ireland",
+            "eternity",
+            "book of kells"
+          ],
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+        },
+        {
+          "id": "teutonic_cross",
+          "title": "Teutonic Order Cross",
+          "subtitle": "The Cross of the German Knights",
+          "description": "The Teutonic Order Cross (or Black Cross) is a black cross pattée with a white border, the symbol of the Teutonic Knights (Deutscher Orden). Founded in 1190 during the Siege of Acre, the Teutonic Order was a German military religious order. Their cross was worn on white surcoats (like the Templars) but with the distinctive black cross pattée. The Teutonic Knights played a major role in the Northern Crusades, conquering and Christianizing Prussia, Lithuania, and Latvia. Their fortified castles — Marienburg, Königsberg — became centers of power. The black cross was adopted by the Prussian military and became the basis of the Iron Cross. The Teutonic order cross represents the complex legacy of the Crusades: military conquest in the name of Christ, cultural and religious transformation of Northern Europe, and the intertwining of Christian mission with political ambition. The cross now appears on the flag of the Order of the Teutonic Knights, still an active religious order.",
+          "category": "crosses",
+          "period": "12th century AD - Present",
+          "location": "Germany / Prussia / Baltic region",
+          "crossType": "Military / Teutonic",
+          "origin": "Acre / Germany",
+          "keyFigures": [
+            "Hermann von Salza",
+            "Henry Walpot von Bassenheim"
+          ],
+          "keyEvents": [
+            "Order founded (1190)",
+            "Northern Crusades (13th c.)",
+            "Secularization of Prussia (1525)"
+          ],
+          "tags": [
+            "teutonic",
+            "black cross",
+            "prussia",
+            "baltic",
+            "northern crusades"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        }
+      ]
+    },
+    {
+      "id": "crusades",
+      "title": "The Crusades & Holy Wars",
+      "description": "A comprehensive account of the Crusades — the military expeditions called by the Church to reclaim the Holy Land, defend Christendom, and shape the course of world history.",
+      "icon": "swords",
+      "entries": [
+        {
+          "id": "first_crusade",
+          "title": "First Crusade (1096-1099)",
+          "subtitle": "The Capture of Jerusalem",
+          "description": "The First Crusade was the most successful of the crusading expeditions, launched by Pope Urban II at the Council of Clermont in 1095 with the famous cry 'Deus vult!' (God wills it!). Urban called for a military expedition to aid the Byzantine Empire against Turkish advances and to reclaim Jerusalem from Muslim rule. The response was overwhelming — thousands of knights and peasants took the cross. The crusade was organized in two phases: the disastrous People's Crusade (led by Peter the Hermit, ending in massacre) and the more organized Princes' Crusade (led by Godfrey of Bouillon, Raymond of Toulouse, Bohemond of Taranto, and others). After a grueling three-year march across Europe and Asia Minor, the crusaders captured Antioch in 1098 and finally Jerusalem on July 15, 1099, after a five-week siege. The capture was accompanied by brutal massacres of the city's Jewish and Muslim inhabitants. The crusaders established four Crusader states: the Kingdom of Jerusalem, the Principality of Antioch, the County of Edessa, and the County of Tripoli.",
+          "category": "crusades",
+          "period": "1096-1099",
+          "location": "Holy Land, Anatolia",
+          "keyFigures": [
+            "Pope Urban II",
+            "Godfrey of Bouillon",
+            "Raymond of Toulouse",
+            "Bohemond of Taranto",
+            "Peter the Hermit",
+            "Tancred"
+          ],
+          "keyEvents": [
+            "Council of Clermont (1095)",
+            "Siege of Antioch (1097-1098)",
+            "Siege of Jerusalem (1099)",
+            "Establishment of Crusader states"
+          ],
+          "tags": [
+            "first crusade",
+            "jerusalem",
+            "godfrey",
+            "urban ii",
+            "crusader states"
+          ],
+          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+        },
+        {
+          "id": "third_crusade",
+          "title": "Third Crusade (1189-1192)",
+          "subtitle": "The Kings' Crusade",
+          "description": "The Third Crusade was launched in response to the fall of Jerusalem to Saladin in 1187 (following the Battle of Hattin). Called by Pope Gregory VIII, the crusade was led by three of Europe's most powerful monarchs: Frederick I Barbarossa of the Holy Roman Empire, Philip II Augustus of France, and Richard I the Lionheart of England. The crusade was marked by both heroic achievement and tragic failure. Frederick Barbarossa drowned in a river in Anatolia, and his army largely dissolved. Philip and Richard traveled by sea, capturing the strategic port of Acre in 1191 after a long siege. Philip returned to France, leaving Richard to continue alone. Richard's campaign produced some of the most famous episodes of crusading history: the massacre of 2,700 prisoners at Acre, the victory at Arsuf, and two failed attempts to march on Jerusalem. In the end, Richard negotiated the Treaty of Jaffa (1192) with Saladin, securing Christian access to Jerusalem for pilgrims and a strip of coast, but failing to recapture the city. The crusade established the chivalric legend of Richard and Saladin as worthy adversaries.",
+          "category": "crusades",
+          "period": "1189-1192",
+          "location": "Holy Land",
+          "keyFigures": [
+            "Richard the Lionheart",
+            "Saladin",
+            "Frederick Barbarossa",
+            "Philip II Augustus"
+          ],
+          "keyEvents": [
+            "Battle of Hattin (1187)",
+            "Siege of Acre (1189-1191)",
+            "Battle of Arsuf (1191)",
+            "Treaty of Jaffa (1192)"
+          ],
+          "tags": [
+            "third crusade",
+            "richard",
+            "saladin",
+            "acre",
+            "jerusalem"
+          ],
+          "imageUrl": "assets/data/christian_history/images/saladin.jpg"
+        },
+        {
+          "id": "fourth_crusade",
+          "title": "Fourth Crusade (1202-1204)",
+          "subtitle": "The Sack of Constantinople",
+          "description": "The Fourth Crusade represents one of the most tragic episodes in Christian history — a crusade intended to conquer Muslim Egypt that instead ended with the sack of Constantinople, the greatest Christian city in the world. The crusade was hijacked by Venetian financial interests. Unable to pay Venice for transport, the crusaders first agreed to capture the Christian city of Zara for the Venetians. Then, manipulated by Alexios Angelos (a claimant to the Byzantine throne), they diverted to Constantinople. After initial success in restoring Alexios IV, tensions between the crusaders and the Byzantines escalated. In April 1204, the crusaders stormed and brutally sacked Constantinople, looting Hagia Sophia, destroying countless relics and works of art, and committing atrocities against the population. The Byzantine Empire was partitioned, and the Latin Empire of Constantinople was established (lasting until 1261). The Fourth Crusade so embittered relations between Latin and Greek Christianity that the wound has never fully healed, making eventual reunion of the churches virtually impossible for centuries.",
+          "category": "crusades",
+          "period": "1202-1204",
+          "location": "Constantinople, Zara",
+          "keyFigures": [
+            "Pope Innocent III",
+            "Doge Enrico Dandolo",
+            "Boniface of Montferrat",
+            "Baldwin of Flanders",
+            "Alexios IV Angelos"
+          ],
+          "keyEvents": [
+            "Siege of Zara (1202)",
+            "Sack of Constantinople (1204)",
+            "Latin Empire established"
+          ],
+          "tags": [
+            "fourth crusade",
+            "constantinople",
+            "venice",
+            "byzantine",
+            "latin empire"
+          ],
+          "imageUrl": "assets/data/christian_history/images/hagia_sophia.jpg"
+        },
+        {
+          "id": "peoples_crusade",
+          "title": "People's Crusade (1096)",
+          "subtitle": "The Vanguard of Disaster",
+          "description": "The People's Crusade was the first wave of the First Crusade, an unofficial popular movement led by Peter the Hermit, a French monk whose passionate preaching inspired tens of thousands of peasants, poor knights, women, and children to take up the cross. Lacking military training, supplies, or coordinated leadership, this ragged army marched across Europe in three groups. Along the way, they engaged in horrific attacks on Jewish communities in the Rhineland (the Rhineland massacres), justified by the belief that Jews should be forced to convert or die before crusaders could fight Muslims. Emperor Henry IV and local bishops tried to protect the Jewish communities but largely failed. When the People's Crusade finally reached Anatolia, they were ambushed and annihilated by the Turkish forces of Kilij Arslan at the Battle of Civetot in October 1096. Of the estimated 20,000-60,000 participants, only a handful survived. The People's Crusade demonstrated both the raw religious fervor and the dangers of unorganized crusading enthusiasm.",
+          "category": "crusades",
+          "period": "1096",
+          "location": "Europe, Anatolia",
+          "keyFigures": [
+            "Peter the Hermit",
+            "Walter Sans Avoir",
+            "Emicho of Flonheim",
+            "Kilij Arslan"
+          ],
+          "keyEvents": [
+            "Rhineland massacres (1096)",
+            "Battle of Civetot (1096)",
+            "Destruction of the People's Crusade"
+          ],
+          "tags": [
+            "people's crusade",
+            "peter the hermit",
+            "rhineland",
+            "massacre"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "reconquista",
+          "title": "The Reconquista (722-1492)",
+          "subtitle": "The Christian Reconquest of Spain",
+          "description": "The Reconquista ('Reconquest') was the centuries-long campaign by Christian kingdoms to recapture the Iberian Peninsula from the Muslim Moors who had conquered it in 711 AD. Spanning nearly 800 years, the Reconquista was not a continuous war but a series of campaigns, punctuated by long periods of peaceful coexistence — a period known as La Convivencia, when Christians, Muslims, and Jews coexisted with remarkable cultural exchange. The Reconquista began with Pelagius's victory at Covadonga (c. 722) and ended with the fall of Granada (1492) under Ferdinand and Isabella. Key Christian kingdoms included Castile, Aragon, Portugal, and Navarre. The Reconquista shaped uniquely Spanish military religious orders: Santiago, Calatrava, Alcántara, and Montesa. It also produced the legendary figure of El Cid (Rodrigo Díaz de Vivar), who fought for both Christian and Muslim rulers. The Reconquista concluded in the same year Columbus sailed for the Americas, making 1492 pivotal for Spanish history. Its legacy includes the blending of Christian, Muslim, and Jewish elements in Spanish culture, the Spanish Inquisition (established 1478), and the forced conversion or expulsion of Muslims and Jews.",
+          "category": "crusades",
+          "period": "722-1492",
+          "location": "Iberian Peninsula (Spain, Portugal)",
+          "keyFigures": [
+            "El Cid",
+            "King Ferdinand of Aragon",
+            "Queen Isabella of Castile",
+            "Pelagius",
+            "Alfonso VI"
+          ],
+          "keyEvents": [
+            "Battle of Covadonga (722)",
+            "Fall of Toledo (1085)",
+            "Battle of Las Navas de Tolosa (1212)",
+            "Fall of Granada (1492)"
+          ],
+          "tags": [
+            "reconquista",
+            "spain",
+            "moors",
+            "castile",
+            "granada",
+            "el cid"
+          ],
+          "imageUrl": "assets/data/christian_history/images/santiago.jpg"
+        },
+        {
+          "id": "saladin_hattin",
+          "title": "Battle of Hattin (1187)",
+          "subtitle": "The Horns of Hattin — Saladin's Masterstroke",
+          "description": "The Battle of Hattin, fought near the twin hills of the Horns of Hattin in Galilee, was the decisive battle that led to the Muslim reconquest of Jerusalem. Sultan Saladin had spent years uniting Muslim forces and preparing to destroy the Crusader states. The battle was triggered by a Templar raid on a Muslim caravan protected by Saladin's truce. The Crusader army, led by King Guy of Lusignan and numbering about 20,000 men, marched from their water source at Sephoria toward Tiberias. Saladin's forces harassed them constantly, and by the time the crusaders reached the arid plateau of Hattin, they were desperately thirsty. Saladin set the dry grass on fire, filling the crusader ranks with smoke. The crusaders were surrounded on the Horns of Hattin and completely defeated. The relic of the True Cross, carried into battle as a standard, was captured. Most crusader leaders were taken prisoner, including King Guy. Raymond III of Tripoli managed to escape. Within months, Saladin captured most Crusader fortresses, and Jerusalem surrendered on October 2, 1187, ending 88 years of Christian rule. The defeat sparked the Third Crusade.",
+          "category": "crusades",
+          "period": "1187",
+          "location": "Horns of Hattin, Galilee",
+          "keyFigures": [
+            "Saladin",
+            "King Guy of Lusignan",
+            "Raymond of Tripoli",
+            "Reynald of Châtillon",
+            "Gerard de Rideford (Templar Grand Master)"
+          ],
+          "keyEvents": [
+            "Crusader thirst trap",
+            "True Cross captured",
+            "Crusader army destroyed",
+            "Jerusalem falls (October 1187)"
+          ],
+          "tags": [
+            "hattin",
+            "saladin",
+            "jerusalem",
+            "true cross",
+            "galilee"
+          ],
+          "imageUrl": "assets/data/christian_history/images/saladin.jpg"
+        },
+        {
+          "id": "albigensian_crusade",
+          "title": "Albigensian Crusade (1209-1229)",
+          "subtitle": "The Crusade Against Heretics",
+          "description": "The Albigensian Crusade (or Cathar Crusade) was the first crusade declared against Christian heretics rather than Muslims. Launched by Pope Innocent III in 1209, it was directed against the Cathars (also called Albigensians) of southern France — a dualist Christian sect that believed in two gods, rejected the material world, the cross, and the sacraments, and had become strong in the Languedoc region. When papal legate Pierre de Castelnau was murdered, Innocent III called for a crusade. The northern French army, led by Simon de Montfort the Elder, descended upon the south. The crusade was particularly savage — at Béziers in 1209, when asked how to distinguish Cathars from Catholics, the papal legate Arnaud Amalric reportedly replied 'Kill them all, God will know his own.' The city was burned, and thousands died regardless of religion. The crusade lasted 20 years, devastating southern French culture, eliminating the Cathar movement (the last Cathar perfect was burned in 1321), and bringing the Languedoc under direct French royal control. The Inquisition was established partly to prevent Catharism from reviving. The Albigensian Crusade set a precedent for using crusade against internal Christian enemies.",
+          "category": "crusades",
+          "period": "1209-1229",
+          "location": "Languedoc, France",
+          "keyFigures": [
+            "Pope Innocent III",
+            "Simon de Montfort the Elder",
+            "Raymond VI of Toulouse",
+            "Raymond VII of Toulouse"
+          ],
+          "keyEvents": [
+            "Massacre at Béziers (1209)",
+            "Battle of Muret (1213)",
+            "Treaty of Paris (1229)",
+            "Establishment of the Inquisition"
+          ],
+          "tags": [
+            "albigensian",
+            "cathar",
+            "france",
+            "inquisition",
+            "innocent iii",
+            "heresy"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "childrens_crusade",
+          "title": "Children's Crusade (1212)",
+          "subtitle": "The Tragic Odyssey of the Young",
+          "description": "The Children's Crusade of 1212 is one of the most tragic and mysterious episodes in crusading history. Two separate movements, one in France led by a shepherd boy named Stephen of Cloyes and one in Germany led by a boy named Nicholas of Cologne, gathered thousands of children and adolescents who believed they could succeed where adult crusaders had failed — that their purity would enable them to miraculously reclaim Jerusalem. Stephen presented a letter to King Philip II of France claiming divine commission. Nicholas gathered about 7,000 followers and crossed the Alps into Italy. The outcome was tragic: many died of hunger, exposure, and disease during the journey. Some were shipwrecked. The most persistent tradition claims that the children who reached the Mediterranean port of Marseille were tricked by two merchants who offered to transport them to the Holy Land but instead sold them into slavery in North Africa. The exact details remain uncertain due to limited contemporary sources, but the event became legendary as a symbol of crusading naivety and the exploitation of religious enthusiasm. Modern historians debate the precise nature of the movement — whether it was truly composed of children or more accurately poor rural laborers.",
+          "category": "crusades",
+          "period": "1212",
+          "location": "France, Germany, Italy, Mediterranean",
+          "keyFigures": [
+            "Stephen of Cloyes",
+            "Nicholas of Cologne"
+          ],
+          "keyEvents": [
+            "March across Alps",
+            "Arrival in Marseille",
+            "Betrayal and enslavement"
+          ],
+          "tags": [
+            "children's crusade",
+            "1212",
+            "tragedy",
+            "stephen",
+            "nicholas"
+          ],
+          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+        },
+        {
+          "id": "siege_acre_1189",
+          "title": "Siege of Acre (1189-1191)",
+          "subtitle": "The Key to the Holy Land",
+          "description": "The Siege of Acre was the longest and bloodiest siege of the crusading era, lasting nearly two years (August 1189 to July 1191). After Saladin's capture of most of the Kingdom of Jerusalem in 1187-1188, only the port city of Tyre remained in Christian hands. The Crusaders' counterattack began when King Guy of Lusignan (released from captivity) and Conrad of Montferrat led a relief force that besieged the Muslim garrison of Acre, not knowing that Saladin himself was marching to relieve it. The siege became a massive epicenter of the Third Crusade — both sides dug in, and the surrounding plain became a tent city of thousands from across Europe and the Muslim world. The crusaders were themselves besieged while besieging the city. After the arrival of Richard the Lionheart and Philip Augustus in 1191, the city finally surrendered. The aftermath was controversial: after receiving the surrender, Richard executed approximately 2,700 Muslim prisoners in plain view of Saladin's army when Saladin failed to deliver a ransom payment. The execution remains one of the most controversial acts of Richard's career. Acre became the new capital of the reduced Kingdom of Jerusalem and remained in Christian hands for another 100 years.",
+          "category": "crusades",
+          "period": "1189-1191",
+          "location": "Acre, Israel",
+          "keyFigures": [
+            "Richard the Lionheart",
+            "Philip II Augustus",
+            "Saladin",
+            "Conrad of Montferrat",
+            "King Guy of Lusignan"
+          ],
+          "keyEvents": [
+            "Two-year siege",
+            "Arrival of Richard and Philip",
+            "Surrender of Acre",
+            "Massacre of prisoners"
+          ],
+          "tags": [
+            "acre",
+            "siege",
+            "richard",
+            "saladin",
+            "prisoners",
+            "third crusade"
+          ],
+          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+        },
+        {
+          "id": "fall_acre_1291",
+          "title": "Fall of Acre (1291)",
+          "subtitle": "The End of the Crusader States",
+          "description": "The Fall of Acre in 1291 marked the definitive end of the Crusader presence in the Holy Land. After the disastrous Seventh and Eighth Crusades of Louis IX and the rise of the Mamluk Sultanate under Baybars, the Crusader states had been reduced to a narrow coastal strip. When the Mamluk Sultan al-Ashraf Khalil marched on Acre in April 1291 with an enormous army and massive siege engines, the city's defenders — Knights Templar, Hospitaller, and Teutonic Knights, along with the remaining Crusader population — prepared for a final stand. The siege lasted six weeks. The Mamluks breached the walls on May 18, 1291. The fighting was desperate — women and children were evacuated by sea while knights covered the retreat. The Templar headquarters, a massive fortress on the coast, held out for nine more days before collapsing on its defenders. The surviving knights were killed. The last king of Jerusalem, Henry II of Cyprus, fled. Without Acre, no other Crusader city could hold out. Tyre, Sidon, Beirut, and the remaining castles fell within weeks. The Crusader Kingdom of Jerusalem, which had existed for nearly 200 years, was no more.",
+          "category": "crusades",
+          "period": "1291",
+          "location": "Acre, Israel",
+          "keyFigures": [
+            "Sultan al-Ashraf Khalil",
+            "Henry II of Cyprus",
+            "William of Beaujeu (Templar Grand Master)",
+            "Sultan Baybars"
+          ],
+          "keyEvents": [
+            "Mamluk siege",
+            "Breach of walls (May 18)",
+            "Templar fortress collapse",
+            "End of Crusader states"
+          ],
+          "tags": [
+            "acre",
+            "1291",
+            "mamluk",
+            "crusader states",
+            "end",
+            "templar"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "battle_arsuf",
+          "title": "Battle of Arsuf (1191)",
+          "subtitle": "Richard vs. Saladin",
+          "description": "The Battle of Arsuf was the only major open-field battle between Richard the Lionheart and Saladin during the Third Crusade. After capturing Acre, Richard marched south along the coast toward Jaffa, which he planned to use as a base to recapture Jerusalem. Saladin shadowed the crusader column, harassing it with hit-and-run attacks by horse archers — the classic Turkish tactic. Richard organized his army in a tight formation with infantry on the seaward side protecting the cavalry. When the Hospitallers could no longer endure Saladin's harassment and charged without orders, Richard, showing brilliant battlefield generalship, committed his entire force in a coordinated assault. The crusader heavy cavalry charge shattered Saladin's forces, who fled in disorder. Saladin's losses were severe, including many emirs. Richard's tactical victory at Arsuf (the first significant Christian victory since Hattin) proved that the crusader army could defeat Saladin's forces in the field. However, Richard was unable to follow up the victory by marching on Jerusalem immediately, and the campaign ultimately stalled. Arsuf was the high point of the Third Crusade and cemented Richard's reputation as a military commander.",
+          "category": "crusades",
+          "period": "1191",
+          "location": "Arsuf, Israel",
+          "keyFigures": [
+            "Richard the Lionheart",
+            "Saladin",
+            "Garnier de Nablus (Hospitaller Master)"
+          ],
+          "keyEvents": [
+            "Cavalry charge",
+            "Saladin's defeat",
+            "Crusader morale boost"
+          ],
+          "tags": [
+            "arsuf",
+            "richard",
+            "saladin",
+            "battle",
+            "cavalry",
+            "third crusade"
+          ],
+          "imageUrl": "assets/data/christian_history/images/saladin.jpg"
+        }
+      ]
+    },
+    {
+      "id": "knights_templar",
+      "title": "Knights Templar & Military Orders",
+      "description": "The story of the knightly religious orders — warriors who took monastic vows and dedicated their lives to defending Christendom. From the rise of the Knights Templar to their dramatic fall.",
+      "icon": "shield",
+      "entries": [
+        {
+          "id": "templar_founding",
+          "title": "Founding of the Knights Templar (1119)",
+          "subtitle": "The Poor Fellow-Soldiers of Christ",
+          "description": "The Knights Templar were founded in 1119 by Hugues de Payens, a French knight, and eight companions who vowed to protect Christian pilgrims traveling to Jerusalem after the First Crusade. King Baldwin II of Jerusalem granted them quarters on the Temple Mount (the Al-Aqsa Mosque), believed to be the site of Solomon's Temple — from which they took their name: the Poor Fellow-Soldiers of Christ and the Temple of Solomon. For their first nine years, the Templars were a small, impoverished group whose primary work was guarding the dangerous roads between Jaffa and Jerusalem. At the Council of Troyes in 1129, the Templars received official Church recognition and their Rule, drafted by St. Bernard of Clairvaux, who wrote 'In Praise of the New Knighthood' — a treatise that justified the unprecedented concept of a monk who could also kill in battle. The Templars adopted distinctive white mantles (symbolizing purity) with a red cross, and took vows of poverty, chastity, and obedience. From these humble beginnings, the Templars would grow into the most powerful military order in Christendom.",
+          "category": "knights_templar",
+          "period": "1119-1312",
+          "location": "Jerusalem / Europe",
+          "foundedBy": "Hugues de Payens",
+          "yearFounded": "1119",
+          "keyFigures": [
+            "Hugues de Payens",
+            "St. Bernard of Clairvaux",
+            "Baldwin II of Jerusalem"
+          ],
+          "keyEvents": [
+            "Founding by nine knights (1119)",
+            "Council of Troyes (1129)",
+            "Papal recognition"
+          ],
+          "tags": [
+            "templar",
+            "founding",
+            "hugues de payens",
+            "temple mount",
+            "council of troyes"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "templar_banking",
+          "title": "Templar Banking & Financial Empire",
+          "subtitle": "The Medieval Bankers",
+          "description": "The Knights Templar developed the most sophisticated financial system in medieval Europe, essentially inventing modern banking practices. Because Templar properties existed across Europe and the Holy Land, pilgrims and crusaders could deposit money with a Templar commandery in their home country and withdraw it in Jerusalem, avoiding the danger of carrying coins across bandit-infested routes — the first traveler's checks. The Templars also offered loans, safe deposits, and financial management services to kings, nobles, and the Church itself. They managed the royal treasury of France (the Temple of Paris became the royal treasury), and their castles served as secure banks. The Templars developed innovations including letters of credit, accounting systems, and secure money transfers. Their reputation for integrity was so strong that their financial instruments were trusted across Christendom. At its peak, the Order was probably the single largest landowner in Europe outside the Church. This immense wealth and financial power was a double-edged sword — it made the Templars indispensable to kings but also aroused envy, especially in King Philip IV of France, who owed the Templars enormous sums. When Philip decided to destroy the Templars, their wealth was the primary motive.",
+          "category": "knights_templar",
+          "period": "12th-14th centuries",
+          "location": "Temple of Paris (headquarters)",
+          "keyFigures": [
+            "Philip IV of France"
+          ],
+          "keyEvents": [
+            "Traveler's checks invented",
+            "Royal treasury management",
+            "Temple of Paris as central bank"
+          ],
+          "tags": [
+            "templar",
+            "banking",
+            "finance",
+            "paris",
+            "philip iv",
+            "wealth"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "friday_13th",
+          "title": "Friday the 13th Arrest (1307)",
+          "subtitle": "The Fall of the Templars",
+          "description": "On Friday, October 13, 1307, King Philip IV of France ordered the simultaneous arrest of hundreds of Knights Templar across France in one of the most dramatic — and coordinated — operations of the Middle Ages. The date is the historical origin of the association between Friday the 13th and bad luck. Philip IV, deeply indebted to the Templars and seeking to consolidate royal power, had conspired with his ministers, especially Guillaume de Nogaret, to destroy the order. Templar properties were seized, and members were arrested at dawn in a carefully synchronized operation. The Templars were charged with heresy, blasphemy, sodomy, idolatry (worshipping a head or idol called Baphomet), spitting on the cross during initiation, and denying Christ. Under torture authorized by the Inquisition, many Templars, including Grand Master Jacques de Molay, confessed to these charges. Pope Clement V, initially skeptical of Philip's campaign, was pressured into cooperating. The arrests marked the beginning of the end for the Knights Templar, but the operation was not perfectly coordinated outside France — many Templars in other European kingdoms successfully evaded capture or were found innocent in local trials.",
+          "category": "knights_templar",
+          "period": "October 13, 1307",
+          "location": "France",
+          "keyFigures": [
+            "Philip IV of France",
+            "Guillaume de Nogaret",
+            "Pope Clement V",
+            "Jacques de Molay"
+          ],
+          "keyEvents": [
+            "Coordinated arrests",
+            "Torture and confessions",
+            "Origin of Friday the 13th superstition"
+          ],
+          "tags": [
+            "templar",
+            "friday 13th",
+            "philip iv",
+            "arrest",
+            "inquisition",
+            "nogaret"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "jacques_molay",
+          "title": "Jacques de Molay — The Last Grand Master",
+          "subtitle": "The Burning of the Grand Master",
+          "description": "Jacques de Molay was the 23rd and last Grand Master of the Knights Templar. Born in 1244 in Burgundy, he joined the Templars at age 21 and fought in the Holy Land, spending decades in the East. Elected Grand Master in 1292, he oversaw the Templar retreat from the Holy Land after the fall of Acre and attempted to reorganize the Order for a new crusade. After his arrest in 1307, de Molay was imprisoned and tortured for seven years. Initially confessing under torture, he later recanted on a scaffold before the gathered crowd at Notre Dame Cathedral. On March 18, 1314, de Molay and Geoffrey de Charney (Templar Preceptor of Normandy) were burned at the stake on a small island in the Seine River (now the Square du Vert-Galant) in Paris. According to legend, de Molay called out from the flames, summoning Pope Clement V and King Philip IV to appear before God's judgment within the year. Both died within months — Clement on April 20, Philip on November 29, 1314. The sudden deaths of both men within the year fed the legend of the Templar curse. De Molay's dying words and the mysterious deaths have fueled Templar mythology for seven centuries.",
+          "category": "knights_templar",
+          "period": "1244-1314",
+          "location": "Paris, France",
+          "keyFigures": [
+            "Jacques de Molay",
+            "Geoffrey de Charney",
+            "Philip IV of France",
+            "Pope Clement V"
+          ],
+          "keyEvents": [
+            "Arrest (1307)",
+            "Recantation",
+            "Burning at the stake (1314)",
+            "The Templar curse"
+          ],
+          "tags": [
+            "templar",
+            "jacques de molay",
+            "grand master",
+            "burning",
+            "curse"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "templar_armor",
+          "title": "Templar Armor & Equipment",
+          "subtitle": "The Warrior Monk's Arsenal",
+          "description": "The Knights Templar were the most heavily armed and disciplined fighting force of the Crusader states. Their equipment reflected their dual identity as both monks and elite warriors. The most iconic element was the white mantle (surcoat) emblazoned with a red cross — white symbolizing the Templar vow of chastity and purity, red representing martyrdom. Over this, Templar knights wore a hauberk made of chain mail (riveted iron rings), which protected from neck to knees. Under the mail, they wore a padded gambeson for additional protection. The head was protected by a great helm (a bucket-shaped helmet with horizontal vision slits), sometimes with a mail coif underneath. Their primary weapon was the longsword (arming sword), typically 35-40 inches long with a crossguard and pommel balanced for one-handed use. For mounted combat, they carried a lance (12-14 feet long) and a heater shield (triangular) bearing the Templar cross. Templar horses were destriers (warhorses) bred for strength and trained for battle, armored with mail or leather. The Templar also carried a mace or battle-axe as a secondary weapon. Their battle standard was the Beau Séant — a black-and-white banner that called the knights to rally. Each Templar knight was accompanied by a squire and sufficient horses. The total equipment for a Templar knight represented a massive financial investment, making each knight a formidable asset.",
+          "category": "knights_templar",
+          "period": "12th-14th centuries",
+          "location": "Holy Land / Europe",
+          "keyFigures": [],
+          "keyEvents": [],
+          "tags": [
+            "templar",
+            "armor",
+            "chain mail",
+            "great helm",
+            "sword",
+            "white mantle"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "templar_rule",
+          "title": "The Templar Rule",
+          "subtitle": "The Discipline of the Warrior Monk",
+          "description": "The Templar Rule, formally approved at the Council of Troyes in 1129 and largely written by St. Bernard of Clairvaux, was the first religious rule specifically designed for a military order — blending Cistercian monastic discipline with military regulations. The Rule governed every aspect of a Templar's life, from prayer to battle. The daily schedule included seven canonical hours of prayer, meals taken in silence while listening to Scripture reading, and strict dress codes. Templars ate meat only three times per week and wore their habits at all times. In battle, the Rule was even more specific: no Templar could charge without the commander's order, could not retreat (unless the commander signaled retreat or the order's flag fell), and was forbidden to ransom his armor if captured (he must offer himself, not his equipment). The Rule severely restricted interactions with women (no woman could enter a Templar house) and emphasized obedience above all — a Templar who struck another brother could be expelled. The Rule evolved over time with additional 'retrais' (rulings) covering camp layout, marching order, command hierarchy, and the conduct of the standard-bearer. This rigorous discipline made the Templars the most effective fighting force in the Crusader states, but also created a rigid and insular organization vulnerable to the political maneuvering that would eventually destroy them.",
+          "category": "knights_templar",
+          "period": "1129-1312",
+          "location": "Troyes / Temple Mount",
+          "keyFigures": [
+            "St. Bernard of Clairvaux",
+            "Hugues de Payens"
+          ],
+          "keyEvents": [
+            "Council of Troyes (1129)",
+            "Latin Rule approved"
+          ],
+          "tags": [
+            "templar",
+            "rule",
+            "bernard",
+            "discipline",
+            "military order"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "templar_legends",
+          "title": "Templar Legends & Mysteries",
+          "subtitle": "Grail, Treasure, and Secrets",
+          "description": "The sudden and dramatic destruction of the Knights Templar created a vacuum that has been filled by seven centuries of legends, mysteries, and conspiracy theories. The arrest of the Templars was so effective that their vast treasure — if it existed — was never found, leading to endless speculation. Did Templar ships escape from La Rochelle on the night of the arrests, carrying the Order's gold, relics, and secret knowledge to Scotland, Portugal, or the New World? Did the Templars possess the Holy Grail, the Ark of the Covenant, or the Shroud of Turin? Were they guardians of the Merovingian bloodline of Jesus? The 'survival' theories are numerous: Templars as founders of the Freemasons, Templars hiding in Switzerland as the origin of Swiss banking, Templar fleets reaching America before Columbus. Many of these legends were central to the esoteric tradition that influenced the Knights Templar's modern reputation. The Rosslyn Chapel in Scotland (built 1446) is often linked to Templar survival because of its carved 'green men' and vegetal Templar imagery. Dan Brown's 'The Da Vinci Code' (2003) popularized Templar mysteries for a modern audience. While most of these legends have little or no historical basis, they reflect the enduring fascination with an order that rose so high and fell so suddenly.",
+          "category": "knights_templar",
+          "period": "1307-present (legends)",
+          "location": "Europe",
+          "keyFigures": [
+            "Jacques de Molay",
+            "Henry Sinclair"
+          ],
+          "keyEvents": [
+            "Missing Templar fleet",
+            "Rosslyn Chapel",
+            "Freemason connections"
+          ],
+          "tags": [
+            "templar",
+            "legends",
+            "holy grail",
+            "freemasons",
+            "treasure"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        },
+        {
+          "id": "hospitallers",
+          "title": "Knights Hospitaller (Order of Malta)",
+          "subtitle": "The Longest-Serving Crusader Order",
+          "description": "The Knights Hospitaller (Order of St. John), the oldest surviving crusading order, originated around 1080 as a hospital in Jerusalem caring for pilgrims. After the First Crusade, they adopted a military role alongside their medical mission, becoming the Knights of the Hospital of St. John. Their symbol was the eight-pointed Maltese cross, and their black mantles with white crosses distinguished them from the Templar's white mantles. After the fall of the Crusader states, the Hospitallers relocated to Rhodes (1310-1522) and then Malta (1530-1798), where they famously withstood the Great Siege of 1565 under Grand Master Jean Parisot de Valette. The Order continues today as the Sovereign Military Order of Malta, a sovereign entity that maintains diplomatic relations with 100+ states and operates hospitals and humanitarian missions worldwide. The Hospitallers' unbroken 900-year history makes them the most successful of the crusading orders.",
+          "category": "knights_templar",
+          "period": "1080 - Present",
+          "location": "Jerusalem, Rhodes, Malta, Rome",
+          "foundedBy": "Blessed Gerard",
+          "yearFounded": "c. 1080",
+          "headquarters": "Palazzo Malta, Rome",
+          "adherents": "~13,500 members",
+          "keyFigures": [
+            "Blessed Gerard",
+            "Jean Parisot de Valette",
+            "Raymond du Puy"
+          ],
+          "keyEvents": [
+            "Founding of Jerusalem hospital (1080)",
+            "Military role adopted (12th c.)",
+            "Rhodes conquest (1310)",
+            "Great Siege of Malta (1565)",
+            "Exile from Malta (1798)"
+          ],
+          "tags": [
+            "hospitaller",
+            "malta",
+            "rhodes",
+            "hospital",
+            "maltese cross"
+          ],
+          "imageUrl": "assets/data/christian_history/images/maltese_cross.jpg"
+        },
+        {
+          "id": "teutonic_order",
+          "title": "Teutonic Order",
+          "subtitle": "The German Crusaders",
+          "description": "The Teutonic Order (Deutscher Orden) was founded in 1190 during the Third Crusade as a hospital order for German crusaders at Acre. Initially a small order of German knights, it was elevated to a military order in 1198 by Pope Innocent III. After the Crusader states collapsed, the Teutonic Order shifted its focus to Eastern Europe, where they conducted the Northern Crusades against pagan Prussians, Lithuanians, and Livonians. The Order created a powerful monastic state in Prussia, building massive brick fortresses (Marienburg, Königsberg) and founding cities that became German cultural centers. The Order's black cross on white became the symbol of Prussia and evolved into the Iron Cross. The Teutonic Order's power was broken at the Battle of Grunwald (1410) by a Polish-Lithuanian army. The Order was secularized in 1525 when Grand Master Albert of Brandenburg converted to Lutheranism. It continues today as a small religious order of priests and nuns.",
+          "category": "knights_templar",
+          "period": "1190 - Present",
+          "location": "Acre, Prussia, Baltic states",
+          "foundedBy": "Henry Walpot von Bassenheim",
+          "yearFounded": "1190",
+          "headquarters": "Vienna, Austria",
+          "adherents": "~1,000 members",
+          "keyFigures": [
+            "Hermann von Salza",
+            "Siegfried von Feuchtwangen",
+            "Winrich von Kniprode",
+            "Albert of Brandenburg"
+          ],
+          "keyEvents": [
+            "Founding in Acre (1190)",
+            "Northern Crusades (13th c.)",
+            "Battle of Grunwald (1410)",
+            "Secularization (1525)"
+          ],
+          "tags": [
+            "teutonic",
+            "prussia",
+            "german",
+            "northern crusades",
+            "grunwald"
+          ],
+          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+        }
+      ]
+    }
+  ]
+}

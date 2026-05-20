@@ -96,6 +96,7 @@ flutter:
     - assets/illustrations/
     - assets/fonts/
     - assets/data/
+    - assets/data/christian_history/
 
   fonts:
     # Serif fonts for Bible text reading
