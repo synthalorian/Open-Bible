@@ -30,7 +30,7 @@
             "founding",
             "jerusalem"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/pentecost.jpg"
         },
         {
           "id": "council_jerusalem",
@@ -57,7 +57,8 @@
             "gentiles",
             "paul",
             "apostolic"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_jerusalem.jpg"
         },
         {
           "id": "martyrdom_stephen",
@@ -82,7 +83,7 @@
             "persecution",
             "apostolic"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/martyrdom_stephen.jpg"
         },
         {
           "id": "paul_missionary",
@@ -112,7 +113,7 @@
             "new testament",
             "mediterranean"
           ],
-          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+          "imageUrl": "assets/data/christian_history/images/paul_missionary.jpg"
         },
         {
           "id": "destruction_temple",
@@ -138,7 +139,7 @@
             "judaism",
             "prophecy"
           ],
-          "imageUrl": "assets/data/christian_history/images/holy_sepulchre.jpg"
+          "imageUrl": "assets/data/christian_history/images/destruction_temple.jpg"
         },
         {
           "id": "john_revelation",
@@ -163,7 +164,8 @@
             "john",
             "patmos",
             "new testament"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/john_revelation.jpg"
         },
         {
           "id": "ignatius_antioch",
@@ -190,7 +192,7 @@
             "bishop",
             "eucharist"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/ignatius_antioch.jpg"
         },
         {
           "id": "polycarp_martyrdom",
@@ -215,7 +217,7 @@
             "smyrna",
             "persecution"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/polycarp_martyrdom.jpg"
         },
         {
           "id": "constantine_conversion",
@@ -242,7 +244,7 @@
             "chi-rho",
             "edict of milan"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/constantine_conversion.jpg"
         },
         {
           "id": "council_nicaea",
@@ -271,7 +273,7 @@
             "constantine",
             "trinity"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/council_nicaea.jpg"
         },
         {
           "id": "augustine_hippo",
@@ -300,7 +302,7 @@
             "grace",
             "confessions"
           ],
-          "imageUrl": "assets/data/christian_history/images/augustine.jpg"
+          "imageUrl": "assets/data/christian_history/images/augustine_hippo.jpg"
         },
         {
           "id": "jerome_vulgate",
@@ -326,7 +328,7 @@
             "vulgate",
             "latin"
           ],
-          "imageUrl": "assets/data/christian_history/images/augustine.jpg"
+          "imageUrl": "assets/data/christian_history/images/jerome_vulgate.jpg"
         },
         {
           "id": "council_chalcedon",
@@ -353,7 +355,7 @@
             "incarnation",
             "schism"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/council_chalcedon.jpg"
         },
         {
           "id": "fall_rome",
@@ -380,7 +382,7 @@
             "medieval",
             "augustine"
           ],
-          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+          "imageUrl": "assets/data/christian_history/images/fall_rome.jpg"
         },
         {
           "id": "benedictine_rule",
@@ -406,7 +408,7 @@
             "ora et labora",
             "medieval"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/benedictine_rule.jpg"
         },
         {
           "id": "east_west_schism",
@@ -433,7 +435,7 @@
             "constantinople",
             "filioque"
           ],
-          "imageUrl": "assets/data/christian_history/images/hagia_sophia.jpg"
+          "imageUrl": "assets/data/christian_history/images/east_west_schism.jpg"
         },
         {
           "id": "luther_95_theses",
@@ -463,7 +465,7 @@
             "protestant",
             "95 theses"
           ],
-          "imageUrl": "assets/data/christian_history/images/martin_luther.jpg"
+          "imageUrl": "assets/data/christian_history/images/luther_95_theses.jpg"
         },
         {
           "id": "council_trent",
@@ -492,7 +494,7 @@
             "counter-reformation",
             "tridentine"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/council_trent.jpg"
         },
         {
           "id": "king_james_bible",
@@ -520,7 +522,7 @@
             "english",
             "authorized version"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/king_james_bible.jpg"
         },
         {
           "id": "first_great_awakening",
@@ -549,7 +551,7 @@
             "whitefield",
             "methodist"
           ],
-          "imageUrl": "assets/data/christian_history/images/bible_open.jpg"
+          "imageUrl": "assets/data/christian_history/images/first_great_awakening.jpg"
         },
         {
           "id": "azusa_street",
@@ -609,7 +611,7 @@
             "liturgy",
             "ecumenism"
           ],
-          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+          "imageUrl": "assets/data/christian_history/images/second_vatican.jpg"
         }
       ]
     },
@@ -652,7 +654,7 @@
             "sacraments",
             "apostolic"
           ],
-          "imageUrl": "assets/data/christian_history/images/st_peters.jpg"
+          "imageUrl": "assets/data/christian_history/images/roman_catholic.jpg"
         },
         {
           "id": "eastern_orthodox",
@@ -685,7 +687,7 @@
             "liturgy",
             "patriarch"
           ],
-          "imageUrl": "assets/data/christian_history/images/hagia_sophia.jpg"
+          "imageUrl": "assets/data/christian_history/images/eastern_orthodox.jpg"
         },
         {
           "id": "oriental_orthodox",
@@ -717,7 +719,7 @@
             "armenian",
             "miaphysite"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/oriental_orthodox.jpg"
         },
         {
           "id": "lutheran",
@@ -749,7 +751,7 @@
             "reformation",
             "augsburg confession"
           ],
-          "imageUrl": "assets/data/christian_history/images/martin_luther.jpg"
+          "imageUrl": "assets/data/christian_history/images/lutheran.jpg"
         },
         {
           "id": "anglican",
@@ -783,7 +785,7 @@
             "cranmer",
             "common prayer"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/anglican.jpg"
         },
         {
           "id": "southern_baptist",
@@ -846,7 +848,7 @@
             "sanctification",
             "hymns"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/methodist.jpg"
         },
         {
           "id": "presbyterian",
@@ -878,7 +880,7 @@
             "elders",
             "westminster"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/presbyterian.jpg"
         },
         {
           "id": "assemblies_god",
@@ -944,7 +946,7 @@
             "desert fathers",
             "martyr"
           ],
-          "imageUrl": "assets/data/christian_history/images/mount_sinai.jpg"
+          "imageUrl": "assets/data/christian_history/images/coptics.jpg"
         },
         {
           "id": "ethiopian_orthodox",
@@ -976,7 +978,7 @@
             "african",
             "ancient"
           ],
-          "imageUrl": "assets/data/christian_history/images/ethiopian_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/ethiopian_orthodox.jpg"
         },
         {
           "id": "mennonite",
@@ -1041,7 +1043,7 @@
             "white",
             "second coming"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/seventh_day_adventist.jpg"
         },
         {
           "id": "jehovahs_witnesses",
@@ -1102,7 +1104,7 @@
             "salt lake",
             "restoration"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/lds.jpg"
         }
       ]
     },
@@ -1137,7 +1139,8 @@
             "jerusalem",
             "gentiles",
             "apostolic"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_jerusalem_detailed.jpg"
         },
         {
           "id": "council_nicaea_detailed",
@@ -1165,7 +1168,8 @@
             "creed",
             "arian",
             "constantine"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_nicaea_detailed.jpg"
         },
         {
           "id": "council_constantinople",
@@ -1192,7 +1196,8 @@
             "creed",
             "holy spirit",
             "trinity"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_constantinople.jpg"
         },
         {
           "id": "council_ephesus",
@@ -1219,7 +1224,8 @@
             "theotokos",
             "nestorian",
             "mary"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_ephesus.jpg"
         },
         {
           "id": "council_chalcedon_detailed",
@@ -1246,7 +1252,8 @@
             "christology",
             "two natures",
             "schism"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_chalcedon_detailed.jpg"
         },
         {
           "id": "apostles_creed",
@@ -1268,7 +1275,8 @@
             "apostle's",
             "trinity",
             "baptism"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/apostles_creed.jpg"
         },
         {
           "id": "nicene_creed",
@@ -1293,7 +1301,8 @@
             "constantinople",
             "trinity",
             "filioque"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/nicene_creed.jpg"
         },
         {
           "id": "council_trent_detailed",
@@ -1322,7 +1331,8 @@
             "counter-reformation",
             "catholic",
             "tridentine"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/council_trent_detailed.jpg"
         },
         {
           "id": "vatican1",
@@ -1349,7 +1359,8 @@
             "pope",
             "infallibility",
             "catholic"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/vatican1.jpg"
         },
         {
           "id": "vatican2",
@@ -1380,7 +1391,8 @@
             "liturgy",
             "ecumenism",
             "aggiornamento"
-          ]
+          ],
+          "imageUrl": "assets/data/christian_history/images/vatican2.jpg"
         }
       ]
     }
