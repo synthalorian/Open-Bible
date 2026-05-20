@@ -57,7 +57,7 @@
             "equal-armed",
             "red cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/greek_cross.jpg"
         },
         {
           "id": "celtic_cross",
@@ -167,7 +167,7 @@
             "hungary",
             "eastern"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/patriarchal_cross.jpg"
         },
         {
           "id": "orthodox_cross",
@@ -194,7 +194,7 @@
             "slanted footrest",
             "byzantine"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/orthodox_cross.jpg"
         },
         {
           "id": "inverted_cross",
@@ -220,7 +220,7 @@
             "martyrdom",
             "rome"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/inverted_cross.jpg"
         },
         {
           "id": "jerusalem_cross",
@@ -274,7 +274,7 @@
             "looped cross",
             "life"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/ankh.jpg"
         },
         {
           "id": "cross_lorraine",
@@ -302,7 +302,7 @@
             "de gaulle",
             "double cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/cross_lorraine.jpg"
         },
         {
           "id": "cross_pattee",
@@ -329,7 +329,7 @@
             "prussia",
             "military"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/cross_pattee.jpg"
         },
         {
           "id": "tau_cross",
@@ -403,7 +403,7 @@
             "golgotha",
             "three steps"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/cross_calvary.jpg"
         },
         {
           "id": "coptic_cross_variant",
@@ -429,7 +429,7 @@
             "intricate",
             "martyr"
           ],
-          "imageUrl": "assets/data/christian_history/images/coptic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/coptic_cross_variant.jpg"
         },
         {
           "id": "cross_bottony",
@@ -450,7 +450,7 @@
             "trinity",
             "bud"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/cross_bottony.jpg"
         },
         {
           "id": "scandinavian_cross",
@@ -650,7 +650,7 @@
             "urban ii",
             "crusader states"
           ],
-          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/first_crusade.jpg"
         },
         {
           "id": "third_crusade",
@@ -883,7 +883,7 @@
             "prisoners",
             "third crusade"
           ],
-          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/siege_acre_1189.jpg"
         },
         {
           "id": "fall_acre_1291",
@@ -913,7 +913,7 @@
             "end",
             "templar"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/fall_acre_1291.jpg"
         },
         {
           "id": "battle_arsuf",
@@ -978,7 +978,7 @@
             "temple mount",
             "council of troyes"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_founding.jpg"
         },
         {
           "id": "templar_banking",
@@ -1004,7 +1004,7 @@
             "philip iv",
             "wealth"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_banking.jpg"
         },
         {
           "id": "friday_13th",
@@ -1033,7 +1033,7 @@
             "inquisition",
             "nogaret"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/friday_13th.jpg"
         },
         {
           "id": "jacques_molay",
@@ -1062,7 +1062,7 @@
             "burning",
             "curse"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/jacques_molay.jpg"
         },
         {
           "id": "templar_armor",
@@ -1082,7 +1082,7 @@
             "sword",
             "white mantle"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_armor.jpg"
         },
         {
           "id": "templar_rule",
@@ -1107,7 +1107,7 @@
             "discipline",
             "military order"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_rule.jpg"
         },
         {
           "id": "templar_legends",
@@ -1133,7 +1133,7 @@
             "freemasons",
             "treasure"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_legends.jpg"
         },
         {
           "id": "hospitallers",
@@ -1199,7 +1199,7 @@
             "northern crusades",
             "grunwald"
           ],
-          "imageUrl": "assets/data/christian_history/images/knights_templar.jpg"
+          "imageUrl": "assets/data/christian_history/images/teutonic_order.jpg"
         }
       ]
     }
