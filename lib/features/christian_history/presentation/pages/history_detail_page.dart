@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import '../../data/models/christian_history_models.dart';
 
@@ -23,10 +24,12 @@ class HistoryDetailPage extends StatelessWidget {
           children: [
             // Hero image
             if (entry.imageUrl != null)
-              Center(
+              SizedBox(
+                width: double.infinity,
+                height: 220,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: _AssetImageWithError(imagePath: entry.imageUrl!),
+                  child: _HistoryImage(imagePath: entry.imageUrl!),
                 ),
               ),
 
@@ -67,122 +70,93 @@ class HistoryDetailPage extends StatelessWidget {
                   ),
               ],
             ),
+            const SizedBox(height: 12),
 
-            const SizedBox(height: 16),
-
-            // Denomination-specific fields
+            // Denomination details
             if (entry.foundedBy != null ||
                 entry.yearFounded != null ||
                 entry.headquarters != null ||
-                entry.adherents != null)
-              _MetadataSection(title: 'Denomination Details', children: [
-                if (entry.foundedBy != null)
-                  _MetadataRow('Founded by', entry.foundedBy!),
-                if (entry.yearFounded != null)
-                  _MetadataRow('Year founded', entry.yearFounded!),
-                if (entry.headquarters != null)
-                  _MetadataRow('Headquarters', entry.headquarters!),
-                if (entry.adherents != null)
-                  _MetadataRow('Adherents', entry.adherents!),
-              ]),
+                entry.adherents != null) ...[
+              const _SectionHeader(title: 'Denomination Details'),
+              _InfoRow(label: 'Founded By', value: entry.foundedBy),
+              _InfoRow(label: 'Year Founded', value: entry.yearFounded),
+              _InfoRow(label: 'Headquarters', value: entry.headquarters),
+              _InfoRow(label: 'Adherents', value: entry.adherents),
+              const SizedBox(height: 8),
+            ],
 
-            // Cross-specific fields
-            if (entry.crossType != null || entry.origin != null)
-              _MetadataSection(title: 'Cross Details', children: [
-                if (entry.crossType != null)
-                  _MetadataRow('Cross type', entry.crossType!),
-                if (entry.origin != null)
-                  _MetadataRow('Origin', entry.origin!),
-              ]),
+            // Cross details
+            if (entry.crossType != null || entry.origin != null) ...[
+              const _SectionHeader(title: 'Cross Details'),
+              _InfoRow(label: 'Cross type', value: entry.crossType),
+              _InfoRow(label: 'Origin', value: entry.origin),
+              const SizedBox(height: 8),
+            ],
 
             // Key Figures
             if (entry.keyFigures.isNotEmpty) ...[
-              const SizedBox(height: 8),
-              Text(
-                'Key Figures',
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 8),
+              const _SectionHeader(title: 'Key Figures'),
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: entry.keyFigures
-                    .map(
-                      (figure) => Chip(
-                        avatar: const Icon(Icons.person, size: 16),
-                        label: Text(figure),
-                      ),
-                    )
-                    .toList(),
+                children: entry.keyFigures.map((figure) {
+                  return Chip(
+                    avatar: const Icon(Icons.person, size: 16),
+                    label: Text(figure),
+                  );
+                }).toList(),
               ),
+              const SizedBox(height: 12),
             ],
 
             // Key Events
             if (entry.keyEvents.isNotEmpty) ...[
-              const SizedBox(height: 16),
-              Text(
-                'Key Events',
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+              const _SectionHeader(title: 'Key Events'),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: entry.keyEvents.map((event) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('• ', style: TextStyle(fontSize: 16)),
+                        Expanded(child: Text(event)),
+                      ],
+                    ),
+                  );
+                }).toList(),
               ),
-              const SizedBox(height: 8),
-              ...entry.keyEvents.map(
-                (event) => Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '•  ',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          event,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              const SizedBox(height: 12),
             ],
 
-            // Full description
-            const SizedBox(height: 16),
+            // Description
+            const _SectionHeader(title: 'Description'),
+            const SizedBox(height: 8),
             Text(
               entry.description,
-              style: theme.textTheme.bodyLarge,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontFamily: 'CrimsonText',
+                height: 1.8,
+              ),
             ),
+            const SizedBox(height: 24),
 
             // Tags
             if (entry.tags.isNotEmpty) ...[
-              const SizedBox(height: 16),
-              const Divider(),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 6,
                 runSpacing: 6,
-                children: entry.tags
-                    .map(
-                      (tag) => Chip(
-                        labelStyle: theme.textTheme.labelSmall,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        visualDensity: VisualDensity.compact,
-                        label: Text(tag),
-                      ),
-                    )
-                    .toList(),
+                children: entry.tags.map((tag) {
+                  return Chip(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.compact,
+                    label: Text(tag, style: const TextStyle(fontSize: 11)),
+                  );
+                }).toList(),
               ),
             ],
-
-            // Bottom padding for scroll comfort
-            const SizedBox(height: 32),
           ],
         ),
       ),
@@ -190,105 +164,138 @@ class HistoryDetailPage extends StatelessWidget {
   }
 }
 
-/// A section card for grouped metadata rows (e.g., denomination details).
-class _MetadataSection extends StatelessWidget {
-  final String title;
-  final List<Widget> children;
+/// Image loader that tries [Image.asset] and falls back to [rootBundle]+[Image.memory].
+class _HistoryImage extends StatefulWidget {
+  final String imagePath;
+  const _HistoryImage({required this.imagePath});
 
-  const _MetadataSection({required this.title, required this.children});
+  @override
+  State<_HistoryImage> createState() => _HistoryImageState();
+}
+
+class _HistoryImageState extends State<_HistoryImage> {
+  ImageProvider? _image;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImage();
+  }
+
+  Future<void> _loadImage() async {
+    try {
+      // Try direct bundle load + memory decode
+      final data = await rootBundle.load(widget.imagePath);
+      if (!mounted) return;
+      setState(() {
+        _image = MemoryImage(data.buffer.asUint8List());
+        _error = null;
+      });
+      debugPrint('Image loaded: ${widget.imagePath} (${data.lengthInBytes} bytes)');
+    } catch (e) {
+      debugPrint('Image FAILED: ${widget.imagePath}: $e');
+      if (!mounted) return;
+      setState(() => _error = e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    if (_image != null) {
+      return Image(
+        image: _image!,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: 220,
+      );
+    }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 8),
-        Text(
-          title,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(children: children),
-          ),
-        ),
-      ],
+    // Show loading or error
+    return Container(
+      width: double.infinity,
+      height: 220,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: _error != null
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.image_not_supported_outlined,
+                  size: 48,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Image unavailable',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            )
+          : const Center(
+              child: SizedBox(
+                width: 24, height: 24,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
     );
   }
 }
 
-/// A single key-value row inside a metadata section.
-class _MetadataRow extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _MetadataRow(this.label, this.value);
+/// Section header label
+class _SectionHeader extends StatelessWidget {
+  final String title;
+  const _SectionHeader({required this.title});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}
 
+/// Key-value info row
+class _InfoRow extends StatelessWidget {
+  final String? label;
+  final String? value;
+
+  const _InfoRow({this.label, this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    if (value == null || value!.isEmpty) return const SizedBox.shrink();
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 120,
             child: Text(
-              label,
-              style: theme.textTheme.bodyMedium?.copyWith(
+              label!,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: theme.colorScheme.onSurfaceVariant,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ),
           ),
           Expanded(
             child: Text(
-              value,
-              style: theme.textTheme.bodyMedium,
+              value!,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-/// Loads an asset image with graceful error handling.
-class _AssetImageWithError extends StatelessWidget {
-  final String imagePath;
-
-  const _AssetImageWithError({required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      imagePath,
-      fit: BoxFit.cover,
-      errorBuilder: (context, error, stackTrace) {
-        return Container(
-          width: double.infinity,
-          height: 200,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Center(
-            child: Icon(
-              Icons.image_not_supported_outlined,
-              size: 48,
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
-        );
-      },
     );
   }
 }
