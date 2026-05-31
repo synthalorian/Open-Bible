@@ -2,7 +2,7 @@
 # APK Upload Script - tries multiple services
 set -e
 
-APK_DIR="<repo>/build/app/outputs/flutter-apk"
+APK_DIR="./build/app/outputs/flutter-apk"
 APK="app-arm64-v8a-release.apk"
 
 echo "Uploading $APK..."
