@@ -2,7 +2,7 @@
 # Simple APK uploader with multiple services
 set -e
 
-APK_DIR="/home/synth/projects/open-bible/build/app/outputs/flutter-apk"
+APK_DIR="./build/app/outputs/flutter-apk"
 
 # Upload single APK trying multiple services
 upload_apk() {

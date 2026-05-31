@@ -2,7 +2,7 @@
 # Multi-service APK uploader
 set -e
 
-APK_DIR="/home/synth/projects/open-bible/build/app/outputs/flutter-apk"
+APK_DIR="./build/app/outputs/flutter-apk"
 APKS=("app-arm64-v8a-release.apk" "app-armeabi-v7a-release.apk" "app-x86_64-release.apk")
 
 # Upload services to try (in order)
