@@ -55,6 +55,17 @@ class GenealogyService {
     return null;
   }
 
+  /// Get immediate family of a person (parent + children)
+  List<GenealogyPerson> getImmediateFamily(String personId) {
+    final family = <GenealogyPerson>[];
+    final parent = getParent(personId);
+    if (parent != null) {
+      family.add(parent);
+    }
+    family.addAll(getChildren(personId));
+    return family;
+  }
+
   /// Get all ancestors of a person
   List<GenealogyPerson> getAncestors(String personId) {
     final ancestors = <GenealogyPerson>[];
