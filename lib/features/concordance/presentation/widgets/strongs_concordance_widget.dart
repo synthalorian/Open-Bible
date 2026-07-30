@@ -99,14 +99,16 @@ class StrongsConcordanceWidget extends ConsumerWidget {
                     color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     'Strong\'s Concordance',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     'Search by Strong\'s number or word',
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Theme.of(context).colorScheme.outline),
                   ),
                   const SizedBox(height: 16),
                   Wrap(
@@ -337,10 +339,10 @@ class StrongsFavoritesList extends ConsumerWidget {
     final favorites = ref.watch(strongsConcordanceProvider).favorites;
     
     if (favorites.isEmpty) {
-      return const Center(
+      return Center(
         child: Text(
           'No favorites yet',
-          style: TextStyle(color: Colors.grey),
+          style: TextStyle(color: Theme.of(context).colorScheme.outline),
         ),
       );
     }

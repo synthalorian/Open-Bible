@@ -59,20 +59,20 @@ class BookmarksListWidget extends ConsumerWidget {
     final bookmarks = ref.watch(bookmarksProvider);
     
     if (bookmarks.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.bookmark_outline, size: 64, color: Colors.grey),
-            SizedBox(height: 16),
+            Icon(Icons.bookmark_outline, size: 64, color: Theme.of(context).colorScheme.outline),
+            const SizedBox(height: 16),
             Text(
               'No bookmarks yet',
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Bookmark verses to find them here',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Theme.of(context).colorScheme.outline),
             ),
           ],
         ),
