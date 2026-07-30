@@ -26,21 +26,23 @@ class PrayerJournalWidget extends ConsumerWidget {
             Icon(
               showAnswered ? Icons.check_circle_outline : Icons.favorite,
               size: 64,
-              color: Colors.grey,
+              color: Theme.of(context).colorScheme.outline,
             ),
             const SizedBox(height: 16),
             Text(
               showAnswered
                   ? 'No answered prayers yet'
                   : 'No active prayers',
-              style: const TextStyle(fontSize: 18, color: Colors.grey),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
             Text(
               showAnswered
                   ? 'Your answered prayers will appear here'
                   : 'Add your first prayer',
-              style: const TextStyle(color: Colors.grey),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),
