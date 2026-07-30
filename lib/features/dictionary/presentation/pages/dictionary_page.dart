@@ -91,7 +91,7 @@ class _BibleDictionaryPageState extends State<BibleDictionaryPage> {
                     Navigator.pop(context);
                     _scrollToLetter(letter);
                   } : null,
-                  backgroundColor: hasEntries ? Colors.blue.shade100 : Colors.grey.shade200,
+                  backgroundColor: hasEntries ? Theme.of(context).colorScheme.primaryContainer : Theme.of(context).colorScheme.surfaceContainerHighest,
                 );
               }).toList(),
             ),
