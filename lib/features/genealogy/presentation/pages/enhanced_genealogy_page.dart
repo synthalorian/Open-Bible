@@ -139,7 +139,20 @@ class _GenealogyPageState extends State<GenealogyPage> {
 
   Widget _buildFamilyTree() {
     final all = _service.getAllPeople();
-    if (all.isEmpty) return const Center(child: Text('No data available'));
+    if (all.isEmpty) {
+      return Center(
+        child: Column(
+          children: [
+            Icon(Icons.family_restroom, size: 48, color: Theme.of(context).colorScheme.outline),
+            const SizedBox(height: 16),
+            Text(
+              'No data available',
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
+            ),
+          ],
+        ),
+      );
+    }
 
     final maxGeneration = all.fold<int>(0, (max, p) => p.generation > max ? p.generation : max);
 
