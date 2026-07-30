@@ -124,10 +124,10 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
         return Dismissible(
           key: Key(bookmark.id),
           background: Container(
-            color: Colors.red,
+            color: Theme.of(context).colorScheme.error,
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.only(right: 16),
-            child: const Icon(Icons.delete, color: Colors.white),
+            child: Icon(Icons.delete, color: Theme.of(context).colorScheme.onError),
           ),
           direction: DismissDirection.endToStart,
           onDismissed: (_) async {
@@ -164,10 +164,10 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
         return Dismissible(
           key: Key(highlight.id),
           background: Container(
-            color: Colors.red,
+            color: Theme.of(context).colorScheme.error,
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.only(right: 16),
-            child: const Icon(Icons.delete, color: Colors.white),
+            child: Icon(Icons.delete, color: Theme.of(context).colorScheme.onError),
           ),
           direction: DismissDirection.endToStart,
           onDismissed: (_) async {
@@ -202,10 +202,10 @@ class _BookmarksPageState extends ConsumerState<BookmarksPage>
         return Dismissible(
           key: Key(note.id),
           background: Container(
-            color: Colors.red,
+            color: Theme.of(context).colorScheme.error,
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.only(right: 16),
-            child: const Icon(Icons.delete, color: Colors.white),
+            child: Icon(Icons.delete, color: Theme.of(context).colorScheme.onError),
           ),
           direction: DismissDirection.endToStart,
           onDismissed: (_) async {

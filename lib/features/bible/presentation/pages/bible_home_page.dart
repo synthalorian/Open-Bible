@@ -87,9 +87,9 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
             enabled: false,
             child: Text(
               category,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.grey,
+                color: Theme.of(context).colorScheme.outline,
                 fontSize: 12,
               ),
             ),
@@ -103,7 +103,7 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
               child: Row(
                 children: [
                   if (t.id == widget.currentTranslationId)
-                    const Icon(Icons.check, color: Colors.green, size: 20)
+                    Icon(Icons.check, color: Theme.of(context).colorScheme.primary, size: 20)
                   else
                     const SizedBox(width: 20),
                   const SizedBox(width: 8),
@@ -130,7 +130,7 @@ class _TranslationSelectorState extends ConsumerState<TranslationSelector> {
         children: [
           Text(
             currentAbbr,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const Icon(Icons.arrow_drop_down, size: 24),
         ],
@@ -325,6 +325,31 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
         ? books
         : books.where((b) => b.toLowerCase().contains(_searchQuery)).toList();
 
+    if (filtered.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.search_off, size: 48, color: Theme.of(context).colorScheme.outline),
+            const SizedBox(height: 16),
+            Text(
+              'No books found',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Try a different search term',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.outline,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return ListView.builder(
       padding: const EdgeInsets.all(8),
       itemCount: filtered.length,
@@ -334,7 +359,7 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
           margin: const EdgeInsets.only(bottom: 8),
           child: ListTile(
             leading: CircleAvatar(child: Text(book[0])),
-            title: Text(book, style: const TextStyle(fontWeight: FontWeight.bold)),
+            title: Text(book, style: TextStyle(fontWeight: FontWeight.bold)),
             subtitle: Text('${BibleStructure.getChapterCount(book)} chapters'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Navigator.push(
