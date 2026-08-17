@@ -311,7 +311,7 @@ The maps feature (`BiblicalMapsPage`) uses OpenStreetMap tiles with hardcoded co
 The privacy policy claims:
 - "Usage Data: Anonymous app usage statistics" — no analytics SDK exists in the codebase
 - "Analytics: Anonymous usage statistics (optional)" — no opt-out toggle exists in settings
-- "Developer: synth (synthalorian)" — no email address or contact URL provided
+- "Developer: synth" — no email address or contact URL provided
 
 This creates GDPR and CCPA exposure.
 
