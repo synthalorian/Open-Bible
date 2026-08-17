@@ -311,7 +311,7 @@ The maps feature (`BiblicalMapsPage`) uses OpenStreetMap tiles with hardcoded co
 The privacy policy claims:
 - "Usage Data: Anonymous app usage statistics" — no analytics SDK exists in the codebase
 - "Analytics: Anonymous usage statistics (optional)" — no opt-out toggle exists in settings
-- "Developer: synthalorian 🎹🤺 (synthalorian)" — no email address or contact URL provided
+- "Developer: synth (synthalorian)" — no email address or contact URL provided
 
 This creates GDPR and CCPA exposure.
 
@@ -395,14 +395,14 @@ void dispose() {
 
 ---
 
-### 2.8 All Scripts Hardcoded to `/home/synthalorian 🎹🤺/...`
+### 2.8 All Scripts Hardcoded to `/home/synth/...`
 
 **Files:** Nearly every script in `scripts/` and all `upload_*.sh` files.
 
 Examples:
 - `scripts/generate-keystore.sh:4-6`
-- `scripts/fetch_asv.py:18`: `OUTPUT_FILE = "/home/synthalorian 🎹🤺/projects/open-bible/assets/bible_data/asv_complete.json"`
-- `upload_multi.sh:5`: `APK_DIR="/home/synthalorian 🎹🤺/projects/open-bible/build/..."`
+- `scripts/fetch_asv.py:18`: `OUTPUT_FILE = "/home/synth/projects/open-bible/assets/bible_data/asv_complete.json"`
+- `upload_multi.sh:5`: `APK_DIR="/home/synth/projects/open-bible/build/..."`
 
 None of these scripts will work on any other machine.
 
@@ -415,7 +415,7 @@ None of these scripts will work on any other machine.
 **File:** `android/gradle.properties:2`
 
 ```
-org.gradle.java.home=/home/synthalorian 🎹🤺/.local/share/mise/installs/java/17.0.2
+org.gradle.java.home=/home/synth/.local/share/mise/installs/java/17.0.2
 ```
 
 Gradle will fail on any other machine. This file is committed to git.
@@ -927,7 +927,7 @@ Given the number of subtle state management bugs found, automated tests would ha
 21. Replace hardcoded colors with theme-aware values
 22. Replace deprecated `withOpacity` calls (104 instances)
 23. Fix all shell script syntax errors
-24. Replace hardcoded `/home/synthalorian 🎹🤺/` paths with relative paths
+24. Replace hardcoded `/home/synth/` paths with relative paths
 
 ### Long-Term (Reliability)
 
