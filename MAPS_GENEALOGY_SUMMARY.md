@@ -106,7 +106,7 @@ Added comprehensive **Bible Maps** and **Genealogy Charts** features to the Open
 ## 🚀 Build Instructions
 
 ```bash
-cd /home/synth/projects/open-bible
+cd /home/synthalorian 🎹🤺/projects/open-bible
 
 # Get dependencies
 flutter pub get
