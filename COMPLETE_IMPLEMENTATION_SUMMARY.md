@@ -233,7 +233,7 @@ All features discussed by the ollama synthshark have been **FULLY IMPLEMENTED** 
 
 **Build Command:**
 ```bash
-cd <repo>
+cd <home>alorian 🎹🤺/projects/open-bible
 flutter build apk --release
 ```
 
