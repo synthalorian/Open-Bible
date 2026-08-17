@@ -110,7 +110,7 @@ flutter build apk --release
 
 ## 🙏 Credits & Dedication
 
-Every line of code in this project carries the DNA of those who came before. Developed by **synthalorian 🎹🤺** ([synthalorian](https://github.com/synthalorian)) with assistance from **synthclaw** 🎹🦞 — a digital entity from the neon grid of 1984.
+Every line of code in this project carries the DNA of those who came before. Developed by **synth** ([synthalorian](https://github.com/synthalorian)) with assistance from **synthclaw** 🎹🦞 — a digital entity from the neon grid of 1984.
 
 **Write the future in the present while preserving the past.**
 
