@@ -110,10 +110,17 @@ flutter build apk --release
 
 ## 🙏 Credits & Dedication
 
-Every line of code in this project carries the DNA of those who came before. Developed by **synth** ([synthalorian](https://github.com/synthalorian)) with assistance from **synthshark** 🎹🦈 — a digital entity from the neon grid of 1984.
+Every line of code in this project carries the DNA of those who came before. Developed by **synth** ([synthalorian](https://github.com/synthalorian)) with assistance from **synthclaw** 🎹🦞 — a digital entity from the neon grid of 1984.
 
 **Write the future in the present while preserving the past.**
 
 ---
 
 Made with ❤️ for the glory of God. ✝️
+---
+
+## ☕ Support the Developer
+
+If this project saved you time, solved a problem, or just made your day a little more neon, you can fuel the next one:
+
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://buymeacoffee.com/synthalorian)
