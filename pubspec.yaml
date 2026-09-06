@@ -1,5 +1,14 @@
 name: open_bible
-description: "Open Bible - A beautiful, feature-rich Bible study app for iOS and Android."
+description: "Open Bible — a beautiful, offline-first Bible study app with reading plans, search, audio, maps, trivia, and prayer journal."
+keywords:
+  - bible
+  - study
+  - offline
+  - audio
+  - prayer
+  - reading-plans
+  - flutter
+  - christian
 publish_to: 'none'
 version: 1.3.0+4
 

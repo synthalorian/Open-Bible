@@ -76,7 +76,7 @@ class OpenBibleApp extends ConsumerWidget {
         break;
       case ReadingMode.sepia:
         theme = AppTheme.sepiaTheme;
-        darkTheme = AppTheme.darkTheme;
+        darkTheme = AppTheme.sepiaTheme;
         themeMode = ThemeMode.light;
         break;
       case ReadingMode.amoled:
