@@ -158,11 +158,11 @@ class _BookChapterGridPageState extends State<BookChapterGridPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.search_off, size: 64, color: Colors.grey),
-            const SizedBox(height: 16),
+            Icon(Icons.search_off, size: 40, color: Theme.of(context).colorScheme.outline),
+            const SizedBox(height: 12),
             Text(
               'No results in ${widget.book.name}',
-              style: const TextStyle(color: Colors.grey),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
           ],
         ),

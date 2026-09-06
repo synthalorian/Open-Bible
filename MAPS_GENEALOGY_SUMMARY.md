@@ -131,4 +131,4 @@ flutter build ios --release
 
 ---
 
-## 🎹🦈 This is the wave. Visual study tools activated.
+## 🎹🦞 This is the wave. Visual study tools activated.

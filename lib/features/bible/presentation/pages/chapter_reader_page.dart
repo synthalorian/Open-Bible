@@ -471,14 +471,29 @@ class _ChapterReaderPageState extends ConsumerState<ChapterReaderPage> {
                 ),
               ),
               if (isLoading)
-                const Center(child: CircularProgressIndicator())
+                Center(
+                  child: Column(
+                    children: [
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 12),
+                      Text('Loading...', style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant)),
+                    ],
+                  ),
+                )
               else if (content != null)
                 _buildVersesContent(content, settings.fontSize.toDouble(), chapter)
               else
                 Center(
-                  child: ElevatedButton(
-                    onPressed: () => _loadChapterContent(chapter),
-                    child: const Text('Load Chapter'),
+                  child: Column(
+                    children: [
+                      Icon(Icons.auto_stories_outlined, size: 40, color: Theme.of(context).colorScheme.outline),
+                      const SizedBox(height: 12),
+                      ElevatedButton.icon(
+                        onPressed: () => _loadChapterContent(chapter),
+                        icon: Icon(Icons.refresh, size: 18, color: Theme.of(context).colorScheme.onPrimary),
+                        label: Text('Load Chapter', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
+                      ),
+                    ],
                   ),
                 ),
               const SizedBox(height: 48),

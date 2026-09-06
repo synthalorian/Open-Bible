@@ -222,13 +222,16 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      primary: _primaryColor,
-      secondary: _secondaryColor,
-      tertiary: _accentColor,
+      primary: const Color(0xFF6B4E71),
+      secondary: const Color(0xFFB8860B),
+      tertiary: const Color(0xFF2E5A4C),
       surface: const Color(0xFFF4ECD8),
-      onPrimary: Colors.white,
-      onSecondary: Colors.white,
+      onPrimary: const Color(0xFF3E2F42),
+      onSecondary: const Color(0xFF3E2F00),
       onSurface: const Color(0xFF5B4636),
+      surfaceContainerHighest: const Color(0xFFF7F0E3),
+      outline: const Color(0xFFD3C3A3),
+      outlineVariant: const Color(0xFFE4D7BE),
     ),
     scaffoldBackgroundColor: const Color(0xFFF4ECD8),
     appBarTheme: const AppBarTheme(
@@ -236,22 +239,81 @@ class AppTheme {
       foregroundColor: Color(0xFF5B4636),
       elevation: 0,
       centerTitle: true,
+      surfaceTintColor: Colors.transparent,
     ),
     cardTheme: CardThemeData(
       color: const Color(0xFFFCF5E5),
       elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: const BorderSide(color: Color(0xFFE4D7BE), width: 0.5),
+      ),
     ),
     textTheme: _buildTextTheme(const Color(0xFF5B4636), const Color(0xFF8C705F)),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color(0xFFF4ECD8),
-      selectedItemColor: _primaryColor,
+      selectedItemColor: Color(0xFF6B4E71),
       unselectedItemColor: Color(0xFF8C705F),
     ),
     chipTheme: ChipThemeData(
       backgroundColor: const Color(0xFFFCF5E5),
-      selectedColor: _primaryColor.withValues(alpha: 0.2),
+      selectedColor: const Color(0xFF6B4E71).withValues(alpha: 0.2),
       labelStyle: const TextStyle(color: Color(0xFF5B4636)),
+      side: const BorderSide(color: Color(0xFFD3C3A3)),
+    ),
+    dividerTheme: const DividerThemeData(color: Color(0xFFE4D7BE)),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: const Color(0xFFF7F0E3),
+      contentTextStyle: const TextStyle(color: Color(0xFF5B4636)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: const BorderSide(color: Color(0xFFD3C3A3)),
+      ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: const Color(0xFFF7F0E3),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: const Color(0xFFFCF5E5),
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: Color(0xFFD3C3A3)),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: const Color(0xFFF7F0E3),
+      hintStyle: const TextStyle(color: Color(0xFF8C705F)),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: Color(0xFFD3C3A3)),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: Color(0xFFD3C3A3)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: Color(0xFF6B4E71), width: 1.5),
+      ),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: const Color(0xFF6B4E71),
+      linearTrackColor: const Color(0xFFE4D7BE),
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return const Color(0xFF6B4E71);
+        return const Color(0xFF8C705F);
+      }),
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return const Color(0xFF6B4E71).withValues(alpha: 0.5);
+        return const Color(0xFFD3C3A3);
+      }),
     ),
   );
 
