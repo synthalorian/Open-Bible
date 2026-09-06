@@ -90,7 +90,7 @@ class PrivacyPolicyPage extends StatelessWidget {
             _SectionTitle('Contact Us'),
             _SectionText(
               'If you have questions about this Privacy Policy, please contact:\n'
-              '• Developer: synth (synthalorian)\n'
+              '• Developer: synth\n'
               '• GitHub: https://github.com/synthalorian/open-bible/issues',
             ),
             
@@ -117,7 +117,7 @@ Last Updated: February 28, 2026
 
 Open Bible is committed to protecting your privacy. All personal data (bookmarks, notes, prayer journal) is stored locally on your device. We do not upload your data to our servers.
 
-Contact: synth (synthalorian)''',
+Contact: synth''',
     ));
     
     ScaffoldMessenger.of(context).showSnackBar(
