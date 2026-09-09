@@ -3,8 +3,8 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.41+-02569B?logo=flutter)](https://flutter.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50)](#)
-[![Version](https://img.shields.io/badge/Version-v1.3.0-blue.svg?logo=github)](https://github.com/synthalorian/Open-Bible/releases/tag/v1.3.0)
-[![Download APK](https://img.shields.io/badge/Download-Latest%20APK-orange.svg?style=for-the-badge&logo=android)](https://github.com/synthalorian/Open-Bible/releases/download/v1.3.0/Open-Bible-v1.3.0.apk)
+[![Version](https://img.shields.io/badge/Version-v1.4.0-blue.svg?logo=github)](https://github.com/synthalorian/Open-Bible/releases/tag/v1.4.0)
+[![Download APK](https://img.shields.io/badge/Download-Latest%20APK-orange.svg?style=for-the-badge&logo=android)](https://github.com/synthalorian/Open-Bible/releases/download/v1.4.0/Open-Bible-v1.4.0.apk)
 
 A comprehensive, performance-optimized, and high-precision Bible study application for Android and iOS. Built with a focus on stability, offline accessibility, and a seamless reading experience.
 
