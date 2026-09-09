@@ -235,6 +235,8 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
         return 'AMOLED Mode';
       case ReadingMode.synthwave:
         return "Synthwave '84";
+      case ReadingMode.blackshield:
+        return 'Blackshield';
     }
   }
 
@@ -251,6 +253,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
             _buildReadingModeOption(ReadingMode.sepia, 'Sepia Mode', Icons.auto_stories),
             _buildReadingModeOption(ReadingMode.amoled, 'AMOLED Mode', Icons.brightness_2),
             _buildReadingModeOption(ReadingMode.synthwave, "Synthwave '84", Icons.grid_on),
+            _buildReadingModeOption(ReadingMode.blackshield, 'Blackshield', Icons.shield),
           ],
         ),
       ),

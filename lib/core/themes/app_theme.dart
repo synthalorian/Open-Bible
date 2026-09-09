@@ -218,6 +218,145 @@ class AppTheme {
     ),
   );
 
+  // Blackshield Mercenary theme — canonical cachyos-blackshield palette
+  // (black steel, blood-red cross potent, brass, parchment)
+  static const Color _shieldBackground = Color(0xFF0B0D10); // Blackened steel — scaffold
+  static const Color _shieldSurface = Color(0xFF16181D); // Card backgrounds, base surface
+  static const Color _shieldSurfaceAlt = Color(0xFF1E2126); // Raised surface
+  static const Color _shieldNavBackground = Color(0xFF08090C); // App bar, bottom nav
+  static const Color _shieldPrimary = Color(0xFFC1121F); // BLOOD — main accent
+  static const Color _shieldPrimaryBright = Color(0xFFE03540); // Bright blood — focus/active
+  static const Color _shieldSecondary = Color(0xFFC9A227); // BRASS — secondary accent
+  static const Color _shieldAccent = Color(0xFFA8ADB3); // Steel — tertiary accent
+  static const Color _shieldText = Color(0xFFEDE8DD); // Bright parchment — primary text
+  static const Color _shieldTextDim = Color(0xFFA8ADB3); // Steel grey — secondary text
+  static const Color _shieldTextMuted = Color(0xFF5C6167); // Gunmetal — hints, placeholders
+  static const Color _shieldBorder = Color(0xFFC1121F); // Active borders (blood)
+  static const Color _shieldBorderDim = Color(0xFF2E3238); // Subtle borders (dark steel)
+  static const Color _shieldSelectedBg = Color(0xFF2A1215); // Blood-tinted selection
+
+  static ThemeData get blackshieldTheme => ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    colorScheme: ColorScheme.dark(
+      primary: _shieldPrimary,
+      secondary: _shieldSecondary,
+      tertiary: _shieldAccent,
+      surface: _shieldSurface,
+      onPrimary: Colors.white,
+      onSecondary: Colors.black,
+      onSurface: _shieldText,
+      outline: _shieldBorder,
+      outlineVariant: _shieldBorderDim,
+      surfaceContainerHighest: _shieldSurfaceAlt,
+    ),
+    scaffoldBackgroundColor: _shieldBackground,
+    appBarTheme: AppBarTheme(
+      backgroundColor: _shieldNavBackground,
+      foregroundColor: _shieldText,
+      elevation: 0,
+      centerTitle: true,
+      surfaceTintColor: Colors.transparent,
+    ),
+    cardTheme: CardThemeData(
+      color: _shieldSurface,
+      elevation: 2,
+      shadowColor: _shieldPrimary.withValues(alpha: 0.3),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: _shieldBorderDim, width: 0.5),
+      ),
+    ),
+    textTheme: _buildTextTheme(_shieldText, _shieldTextDim),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: _shieldNavBackground,
+      selectedItemColor: _shieldPrimaryBright,
+      unselectedItemColor: _shieldTextMuted,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: _shieldPrimary,
+      foregroundColor: Colors.white,
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: _shieldSurface,
+      selectedColor: _shieldPrimary.withValues(alpha: 0.3),
+      labelStyle: TextStyle(color: _shieldText),
+      side: BorderSide(color: _shieldBorderDim),
+    ),
+    dividerTheme: DividerThemeData(
+      color: _shieldBorderDim,
+    ),
+    tabBarTheme: TabBarThemeData(
+      labelColor: _shieldPrimaryBright,
+      unselectedLabelColor: _shieldTextDim,
+      indicatorColor: _shieldPrimary,
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: _shieldSurface,
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: _shieldBorderDim),
+      ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: _shieldSurface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: _shieldSurface,
+      contentTextStyle: TextStyle(color: _shieldText),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(color: _shieldBorderDim),
+      ),
+    ),
+    listTileTheme: ListTileThemeData(
+      selectedColor: _shieldText,
+      selectedTileColor: _shieldSelectedBg,
+      iconColor: _shieldPrimaryBright,
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return _shieldPrimaryBright;
+        return _shieldTextMuted;
+      }),
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return _shieldPrimary.withValues(alpha: 0.5);
+        return _shieldBorderDim;
+      }),
+    ),
+    iconTheme: IconThemeData(
+      color: _shieldText,
+    ),
+    primaryIconTheme: IconThemeData(
+      color: _shieldPrimaryBright,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: _shieldSurface,
+      hintStyle: TextStyle(color: _shieldTextMuted),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _shieldBorderDim),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _shieldBorderDim),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _shieldPrimaryBright, width: 1.5),
+      ),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: _shieldPrimary,
+      linearTrackColor: _shieldBorderDim,
+    ),
+  );
+
   static ThemeData get sepiaTheme => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
