@@ -64,8 +64,8 @@ void main() {
   });
 
   group('ReadingMode', () {
-    test('has 5 modes', () {
-      expect(ReadingMode.values.length, 5);
+    test('has 6 modes', () {
+      expect(ReadingMode.values.length, 6);
     });
 
     test('day is index 0', () {
@@ -86,6 +86,10 @@ void main() {
 
     test('synthwave is index 4', () {
       expect(ReadingMode.synthwave.index, 4);
+    });
+
+    test('blackshield is index 5', () {
+      expect(ReadingMode.blackshield.index, 5);
     });
   });
 
