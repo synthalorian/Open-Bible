@@ -3,7 +3,7 @@
 # Open Bible 📖
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.41+-02569B?logo=flutter)](https://flutter.dev)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellow.svg)](./LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50)](#)
 [![Version](https://img.shields.io/badge/Version-v1.4.0-blue.svg?logo=github)](https://github.com/synthalorian/Open-Bible/releases/tag/v1.4.0)
 [![Download APK](https://img.shields.io/badge/Download-Latest%20APK-orange.svg?style=for-the-badge&logo=android)](https://github.com/synthalorian/Open-Bible/releases/download/v1.4.0/Open-Bible-v1.4.0.apk)
