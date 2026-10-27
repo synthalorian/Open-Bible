@@ -31,11 +31,11 @@ dependencies:
 
   # Local Storage / Offline
   path_provider: ^2.1.2
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.5.6
 
   # Audio Bible
-  just_audio: ^0.9.36
-  audio_session: ^0.1.18
+  just_audio: ^0.10.6
+  audio_session: ^0.2.4
   flutter_tts: 3.8.5
 
   # Notifications
@@ -50,12 +50,12 @@ dependencies:
   shimmer: ^3.0.0
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.9
-  lottie: ^3.1.0
+  lottie: ^3.6.1
 
 
   # Utilities
-  url_launcher: ^6.2.4
-  package_info_plus: ^5.0.1
+  url_launcher: ^6.3.3
+  package_info_plus: ^9.0.1
   device_info_plus: ^9.1.1
   connectivity_plus: ^5.0.2
   logger: ^2.0.2+1
@@ -66,21 +66,21 @@ dependencies:
   fl_chart: ^0.66.0
 
   # Maps
-  flutter_map: ^6.1.0
-  latlong2: ^0.9.0
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
 
   # Widgets
-  home_widget: ^0.4.1
+  home_widget: ^0.10.0
 
   # Timezone for notifications
-  timezone: ^0.9.4
+  timezone: ^0.10.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  build_runner: ^2.4.8
-  flutter_launcher_icons: ^0.13.1
+  build_runner: ^2.17.1
+  flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.3.9
 
 flutter_launcher_icons:
