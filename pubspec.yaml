@@ -23,8 +23,8 @@ dependencies:
   iconsax: ^0.0.8
 
   # State Management
-  flutter_riverpod: ^2.4.9
-  riverpod_annotation: ^2.3.3
+  flutter_riverpod: ^3.4.3
+  riverpod_annotation: ^4.0.7
 
   # Networking
   dio: ^5.4.1
