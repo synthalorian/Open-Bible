@@ -19,7 +19,7 @@ dependencies:
   flutter:
     sdk: flutter
   # Icons
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^2.0.0
   iconsax: ^0.0.8
 
   # State Management
