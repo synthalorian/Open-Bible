@@ -10,6 +10,8 @@ import time
 import os
 import ssl
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 # Disable SSL verification for simplicity
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -150,7 +152,7 @@ def main():
     bible_data = fetch_complete_bible()
     
     # Save
-    output_file = "<repo>/assets/bible_data/kjv_complete.json"
+    output_file = str(_REPO_ROOT / "assets" / "bible_data" / "kjv_complete.json")
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
     with open(output_file, 'w', encoding='utf-8') as f:

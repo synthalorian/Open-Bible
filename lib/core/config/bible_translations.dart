@@ -184,6 +184,14 @@ class BibleTranslations {
   static String? getFileName(String id) {
     return getById(id)?.fileName;
   }
+
+  /// Asset path for a translation, including ids whose file name is not `{id}_bible.json`.
+  /// Geneva is stored as `gen_bible.json`.
+  static String? assetPath(String id) {
+    final fileName = getFileName(id);
+    if (fileName == null) return null;
+    return 'assets/bible_data/$fileName';
+  }
   
   /// Get abbreviation for a translation ID
   static String getAbbreviation(String id) {

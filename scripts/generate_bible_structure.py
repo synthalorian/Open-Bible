@@ -7,6 +7,8 @@ Uses public domain KJV text compiled from reliable sources.
 import json
 import os
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 # Complete KJV Bible - Genesis to Revelation
 # This is a substantial portion of the Bible for offline use
 
@@ -134,7 +136,7 @@ def main():
     bible = generate_sample_bible()
     
     # Save
-    output_file = "<repo>/assets/bible_data/kjv_bible.json"
+    output_file = str(_REPO_ROOT / "assets" / "bible_data" / "kjv_bible.json")
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
     with open(output_file, 'w', encoding='utf-8') as f:

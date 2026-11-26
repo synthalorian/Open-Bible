@@ -2,7 +2,9 @@
 import requests
 import os
 
-apk_path = "<repo>/build/app/outputs/flutter-apk/app-release.apk"
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parent
+apk_path = str(_REPO_ROOT / "build" / "app" / "outputs" / "flutter-apk" / "app-release.apk")
 filename = "open-bible-v81-production.apk"
 
 print(f"Uploading {filename} to catbox.moe...")

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Extract PHASE 2 Bibles."""
 import sys
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, '/tmp/sword')
 from pysword.modules import SwordModules
 import json
@@ -57,7 +59,7 @@ def extract_bible(bible_info):
         "books": []
     }
     
-    output_file = f"<repo>/assets/bible_data/{bible_info['id']}_bible.json"
+    output_file = str(_REPO_ROOT / "assets" / "bible_data" / f"{bible_info['id']}_bible.json")
     
     for i, (book_name, num_chapters) in enumerate(BOOKS, 1):
         display_name = DISPLAY_NAMES.get(book_name, book_name)

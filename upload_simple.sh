@@ -2,7 +2,8 @@
 # Simple APK uploader with multiple services
 set -e
 
-APK_DIR="./build/app/outputs/flutter-apk"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APK_DIR="$SCRIPT_DIR/build/app/outputs/flutter-apk"
 
 # Upload single APK trying multiple services
 upload_apk() {

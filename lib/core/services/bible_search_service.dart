@@ -1,3 +1,4 @@
+import 'bible_book_resolver.dart';
 import 'direct_bible_loader.dart';
 
 /// Search result model
@@ -117,45 +118,36 @@ class BibleSearchService {
     final books = bible['books'] as List?;
     if (books == null) return null;
     
-    final bookIdLower = bookId.toLowerCase();
-    
-    for (final book in books) {
-      final jsonBookId = book['id'].toString().toLowerCase();
-      
-      // Flexible matching
-      if (jsonBookId == bookIdLower || 
-          jsonBookId.startsWith(bookIdLower) ||
-          bookIdLower.startsWith(jsonBookId)) {
-        
-        final chapters = book['chapters'] as List?;
-        if (chapters == null) continue;
-        
-        for (final ch in chapters) {
-          if (ch['chapter'] == chapter) {
-            final verses = ch['verses'] as List?;
-            if (verses == null) continue;
-            
-            for (final v in verses) {
-              if (v['verse'] == verse) {
-                final text = v['text']?.toString() ?? '';
-                final bookName = book['name']?.toString() ?? _capitalize(jsonBookId);
-                
-                return SearchResult(
-                  bibleId: bibleId,
-                  bookId: jsonBookId,
-                  bookName: bookName,
-                  chapter: chapter,
-                  verse: verse,
-                  text: text,
-                  highlightedText: text,
-                );
-              }
-            }
+    final book = findBibleBook(books, bookId);
+    if (book == null) return null;
+    final jsonBookId = book['id'].toString();
+    final chapters = book['chapters'] as List?;
+    if (chapters == null) return null;
+
+    for (final ch in chapters) {
+      if (ch['chapter'] == chapter) {
+        final verses = ch['verses'] as List?;
+        if (verses == null) continue;
+
+        for (final v in verses) {
+          if (v['verse'] == verse) {
+            final text = v['text']?.toString() ?? '';
+            final bookName = book['name']?.toString() ?? _capitalize(jsonBookId);
+
+            return SearchResult(
+              bibleId: bibleId,
+              bookId: jsonBookId,
+              bookName: bookName,
+              chapter: chapter,
+              verse: verse,
+              text: text,
+              highlightedText: text,
+            );
           }
         }
       }
     }
-    
+
     return null;
   }
   

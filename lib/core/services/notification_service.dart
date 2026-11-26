@@ -1,9 +1,11 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import '../providers/app_providers.dart';
 import '../utils/logger.dart';
+import 'reminder_schedule.dart';
 
 /// Notification service for daily verses and reminders
 class NotificationService {
@@ -20,7 +22,7 @@ class NotificationService {
   Future<void> init() async {
     if (_initialized) return;
 
-    tz.initializeTimeZones();
+    await _configureLocalTimeZone();
 
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
@@ -59,6 +61,27 @@ class NotificationService {
     return androidGranted || iosGranted;
   }
 
+  /// Load timezone data and set [tz.local] from the device's IANA timezone.
+  ///
+  /// Without this, the timezone package leaves [tz.local] at UTC and a
+  /// 7:00 reminder fires at 07:00 UTC.
+  Future<void> _configureLocalTimeZone() async {
+    tz.initializeTimeZones();
+    try {
+      final info = await FlutterTimezone.getLocalTimezone();
+      final name = info.identifier.trim();
+      if (name.isEmpty) {
+        logDebug('NotificationService: device timezone identifier was empty');
+        return;
+      }
+      useLocalTimezone(name);
+      logDebug('NotificationService: local timezone set to $name');
+    } catch (e, stackTrace) {
+      logDebug('NotificationService: could not set local timezone: $e');
+      logDebug('Stack: $stackTrace');
+    }
+  }
+
   /// Schedule daily verse notification
   Future<void> scheduleDailyVerse({
     required int hour,
@@ -66,6 +89,9 @@ class NotificationService {
     String title = 'Daily Verse',
     String body = 'Tap to read today\'s verse',
   }) async {
+    if (!_initialized) {
+      await init();
+    }
     await _notifications.zonedSchedule(
       1, // Daily verse notification ID
       title,
@@ -159,23 +185,9 @@ class NotificationService {
     await _notifications.cancelAll();
   }
 
-  /// Get next instance of given time
+  /// Get next instance of given time in the device's local timezone.
   tz.TZDateTime _nextInstanceOfTime(int hour, int minute) {
-    final now = tz.TZDateTime.now(tz.local);
-    var scheduledDate = tz.TZDateTime(
-      tz.local,
-      now.year,
-      now.month,
-      now.day,
-      hour,
-      minute,
-    );
-
-    if (scheduledDate.isBefore(now)) {
-      scheduledDate = scheduledDate.add(const Duration(days: 1));
-    }
-
-    return scheduledDate;
+    return nextDailyReminder(hour, minute);
   }
 
   /// Handle notification tap

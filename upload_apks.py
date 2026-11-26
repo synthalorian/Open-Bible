@@ -2,7 +2,9 @@
 import os
 import sys
 
-apk_dir = "<repo>/build/app/outputs/flutter-apk"
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parent
+apk_dir = str(_REPO_ROOT / "build" / "app" / "outputs" / "flutter-apk")
 
 # List APK files
 apks = []

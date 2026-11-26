@@ -5,6 +5,8 @@ Usage: python extract_sword.py <module_path> <module_name> <output_name>
 """
 
 import sys
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, '/tmp/sword')
 
 from pysword.modules import SwordModules
@@ -57,7 +59,7 @@ def extract_bible(module_path, module_name, bible_id, bible_name, abbreviation):
         "books": []
     }
     
-    output_file = f"<repo>/assets/bible_data/{bible_id}_bible.json"
+    output_file = str(_REPO_ROOT / "assets" / "bible_data" / f"{bible_id}_bible.json")
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
     total_books = len(BOOKS)

@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/bible_book.dart';
+import '../../../../core/config/bible_translations.dart';
+import '../../../../core/services/bible_book_resolver.dart';
 import '../../../../core/utils/logger.dart';
 
 export '../models/bible_book.dart' show BibleBook, Testament;
@@ -28,7 +30,11 @@ class BibleRepository {
 
   Future<ChapterData?> getChapter(String translationId, String bookId, int chapter) async {
     try {
-      final path = 'assets/bible_data/${translationId.toLowerCase()}_bible.json';
+      final path = BibleTranslations.assetPath(translationId);
+      if (path == null) {
+        logDebug('BibleRepository: Unknown translation $translationId');
+        return null;
+      }
 
       // Use cache to avoid re-parsing
       if (!_cache.containsKey(path)) {
@@ -38,16 +44,10 @@ class BibleRepository {
       final bibleJson = _cache[path]!;
 
       final books = bibleJson['books'] as List<dynamic>;
-
-      final normId = bookId.toUpperCase();
-      final bookData = books.firstWhere(
-        (b) {
-          final bId = (b['id'] as String).toUpperCase();
-          final bName = (b['name'] as String).toUpperCase().replaceAll(' ', '');
-          return bId == normId || bName == normId || bId.startsWith(normId) || normId.startsWith(bId);
-        },
-        orElse: () => throw Exception('Book $bookId not found'),
-      );
+      final bookData = findBibleBook(books, bookId);
+      if (bookData == null) {
+        throw Exception('Book $bookId not found');
+      }
 
       final chapters = bookData['chapters'] as List<dynamic>;
       final chapterData = chapters.firstWhere((c) => c['chapter'] == chapter, orElse: () => throw Exception('Chapter $chapter not found'));

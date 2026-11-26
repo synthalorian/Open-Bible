@@ -7,6 +7,8 @@ This creates a structured JSON file with all 66 books.
 import json
 import re
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 # Complete KJV Bible data structure
 # Using condensed format for all 66 books
 
@@ -299,7 +301,7 @@ def main():
     bible_data = generate_bible_json()
     
     # Write to JSON file
-    output_file = "<repo>/assets/bible_data/kjv_bible.json"
+    output_file = str(_REPO_ROOT / "assets" / "bible_data" / "kjv_bible.json")
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(bible_data, f, indent=2, ensure_ascii=False)
     

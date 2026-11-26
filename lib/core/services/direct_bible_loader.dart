@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../config/bible_translations.dart';
 import '../utils/logger.dart';
+import 'bible_book_resolver.dart';
 
 /// The MOST STACKED offline Bible loader on Earth
 class DirectBibleLoader {
@@ -74,45 +75,31 @@ class DirectBibleLoader {
     }
     
     logDebug('DirectBibleLoader: Found ${books.length} books');
-    
-    // Normalize book ID for flexible matching
-    String normalize(String s) => s.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
-    final normalizedBookId = normalize(bookId);
-    
-    for (final book in books) {
-      final bookIdInJsonRaw = book['id'].toString();
-      final bookNameInJsonRaw = (book['name'] ?? '').toString();
-      final bookIdInJson = normalize(bookIdInJsonRaw);
-      final bookNameInJson = normalize(bookNameInJsonRaw);
 
-      // Match by id OR human name (handles ids like JHN vs route id john)
-      final isMatch =
-          bookIdInJson == normalizedBookId ||
-          bookNameInJson == normalizedBookId ||
-          normalizedBookId.startsWith(bookIdInJson) ||
-          bookIdInJson.startsWith(normalizedBookId) ||
-          normalizedBookId.startsWith(bookNameInJson) ||
-          bookNameInJson.startsWith(normalizedBookId) ||
-          (normalizedBookId.length >= 3 && bookIdInJson == normalizedBookId.substring(0, 3));
-      
-      if (isMatch) {
-        logDebug('DirectBibleLoader: Found book "$bookIdInJsonRaw" ($bookNameInJsonRaw) for request "$bookId"');
-        final chapters = book['chapters'] as List?;
-        if (chapters == null) continue;
-        
-        for (final ch in chapters) {
-          if (ch['chapter'] == chapter) {
-            final verses = ch['verses'] as List?;
-            if (verses == null) continue;
-            logDebug('DirectBibleLoader: Found chapter $chapter with ${verses.length} verses');
-            return _formatVerses(verses);
-          }
-        }
-        logDebug('DirectBibleLoader: Chapter $chapter not found in book');
-        return null;
+    final book = findBibleBook(books, bookId);
+    if (book == null) {
+      logDebug('DirectBibleLoader: Book "$bookId" not found');
+      return null;
+    }
+
+    final bookIdInJsonRaw = book['id'].toString();
+    final bookNameInJsonRaw = (book['name'] ?? '').toString();
+    logDebug('DirectBibleLoader: Found book "$bookIdInJsonRaw" ($bookNameInJsonRaw) for request "$bookId"');
+    final chapters = book['chapters'] as List?;
+    if (chapters == null) {
+      logDebug('DirectBibleLoader: Chapter $chapter not found in book');
+      return null;
+    }
+
+    for (final ch in chapters) {
+      if (ch['chapter'] == chapter) {
+        final verses = ch['verses'] as List?;
+        if (verses == null) continue;
+        logDebug('DirectBibleLoader: Found chapter $chapter with ${verses.length} verses');
+        return _formatVerses(verses);
       }
     }
-    logDebug('DirectBibleLoader: Book "$bookId" not found (tried matching: $normalizedBookId)');
+    logDebug('DirectBibleLoader: Chapter $chapter not found in book');
     return null;
   }
   

@@ -75,11 +75,11 @@ This disables TLS certificate verification for the entire Python process, making
 
 **File:** `scripts/generate-keystore.sh:16-22, 32-37`
 
-The script hardcodes the keystore store password and key password as `***REMOVED***` and writes them into `key.properties`:
+The script hardcodes the keystore store password and key password and writes them into `key.properties`:
 
 ```bash
--storepass ***REMOVED*** \
--keypass ***REMOVED*** \
+-storepass [redacted] \
+-keypass [redacted] \
 ```
 
 If the `.jks` keystore file is obtained alongside this script (both are in the same repo), an attacker can sign malicious APKs as the official app.
@@ -395,7 +395,7 @@ void dispose() {
 
 ---
 
-### 2.8 All Scripts Hardcoded to `<home>/...`
+### 2.8 All Scripts Hardcoded to a home-directory path
 
 **Files:** Nearly every script in `scripts/` and all `upload_*.sh` files.
 
@@ -415,7 +415,7 @@ None of these scripts will work on any other machine.
 **File:** `android/gradle.properties:2`
 
 ```
-org.gradle.java.home=<home>/.local/share/mise/installs/java/17.0.2
+org.gradle.java.home=<JAVA_HOME>
 ```
 
 Gradle will fail on any other machine. This file is committed to git.
@@ -927,7 +927,7 @@ Given the number of subtle state management bugs found, automated tests would ha
 21. Replace hardcoded colors with theme-aware values
 22. Replace deprecated `withOpacity` calls (104 instances)
 23. Fix all shell script syntax errors
-24. Replace hardcoded `<home>/` paths with relative paths
+24. Replace hardcoded home-directory paths with relative paths
 
 ### Long-Term (Reliability)
 

@@ -10,12 +10,14 @@ import ssl
 import time
 import os
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 ssl._create_default_https_context = ssl._create_unverified_context
 
 API_KEY = "YOUR_BIBLE_API_KEY_HERE"
 BASE_URL = "https://rest.api.bible/v1"
 WEB_BIBLE_ID = "9879dbb7cfe39e4d-04"  # WEB Protestant from API list
-OUTPUT_FILE = "<repo>/assets/bible_data/web_complete.json"
+OUTPUT_FILE = str(_REPO_ROOT / "assets" / "bible_data" / "web_complete.json")
 
 def api_request(endpoint):
     url = f"{BASE_URL}{endpoint}"

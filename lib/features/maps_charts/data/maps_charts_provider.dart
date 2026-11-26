@@ -12,6 +12,7 @@ class BibleMap {
   final String imagePath;
   final List<MapRegion> regions;
   final MapCategory category;
+  final String credit;
 
   BibleMap({
     required this.id,
@@ -20,6 +21,7 @@ class BibleMap {
     required this.imagePath,
     this.regions = const [],
     required this.category,
+    this.credit = '',
   });
 }
 
@@ -166,6 +168,7 @@ class MapsChartsData {
       description: 'Geography of Israel and surrounding regions',
       imagePath: 'assets/maps/holy_land.png',
       category: MapCategory.general,
+      credit: 'Matthäus Seutter, 1744. Public domain.',
       regions: [
         MapRegion(name: 'Jerusalem', description: 'Capital city, site of the Temple', x: 0.5, y: 0.6, width: 0.08, height: 0.08),
         MapRegion(name: 'Galilee', description: 'Northern region where Jesus ministered', x: 0.5, y: 0.2, width: 0.15, height: 0.15),
@@ -182,6 +185,7 @@ class MapsChartsData {
       description: 'From Ur to Canaan to Egypt and back',
       imagePath: 'assets/maps/abraham_journey.png',
       category: MapCategory.patriarchs,
+      credit: 'Tilemann Stella, published by Abraham Ortelius, 1590. Public domain.',
       regions: [
         MapRegion(name: 'Ur of the Chaldeans', description: 'Abraham\'s birthplace', x: 0.8, y: 0.7, width: 0.1, height: 0.1),
         MapRegion(name: 'Haran', description: 'Where Abraham stopped with his father', x: 0.6, y: 0.3, width: 0.08, height: 0.08),
@@ -197,6 +201,7 @@ class MapsChartsData {
       description: 'From Egypt to the Promised Land',
       imagePath: 'assets/maps/exodus_route.png',
       category: MapCategory.exodus,
+      credit: 'Abraham Ortelius, 1624. Public domain.',
       regions: [
         MapRegion(name: 'Goshen', description: 'Where Israelites lived in Egypt', x: 0.3, y: 0.7, width: 0.1, height: 0.1),
         MapRegion(name: 'Red Sea', description: 'Miraculous crossing', x: 0.4, y: 0.8, width: 0.15, height: 0.1),
@@ -213,6 +218,7 @@ class MapsChartsData {
       description: 'Key locations in Jesus\' life and ministry',
       imagePath: 'assets/maps/jesus_ministry.png',
       category: MapCategory.jesus,
+      credit: 'Edward Weller, by 1884. Public domain.',
       regions: [
         MapRegion(name: 'Nazareth', description: 'Jesus\' hometown', x: 0.45, y: 0.35, width: 0.08, height: 0.08),
         MapRegion(name: 'Capernaum', description: 'Center of Jesus\' ministry', x: 0.5, y: 0.25, width: 0.08, height: 0.08),
@@ -228,6 +234,7 @@ class MapsChartsData {
       description: 'Three missionary journeys and trip to Rome',
       imagePath: 'assets/maps/paul_journeys.png',
       category: MapCategory.paul,
+      credit: 'A Practical Commentary on Holy Scripture, 1910. Public domain.',
       regions: [
         MapRegion(name: 'Antioch', description: 'Home base for missions', x: 0.65, y: 0.4, width: 0.08, height: 0.08),
         MapRegion(name: 'Ephesus', description: 'Third journey, 2+ years', x: 0.6, y: 0.35, width: 0.08, height: 0.08),

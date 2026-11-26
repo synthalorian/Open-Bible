@@ -117,31 +117,10 @@ class _MapsTab extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Placeholder for map image
-            Container(
+            SizedBox(
               height: 150,
               width: double.infinity,
-              color: Colors.brown.shade100,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.map,
-                      size: 48,
-                      color: Colors.brown.shade400,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Map View',
-                      style: TextStyle(
-                        color: Colors.brown.shade600,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: _buildMapImage(context, map, fit: BoxFit.cover),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
@@ -183,6 +162,40 @@ class _MapsTab extends ConsumerWidget {
     );
   }
 
+  Widget _buildMapImage(BuildContext context, BibleMap map, {BoxFit fit = BoxFit.contain}) {
+    if (map.imagePath.isEmpty) {
+      return _mapPlaceholder(context);
+    }
+    return Image.asset(
+      map.imagePath,
+      width: double.infinity,
+      fit: fit,
+      errorBuilder: (context, error, stackTrace) => _mapPlaceholder(context),
+    );
+  }
+
+  Widget _mapPlaceholder(BuildContext context) {
+    return ColoredBox(
+      color: Colors.brown.shade100,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.map, size: 48, color: Colors.brown.shade400),
+            const SizedBox(height: 8),
+            Text(
+              'Map unavailable',
+              style: TextStyle(
+                color: Colors.brown.shade600,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   void _showMapDetail(BuildContext context, BibleMap map) {
     showModalBottomSheet(
       context: context,
@@ -216,74 +229,25 @@ class _MapsTab extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 
-                // Map placeholder with interactive regions
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.brown.shade50,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.brown.shade200),
-                    ),
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.map,
-                                size: 100,
-                                color: Colors.brown.shade300,
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'Interactive Map',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.brown.shade600,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                'Tap regions to learn more',
-                                style: TextStyle(
-                                  color: Colors.brown.shade500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // Region hotspots
-                        ...map.regions.map((region) => Positioned(
-                          left: region.x * MediaQuery.of(context).size.width * 0.8,
-                          top: region.y * 300,
-                          child: GestureDetector(
-                            onTap: () => _showRegionDetail(context, region),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white, width: 2),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  region.name.substring(0, 1),
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )),
-                      ],
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: InteractiveViewer(
+                      minScale: 0.8,
+                      maxScale: 4,
+                      child: _buildMapImage(context, map, fit: BoxFit.contain),
                     ),
                   ),
                 ),
+                if (map.credit.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    map.credit,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
                 
                 const SizedBox(height: 16),
                 
@@ -301,6 +265,7 @@ class _MapsTab extends ConsumerWidget {
                       ),
                       title: Text(region.name),
                       subtitle: Text(region.description),
+                      onTap: () => _showRegionDetail(context, region),
                     )).toList(),
                   ),
                 ),
