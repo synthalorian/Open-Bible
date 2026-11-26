@@ -382,7 +382,7 @@
             "medieval",
             "augustine"
           ],
-          "imageUrl": "assets/data/christian_history/images/fall_rome.jpg"
+          "imageUrl": "assets/data/christian_history/images/fall_rome.gif"
         },
         {
           "id": "benedictine_rule",
@@ -435,7 +435,7 @@
             "constantinople",
             "filioque"
           ],
-          "imageUrl": "assets/data/christian_history/images/east_west_schism.jpg"
+          "imageUrl": "assets/data/christian_history/images/east_west_schism.png"
         },
         {
           "id": "luther_95_theses",
@@ -465,7 +465,7 @@
             "protestant",
             "95 theses"
           ],
-          "imageUrl": "assets/data/christian_history/images/luther_95_theses.jpg"
+          "imageUrl": "assets/data/christian_history/images/luther_95_theses.png"
         },
         {
           "id": "council_trent",
@@ -580,7 +580,7 @@
             "tongues",
             "los angeles"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "second_vatican",
@@ -751,7 +751,7 @@
             "reformation",
             "augsburg confession"
           ],
-          "imageUrl": "assets/data/christian_history/images/lutheran.jpg"
+          "imageUrl": "assets/data/christian_history/images/lutheran.png"
         },
         {
           "id": "anglican",
@@ -785,7 +785,7 @@
             "cranmer",
             "common prayer"
           ],
-          "imageUrl": "assets/data/christian_history/images/anglican.jpg"
+          "imageUrl": "assets/data/christian_history/images/anglican.png"
         },
         {
           "id": "southern_baptist",
@@ -816,7 +816,7 @@
             "biblical inerrancy",
             "missions"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "methodist",
@@ -911,7 +911,7 @@
             "tongues",
             "spirit baptism"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "coptics",
@@ -1010,7 +1010,7 @@
             "nonviolence",
             "believer's baptism"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "seventh_day_adventist",
@@ -1043,7 +1043,7 @@
             "white",
             "second coming"
           ],
-          "imageUrl": "assets/data/christian_history/images/seventh_day_adventist.jpg"
+          "imageUrl": "assets/data/christian_history/images/seventh_day_adventist.png"
         },
         {
           "id": "jehovahs_witnesses",
@@ -1073,7 +1073,7 @@
             "non-trinitarian",
             "door-to-door"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "lds",
@@ -1276,7 +1276,7 @@
             "trinity",
             "baptism"
           ],
-          "imageUrl": "assets/data/christian_history/images/apostles_creed.jpg"
+          "imageUrl": "assets/data/christian_history/images/apostles_creed.png"
         },
         {
           "id": "nicene_creed",
@@ -1426,7 +1426,7 @@
             "universal",
             "roman"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "greek_cross",
@@ -1453,7 +1453,7 @@
             "equal-armed",
             "red cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/greek_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/greek_cross.png"
         },
         {
           "id": "celtic_cross",
@@ -1481,7 +1481,7 @@
             "ring",
             "high cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.png"
         },
         {
           "id": "st_andrews_cross",
@@ -1509,7 +1509,7 @@
             "x-cross",
             "diagonal"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "maltese_cross",
@@ -1536,7 +1536,7 @@
             "eight-pointed",
             "crusader"
           ],
-          "imageUrl": "assets/data/christian_history/images/maltese_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/maltese_cross.png"
         },
         {
           "id": "patriarchal_cross",
@@ -1643,7 +1643,7 @@
             "holy land",
             "kingdom of jerusalem"
           ],
-          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.png"
         },
         {
           "id": "ankh",
@@ -1670,7 +1670,7 @@
             "looped cross",
             "life"
           ],
-          "imageUrl": "assets/data/christian_history/images/ankh.jpg"
+          "imageUrl": "assets/data/christian_history/images/ankh.png"
         },
         {
           "id": "cross_lorraine",
@@ -1725,7 +1725,7 @@
             "prussia",
             "military"
           ],
-          "imageUrl": "assets/data/christian_history/images/cross_pattee.jpg"
+          "imageUrl": "assets/data/christian_history/images/cross_pattee.png"
         },
         {
           "id": "tau_cross",
@@ -1752,7 +1752,7 @@
             "st francis",
             "t-shaped"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "constantinian_cross",
@@ -1779,7 +1779,7 @@
             "labarum",
             "constantinian"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/chi_rho.png"
         },
         {
           "id": "cross_calvary",
@@ -1873,7 +1873,7 @@
             "dannebrog",
             "denmark"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "st_georges_cross",
@@ -1900,7 +1900,7 @@
             "flag",
             "crusader"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "cross_fleury",
@@ -1924,7 +1924,7 @@
             "france",
             "heraldry"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "ethiopian_cross",
@@ -1979,7 +1979,7 @@
             "eternity",
             "book of kells"
           ],
-          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.png"
         },
         {
           "id": "teutonic_cross",
@@ -2007,7 +2007,7 @@
             "baltic",
             "northern crusades"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         }
       ]
     },
@@ -2131,7 +2131,7 @@
             "rhineland",
             "massacre"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "reconquista",
@@ -2222,7 +2222,7 @@
             "innocent iii",
             "heresy"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "childrens_crusade",
@@ -2248,7 +2248,7 @@
             "stephen",
             "nicholas"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "siege_acre_1189",
@@ -2309,7 +2309,7 @@
             "end",
             "templar"
           ],
-          "imageUrl": "assets/data/christian_history/images/fall_acre_1291.jpg"
+          "imageUrl": "assets/data/christian_history/images/fall_acre_1291.png"
         },
         {
           "id": "battle_arsuf",
@@ -2374,7 +2374,7 @@
             "temple mount",
             "council of troyes"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_founding.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_founding.png"
         },
         {
           "id": "templar_banking",
@@ -2400,7 +2400,7 @@
             "philip iv",
             "wealth"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_banking.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_banking.png"
         },
         {
           "id": "friday_13th",
@@ -2503,7 +2503,7 @@
             "discipline",
             "military order"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_rule.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_rule.png"
         },
         {
           "id": "templar_legends",
@@ -2529,7 +2529,7 @@
             "freemasons",
             "treasure"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_legends.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_legends.png"
         },
         {
           "id": "hospitallers",
@@ -2562,7 +2562,7 @@
             "hospital",
             "maltese cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/maltese_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/maltese_cross.png"
         },
         {
           "id": "teutonic_order",
@@ -2595,7 +2595,7 @@
             "northern crusades",
             "grunwald"
           ],
-          "imageUrl": "assets/data/christian_history/images/teutonic_order.jpg"
+          "imageUrl": "assets/data/christian_history/images/teutonic_order.png"
         }
       ]
     },
@@ -2999,7 +2999,7 @@
             "early church",
             "catacombs"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "chi_rho_symbol",
@@ -3023,7 +3023,7 @@
             "labarum",
             "catacombs"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/chi_rho.png"
         },
         {
           "id": "alpha_omega",
@@ -3046,7 +3046,7 @@
             "eternity",
             "revelation"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/chi_rho.png"
         },
         {
           "id": "dove_holy_spirit",
@@ -3073,7 +3073,7 @@
             "peace",
             "noah"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "lamb_god",
@@ -3099,7 +3099,7 @@
             "passover",
             "revelation"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "pelican",
@@ -3120,7 +3120,7 @@
             "eucharist",
             "bestiary"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "triquetra",
@@ -3142,7 +3142,7 @@
             "book of kells",
             "trinity"
           ],
-          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.png"
         },
         {
           "id": "inri",
@@ -3167,7 +3167,7 @@
             "pilot",
             "king"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "sacred_heart",
@@ -3216,7 +3216,7 @@
             "diagram",
             "scutum fidei"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "fleur_de_lis",
@@ -3238,7 +3238,7 @@
             "france",
             "purity"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "host_chalice",
@@ -3263,7 +3263,7 @@
             "sacrament",
             "last supper"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         }
       ]
     },

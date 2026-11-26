@@ -6,6 +6,7 @@ import '../../../../core/providers/app_providers.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/continue_reading_service.dart';
 import '../../../../core/config/bible_translations.dart';
+import '../../../../core/services/bible_book_resolver.dart';
 import '../widgets/continue_reading_card.dart';
 import '../../../../core/utils/logger.dart';
 
@@ -288,15 +289,8 @@ class _BibleHomePageState extends ConsumerState<BibleHomePage>
       return normalizedByName;
     }
 
-    final compactId = bookId.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
-    for (final b in BibleStructure.allBooks) {
-      final lower = b.toLowerCase();
-      final compact = lower.replaceAll(RegExp(r'[^a-z0-9]'), '');
-      if (compact == compactId || compact.startsWith(compactId) || compactId.startsWith(compact)) {
-        return lower;
-      }
-    }
-
+    final resolved = resolveBibleBook(bookId) ?? resolveBibleBook(bookName);
+    if (resolved != null) return resolved.name.toLowerCase();
     return normalizedByName;
   }
 

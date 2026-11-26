@@ -10,6 +10,8 @@ import time
 import os
 import ssl
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 ssl._create_default_https_context = ssl._create_unverified_context
 
 API_KEY = "YOUR_BIBLE_API_KEY_HERE"
@@ -136,7 +138,7 @@ def main():
         return
     
     # Save
-    output = "/home/synth/projects/open-bible/assets/bible_data/kjv_complete.json"
+    output = str(_REPO_ROOT / "assets" / "bible_data" / "kjv_complete.json")
     os.makedirs(os.path.dirname(output), exist_ok=True)
     
     with open(output, 'w', encoding='utf-8') as f:

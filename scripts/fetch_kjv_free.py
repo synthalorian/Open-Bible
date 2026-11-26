@@ -9,6 +9,8 @@ import ssl
 import time
 import os
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # Bible books with chapter counts
@@ -114,7 +116,7 @@ def main():
         bible["books"].append(book_data)
     
     # Save
-    output = "/home/synth/projects/open-bible/assets/bible_data/kjv_complete.json"
+    output = str(_REPO_ROOT / "assets" / "bible_data" / "kjv_complete.json")
     os.makedirs(os.path.dirname(output), exist_ok=True)
     
     with open(output, 'w', encoding='utf-8') as f:

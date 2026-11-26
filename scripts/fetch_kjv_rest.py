@@ -10,12 +10,14 @@ import time
 import os
 import sys
 
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 ssl._create_default_https_context = ssl._create_unverified_context
 
 API_KEY = "YOUR_BIBLE_API_KEY_HERE"
 BASE_URL = "https://rest.api.bible/v1"
 KJV_BIBLE_ID = "de4e12af7f28f599-02"
-OUTPUT_FILE = "/home/synth/projects/open-bible/assets/bible_data/kjv_complete.json"
+OUTPUT_FILE = str(_REPO_ROOT / "assets" / "bible_data" / "kjv_complete.json")
 
 def api_request(endpoint):
     url = f"{BASE_URL}{endpoint}"

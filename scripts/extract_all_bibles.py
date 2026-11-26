@@ -4,6 +4,8 @@ Extract multiple Bibles from Sword modules to JSON.
 """
 
 import sys
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, '/tmp/sword')
 
 from pysword.modules import SwordModules
@@ -65,7 +67,7 @@ def extract_bible(bible_info):
         "books": []
     }
     
-    output_file = f"/home/synth/projects/open-bible/assets/bible_data/{bible_info['id']}_bible.json"
+    output_file = str(_REPO_ROOT / "assets" / "bible_data" / f"{bible_info['id']}_bible.json")
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
     total_books = len(BOOKS)

@@ -400,7 +400,7 @@
             "early church",
             "catacombs"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "chi_rho_symbol",
@@ -424,7 +424,7 @@
             "labarum",
             "catacombs"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/chi_rho.png"
         },
         {
           "id": "alpha_omega",
@@ -447,7 +447,7 @@
             "eternity",
             "revelation"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/chi_rho.png"
         },
         {
           "id": "dove_holy_spirit",
@@ -474,7 +474,7 @@
             "peace",
             "noah"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "lamb_god",
@@ -500,7 +500,7 @@
             "passover",
             "revelation"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "pelican",
@@ -521,7 +521,7 @@
             "eucharist",
             "bestiary"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "triquetra",
@@ -543,7 +543,7 @@
             "book of kells",
             "trinity"
           ],
-          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.png"
         },
         {
           "id": "inri",
@@ -568,7 +568,7 @@
             "pilot",
             "king"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "sacred_heart",
@@ -617,7 +617,7 @@
             "diagram",
             "scutum fidei"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "fleur_de_lis",
@@ -639,7 +639,7 @@
             "france",
             "purity"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "host_chalice",
@@ -664,7 +664,7 @@
             "sacrament",
             "last supper"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         }
       ]
     },

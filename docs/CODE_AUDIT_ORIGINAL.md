@@ -75,11 +75,11 @@ This disables TLS certificate verification for the entire Python process, making
 
 **File:** `scripts/generate-keystore.sh:16-22, 32-37`
 
-The script hardcodes the keystore store password and key password as `openbible123` and writes them into `key.properties`:
+The script hardcodes the keystore store password and key password and writes them into `key.properties`:
 
 ```bash
--storepass openbible123 \
--keypass openbible123 \
+-storepass [redacted] \
+-keypass [redacted] \
 ```
 
 If the `.jks` keystore file is obtained alongside this script (both are in the same repo), an attacker can sign malicious APKs as the official app.

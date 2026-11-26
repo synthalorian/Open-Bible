@@ -2,7 +2,8 @@
 # Multi-service APK uploader
 set -e
 
-APK_DIR="./build/app/outputs/flutter-apk"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APK_DIR="$SCRIPT_DIR/build/app/outputs/flutter-apk"
 APKS=("app-arm64-v8a-release.apk" "app-armeabi-v7a-release.apk" "app-x86_64-release.apk")
 
 # Upload services to try (in order)

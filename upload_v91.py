@@ -2,7 +2,9 @@
 import requests
 import os
 
-apk_path = "/home/synth/projects/open-bible/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk"
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parent
+apk_path = str(_REPO_ROOT / "build" / "app" / "outputs" / "flutter-apk" / "app-arm64-v8a-release.apk")
 filename = os.path.basename(apk_path)
 
 print(f"Uploading {filename}...")

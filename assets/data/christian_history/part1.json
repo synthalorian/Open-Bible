@@ -382,7 +382,7 @@
             "medieval",
             "augustine"
           ],
-          "imageUrl": "assets/data/christian_history/images/fall_rome.jpg"
+          "imageUrl": "assets/data/christian_history/images/fall_rome.gif"
         },
         {
           "id": "benedictine_rule",
@@ -435,7 +435,7 @@
             "constantinople",
             "filioque"
           ],
-          "imageUrl": "assets/data/christian_history/images/east_west_schism.jpg"
+          "imageUrl": "assets/data/christian_history/images/east_west_schism.png"
         },
         {
           "id": "luther_95_theses",
@@ -465,7 +465,7 @@
             "protestant",
             "95 theses"
           ],
-          "imageUrl": "assets/data/christian_history/images/luther_95_theses.jpg"
+          "imageUrl": "assets/data/christian_history/images/luther_95_theses.png"
         },
         {
           "id": "council_trent",
@@ -580,7 +580,7 @@
             "tongues",
             "los angeles"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "second_vatican",
@@ -751,7 +751,7 @@
             "reformation",
             "augsburg confession"
           ],
-          "imageUrl": "assets/data/christian_history/images/lutheran.jpg"
+          "imageUrl": "assets/data/christian_history/images/lutheran.png"
         },
         {
           "id": "anglican",
@@ -785,7 +785,7 @@
             "cranmer",
             "common prayer"
           ],
-          "imageUrl": "assets/data/christian_history/images/anglican.jpg"
+          "imageUrl": "assets/data/christian_history/images/anglican.png"
         },
         {
           "id": "southern_baptist",
@@ -816,7 +816,7 @@
             "biblical inerrancy",
             "missions"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "methodist",
@@ -911,7 +911,7 @@
             "tongues",
             "spirit baptism"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "coptics",
@@ -1010,7 +1010,7 @@
             "nonviolence",
             "believer's baptism"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "seventh_day_adventist",
@@ -1043,7 +1043,7 @@
             "white",
             "second coming"
           ],
-          "imageUrl": "assets/data/christian_history/images/seventh_day_adventist.jpg"
+          "imageUrl": "assets/data/christian_history/images/seventh_day_adventist.png"
         },
         {
           "id": "jehovahs_witnesses",
@@ -1073,7 +1073,7 @@
             "non-trinitarian",
             "door-to-door"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "lds",
@@ -1276,7 +1276,7 @@
             "trinity",
             "baptism"
           ],
-          "imageUrl": "assets/data/christian_history/images/apostles_creed.jpg"
+          "imageUrl": "assets/data/christian_history/images/apostles_creed.png"
         },
         {
           "id": "nicene_creed",

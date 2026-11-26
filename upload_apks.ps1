@@ -1,6 +1,8 @@
 # Upload APK files to catbox.moe (Windows PowerShell)
 $ErrorActionPreference = 'Stop'
 
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ApkDir = Join-Path $ScriptDir 'build\app\outputs\flutter-apk'
 $Apks = @(
     'app-arm64-v8a-release.apk'
     'app-armeabi-v7a-release.apk'
@@ -42,9 +44,10 @@ function Upload-Apk([string]$ApkPath) {
 }
 
 foreach ($apk in $Apks) {
-    if (Test-Path $apk) {
-        Upload-Apk $apk
+    $apkPath = Join-Path $ApkDir $apk
+    if (Test-Path $apkPath) {
+        Upload-Apk $apkPath
     } else {
-        Write-Host "NOT FOUND: $apk" -ForegroundColor Yellow
+        Write-Host "NOT FOUND: $apkPath" -ForegroundColor Yellow
     }
 }

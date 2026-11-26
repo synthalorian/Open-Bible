@@ -233,7 +233,7 @@ All features discussed by the ollama have been **FULLY IMPLEMENTED** with workin
 
 **Build Command:**
 ```bash
-cd /home/synth/projects/open-bible
+cd /path/to/open-bible
 flutter build apk --release
 ```
 

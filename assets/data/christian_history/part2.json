@@ -30,7 +30,7 @@
             "universal",
             "roman"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "greek_cross",
@@ -57,7 +57,7 @@
             "equal-armed",
             "red cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/greek_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/greek_cross.png"
         },
         {
           "id": "celtic_cross",
@@ -85,7 +85,7 @@
             "ring",
             "high cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.png"
         },
         {
           "id": "st_andrews_cross",
@@ -113,7 +113,7 @@
             "x-cross",
             "diagonal"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "maltese_cross",
@@ -140,7 +140,7 @@
             "eight-pointed",
             "crusader"
           ],
-          "imageUrl": "assets/data/christian_history/images/maltese_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/maltese_cross.png"
         },
         {
           "id": "patriarchal_cross",
@@ -247,7 +247,7 @@
             "holy land",
             "kingdom of jerusalem"
           ],
-          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/jerusalem_cross.png"
         },
         {
           "id": "ankh",
@@ -274,7 +274,7 @@
             "looped cross",
             "life"
           ],
-          "imageUrl": "assets/data/christian_history/images/ankh.jpg"
+          "imageUrl": "assets/data/christian_history/images/ankh.png"
         },
         {
           "id": "cross_lorraine",
@@ -329,7 +329,7 @@
             "prussia",
             "military"
           ],
-          "imageUrl": "assets/data/christian_history/images/cross_pattee.jpg"
+          "imageUrl": "assets/data/christian_history/images/cross_pattee.png"
         },
         {
           "id": "tau_cross",
@@ -356,7 +356,7 @@
             "st francis",
             "t-shaped"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "constantinian_cross",
@@ -383,7 +383,7 @@
             "labarum",
             "constantinian"
           ],
-          "imageUrl": "assets/data/christian_history/images/chi_rho.jpg"
+          "imageUrl": "assets/data/christian_history/images/chi_rho.png"
         },
         {
           "id": "cross_calvary",
@@ -477,7 +477,7 @@
             "dannebrog",
             "denmark"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "st_georges_cross",
@@ -504,7 +504,7 @@
             "flag",
             "crusader"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "cross_fleury",
@@ -528,7 +528,7 @@
             "france",
             "heraldry"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "ethiopian_cross",
@@ -583,7 +583,7 @@
             "eternity",
             "book of kells"
           ],
-          "imageUrl": "assets/data/christian_history/images/celtic_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/celtic_cross.png"
         },
         {
           "id": "teutonic_cross",
@@ -611,7 +611,7 @@
             "baltic",
             "northern crusades"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         }
       ]
     },
@@ -735,7 +735,7 @@
             "rhineland",
             "massacre"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "reconquista",
@@ -826,7 +826,7 @@
             "innocent iii",
             "heresy"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "childrens_crusade",
@@ -852,7 +852,7 @@
             "stephen",
             "nicholas"
           ],
-          "imageUrl": "assets/data/christian_history/images/latin_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/latin_cross.png"
         },
         {
           "id": "siege_acre_1189",
@@ -913,7 +913,7 @@
             "end",
             "templar"
           ],
-          "imageUrl": "assets/data/christian_history/images/fall_acre_1291.jpg"
+          "imageUrl": "assets/data/christian_history/images/fall_acre_1291.png"
         },
         {
           "id": "battle_arsuf",
@@ -978,7 +978,7 @@
             "temple mount",
             "council of troyes"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_founding.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_founding.png"
         },
         {
           "id": "templar_banking",
@@ -1004,7 +1004,7 @@
             "philip iv",
             "wealth"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_banking.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_banking.png"
         },
         {
           "id": "friday_13th",
@@ -1107,7 +1107,7 @@
             "discipline",
             "military order"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_rule.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_rule.png"
         },
         {
           "id": "templar_legends",
@@ -1133,7 +1133,7 @@
             "freemasons",
             "treasure"
           ],
-          "imageUrl": "assets/data/christian_history/images/templar_legends.jpg"
+          "imageUrl": "assets/data/christian_history/images/templar_legends.png"
         },
         {
           "id": "hospitallers",
@@ -1166,7 +1166,7 @@
             "hospital",
             "maltese cross"
           ],
-          "imageUrl": "assets/data/christian_history/images/maltese_cross.jpg"
+          "imageUrl": "assets/data/christian_history/images/maltese_cross.png"
         },
         {
           "id": "teutonic_order",
@@ -1199,7 +1199,7 @@
             "northern crusades",
             "grunwald"
           ],
-          "imageUrl": "assets/data/christian_history/images/teutonic_order.jpg"
+          "imageUrl": "assets/data/christian_history/images/teutonic_order.png"
         }
       ]
     }
